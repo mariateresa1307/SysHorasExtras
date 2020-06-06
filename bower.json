@@ -1,0 +1,13 @@
+{
+  "name": "Sistema de horas extras",
+  "homepage": "http://localhost",
+  "authors": [""],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
