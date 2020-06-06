@@ -1,6 +1,6 @@
 <?php
 
-namespace ErikvdVen\PHP_MVC\Models;
+namespace ControlHorasExtras\PHP_MVC\Models;
 
 /**
  * @Entity

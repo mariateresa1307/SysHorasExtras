@@ -1,11 +1,11 @@
 <?php
 
-namespace ErikvdVen\PHP_MVC\Controllers;
+namespace ControlHorasExtras\PHP_MVC\Controllers;
 
 use League\Csv\Reader;
 use Doctrine\ORM\EntityManager;
-use ErikvdVen\PHP_MVC\Service;
-use ErikvdVen\PHP_MVC\Models\User;
+use ControlHorasExtras\PHP_MVC\Service;
+use ControlHorasExtras\PHP_MVC\Models\User;
 
 class UserController
 {
@@ -63,7 +63,7 @@ class UserController
 
         }
 /*
-        if($users = $this->em->getRepository('ErikvdVen\PHP_MVC\Models\User')->findAll())
+        if($users = $this->em->getRepository('ControlHorasExtras\PHP_MVC\Models\User')->findAll())
         {
             $men = [];
             $women = [];

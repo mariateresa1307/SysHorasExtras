@@ -1,6 +1,6 @@
 <?php
 
-namespace ErikvdVen\PHP_MVC;
+namespace ControlHorasExtras\PHP_MVC;
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;

@@ -1,8 +1,17 @@
 # PHP MVC Boilerplate
 
-## Installation
+# Pre-requisitos
 
-First execute below commands
+Primero instalar Bitnami lapp Stack
+https://bitnami.com/stack/lapp
+
+o en su defecto, tener:
+
+- PHP >= 7
+- PostgreSQL
+- Driver de postgres para PHP
+
+## Installation
 
 ```
 git clone <Git URL>
