@@ -1,17 +1,15 @@
-# PHP MVC Boilerplate
+# PHP MVC Sistema de Horas Extras
 
-# Pre-requisitos
+## Pre-requisitos
 
-Primero instalar Bitnami lapp Stack
-https://bitnami.com/stack/lapp
-
-o en su defecto, tener:
+instalar [Bitnami lapp Stack](https://bitnami.com/stack/lapp) o en su defecto, tener:
 
 - PHP >= 7
+- Apache
 - PostgreSQL
 - Driver de postgres para PHP
 
-## Installation
+## Instalacion
 
 ```
 git clone <Git URL>
@@ -20,24 +18,22 @@ composer install
 bower install
 ```
 
-## Setup Database
+## Configuracion
 
-First create a database and update the database credentials in `app/service.php`
-
-## Create Schema
-
-Execute below command inside the project folder
-
-```
-php vendor/bin/doctrine orm:schema-tool:create
-```
-
-## That's all folks
-
-Important: Make sure the Document Root is set to the `public` folder before you navigate to your Mamp/Wamp server, e.g. `http://php-mvc.local:8888`
-
-If you haven't installed Mamp/Wamp server, you might want to use PHP's built-in web server using the following command:
-
-```
-php -S localhost:8888 -t public
-```
+1. Abrir config.json y establecer los parametros de su entorno de trabajo.
+   ```
+   {
+      "database": [
+          {
+            "driver": "pdo_pgsql",
+            "user": "postgres",
+            "password": "12345678",
+            "dbname": "HorasExtras",
+            "host": "localhost",
+            "port": "5433"
+          }
+      ],
+      "base_url": "http://localhost:8080/sistema_horas"
+   }
+   ```
+2. Ingresar en la URL del proyecto segun su entorno. Ejemplo: [http://localhost:8080/sistema_horas](http://localhost:8080/sistema_horas)
