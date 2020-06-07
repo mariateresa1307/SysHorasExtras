@@ -5,8 +5,7 @@ namespace ControlHorasExtras\PHP_MVC\Controllers;
 
 use ControlHorasExtras\PHP_MVC\Models\User;
 
-class UserController
-{
+class UserController{
 
     
     public function indexAction($req, $res, $service, $app){
@@ -16,7 +15,7 @@ class UserController
         $data = [
             "usuarios" => $user->getAll()
         ];
-    
+
         return $app->twig->render('user/index.html', $data);
     }
 }

@@ -1,60 +1,70 @@
 <html>
-  <head>
-    <meta>
-    <link rel="stylesheet" type="text/css" href="/assets/css/login.css">
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-  </meta>
-    <body>
-      
-      <div class="wrapper">
-        <div class="login-text">
-          <button class="cta"><i class="fas fa-chevron-down fa-1x"></i></button>
-          
-          <div class="text" >
-      
-          <div class="newspaper">
-            <img src="/assets/img/logo_saren.png" />
-            <a href="">Ingrese su Cedula</a>
-            <hr>
-            <input type="text" placeholder="Cedula">
-            
-            <br>
-            <div class="newspaper">
-            <button onclick="window.location.href='/home'"class="login-btn">Log In</button>
-            <button src="" class="signup-btn">Sign Up</button>
-            </div>
-          </div>
-              
-         
-           
-          </div>
-        </div>
-        <div class="call-text">
-          <h1>SAREN <span>Sistema de Control de Horas Extras</span></h1>
-        </div>
-    
-      </div>
-      <script>
-        var cta = document.querySelector(".cta");
-var check = 0;
 
-cta.addEventListener('click', function(e){
-    var text = e.target.nextElementSibling;
-    var loginText = e.target.parentElement;
-    text.classList.toggle('show-hide');
-    loginText.classList.toggle('expand');
-    if(check == 0)
-    {
+<head>
+  <meta>
+  <link rel="stylesheet" type="text/css" href="{{base_url}}/assets/css/login.css">
+  <link rel="stylesheet" type="text/css" href="{{base_url}}/assets/vendor/flexboxgrid/dist/flexboxgrid.min.css">
+
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+  </meta>
+
+<body>
+
+  <div class="wrapper">
+    <div class="login-text">
+      <button type="button" class="cta"  ><i class="fas fa-chevron-down fa-1x"></i></button>
+
+      <div class="text">
+
+        <div class="newspaper">
+          <img src="{{base_url}}/assets/img/logo_saren.png" />
+          <a href="">Ingrese su Cedula</a>
+          <hr>
+          <input type="text" placeholder="Cedula">
+
+          <br>
+          <div class="newspaper">
+            <button onclick="window.location.href='/home/8'" class="login-btn">Log In</button>
+            <button src="" class="signup-btn">Sign Up</button>
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </div>
+    <div class="call-text">
+      <h1>SAREN <span>Sistema de Control de Horas Extras</span></h1>
+    </div>
+
+  </div>
+  <script>
+    var cta = document.querySelector(".cta");
+    var check = 0;
+
+    cta.addEventListener('click', function (e) {
+      var text = e.target.nextElementSibling;
+      var loginText = e.target.parentElement;
+      text.classList.toggle('show-hide');
+      loginText.classList.toggle('expand');
+      if (check == 0) {
         cta.innerHTML = "<i class=\"fas fa-chevron-up\"></i>";
         check++;
-    }
-    else
-    {
+      }
+      else {
         cta.innerHTML = "<i class=\"fas fa-chevron-down\"></i>";
         check = 0;
-    }
-})
-      </script>
-    </body>
-  </head>
+      }
+    })
+  </script>
+
+
+
+
+
+</body>
+</head>
+
 </html>

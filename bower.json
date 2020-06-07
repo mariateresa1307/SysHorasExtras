@@ -1,5 +1,5 @@
 {
-  "name": "Sistema de horas extras",
+  "name": "sistema de horas extras",
   "homepage": "http://localhost",
   "authors": [""],
   "description": "",
@@ -8,6 +8,6 @@
   "license": "MIT",
   "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
   "dependencies": {
-    "bootstrap": "^3.3.6"
+    "flexboxgrid": "^6.3.2"
   }
 }

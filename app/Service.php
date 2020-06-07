@@ -11,18 +11,11 @@ class Service{
 
     public function __construct(){
         // the connection configuration
-        $dbParams = array(
-            'driver'   => 'pdo_pgsql',
-            'user'     => 'postgres',
-            'password' => '123456789',
-            'dbname'   => 'HorasExtras',
-            'host'     => 'localhost',
-            'port'     => '5432',
-        );
+        
+        $config = json_decode(file_get_contents("../config.json"), true);
+        
+        $dbParams = $config["database"][0];
 
-        
-        
-        
         $_vinculo = pg_connect("host={$dbParams["host"]} port={$dbParams["port"]} dbname={$dbParams["dbname"]} user={$dbParams["user"]} password={$dbParams["password"]}");
 
         if($_vinculo){

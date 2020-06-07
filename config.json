@@ -1,0 +1,13 @@
+{
+  "database": [
+    {
+      "driver": "pdo_pgsql",
+      "user": "postgres",
+      "password": "12345678",
+      "dbname": "HorasExtras",
+      "host": "localhost",
+      "port": "5433"
+    }
+  ],
+  "base_url": "http://localhost:8080/sistema_horas"
+}
