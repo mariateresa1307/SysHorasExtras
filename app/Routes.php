@@ -16,7 +16,6 @@ $router->respond(function ($request, $response, $service, $app) use ($router) {
 });
 
 $router->respond('GET', '/', [$userCtrl, 'indexAction']);
-$router->respond('POST', '/', [$userCtrl, 'indexAction']);
 
 $router->dispatch();
 

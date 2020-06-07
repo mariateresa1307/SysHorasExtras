@@ -1,24 +1,20 @@
 <?php
-
 namespace ControlHorasExtras\PHP_MVC;
 
-use Doctrine\ORM\Tools\Setup;
-use Doctrine\ORM\EntityManager;
+require_once "helpers/ansi-color.php";
 
-final class Service
-{
+use PhpAnsiColor\Color;
 
-	private $dbParams;
-	private $config;
 
-    private function __construct()
-    {
+class Service{
 
-        $paths = array(dirname(__FILE__)."/Models");
-        $isDevMode = false;
+	
+    private $config;
+    public $vinculo;
 
+    public function __construct(){
         // the connection configuration
-        $this->dbParams = array(
+        $dbParams = array(
             'driver'   => 'pdo_pgsql',
             'user'     => 'postgres',
             'password' => '12345678',
@@ -27,18 +23,21 @@ final class Service
             'port'     => '5433',
         );
 
-        $this->config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
+        
+        
+        
+        $_vinculo = pg_connect("host={$dbParams["host"]} port={$dbParams["port"]} dbname={$dbParams["dbname"]} user={$dbParams["user"]} password={$dbParams["password"]}");
+
+        if($_vinculo){
+            $this->vinculo = $_vinculo;
+        }
+        else{
+            error_log(Color::set(" - Conexion a Postgres fallo!!!!", "red+bold"));            
+        }
+
         
     }
 
-    public static function Instance()
-    {
-        static $inst = null;
-        if ($inst === null) {
-            $service = new Service();
-            $inst = EntityManager::create($service->dbParams, $service->config);
-        }
-        return $inst;
-    }
+    
 }
 ?>
