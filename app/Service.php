@@ -1,8 +1,5 @@
 <?php
 namespace ControlHorasExtras\PHP_MVC;
-
-require_once "helpers/ansi-color.php";
-
 use PhpAnsiColor\Color;
 
 

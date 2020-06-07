@@ -14,7 +14,7 @@ class UserController
         $user = new User();
         
         $data = [
-            usuarios => $user->getAll()
+            "usuarios" => $user->getAll()
         ];
     
         return $app->twig->render('user/index.html', $data);
