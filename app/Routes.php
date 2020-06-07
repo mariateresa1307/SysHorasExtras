@@ -16,7 +16,9 @@ $router->respond(function ($request, $response, $service, $app) use ($router) {
 });
 
 $router->respond('GET', '/', [$userCtrl, 'indexAction']);
-
+$router->respond('GET', '/login', [$loginCtrl, 'indexAction']);
+$router->respond('GET', '/home', [$homeCtrl, 'indexAction']);
 $router->dispatch();
 
 ?>
+

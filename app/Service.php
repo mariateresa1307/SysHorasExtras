@@ -14,10 +14,10 @@ class Service{
         $dbParams = array(
             'driver'   => 'pdo_pgsql',
             'user'     => 'postgres',
-            'password' => '12345678',
+            'password' => '123456789',
             'dbname'   => 'HorasExtras',
             'host'     => 'localhost',
-            'port'     => '5433',
+            'port'     => '5432',
         );
 
         
