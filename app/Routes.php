@@ -4,8 +4,8 @@ use \Klein\Klein;
 
 use \ControlHorasExtras\PHP_MVC\Controllers\UserController;
 use \ControlHorasExtras\PHP_MVC\Controllers\LoginController;
-
-
+use \ControlHorasExtras\PHP_MVC\Controllers\HomeController;
+use \ControlHorasExtras\PHP_MVC\Controllers\HorasController;
 
 /** 
  *  Preparar la URL base del proyecto para el sistema de rutas.
@@ -21,6 +21,8 @@ $base_url = preg_replace("/http.*(\d\d\d)/", "", $config["base_url"]);
 $router = new Klein();
 $userCtrl = new UserController();
 $loginCtrl = new LoginController();
+$homeCtrl = new HomeController();
+$horasCtrl = new HorasController();
 
 $router->respond(function ($request, $response, $service, $app) use ($router) {
     $app->register('twig', function () {
@@ -43,8 +45,8 @@ $router->respond("{$base_url}/assets/[*]", function($request, $response, $servic
  */
 $router->respond('GET', "{$base_url}/test", [$userCtrl, 'indexAction']);
 $router->respond('GET', "{$base_url}/login", [$loginCtrl, 'indexAction']);
-
-
+$router->respond('GET', "{$base_url}/home", [$homeCtrl, 'indexAction']);
+$router->respond('GET', "{$base_url}/horas", [$horasCtrl, 'indexAction']);
 
 # 404 Not Found
 // Using exact code behaviors via switch/case

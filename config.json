@@ -9,5 +9,5 @@
       "port": "5433"
     }
   ],
-  "base_url": "http://localhost:8080/sistema_horas"
+  "base_url": "http://localhost:8080/SysHorasExtras"
 }

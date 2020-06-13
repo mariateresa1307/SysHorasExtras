@@ -3,7 +3,7 @@
 namespace ControlHorasExtras\PHP_MVC\Controllers;
 
 
-class HomeController{
+class HorasController{
     private $base_url;
 
     public function __construct(){
@@ -15,7 +15,7 @@ class HomeController{
     public function indexAction($req, $res, $service, $app){
         $data = ["base_url" =>  $this->base_url];
         
-        return $app->twig->render('home/index.html', $data);
+        return $app->twig->render('horas/index.html', $data);
     }
 }
 

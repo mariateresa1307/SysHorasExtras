@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.page {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(
+    to top,
+    #a6a6a6,
+    #b3b3b3,
+    #c0c0c0,
+    #cdcecd,
+    #dbdbdb,
+    #e2e2e2,
+    #eaeaea,
+    #f1f1f1,
+    #f4f4f4,
+    #f8f8f8,
+    #fbfbfb,
+    #ffffff
+  );
+  font-family: "Encode Sans Condensed", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #212121;
+}
+
+img {
+  vertical-align: middle;
+  height: auto;
+  width: 100%;
+  background-color: #f1f1f1;
+}
+
+/* Dashed border */
+hr.dashed {
+  border-top: 3px dashed #bbb;
+}
+
+/* Dotted border */
+hr.dotted {
+  border-top: 3px dotted #bbb;
+}
+
+/* Solid border */
+hr.solid {
+  border-top: 3px solid #bbb;
+}
+
+/* Rounded border */
+hr.rounded {
+  border-top: 8px solid #bbb;
+  border-radius: 5px;
+}
+
+/*CARD*/
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 40%;
+  border-radius: 5px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+}
+
+.container {
+  padding: 2px 16px;
+}
