@@ -20,11 +20,18 @@ $router = new Klein();
 $userCtrl = new UserController();
 $loginCtrl = new LoginController();
 
+
+
+$router->respond(function ($request, $response, $service, $app) use($base_url) {
+    $app->register('base_url', function() use($base_url){
+        return $base_url;
+    });
+});
+
 $router->respond("{$base_url}/assets/[*]", function($request, $response, $service, $app) {
     $dir = preg_replace("/^\/.*assets/", "", $request->pathname());
     return $response->file("../public/assets/{$dir}");
 });
-
 
 
 /**
