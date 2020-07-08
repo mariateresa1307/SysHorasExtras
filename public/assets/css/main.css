@@ -1,5 +1,11 @@
+*{
+  margin: o;
+  padding: 0;
+}
+
 body{
   font-family: HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+  background-image: url(public/assets/img/fondo_blanco.png);
 }
 
 .navbar {
@@ -19,7 +25,7 @@ body{
 .dropdown {
   float: left;
   overflow: hidden;
-}
+}z
 
 .dropdown .dropbtn {
   font-size: 16px;  
@@ -85,6 +91,7 @@ body{
   line-height: 1.5;
   border-radius: .25rem;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  text-decoration: none;
 }
 
 
@@ -110,7 +117,9 @@ body{
   background-clip: border-box;
   border: 1px solid rgba(0,0,0,.125);
   border-radius: .25rem;
-}
+  /* border: 500px 500px; */
+  margin: 10px 10px ;
+} 
 
 
 .card-body {
