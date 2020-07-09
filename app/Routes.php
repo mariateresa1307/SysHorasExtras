@@ -10,7 +10,7 @@ use \ControlHorasExtras\PHP_MVC\Controllers\LoginController;
  *  Solo elimina el protocolo, dominio y puerto del string.
  */
 $config = json_decode(file_get_contents("../config.json"), true);
-$base_url = preg_replace("/http.*(\d\d\d)/", "", $config["base_url"]);
+$base_url = preg_replace("/^http.*(\d\d\d)/", "", $config["base_url"]);
 
 
 /**
@@ -22,9 +22,9 @@ $loginCtrl = new LoginController();
 
 
 
-$router->respond(function ($request, $response, $service, $app) use($base_url) {
-    $app->register('base_url', function() use($base_url){
-        return $base_url;
+$router->respond(function ($request, $response, $service, $app) use($config) {
+    $app->register('base_url', function() use($config){
+        return $config["base_url"];
     });
 });
 
