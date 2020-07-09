@@ -4,7 +4,7 @@ use \Klein\Klein;
 
 use \ControlHorasExtras\PHP_MVC\Controllers\UserController;
 use \ControlHorasExtras\PHP_MVC\Controllers\LoginController;
-
+use \ControlHorasExtras\PHP_MVC\Controllers\FuncionarioController;
 /** 
  *  Preparar la URL base del proyecto para el sistema de rutas.
  *  Solo elimina el protocolo, dominio y puerto del string.
@@ -19,7 +19,7 @@ $base_url = preg_replace("/^http.*(\d\d\d)/", "", $config["base_url"]);
 $router = new Klein();
 $userCtrl = new UserController();
 $loginCtrl = new LoginController();
-
+$funcionarioCtrl = new FuncionarioController();
 
 
 $router->respond(function ($request, $response, $service, $app) use($config) {
@@ -39,7 +39,7 @@ $router->respond("{$base_url}/assets/[*]", function($request, $response, $servic
  */
 $router->respond('GET', "{$base_url}/user", [$userCtrl, 'indexAction']);
 $router->respond('GET', "{$base_url}/login", [$loginCtrl, 'indexAction']);
-
+$router->respond('GET', "{$base_url}/funcionario", [$funcionarioCtrl,'indexAction']);
 
 
 # 404 Not Found

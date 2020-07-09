@@ -12,7 +12,7 @@ class HomeController
     public function indexAction($req, $res, $service, $app){
 
         
-        return $app->twig->render('home/index.html', $data);
+        return $service->render('home/index.html', $data);
     }
 }
 
