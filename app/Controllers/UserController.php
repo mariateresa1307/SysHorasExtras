@@ -7,16 +7,21 @@ use ControlHorasExtras\PHP_MVC\Models\User;
 
 class UserController{
 
-    
     public function indexAction($req, $res, $service, $app){
+        
 
+
+        
         $user = new User();
         
         $data = [
-            "usuarios" => $user->getAll()
+            "title" => "Usuarios",
+            "usuarios" => $user->getAll(),
+            "base_url" => $app->base_url
         ];
 
-        return $app->twig->render('user/index.html', $data);
+        
+        return $service->render('user/index.phtml', $data);
     }
 }
 

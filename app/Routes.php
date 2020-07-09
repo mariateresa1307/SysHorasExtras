@@ -4,8 +4,6 @@ use \Klein\Klein;
 
 use \ControlHorasExtras\PHP_MVC\Controllers\UserController;
 use \ControlHorasExtras\PHP_MVC\Controllers\LoginController;
-use \ControlHorasExtras\PHP_MVC\Controllers\HomeController;
-use \ControlHorasExtras\PHP_MVC\Controllers\HorasController;
 
 /** 
  *  Preparar la URL base del proyecto para el sistema de rutas.
@@ -24,14 +22,13 @@ $loginCtrl = new LoginController();
 $homeCtrl = new HomeController();
 $horasCtrl = new HorasController();
 
-$router->respond(function ($request, $response, $service, $app) use ($router) {
-    $app->register('twig', function () {
-        $loader = new Twig_Loader_Filesystem('./');
-        return new Twig_Environment($loader);
+
+
+$router->respond(function ($request, $response, $service, $app) use($base_url) {
+    $app->register('base_url', function() use($base_url){
+        return $base_url;
     });
 });
-
-
 
 $router->respond("{$base_url}/assets/[*]", function($request, $response, $service, $app) {
     $dir = preg_replace("/^\/.*assets/", "", $request->pathname());
@@ -39,11 +36,10 @@ $router->respond("{$base_url}/assets/[*]", function($request, $response, $servic
 });
 
 
-
 /**
  * Definicion de rutas
  */
-$router->respond('GET', "{$base_url}/test", [$userCtrl, 'indexAction']);
+$router->respond('GET', "{$base_url}/user", [$userCtrl, 'indexAction']);
 $router->respond('GET', "{$base_url}/login", [$loginCtrl, 'indexAction']);
 $router->respond('GET', "{$base_url}/home", [$homeCtrl, 'indexAction']);
 $router->respond('GET', "{$base_url}/horas", [$horasCtrl, 'indexAction']);
