@@ -1,10 +1,21 @@
-body{
-  font-family: HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+body {
+  font-family: HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue",
+    Helvetica, Arial, "Lucida Grande", sans-serif;
+  background-image: linear-gradient(
+    to bottom,
+    #ffffff,
+    #f2f2f2,
+    #e6e6e6,
+    #d9d9d9,
+    #cdcdcd
+  );
+  margin: 0px;
 }
 
 .navbar {
   overflow: hidden;
   background-color: #f8f8f8;
+  margin-bottom: 30px;
 }
 
 .navbar a {
@@ -22,7 +33,7 @@ body{
 }
 
 .dropdown .dropbtn {
-  font-size: 16px;  
+  font-size: 16px;
   border: none;
   outline: none;
   color: #363636;
@@ -32,7 +43,8 @@ body{
   margin: 0;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn {
+.navbar a:hover,
+.dropdown:hover .dropbtn {
   background-color: #0085fc;
   color: white;
 }
@@ -42,7 +54,7 @@ body{
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -63,12 +75,9 @@ body{
   display: block;
 }
 
-
-
-
 /* Botones */
 
-.btn{
+.btn {
   display: inline-block;
   font-weight: 400;
   color: #212529;
@@ -80,21 +89,19 @@ body{
   user-select: none;
   background-color: transparent;
   border: 1px solid transparent;
-  padding: .375rem .75rem;
+  padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
-  border-radius: .25rem;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-
 
 .btn-primary {
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
 }
-
-
 
 /* CARD  */
 
@@ -108,10 +115,9 @@ body{
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0,0,0,.125);
-  border-radius: .25rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
 }
-
 
 .card-body {
   -ms-flex: 1 1 auto;
@@ -120,3 +126,7 @@ body{
   padding: 1.25rem;
 }
 
+.row {
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+}

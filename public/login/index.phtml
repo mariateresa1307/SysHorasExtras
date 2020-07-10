@@ -2,8 +2,8 @@
 
 <head>
   <meta>
-  <link rel="stylesheet" type="text/css" href="{{base_url}}/assets/css/login.css">
-  <link rel="stylesheet" type="text/css" href="{{base_url}}/assets/vendor/flexboxgrid/dist/flexboxgrid.min.css">
+  <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/login.css">
+  <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/vendor/flexboxgrid/dist/flexboxgrid.min.css">
 
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
@@ -18,14 +18,14 @@
       <div class="text">
 
         <div class="newspaper">
-          <img src="{{base_url}}/assets/img/logo_saren.png" />
+          <img src="<?=$this->base_url ?>/assets/img/logo_saren.png" />
           <a href="">Ingrese su Cedula</a>
           <hr>
           <input type="text" placeholder="Cedula">
 
           <br>
           <div class="newspaper">
-            <button onclick="window.location.href='/home/8'" class="login-btn">Log In</button>
+            <button onclick="window.location.href='<?=$this->base_url ?>/home'" class="login-btn">Log In</button>
             <button src="" class="signup-btn">Sign Up</button>
           </div>
         </div>
