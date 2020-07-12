@@ -156,55 +156,91 @@ div.omrs-input-group {
 }
 
 /* Input*/
-.omrs-input-underlined > input,
-.omrs-input-filled > input {
-  border: none;
-  border-bottom: 0.125rem solid var(--omrs-color-ink-medium-contrast);
-  width: 100%;
-  height: 2rem;
-  font-size: 1.0625rem;
-  padding-left: 0.875rem;
-  line-height: 147.6%;
-  padding-top: 0.825rem;
-  padding-bottom: 0.5rem;
+/** variables*/
+$background: #f5f6fa;
+$text: #9c9c9c;
+$input-bg-color: #fff;
+$input-text-color: #a3a3a3;
+$button-bg-color: #7f8ff4;
+$button-text-color: #fff;
+
+/** root*/
+:root {
+  background: 
+  
+  font: 1rem "PT Sans", sans-serif;
 }
 
-.omrs-input-underlined > input:focus,
-.omrs-input-filled > input:focus {
-  outline: none;
+html,
+body,
+.container {
+  height: 100%;
 }
 
-.omrs-input-underlined > .omrs-input-label,
-.omrs-input-filled > .omrs-input-label {
-  position: absolute;
-  top: 0.7375rem;
-  left: -0.124rem;
-  line-height: 147.6%;
-  color: var(--omrs-color-ink-medium-contrast);
-  transition: top 0.2s;
+a {
+  color: inherit;
+
+  &:hover {
+    color: $button-bg-color;
+  }
 }
 
-.omrs-input-underlined > input:hover,
-.omrs-input-filled > input:hover {
-  background: var(--omrs-color-interaction-minus-two);
-  border-color: var(--omrs-color-ink-high-contrast);
+//** helper
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.omrs-input-underlined > input:focus + .omrs-input-label,
-.omrs-input-underlined > input:valid + .omrs-input-label,
-.omrs-input-filled > input:focus + .omrs-input-label,
-.omrs-input-filled > input:valid + .omrs-input-label {
-  top: 0;
-  font-size: 0.9375rem;
-  margin-bottom: 32px;
+.uppercase {
+  text-transform: uppercase;
 }
 
-.omrs-input-underlined:not(.omrs-input-danger) > input:focus,
-.omrs-input-filled:not(.omrs-input-danger) > input:focus {
-  border-color: var(--omrs-color-interaction);
+//** button*/
+.btn {
+  display: inline-block;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  transition: all 200ms ease-in;
+  cursor: pointer;
+
+  &--primary {
+    background: $button-bg-color;
+    color: $button-text-color;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    padding: 12px 36px;
+
+    &:hover {
+      background: darken($button-bg-color, 4%);
+    }
+
+    &:active {
+      background: $button-bg-color;
+      box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &--inside {
+    margin-left: -96px;
+  }
 }
 
-.omrs-input-underlined:not(.omrs-input-danger) > input:focus ~ svg,
-.omrs-input-filled:not(.omrs-input-danger) > input:focus ~ svg {
-  fill: var(--omrs-color-ink-high-contrast);
+//** form*/
+.form {
+  &__field {
+    width: 360px;
+    background: #fff;
+    color: $input-text-color;
+    font: inherit;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+    border: 0;
+    outline: 0;
+    padding: 22px 18px;
+  }
 }

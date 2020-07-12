@@ -1,154 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap");
+* {
+  box-sizing: border-box;
+}
 body {
-  font-family: 'Raleway', sans-serif;
-  background-color: #e7e7e7;
+  /* font-family: "Teko", sans-serif;*/
+  background: linear-gradient(
+    to left bottom,
+    #ecf1f8,
+    #b5c7e4,
+    #839ed0,
+    #5375bb,
+    #1d4da4
+  );
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: -20px 0 50px;
 }
-.wrapper {
-  width: 800px;
-  height: 600px;
+h1 {
+  font-weight: inherit;
+}
+p {
+  font-size: 18px;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  margin: 20px 0 30px;
+}
+span {
+  font-size: 16px;
+  letter-spacing: 0.8px;
+}
+a {
+  color: #333;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  margin: 15px 0;
+}
+.container {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
-  margin: 3% auto;
-  box-shadow: 2px 18px 70px 0px #9D9D9D;
   overflow: hidden;
-}
-.newspaper {
-  column-count: 2;
-}
-
-img{
-  height: 250px;
-}
-.login-text {
   width: 800px;
-  height:450px;
-  background:  linear-gradient(to top, #3e1c9f, #462cad, #4d3aba, #5548c8, #5d56d5, #625adc, #675fe2, #6c63e9, #6f5fea, #735cea, #7757eb, #7b53eb);
-  position: absolute;
-  top: -300px;
-  box-sizing: border-box;
-  padding: 6%;
-  transition: all 0.5s ease-in-out;
-  z-index: 11;
+  max-width: 100%;
+  min-height: 480px;
 }
-
-.text {
+.form-container form {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  justify-content: center;
   text-align: center;
-  margin-top: 70px;
-  margin-left: 20px;
-  color: #fff;
-  display: none;
-  transition: all 0.5s ease-in-out;
-  transition-delay: 0.3s;
+  align-items: center;
 }
-  a, a:visited {
-      font-size: 36px;
-      color: #fff;
-      text-decoration: none;  
-      font-weight: bold;
-      display: block;
-  }
-
-  hr {
-      width: 100%;
-      float: left;
-      background-color: #fff;
-      font-size: 16px;
-  }
-
-  input {
-      margin-top: 30px;
-      height: 40px;
-      width: 300px;
-      border-radius: 2px;
-      border: none;
-      background-color: #444;
-      opacity: 0.6;
-      outline: none;
-      color: #fff;
-      padding-left: 10px;
-  }
-
-  input[type=text] {
-      margin-top: 30px;
-  }
-
-  button {
-      margin-top: 60px;
-      height: 40px;
-      width: 140px;
-      outline: none;
-  }
-
-  .login-btn {
-      background: #fff;
-      border: none;
-      border-radius: 2px;
-      color: #696a86;
-  }
-
-  .signup-btn {
-      background: transparent;
-      border: 2px solid #fff;;
-      border-radius: 2px;
-      color: #fff;
-      margin-left: 10px;
-  }
-
-
-.cta {
-  width: 60px;
-  height: 60px;
+.social-container {
+  margin: 20px 0;
+}
+.social-container a {
+  border: 1px solid #ddd;
   border-radius: 50%;
-  background: #696a86;
-  border: 2px solid #fff;
-  position: absolute;
-  bottom: -30px;
-  left: 370px;
-  color: #fff;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  height: 40px;
+  width: 40px;
+}
+.form-container input {
+  background: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
   outline: none;
-  cursor: pointer;
-  z-index: 11;
+  border-radius: 28px;
 }
-
-.call-text {
-  background-color: #fff;
-  width: 800px;
-  height: 450px;
+button {
+  border-radius: 20px;
+  border: 1px solid #f3f3f3;
+  background: #23bebe;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+}
+button:active {
+  transform: scale(0.95);
+}
+button:focus {
+  outline: none;
+}
+button.ghost {
+  background: transparent;
+  border-color: #fff;
+}
+.si {
+  background-color: #0f205c;
+  margin-top: 25px;
+}
+.su {
+  background-color: #2f5bac;
+  margin-top: 25px;
+}
+.form-container {
   position: absolute;
-  bottom: 0;
-  padding: 10%;
-  box-sizing: border-box;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+.sign-up-container {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+.overlay {
+  background: #4184ff;
+  background: linear-gradient(to right, #238cbe, #0d0f52) no-repeat 0 0 / cover;
+  color: #fff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+.overlay-panel {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+  height: 100%;
+  width: 50%;
   text-align: center;
-}
-  h1 {
-      font-size: 42px;
-      margin-top: 10%;
-      color: #696a86;
-  }
-      span {
-          color: #333;
-          font-weight: bolder;
-          
-      }
-  
-
-  button {
-      height: 40px;
-      width: 180px;
-      border: none;
-      border-radius: 20px;
-      background: linear-gradient(to left, #ab68ca, #de67a3); 
-      color: #fff;
-      font-weight: bolder;
-      margin-top: 30px;
-      cursor: pointer;
-      outline: none;
-  }
-
-
-.show-hide {
-  display: block;
-  margin-left: -50px;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
 }
 
-.expand {
-  transform: translateY(300px);
+.overlay-right {
+  right: 0;
+  transform: translateX(0);
+}
+.overlay-left {
+  transform: translateX(-20%);
+}
+
+/* Animation */
+
+/* Move signin to the right */
+.container.right-panel-active .sign-in-container {
+  transform: translateX(100%);
+}
+/* Move overlay */
+.container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+/* Sign up over Sign In */
+.container.right-panel-active .sign-up-container {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+}
+/* Overlay Back to right */
+.container.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+.container.right-panel-active .overlay-left {
+  transform: translateX(0);
+}
+.container.right-panel-active .overlay-right {
+  transform: translateX(20%);
 }
