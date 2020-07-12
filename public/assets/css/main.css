@@ -78,6 +78,7 @@ body {
 /* Botones */
 
 .btn {
+  cursor: pointer;
   display: inline-block;
   font-weight: 400;
   color: #212529;
@@ -97,10 +98,22 @@ body {
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.btn:focus {
+  outline: none;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #002347;
+}
+
+.btn-primary:active {
+  background-color: #0057ad;
 }
 
 /* CARD  */
@@ -129,4 +142,8 @@ body {
 .row {
   margin-left: 10px !important;
   margin-right: 10px !important;
+}
+
+.btn-busqueda {
+  border-radius: 50px;
 }

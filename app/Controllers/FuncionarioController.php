@@ -8,7 +8,7 @@ class FuncionarioController{
     public function indexAction($req, $res, $service, $app){
 
         $data = [
-            "title" => "Usuario",
+            "title" => "Funcionario",
             "base_url" => $app->base_url
         ];
 
