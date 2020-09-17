@@ -15,7 +15,6 @@ instalar [Bitnami lapp Stack](https://bitnami.com/stack/lapp) o en su defecto, t
 git clone <Git URL>
 cd <carpeta el proyecto>
 composer install
-bower install
 ```
 
 ## Configuracion
