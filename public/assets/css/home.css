@@ -1,0 +1,15 @@
+.linea {
+  background: #2d378c;
+  margin-top: 65px;
+  height: 300px;
+  margin-bottom: 40px;
+}
+.title {
+  font-family: Verdana;
+  text-align: center;
+  color: white;
+  font-size: xxx-large;
+  font-weight: bold;
+  top: 119px;
+  position: relative;
+}

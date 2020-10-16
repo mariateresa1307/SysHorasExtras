@@ -1,70 +1,74 @@
-<html>
-
-<head>
   <meta>
-  <link rel="stylesheet" type="text/css" href="{{base_url}}/assets/css/login.css">
-  <link rel="stylesheet" type="text/css" href="{{base_url}}/assets/vendor/flexboxgrid/dist/flexboxgrid.min.css">
+  <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/login.css">
+  <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/vendor/flexboxgrid/dist/flexboxgrid.min.css">
 
-  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+  <script src='<?=$this->base_url ?>/assets/js/a076d05399.js'></script>
 
   </meta>
 
 <body>
 
-  <div class="wrapper">
-    <div class="login-text">
-      <button type="button" class="cta"  ><i class="fas fa-chevron-down fa-1x"></i></button>
 
-      <div class="text">
+<div class="container" id="container">
+  <div class="form-container sign-up-container">
+    <form action="#">
 
-        <div class="newspaper">
-          <img src="{{base_url}}/assets/img/logo_saren.png" />
-          <a href="">Ingrese su Cedula</a>
-          <hr>
-          <input type="text" placeholder="Cedula">
+      <div style="    margin-top: -52px" >
+        <img src="<?=$this->base_url?>/assets/img/logo_saren.png"  style="width: 50%"/>
+      </div >
+    
+      <h1>Ingresar al Sistema</h1>
+        <span>Debe Ingresar los Datos registrados</span>
+        <input type="text" placeholder="Usuario"/>
+        <input type="password" placeholder="Password"/>
+        
+        <button class="su" >Ingresar</button>
 
-          <br>
-          <div class="newspaper">
-            <button onclick="window.location.href='/home/8'" class="login-btn">Log In</button>
-            <button src="" class="signup-btn">Sign Up</button>
-          </div>
-        </div>
-
-
-
-
-      </div>
-    </div>
-    <div class="call-text">
-      <h1>SAREN <span>Sistema de Control de Horas Extras</span></h1>
-    </div>
-
+    </form>
   </div>
-  <script>
-    var cta = document.querySelector(".cta");
-    var check = 0;
+        
+  <div class="form-container sign-in-container">
+    <form action="#">
 
-    cta.addEventListener('click', function (e) {
-      var text = e.target.nextElementSibling;
-      var loginText = e.target.parentElement;
-      text.classList.toggle('show-hide');
-      loginText.classList.toggle('expand');
-      if (check == 0) {
-        cta.innerHTML = "<i class=\"fas fa-chevron-up\"></i>";
-        check++;
-      }
-      else {
-        cta.innerHTML = "<i class=\"fas fa-chevron-down\"></i>";
-        check = 0;
-      }
-    })
+      <div style="    margin-top: -114px">
+        <img src="<?=$this->base_url?>/assets/img/logo_saren.png"  style="width: 50%"/>
+      </div>
+          
+      <h1>Registrar Asistencia</h1>
+         
+        <span>Debe Registrar el Inicio de su jornada Laboral</span>
+        <input type="text" placeholder="Cedula"/>
+        
+        <button class="si">Registrar</button>
+    </form>
+  </div>
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Desea Registar su Jornada laboral?</h1>
+                    <p>Debe Ingresar al Siguiente panel con el Siguiente Botton</p>
+                    <button class="ghost" id="signIn">Registro</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Deseas iniciar sesion?</h1>
+                    <p>Debe Ingresar al Siguiente panel con el Siguiente Botton</p>
+                    <button class="ghost" id="signUp">Iniciar Sesion</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  <script>
+    const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', ()=> container.classList.add('right-panel-active')
+);
+signInButton.addEventListener('click', ()=> container.classList.remove('right-panel-active')
+);
   </script>
 
 
 
-
-
-</body>
-</head>
-
-</html>
