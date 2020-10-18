@@ -1,74 +1,68 @@
-  <meta>
-  <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/login.css">
-  <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/vendor/flexboxgrid/dist/flexboxgrid.min.css">
+<link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/login.css">
+<link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/vendor/flexboxgrid/dist/flexboxgrid.min.css">
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
-  <script src='<?=$this->base_url ?>/assets/js/a076d05399.js'></script>
 
-  </meta>
+<script src='<?=$this->base_url ?>/assets/js/a076d05399.js'></script>
+
+
 
 <body>
 
 
-<div class="container" id="container">
-  <div class="form-container sign-up-container">
-    <form action="#">
+  <div class="container" id="container">
+    <div class="form-container sign-up-container">
+      <form action="#">
 
-      <div style="    margin-top: -52px" >
-        <img src="<?=$this->base_url?>/assets/img/logo_saren.png"  style="width: 50%"/>
-      </div >
-    
-      <h1>Ingresar al Sistema</h1>
-        <span>Debe Ingresar los Datos registrados</span>
-        <input type="text" placeholder="Usuario"/>
-        <input type="password" placeholder="Password"/>
-        
-        <button class="su" >Ingresar</button>
-
-    </form>
-  </div>
-        
-  <div class="form-container sign-in-container">
-    <form action="#">
-
-      <div style="    margin-top: -114px">
-        <img src="<?=$this->base_url?>/assets/img/logo_saren.png"  style="width: 50%"/>
-      </div>
-          
-      <h1>Registrar Asistencia</h1>
-         
-        <span>Debe Registrar el Inicio de su jornada Laboral</span>
-        <input type="text" placeholder="Cedula"/>
-        
-        <button class="si">Registrar</button>
-    </form>
-  </div>
-
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <h1>Desea Registar su Jornada laboral?</h1>
-                    <p>Debe Ingresar al Siguiente panel con el Siguiente Botton</p>
-                    <button class="ghost" id="signIn">Registro</button>
-                </div>
-                <div class="overlay-panel overlay-right">
-                    <h1>Deseas iniciar sesion?</h1>
-                    <p>Debe Ingresar al Siguiente panel con el Siguiente Botton</p>
-                    <button class="ghost" id="signUp">Iniciar Sesion</button>
-                </div>
-            </div>
+        <div style="    margin-top: -52px">
+          <img src="<?=$this->base_url?>/assets/img/logo_saren.png" style="width: 50%" />
         </div>
+
+        <h1>Ingresar al Sistema</h1>
+        <span>Debe Ingresar los Datos registrados</span>
+        <input type="text" placeholder="Usuario" />
+        <input type="password" placeholder="Password" />
+
+        <button class="su" onClick="<?= $this->base_url ?>/home">Ingresar</button>
+
+      </form>
     </div>
+
+    <div class="form-container sign-in-container">
+      <form action="#">
+
+        <div style="    margin-top: -114px">
+          <img src="<?=$this->base_url?>/assets/img/logo_saren.png" style="width: 50%" />
+        </div>
+
+        <h1>Registrar Asistencia</h1>
+
+        <span>Debe Registrar el Inicio de su jornada Laboral</span>
+        <input type="text" placeholder="Cedula" />
+
+        <button class="si" href="<?= $this->base_url ?>/home">Registrar</button>
+      </form>
+    </div>
+
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>Desea Registar su Jornada laboral?</h1>
+          <p>Debe Ingresar al Siguiente panel con el Siguiente Botton</p>
+          <button class="ghost" id="signIn">Registro</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1>Deseas iniciar sesion?</h1>
+          <p>Debe Ingresar al Siguiente panel con el Siguiente Botton</p>
+          <button class="ghost" id="signUp">Iniciar Sesion</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <script>
-    const signUpButton = document.getElementById('signUp');
-const signInButton = document.getElementById('signIn');
-const container = document.getElementById('container');
+  const signUpButton = document.getElementById('signUp');
+  const signInButton = document.getElementById('signIn');
+  const container = document.getElementById('container');
 
-signUpButton.addEventListener('click', ()=> container.classList.add('right-panel-active')
-);
-signInButton.addEventListener('click', ()=> container.classList.remove('right-panel-active')
-);
+  signUpButton.addEventListener('click', () => container.classList.add('right-panel-active'));
+  signInButton.addEventListener('click', () => container.classList.remove('right-panel-active'));
   </script>
-
-
-
