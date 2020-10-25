@@ -1,27 +1,81 @@
 <?php include (getcwd()."/layout/TopComponent.phtml")?>
+<?php include (getcwd()."/layout/HeaderComponent.phtml")?>
 <?php include (getcwd()."/layout/MenuComponent.phtml")?>
 
 
 <div class="row">
-  
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+    <h1>GESTIONAR USUARIOS </h1>
+  </div>
+</div>
+
+
+
+<div class="row" style="padding-bottom: 20px">
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
     <div class="card">
       <div class="card-body">
-        <h1 class="card-title">Activos</h1>
-        <p class="card-text">Numero de Usuarios activos</p>
-        <a href="#" class="btn btn-primary">Activar</a>
+        <h1 class="card-title">Card title</h1>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
   </div>
-
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
     <div class="card">
       <div class="card-body">
-        <h1 class="card-title">Bloqueados</h1>
-        <p class="card-text">Numero de Usuarios Bloqueados</p>
-        <a href="#" class="btn btn-primary">Bloquear</a>
+        <h1 class="card-title">Card title</h1>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+
+
+    <div class="card">
+      <div class="card-body">
+        Opcion 1 | opcion 2 | opcion 3
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+
+        <table border="1" style="width: 100%">
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+            </tr>
+
+            <?php foreach ($this->usuarios as $key => $value) { ?>
+            <tr>
+              <td><?= $value["id"] ?></td>
+              <td><?= $value["name"] ?></td>
+              <td>ETC 1</td>
+              <td>ETC 2</td>
+              <td>ETC 3</td>
+            </tr>
+            <?php } ?>
+
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -29,48 +83,5 @@
 
 
 
-<div class="card">
-  <div class="card-body">
-    Opcion 1 | opcion 2 | opcion 3 
-            
-    <div style="float: right">
-      <form class="form-search">
-        <div class="input-group">
-          <input class="form-control form-text" maxlength="128" placeholder="Buscar" size="15" type="text" />
-            <span class="input-group-btn"><button class="btn btn-primary"><i class="fa fa-search fa-lg">&nbsp;</i>Buscar</button> </span>
-        </div>
-      </form>
-    </div>
 
-    <h1 class="card-title">Uusuarios y Horas</h1>
-    <div class="card-text">
-      <table width=100% border="1" >
-                
-        <thead>
-                  
-          <td> Nombre </td>
-          <td> Apellido </td>
-          <td> Cargo </td>
-          <td> Horas </td>
-
-        </thead>
-
-        <tbody>
-                  
-          <td> 1 </td>
-          <td> 2 </td>
-          <td> 3 </td>
-          <td> 4 </td>
-
-        </tbody>
-
-      </table>
-    </div>  
-
-  </div>  
-</div>
-
-    
-  
 <?php include (getcwd()."/layout/BottomComponent.phtml")?>
-  

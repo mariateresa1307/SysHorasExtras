@@ -4,13 +4,15 @@ use \Klein\Klein;
 
 use \ControlHorasExtras\PHP_MVC\Controllers\UserController;
 use \ControlHorasExtras\PHP_MVC\Controllers\LoginController;
-
+use \ControlHorasExtras\PHP_MVC\Controllers\FuncionarioController;
+use \ControlHorasExtras\PHP_MVC\Controllers\HomeController;
+use \ControlHorasExtras\PHP_MVC\Controllers\HrasExtrasController;
 /** 
  *  Preparar la URL base del proyecto para el sistema de rutas.
  *  Solo elimina el protocolo, dominio y puerto del string.
  */
 $config = json_decode(file_get_contents("../config.json"), true);
-$base_url = preg_replace("/http.*(\d\d\d)/", "", $config["base_url"]);
+$base_url = preg_replace("/^http.*(\d\d\d)/", "", $config["base_url"]);
 
 
 /**
@@ -19,12 +21,13 @@ $base_url = preg_replace("/http.*(\d\d\d)/", "", $config["base_url"]);
 $router = new Klein();
 $userCtrl = new UserController();
 $loginCtrl = new LoginController();
+$funcionarioCtrl = new FuncionarioController();
+$homeCtrl = new HomeController();
+$hrasextrasCtrl = new HrasExtrasController();
 
-
-
-$router->respond(function ($request, $response, $service, $app) use($base_url) {
-    $app->register('base_url', function() use($base_url){
-        return $base_url;
+$router->respond(function ($request, $response, $service, $app) use($config) {
+    $app->register('base_url', function() use($config){
+        return $config["base_url"];
     });
 });
 
@@ -39,8 +42,9 @@ $router->respond("{$base_url}/assets/[*]", function($request, $response, $servic
  */
 $router->respond('GET', "{$base_url}/user", [$userCtrl, 'indexAction']);
 $router->respond('GET', "{$base_url}/login", [$loginCtrl, 'indexAction']);
-
-
+$router->respond('GET', "{$base_url}/funcionario", [$funcionarioCtrl,'indexAction']);
+$router->respond('GET', "{$base_url}/home", [$homeCtrl,'indexAction']);
+$router->respond('GET', "{$base_url}/HrasExtras", [$hrasextrasCtrl,'indexAction']);
 
 # 404 Not Found
 // Using exact code behaviors via switch/case

@@ -11,8 +11,9 @@ class HomeController
     
     public function indexAction($req, $res, $service, $app){
 
+        $data = ["base_url" =>  $app->base_url];
         
-        return $app->twig->render('home/index.html', $data);
+        return $service->render('home/index.phtml', $data);
     }
 }
 

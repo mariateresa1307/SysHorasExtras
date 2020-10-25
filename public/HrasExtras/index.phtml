@@ -1,0 +1,165 @@
+<?php include (getcwd()."/layout/TopComponent.phtml")?>
+<?php include (getcwd()."/layout/HeaderComponent.phtml")?>
+<?php include (getcwd()."/layout/MenuComponent.phtml")?>
+
+<link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/HrasExtras.css">
+<link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/fontawesome/css/all.css">
+<h1 class="h1">Gestionar Horas extras</h1>
+
+<div class="row ">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="card" id="card1">
+      <div class="card-body">
+      <div class="row start-xs" > 
+      <div class= "col-xs-2">
+      <i class="far fa-clock fa-7x" style="color:white"></i>
+      
+      </div>
+         <div class= "col-xs-2">
+         <h1 class="card-title" style="color: white;font-size: 55px;">100</h1>
+         </div>
+         <div class= "col-xs-8">
+         <h1 class="card-title" style="text-align: center;">Horas Aprobadas</h1>
+         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+         </div>
+       </div>
+         <div style="text-align:end">
+         <a href="#" class="btn btn-primary">Go somewhere</a></div>
+        
+      </div>
+    </div>
+  </div>
+   
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="card" id="card2">
+      <div class="card-body">
+
+        <div class="row start-xs">
+          <div class= "col-xs-2">
+          <i class="fas fa-ban fa-7x" style="color:white"></i>
+        
+          </div>
+         
+            
+           <div class="col-xs-2">
+         <h1 class="card-title" style="color: white;font-size: 55px;">100</h1>
+        </div>
+          
+
+      
+            <div class="col-xs-7">
+            <h1 class="card-title" style="text-align: center;">Horas Rechazadas</h1>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div> 
+
+            </div>
+
+             <div style="text-align: end;">
+             <a href="#" class="btn btn-primary">Go somewhere</a></div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="card" style="border-bottom-color: white; margin-top:15px;">
+    <div class="card-body" >
+    <div class="row start-xs">
+
+      <div class="col-xs-4"> 
+<select style="width:100%;" id="select1">
+</select>  </div>
+
+<div class="col-xs-3">
+<input type="text" onkeyup="myFunction()">
+</div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="card2" style=" background-color: white; margin-top: -2px;
+    border-top-color: white;">
+      <div class="card-body">
+       
+      <table id="customers">
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Berglunds snabbköp</td>
+    <td>Christina Berglund</td>
+    <td>Sweden</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+  <tr>
+    <td>Ernst Handel</td>
+    <td>Roland Mendel</td>
+    <td>Austria</td>
+  </tr>
+  <tr>
+    <td>Island Trading</td>
+    <td>Helen Bennett</td>
+    <td>UK</td>
+  </tr>
+  <tr>
+    <td>Königlich Essen</td>
+    <td>Philip Cramer</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Laughing Bacchus Winecellars</td>
+    <td>Yoshi Tannamuri</td>
+    <td>Canada</td>
+  </tr>
+  <tr>
+    <td>Magazzini Alimentari Riuniti</td>
+    <td>Giovanni Rovelli</td>
+    <td>Italy</td>
+  </tr>
+  <tr>
+    <td>North/South</td>
+    <td>Simon Crowther</td>
+    <td>UK</td>
+  </tr>
+  <tr>
+    <td>Paris spécialités</td>
+    <td>Marie Bertrand</td>
+    <td>France</td>
+  </tr>
+</table>
+<a href="#miModal">Abrir Modal</a>
+
+      </div>
+
+      <div id="miModal" class="modal">
+  <div class="modal-contenido">
+    <a href="#">X</a>
+    <h2>Mi primer Modal</h2>
+    <p>Este es mi primera ventana modal sin utilizar JavaScript.</p>
+  </div>  
+</div>
+</div>
+<?php include (getcwd()."/layout/BottomComponent.phtml")?>
+
