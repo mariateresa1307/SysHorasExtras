@@ -1,7 +1,11 @@
 <?php include (getcwd()."/layout/TopComponent.phtml")?>
 <?php include (getcwd()."/layout/HeaderComponent.phtml")?>
 <?php include (getcwd()."/layout/MenuComponent.phtml")?>
-
+<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/main.css">
+<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/modal.css">
+<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/flexboxgrid.min.css">
+<link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/user.css">
+<link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/fontawesome/css/all.css">
 
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
@@ -10,78 +14,187 @@
 </div>
 
 
+<div class="row" style="margin-bottom: 20px;">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="card" Id="Card-User" style="">
 
-<div class="row" style="padding-bottom: 20px">
-  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-    <div class="card">
       <div class="card-body">
-        <h1 class="card-title">Card title</h1>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+
+        <div class="row start-xs">
+          <div class="col-xs-3">
+            <i class="fas fa-id-badge" style="font-size: 167px;color: white;"></i>
+          </div>
+          <div class="col-xs-3">
+            <h1 class="card-title" id="CardTitle" style="color:white">10 </h1>
+          </div>
+
+          <div class="col-xs-6">
+            <h1 class="card-title" id="CardTitle1" style="color:white">Usuarios Admitidos </h1>
+            <p class="card-text" id="CardText1">Aqui funcioanrios que pueden hacer uso del sistema</p>
+          </div>
+
+        </div>
+
+        <div style="text-align: end;"> <a id="ai" href="#" class="btn btn-primary">Go somewhere</a></div>
       </div>
     </div>
   </div>
-  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-    <div class="card">
+
+
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="card" Id="Card-User2" style="">
+
       <div class="card-body">
-        <h1 class="card-title">Card title</h1>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+
+        <div class="row start-xs">
+          <div class="col-xs-3">
+            <i class="fas fa-id-badge fa-10x" style="color: white;"></i>
+          </div>
+          <div class="col-xs-3">
+
+            <h1 class="card-title" id="CardTitle" style="color:white">10 </h1>
+          </div>
+
+          <div class="col-xs-6">
+            <h1 class="card-title" id="CardTitle1">Usuarios Bloqueados </h1>
+            <p class="card-text" id="CardText1">Aqui funcionados con restriccion de acceso</p>
+          </div>
+
+        </div>
+
+
+        <div style="text-align: end;"> <a id="ai" href="#" class="btn btn-primary">Go somewhere</a></div>
       </div>
     </div>
   </div>
+
 </div>
 
 
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-
-
-    <div class="card">
+    <div class="card" style="padding: 2%;">
       <div class="card-body">
-        Opcion 1 | opcion 2 | opcion 3
+
+
+        <div class="row start-xs">
+          
+          <div class="col-xs-6">
+            <input type="text" id="InputUser" onkeyup=" UserFunction()" placeholder="Buscar Funcionarios"
+              title="Type in a name">
+          </div>
+
+
+        </div>
+
       </div>
-    </div>
 
-    <div class="card">
-      <div class="card-body">
+      <table id="TableUser">
+        <tr class="header" style="background-color: black;color: #fbfbfb;">
+          <th style="width:20%;">Name</th>
+          <th style="width:20%;">Country</th>
+          <th style="width:20%;">Country</th>
+          <th style="width:20%;">State</th>
+          <th style="width:10%;">Edit</th>
+        </tr>
+          
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Germany</td>
+          <td>Germany</td>
+          <td>Alfreds Futterkiste</td>
+          <td>
+            <button class="circle-right-btn" type="submit"><i class="fas fa-edit"> </i></button>
+          </td>
+        </tr>
+      </table>
 
-        <table border="1" style="width: 100%">
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-            </tr>
-
-            <?php foreach ($this->usuarios as $key => $value) { ?>
-            <tr>
-              <td><?= $value["id"] ?></td>
-              <td><?= $value["name"] ?></td>
-              <td>ETC 1</td>
-              <td>ETC 2</td>
-              <td>ETC 3</td>
-            </tr>
-            <?php } ?>
-
-
-          </tbody>
-        </table>
-
+      <div class="row center-xs">
+        <div class="col-xs-2">
+          <div style="text-align: center; margin-top: 25px;"> <a id="ai" href="#miModal"
+              class="btn btn-primary">Agregar</a>
+          </div>
+        </div>
       </div>
     </div>
 
   </div>
+
+  <div id="miModal" class="modal">
+
+    <div class="modal-contenido">
+      <div class="row" style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;
+margin-right: 0px !important;height:70px">
+        <div class="col-xs-6" style="color: white;">
+          <h2>Agregar Usuario</h2>
+        </div>
+        <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
+
+          <a href="#" style="text-decoration: none;color: white;">X</a>
+        </div>
+
+      </div>
+
+
+      <div id="formUser">
+        <form action="#" method="POST">
+
+          <input type="text" id="InputUser" placeholder="Nombres"required>
+              
+          <input type="text" id="InputUser" placeholder="Apellido"required>
+              
+
+          <input type="text" id="InputUser" placeholder="Cargo"required>
+              
+
+          <input type="text" id="InputUser" placeholder="Departamento"required>
+              
+
+          <input type="text" id="InputUser" placeholder="Usuario"required>
+                        
+
+          <input type="password" id="InputUser" placeholder="Contraseña"required>
+            
+
+          <input type="password" id="InputUser" placeholder="Confirmar Contraseña"required>
+            
+
+          <input type="text" id="InputUser" placeholder="Tipo de Usuario"required>
+            
+
+          <div style="text-align: center; margin-top: 25px;"> <a id="ai" href="#" class="btn btn-primary">Agregar</a>
+
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
 </div>
 
 
-
-
-
+<script>
+function UserFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("InputUser");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("TableUser");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
 
 <?php include (getcwd()."/layout/BottomComponent.phtml")?>
