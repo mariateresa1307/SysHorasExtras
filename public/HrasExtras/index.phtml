@@ -1,62 +1,65 @@
 <?php include (getcwd()."/layout/TopComponent.phtml")?>
 <?php include (getcwd()."/layout/HeaderComponent.phtml")?>
 <?php include (getcwd()."/layout/MenuComponent.phtml")?>
-
+<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/modal.css">
 <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/HrasExtras.css">
 <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/fontawesome/css/all.css">
+<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/flexboxgrid.min.css">
 <h1 class="h1">Gestionar Horas extras</h1>
 
 <div class="row ">
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
     <div class="card" id="card1">
       <div class="card-body">
-      <div class="row start-xs" > 
-      <div class= "col-xs-2">
-      <i class="far fa-clock fa-7x" style="color:white"></i>
-      
-      </div>
-         <div class= "col-xs-2">
-         <h1 class="card-title" style="color: white;font-size: 55px;">100</h1>
-         </div>
-         <div class= "col-xs-8">
-         <h1 class="card-title" style="text-align: center;">Horas Aprobadas</h1>
-         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-         </div>
-       </div>
-         <div style="text-align:end">
-         <a href="#" class="btn btn-primary">Go somewhere</a></div>
-        
+        <div class="row start-xs">
+          <div class="col-xs-2">
+            <i class="far fa-clock fa-7x" style="color:white"></i>
+
+          </div>
+          <div class="col-xs-2">
+            <h1 class="card-title" style="color: white;font-size: 55px;">100</h1>
+          </div>
+          <div class="col-xs-8">
+            <h1 class="card-title" style="text-align: center;">Horas Aprobadas</h1>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+          </div>
+        </div>
+        <div style="text-align:end">
+          <a href="#" class="btn btn-primary">Go somewhere</a></div>
+
       </div>
     </div>
   </div>
-   
+
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
     <div class="card" id="card2">
       <div class="card-body">
 
         <div class="row start-xs">
-          <div class= "col-xs-2">
-          <i class="fas fa-ban fa-7x" style="color:white"></i>
-        
+          <div class="col-xs-2">
+            <i class="fas fa-ban fa-7x" style="color:white"></i>
+
           </div>
-         
-            
-           <div class="col-xs-2">
-         <h1 class="card-title" style="color: white;font-size: 55px;">100</h1>
-        </div>
-          
 
-      
-            <div class="col-xs-7">
+
+          <div class="col-xs-2">
+            <h1 class="card-title" style="color: white;font-size: 55px;">100</h1>
+          </div>
+
+
+
+          <div class="col-xs-7">
             <h1 class="card-title" style="text-align: center;">Horas Rechazadas</h1>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div> 
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+          </div>
 
-            </div>
+        </div>
 
-             <div style="text-align: end;">
-             <a href="#" class="btn btn-primary">Go somewhere</a></div>
-        
+        <div style="text-align: end;">
+          <a href="#" class="btn btn-primary">Go somewhere</a></div>
+
       </div>
     </div>
   </div>
@@ -65,17 +68,19 @@
 
 
 <div class="card" style="border-bottom-color: white; margin-top:15px;">
-    <div class="card-body" >
+  <div class="card-body">
     <div class="row start-xs">
 
-      <div class="col-xs-4"> 
-<select style="width:100%;" id="select1">
-</select>  </div>
+      <div class="col-xs-4">
+        <select style="width:100%;" id="select1">
+        </select> </div>
 
-<div class="col-xs-3">
-<input type="text" onkeyup="myFunction()">
-</div>
+
+      <div class="col-xs-6">
+        <input style="width:50%;" type="text" id="myInput1" onkeyup="myFunction()" placeholder="Search for names.."
+          title="Type in a name">
       </div>
+    </div>
   </div>
 </div>
 
@@ -90,76 +95,133 @@
 
 <div class="card2" style=" background-color: white; margin-top: -2px;
     border-top-color: white;">
-      <div class="card-body">
-       
-      <table id="customers">
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Berglunds snabbköp</td>
-    <td>Christina Berglund</td>
-    <td>Sweden</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Ernst Handel</td>
-    <td>Roland Mendel</td>
-    <td>Austria</td>
-  </tr>
-  <tr>
-    <td>Island Trading</td>
-    <td>Helen Bennett</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Königlich Essen</td>
-    <td>Philip Cramer</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Laughing Bacchus Winecellars</td>
-    <td>Yoshi Tannamuri</td>
-    <td>Canada</td>
-  </tr>
-  <tr>
-    <td>Magazzini Alimentari Riuniti</td>
-    <td>Giovanni Rovelli</td>
-    <td>Italy</td>
-  </tr>
-  <tr>
-    <td>North/South</td>
-    <td>Simon Crowther</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Paris spécialités</td>
-    <td>Marie Bertrand</td>
-    <td>France</td>
-  </tr>
-</table>
-<a href="#miModal">Abrir Modal</a>
+  <div class="card-body">
 
+    <table id="customers">
+      <tr class="header" style="background-color: black;color: #fbfbfb;">
+        <th style="width:100%;">Name</th>
+        <th style="width:100%;">Country</th>
+        <th style="width:100%;">Country</th>
+        <th style="width:100%;">State</th>
+        <th style="width:100%;">Edit</th>
+      </tr>
+      <tr>
+        <td>Alfreds Futterkiste</td>
+        <td>Maria Anders</td>
+        <td>Germany</td>
+        <td>Germany</td>
+        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
+      </tr>
+      <tr>
+        <td>Berglunds snabbköp</td>
+        <td>Christina Berglund</td>
+        <td>Sweden</td>
+        <td>Germany</td>
+        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
+      </tr>
+      <tr>
+        <td>Centro comercial Moctezuma</td>
+        <td>Francisco Chang</td>
+        <td>Mexico</td>
+        <td>Germany</td>
+        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
+      </tr>
+      <tr>
+        <td>Ernst Handel</td>
+        <td>Roland Mendel</td>
+        <td>Austria</td>
+        <td>Germany</td>
+        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
+      </tr>
+      <tr>
+        <td>Island Trading</td>
+        <td>Helen Bennett</td>
+        <td>UK</td>
+        <td>Germany</td>
+        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
+      </tr>
+      <tr>
+        <td>Königlich Essen</td>
+        <td>Philip Cramer</td>
+        <td>Germany</td>
+        <td>Germany</td>
+        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
+      </tr>
+      <tr>
+        <td>Laughing Bacchus Winecellars</td>
+        <td>Yoshi Tannamuri</td>
+        <td>Canada</td>
+        <td>Germany</td>
+        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
+      </tr>
+      <tr>
+        <td>Magazzini Alimentari Riuniti</td>
+        <td>Giovanni Rovelli</td>
+        <td>Italy</td>
+        <td>Germany</td>
+        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
+      </tr>
+      <tr>
+        <td>North/South</td>
+        <td>Simon Crowther</td>
+        <td>UK</td>
+        <td>Germany</td>
+        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
+      </tr>
+      <tr>
+        <td>Paris spécialités</td>
+        <td>Marie Bertrand</td>
+        <td>France</td>
+        <td>Germany</td>
+        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
+      </tr>
+    </table>
+
+    <div class="row center-xs">
+      <div class="col-xs-2">
+        <div style="text-align: center; margin-top: 25px;"> <a id="ai" href="#miModal"
+            class="btn btn-primary">Agregar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+</div>
+
+<div id="miModal" class="modal">
+
+  <div class="modal-contenido">
+    <div class="row" style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;
+margin-right: 0px !important;height:70px">
+      <div class="col-xs-6" style="color: white;">
+        <h2>Agregar Horas Extras</h2>
+      </div>
+      <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
+
+        <a href="#" style="text-decoration: none;color: white;">X</a>
       </div>
 
-      <div id="miModal" class="modal">
-  <div class="modal-contenido">
-    <a href="#">X</a>
-    <h2>Mi primer Modal</h2>
-    <p>Este es mi primera ventana modal sin utilizar JavaScript.</p>
-  </div>  
-</div>
-</div>
-<?php include (getcwd()."/layout/BottomComponent.phtml")?>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+      </div>
+      <div class="col-xs-6">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+      </div>
+    </div>
 
+
+
+
+  </div>
+</div>
+
+
+
+
+
+<?php include (getcwd()."/layout/BottomComponent.phtml")?>

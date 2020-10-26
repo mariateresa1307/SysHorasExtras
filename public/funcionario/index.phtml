@@ -111,11 +111,11 @@
 
       <table id="myTable">
         <tr class="header" style="background-color: black;color: #fbfbfb;">
-          <th style="width:20%;">Name</th>
-          <th style="width:20%;">Country</th>
-          <th style="width:20%;">Country</th>
-          <th style="width:20%;">State</th>
-          <th style="width:10%;">Edit</th>
+          <th style="width:100%;">Name</th>
+          <th style="width:100%;">Country</th>
+          <th style="width:100%;">Country</th>
+          <th style="width:100%;">State</th>
+          <th style="width:100%;">Edit</th>
         </tr>
         <tr>
           <td>Alfreds Futterkiste</td>
@@ -123,7 +123,7 @@
           <td>Germany</td>
           <td>Alfreds Futterkiste</td>
           <td>
-            <button class="circle-right-btn" type="submit"><i class="fas fa-edit"> </i></button>
+            <button class="circle-right" type="submit"><i class="fas fa-edit "> </i></button>
           </td>
         </tr>
         <tr>
@@ -131,22 +131,24 @@
           <td>Sweden</td>
           <td>Sweden</td>
           <td>Alfreds Futterkiste</td>
-          <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit"> </i></button></td>
-        </tr>
-        <tr>
-          <td>Island Trading</td>
-          <td>UK</td>
-          <td>UK</td>
-          <td>Alfreds Futterkiste</td>
-          <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit"> </i></button></td>
+          <td> <button class="circle-right" type="submit"><i class="fas fa-edit "> </i></button></td>
         </tr>
 
         <tr>
-          <td>Paris specialites</td>
-          <td>France</td>
-          <td>UK</td>
           <td>Alfreds Futterkiste</td>
-          <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit"> </i></button></td>
+          <td>Germany</td>
+          <td>Germany</td>
+          <td>Alfreds Futterkiste</td>
+          <td>
+            <button class="circle-right" type="submit"><i class="fas fa-edit"> </i></button>
+          </td>
+        </tr>
+        <tr>
+          <td>Berglunds snabbkop</td>
+          <td>Sweden</td>
+          <td>Sweden</td>
+          <td>Alfreds Futterkiste</td>
+          <td> <button class="circle-right" type="submit"><i class="fas fa-edit"> </i></button></td>
         </tr>
       </table>
 
@@ -177,58 +179,60 @@ margin-right: 0px !important;height:70px">
       </div>
 
 
-      <p>Este es mi primera ventana modal sin utilizar JavaScript.</p>
-    </div>
-  </div>
+      <p>
+
+
+      </p>
 
 
 
-  <div id="miModal2" class="modal">
 
-    <div class="modal-contenido">
-      <div class="row" style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;
+      <div id="miModal2" class="modal">
+
+        <div class="modal-contenido">
+          <div class="row" style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;
 margin-right: 0px !important;height:70px">
-        <div class="col-xs-6" style="color: white;">
-          <h2>Agregar Funcionario</h2>
-        </div>
-        <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
+            <div class="col-xs-6" style="color: white;">
+              <h2>Agregar Funcionario</h2>
+            </div>
+            <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
 
-          <a href="#" style="text-decoration: none;color: white;">X</a>
-        </div>
+              <a href="#" style="text-decoration: none;color: white;">X</a>
+            </div>
 
+          </div>
+
+
+          <p>Este es mi primera ventana modal sin utilizar JavaScript.</p>
+        </div>
       </div>
-
-
-      <p>Este es mi primera ventana modal sin utilizar JavaScript.</p>
     </div>
   </div>
-</div>
-</div>
 
 
-<script>
-function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
+  <script>
+  function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
       }
     }
   }
-}
-</script>
+  </script>
 
 
 
 
 
-<?php include (getcwd()."/layout/BottomComponent.phtml")?>
+  <?php include (getcwd()."/layout/BottomComponent.phtml")?>

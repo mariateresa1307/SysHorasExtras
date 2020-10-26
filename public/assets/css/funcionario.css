@@ -91,14 +91,6 @@
 
 .circle-right-btn {
   display: block;
-<<<<<<< HEAD
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  border: 1px solid #fefefe;
-  margin-top: 24px;
-  font-size: 22px;
-=======
   padding: 5px 10px;
   height: 42px;
   margin: 10px auto;
@@ -151,7 +143,6 @@ h4.title {
 /** END: Non Openmrs CSS **/
 div.omrs-input-group {
   position: relative;
->>>>>>> bb4554868a937d0d04f5faec80e03edd610575a9
 }
 /*Button*/
 
@@ -194,7 +185,7 @@ div.omrs-input-group {
   left: 0;
   right: 0;
   z-index: 99;
-  background-color: #fff;
+  background-color: black;
 }
 
 /*hide the items when the select box is closed:*/
@@ -204,6 +195,6 @@ div.omrs-input-group {
 
 .select-items div:hover,
 .same-as-selected {
-  background-color: #fff;
+  background-color: blue;
 }
 /*SELECT*/

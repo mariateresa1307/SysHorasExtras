@@ -19,3 +19,7 @@
   opacity: 1;
   pointer-events: auto;
 }
+#modal01:target {
+  opacity: 1;
+  pointer-events: auto;
+}
