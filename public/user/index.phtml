@@ -36,7 +36,7 @@
 
         </div>
 
-        <div style="text-align: end;"> <a id="ai" href="#" class="btn btn-primary">Go somewhere</a></div>
+        <div style="text-align: end;"> <a id="ai" href="#" class="btn btn-primary">Agregar</a></div>
       </div>
     </div>
   </div>
@@ -64,7 +64,7 @@
         </div>
 
 
-        <div style="text-align: end;"> <a id="ai" href="#" class="btn btn-primary">Go somewhere</a></div>
+        <div style="text-align: end;"> <a id="ai" href="#" class="btn btn-primary">Agregar</a></div>
       </div>
     </div>
   </div>
@@ -82,7 +82,7 @@
         <div class="row start-xs">
 
           <div class="col-xs-6">
-            <input type="text" id="InputUser" onkeyup=" UserFunction()" placeholder="Buscar Funcionarios"
+            <input type="search" id="InputUser" class="form-control" onkeyup=" UserFunction()" placeholder="Buscar Funcionarios"
               title="Type in a name">
           </div>
 
@@ -139,35 +139,39 @@ margin-right: 0px !important;height:70px">
 
 
       <div id="formUser">
-        <form action="#" method="POST">
+        <form action="Validar.php" method="POST">
 
-          <input type="text" id="InputUser" placeholder="Nombres" required>
-
-          <input type="text" id="InputUser" placeholder="Apellido" required>
+          <input type="text" id="InputUser" name="Nombres" placeholder="Nombres" min="3" max="10" required>
 
 
-          <input type="text" id="InputUser" placeholder="Cedula" required>
+          <input type="text" id="InputUser" name="Apellido" placeholder="Apellido" min="7" max="8" required>
+
+
+          <input type="text" id="InputUser" name="Cedula" placeholder="Cedula" min="7" max="8" required>
 
         
-          <input type="text" id="InputUser" placeholder="Usuario" required>
+          <input type="text" id="InputUser" name="Usuario" placeholder="Usuario" min="5" max="12" required>
 
 
-          <input type="password" id="InputUser" placeholder="Contraseña" required>
+          <input type="password" id="InputUser" name="pw" placeholder="Contraseña" required>
 
 
-          <input type="password" id="InputUser" placeholder="Confirmar Contraseña" required>
+          <input type="password" id="InputUser" name="pw2" placeholder="Confirmar Contraseña" required>
 
 
-          <input type="text" id="InputUser" placeholder="Status" required>
+          <input type="text" id="InputUser" name="Status" placeholder="Status" required>
           
 
-          <input type="text" id="InputUser" placeholder="Rol" required>
+          <input type="text" id="InputUser" name="Rol" placeholder="Rol" required>
 
           
-          <input type="text" id="InputUser" placeholder="Tipo de Usuario" required>
+          <select name="Tipo de Usuario" id="InputUser">
+          <option value="value1">Administrador</option> 
+          <option value="value2">Usuario</option>
+          </select>
 
 
-          <div style="text-align: center; margin-top: 25px;"> <a id="ai" href="#" class="btn btn-primary">Agregar</a>
+          <div style="text-align: center; margin-top: 25px;"> <a id="ai" href="#" class="btn btn-primary" required>Agregar</a>
 
         </form>
 
@@ -185,7 +189,7 @@ function UserFunction() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("InputUser");
   filter = input.value.toUpperCase();
-  table = document.getElementById("TableUser");
+  table = document.getElementById("Table-User");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
