@@ -139,15 +139,15 @@ margin-right: 0px !important;height:70px">
 
 
       <div id="formUser">
-        <form action="Validar.php" method="POST">
+        <form id="ModalForm" action="Validar.php" method="POST">
 
-          <input type="text" id="InputUser" name="Nombres" placeholder="Nombres" min="3" max="10" required>
-
-
-          <input type="text" id="InputUser" name="Apellido" placeholder="Apellido" min="7" max="8" required>
+          <input type="text" id="InputUser" name="Nombres" placeholder="Nombres" minlength="3" max="10" autofocus required>
 
 
-          <input type="text" id="InputUser" name="Cedula" placeholder="Cedula" min="7" max="8" required>
+          <input type="text" id="InputUser" name="Apellido" placeholder="Apellido" mingth="7" maxlength="10" required>
+
+
+          <input type="text" id="InputUser" name="Cedula" placeholder="Cedula" min="7" maxlength="8" required>
 
         
           <input type="text" id="InputUser" name="Usuario" placeholder="Usuario" min="5" max="12" required>
@@ -165,13 +165,15 @@ margin-right: 0px !important;height:70px">
           <input type="text" id="InputUser" name="Rol" placeholder="Rol" required>
 
           
-          <select name="Tipo de Usuario" id="InputUser">
-          <option value="value1">Administrador</option> 
-          <option value="value2">Usuario</option>
+         
+         <select name="Tipo de Usuario" id="InputUser" required>
+          <option value="value1">Tipo de Usuario</option>
+          <option value="value2">Administrador</option> 
+          <option value="value3">Usuario</option>
           </select>
 
 
-          <div style="text-align: center; margin-top: 25px;"> <a id="ai" href="#" class="btn btn-primary" required>Agregar</a>
+          <div style="text-align: center; margin-top: 25px;"> <input id="ai" type="submit" class="btn btn-primary" value="Agregar"> 
 
         </form>
 
@@ -183,8 +185,32 @@ margin-right: 0px !important;height:70px">
 </div>
 </div>
 
+<script >
+$(document).ready(function () {
+
+$("#ModalForm").bind("submit", function () {
+
+  $.ajax({
+    type: $(this).attr("method"),
+    url: $(this).attr("action"),
+    data: $(this).serializa(),
+    success: function () {
+      alert("Litos");
+    },
+    error: function () {
+      alert("Mal");
+    }
+  })
+
+  return false;
+
+});
+
+});
+</script>
 
 <script>
+
 function UserFunction() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("InputUser");
