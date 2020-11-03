@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  $("#ModalForm").bind("submit", function () {
+  $("#FormUser").bind("submit", function () {
 
     $.ajax({
       type: $(this).attr("method"),
