@@ -7,6 +7,7 @@ use \ControlHorasExtras\PHP_MVC\Controllers\LoginController;
 use \ControlHorasExtras\PHP_MVC\Controllers\FuncionarioController;
 use \ControlHorasExtras\PHP_MVC\Controllers\HomeController;
 use \ControlHorasExtras\PHP_MVC\Controllers\HrasExtrasController;
+use \ControlHorasExtras\PHP_MVC\Controllers\ConfiguracionController;
 /** 
  *  Preparar la URL base del proyecto para el sistema de rutas.
  *  Solo elimina el protocolo, dominio y puerto del string.
@@ -24,6 +25,8 @@ $loginCtrl = new LoginController();
 $funcionarioCtrl = new FuncionarioController();
 $homeCtrl = new HomeController();
 $hrasextrasCtrl = new HrasExtrasController();
+$configuracionCtrl = new ConfiguracionController();
+
 
 $router->respond(function ($request, $response, $service, $app) use($config) {
     $app->register('base_url', function() use($config){
@@ -45,6 +48,7 @@ $router->respond('GET', "{$base_url}/login", [$loginCtrl, 'indexAction']);
 $router->respond('GET', "{$base_url}/funcionario", [$funcionarioCtrl,'indexAction']);
 $router->respond('GET', "{$base_url}/home", [$homeCtrl,'indexAction']);
 $router->respond('GET', "{$base_url}/HrasExtras", [$hrasextrasCtrl,'indexAction']);
+$router->respond('GET', "{$base_url}/configuracion", [$configuracionCtrl, 'indexAction']);
 
 # 404 Not Found
 // Using exact code behaviors via switch/case

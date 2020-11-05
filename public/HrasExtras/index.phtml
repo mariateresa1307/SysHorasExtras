@@ -71,14 +71,33 @@
   <div class="card-body">
     <div class="row start-xs">
 
+    <div class="col-xs-4">
+            <select id="select" style="width: 100%;">
+              <option value=" 0">Filtrar mes:</option>
+              <option value="1">Enero</option>
+              <option value="2">Febrero</option>
+              <option value="3">Marzo</option>
+              <option value="4">Abril</option>
+              <option value="5">Mayo</option>
+              <option value="6">Junio</option>
+              <option value="7">Julio</option>
+              <option value="8">Agosto</option>
+              <option value="9">Septiembre</option>
+              <option value="10">Octubre</option>
+              <option value="11">Nobiembre</option>
+              <option value="12">Diciembre</option>
+
+            </select>
+          </div>
+
+
+          <div class="col-xs-4">
+      <input type="text"   id="myInput" onkeyup="myFunction()" placeholder="Buscar cedula" title="Type in a name">
+      </div>
+
       <div class="col-xs-4">
-        <select style="width:100%;" id="select1">
-        </select> </div>
-
-
-      <div class="col-xs-6">
-        <input style="width:50%;" type="text" id="myInput1" onkeyup="myFunction()" placeholder="Search for names.."
-          title="Type in a name">
+      <div class="boton" style="margin: 0px;margin-left: 88%;"><a href="#" style="font-size: 18px;">
+      <i class="fas fa-search" style="margin-top: 4px;margin-left: 4px;"></i></a></div>
       </div>
     </div>
   </div>
@@ -105,85 +124,18 @@
         <th style="width:100%;">State</th>
         <th style="width:100%;">Edit</th>
       </tr>
-      <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>Maria Anders</td>
-        <td>Germany</td>
-        <td>Germany</td>
-        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
-      </tr>
+     
       <tr>
         <td>Berglunds snabbköp</td>
         <td>Christina Berglund</td>
         <td>Sweden</td>
         <td>Germany</td>
-        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
+        <td> <a  id="ai" href="#miModal1" class="circle-right-btn" type="submit" style="font-size: 15px;margin-left: 20px;"><i class="fas fa-edit fa-2x"> </i></a></td>
       </tr>
-      <tr>
-        <td>Centro comercial Moctezuma</td>
-        <td>Francisco Chang</td>
-        <td>Mexico</td>
-        <td>Germany</td>
-        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
-      </tr>
-      <tr>
-        <td>Ernst Handel</td>
-        <td>Roland Mendel</td>
-        <td>Austria</td>
-        <td>Germany</td>
-        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
-      </tr>
-      <tr>
-        <td>Island Trading</td>
-        <td>Helen Bennett</td>
-        <td>UK</td>
-        <td>Germany</td>
-        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
-      </tr>
-      <tr>
-        <td>Königlich Essen</td>
-        <td>Philip Cramer</td>
-        <td>Germany</td>
-        <td>Germany</td>
-        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
-      </tr>
-      <tr>
-        <td>Laughing Bacchus Winecellars</td>
-        <td>Yoshi Tannamuri</td>
-        <td>Canada</td>
-        <td>Germany</td>
-        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
-      </tr>
-      <tr>
-        <td>Magazzini Alimentari Riuniti</td>
-        <td>Giovanni Rovelli</td>
-        <td>Italy</td>
-        <td>Germany</td>
-        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
-      </tr>
-      <tr>
-        <td>North/South</td>
-        <td>Simon Crowther</td>
-        <td>UK</td>
-        <td>Germany</td>
-        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
-      </tr>
-      <tr>
-        <td>Paris spécialités</td>
-        <td>Marie Bertrand</td>
-        <td>France</td>
-        <td>Germany</td>
-        <td> <button class="circle-right-btn" type="submit"><i class="fas fa-edit fa-2x"> </i></button></td>
-      </tr>
+  
+
     </table>
 
-    <div class="row center-xs">
-      <div class="col-xs-2">
-        <div style="text-align: center; margin-top: 25px;"> <a id="ai" href="#miModal"
-            class="btn btn-primary">Agregar</a>
-        </div>
-      </div>
-    </div>
   </div>
 
 </div>
@@ -191,32 +143,32 @@
 
 </div>
 
-<div id="miModal" class="modal">
+
+
+<div id="miModal1" class="modal">
 
   <div class="modal-contenido">
-    <div class="row" style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;
-margin-right: 0px !important;height:70px">
+    <div class="row" style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;margin-right: 0px !important;height:70px">
       <div class="col-xs-6" style="color: white;">
-        <h2>Agregar Horas Extras</h2>
+        <h2>Modificar Horas Extras</h2>
       </div>
-      <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
 
+      <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
         <a href="#" style="text-decoration: none;color: white;">X</a>
       </div>
-
-    </div>
-    <div class="row">
-      <div class="col-xs-6">
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-      </div>
-      <div class="col-xs-6">
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-      </div>
     </div>
 
+    <div class="row center-xs">
+      <div class="col-xs-6">  
+        <input type="text" id="myInput"  onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+      </div>
 
+       <div class="col-xs-6">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+       </div>
+    </div>
 
-
+  
   </div>
 </div>
 
