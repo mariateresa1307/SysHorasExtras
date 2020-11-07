@@ -13,22 +13,22 @@
   <div class="card-body">
     <div class="row start-xs">
 
-    <div class="col-xs-4">
-            <select id="select" style="width: 100%;">
-              <option value=" 0">Select Departamento:</option>
-              <option value="1">Audi</option>
-              <option value="2">BMW</option>
-              <option value="3">Citroen</option>
-              <option value="4">Ford</option>
-              <option value="5">Honda</option>
-
-            </select>
-          </div>
-
-
-      <div class="col-xs-4">
-      <input type="text"   id="myInput" onkeyup="myFunction()" placeholder="Buscar" title="Type in a name">
+    <div class="col-xs-4" >  
+        <div class="select" style='width: 100%;border: 1px solid #ddd;background: #fcfcfc url("flecha-abajo.gif") no-repeat 90% center;height: 44px;'>
+           <select style="margin-top: 4px;">
+           <option value="">Buscar por</option>
+           <option value="opcion-1">Cedula</option>
+           <option value="opcion-2">Año</option>
+           <option value="opcion-x">Mes</option>
+          </select>
+        </div>
       </div>
+
+
+          <div class="col-xs-4">
+        <input type="text"   id="myInput" onkeyup="myFunction()" placeholder="Buscar" title="Type in a name">
+       </div> 
+
 
       <div class="col-xs-4">
       <div class="boton" style="margin: 0px;margin-left: 88%;"><a href="#" style="font-size: 18px;">
@@ -66,7 +66,7 @@
         <td>Programador</td>
         <td>480.000</td>
         <td>Activo</td>
-        <td> <a  id="ai" href="#miModal" class="circle-right-btn" type="submit" style="font-size: 15px;margin-left: 20px;"><i class="fas fa-edit fa-2x"> </i></a></td>
+        <td> <a  id="ai" href="#miModal" class="circle-right-btn" type="button" style="font-size: 15px;margin-left: 20px;"><i class="fas fa-edit fa-2x" style="color: green;"> </i></a></td>
       </tr>
   
 
@@ -146,12 +146,14 @@
  
       </div>
 
-      <div class="col-xs-4" style="margin-top: 39px;">  
-        <select id="select" style="width: 100%;">
-          <option value=" 0">Estado:</option>
-          <option value="1">Activo</option>
-          <option value="2">Inactivo</option>
-        </select>
+      <div class="col-xs-4" style="margin-top: 25px;">  
+        <div class="select" style='width: 100%;border: 1px solid #ddd;background: #fcfcfc url("flecha-abajo.gif") no-repeat 90% center;height: 44px;'>
+           <select style="margin-top: 4px;">
+           <option value="">Estado Funcionario</option>
+           <option value="opcion-1">Activo</option>
+           <option value="opcion-2">Inactivo</option>
+          </select>
+        </div>
       </div>
       
 

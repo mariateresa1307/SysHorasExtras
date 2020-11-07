@@ -8,6 +8,8 @@ use \ControlHorasExtras\PHP_MVC\Controllers\FuncionarioController;
 use \ControlHorasExtras\PHP_MVC\Controllers\HomeController;
 use \ControlHorasExtras\PHP_MVC\Controllers\HrasExtrasController;
 use \ControlHorasExtras\PHP_MVC\Controllers\ConfiguracionController;
+use \ControlHorasExtras\PHP_MVC\Controllers\EstructuraController;
+
 /** 
  *  Preparar la URL base del proyecto para el sistema de rutas.
  *  Solo elimina el protocolo, dominio y puerto del string.
@@ -26,6 +28,9 @@ $funcionarioCtrl = new FuncionarioController();
 $homeCtrl = new HomeController();
 $hrasextrasCtrl = new HrasExtrasController();
 $configuracionCtrl = new ConfiguracionController();
+$estructuraCtrl = new EstructuraController();
+$organigramaCtrl = new EstructuraController();
+
 
 
 $router->respond(function ($request, $response, $service, $app) use($config) {
@@ -49,7 +54,8 @@ $router->respond('GET', "{$base_url}/funcionario", [$funcionarioCtrl,'indexActio
 $router->respond('GET', "{$base_url}/home", [$homeCtrl,'indexAction']);
 $router->respond('GET', "{$base_url}/HrasExtras", [$hrasextrasCtrl,'indexAction']);
 $router->respond('GET', "{$base_url}/configuracion", [$configuracionCtrl, 'indexAction']);
-
+$router->respond('GET', "{$base_url}/misionVision", [$estructuraCtrl, 'misionAction']);
+$router->respond('GET', "{$base_url}/organigrama", [$organigramaCtrl, 'organigramaAction']);
 # 404 Not Found
 // Using exact code behaviors via switch/case
 $router->onHttpError(function ($code, $router) {

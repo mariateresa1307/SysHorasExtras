@@ -1,97 +1,96 @@
 /*cards*/
+
 #card1 {
-  background-image: linear-gradient(
-    to right top,
-    #f9fbff,
-    #b9c7eb,
-    #7f93d5,
-    #4a5fbb,
-    #002d9e
-  );
-  border: 0px;
+    background-image: linear-gradient( to right top, #f9fbff, #b9c7eb, #7f93d5, #4a5fbb, #002d9e);
+    border: 0px;
 }
+
 #card2 {
-  background-image: linear-gradient(
-    to right top,
-    #c1babc,
-    #cb97a1,
-    #d0727e,
-    #cf4a55,
-    #c51125
-  );
-  border: 0px;
+    background-image: linear-gradient( to right top, #c1babc, #cb97a1, #d0727e, #cf4a55, #c51125);
+    border: 0px;
 }
+
+
 /*fin de cards*/
 
+
 /*Table*/
+
 #customers {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  border-collapse: collapse;
-  width: 100%;
-  border: 0px solid #ddd;
-  font-size: 20px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    border-collapse: collapse;
+    width: 100%;
+    border: 0px solid #ddd;
+    font-size: 20px;
 }
 
 #customers tr {
-  border-bottom: 0px solid #ddd;
+    border-bottom: 0px solid #ddd;
 }
 
 #customers td,
 #customers th {
-  border: 0px solid #ddd;
-  padding: 8px;
+    border: 0px solid #ddd;
+    padding: 8px;
 }
 
 #customers tr:nth-child(even) {
-  background-color: #f2f2f2;
+    background-color: #f2f2f2;
 }
 
 #customers tr:hover {
-  background-color: #ddd;
+    background-color: #ddd;
 }
 
 #customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #181918;
-  color: white;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #181918;
+    color: white;
 }
+
+
 /*fin de Table*/
 
-#myInput1 {
-  background-image: url("/css/searchicon.png");
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: 100%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
+#myInput {
+    background-image: url("/css/searchicon.png");
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
 }
+
+
 /*Boton redondo*/
+
 .boton {
-  width: 30px;
-  height: 30px;
-  background-color: #705bff;
-  margin: 5px;
-  padding: 10px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  border-radius: 50px;
-  font-size: 11px;
-  line-height: 32px;
-  text-transform: uppercase;
-  float: left;
+    width: 30px;
+    height: 30px;
+    background-color: #705bff;
+    margin: 5px;
+    padding: 10px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    font-size: 11px;
+    line-height: 32px;
+    text-transform: uppercase;
+    float: left;
 }
+
 .boton:hover {
-  opacity: 0.5;
-  -moz-opacity: 0.5;
-  filter: alpha (opacity=50);
+    opacity: 0.5;
+    -moz-opacity: 0.5;
+    filter: alpha (opacity=50);
 }
+
 .boton a {
-  color: #fff;
-  text-decoration: none;
-  padding: 5px 5px 5px 0;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 5px 5px 0;
 }

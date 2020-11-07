@@ -3,9 +3,9 @@
 <?php include (getcwd()."/layout/MenuComponent.phtml")?>
 <link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/main.css">
 <link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/modal.css">
-<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/flexboxgrid.min.css">
 <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/funcionario.css">
 <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/fontawesome/css/all.css">
+<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/flexboxgrid.min.css">
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
     <h1>GESTIONAR FUNCIONARIO </h1>
@@ -84,23 +84,26 @@
 
         <div class="row start-xs">
           <div class="col-xs-4">
-            <select id="select" style="width: 100%;">
-              <option value=" 0">Select car:</option>
-              <option value="1">Audi</option>
-              <option value="2">BMW</option>
-              <option value="3">Citroen</option>
-              <option value="4">Ford</option>
-              <option value="5">Honda</option>
-
-            </select>
+          <div class="select" style='width: 100%;border: 1px solid #ddd;background: #fcfcfc url("flecha-abajo.gif") no-repeat 90% center;height: 49px;'>
+           <select style="margin-top: 4px;">
+           <option value="">Buscar por</option>
+           <option value="opcion-1">Cedula</option>
+           <option value="opcion-2">Año</option>
+           <option value="opcion-x">Mes</option>
+          </select>
+        </div>
           </div>
 
-          <div class="col-xs-6">
+          <div class="col-xs-4">
             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."
               title="Type in a name">
           </div>
 
-
+          <div class="col-xs-4">
+      <div class="boton" style="margin: 0px;margin-left: 88%;"><a href="#" style="font-size: 18px;">
+      <i class="fas fa-search" style="margin-top: 4px;margin-left: 4px;"></i></a>
+      </div>
+    </div>
 
         </div>
 
@@ -109,48 +112,25 @@
 
 
 
-      <table id="myTable">
-        <tr class="header" style="background-color: black;color: #fbfbfb;">
-          <th style="width:100%;">Name</th>
-          <th style="width:100%;">Country</th>
-          <th style="width:100%;">Country</th>
-          <th style="width:100%;">State</th>
-          <th style="width:100%;">Edit</th>
-        </tr>
-        <tr>
-          <td>Alfreds Futterkiste</td>
-          <td>Germany</td>
-          <td>Germany</td>
-          <td>Alfreds Futterkiste</td>
-          <td>
-            <button class="circle-right" type="submit"><i class="fas fa-edit "> </i></button>
-          </td>
-        </tr>
-        <tr>
-          <td>Berglunds snabbkop</td>
-          <td>Sweden</td>
-          <td>Sweden</td>
-          <td>Alfreds Futterkiste</td>
-          <td> <button class="circle-right" type="submit"><i class="fas fa-edit "> </i></button></td>
-        </tr>
+       <table id="customers">
+      <tr class="header" style="background-color: black;color: #fbfbfb;">
+        <th style="width:50%;">Departamento</th>
+        <th style="width:50%;">Cargo</th>
+        <th style="width:80%;">Sueldo Establecido</th>
+        <th style="width:50%;">Estado</th>
+        <th style="width:50%;">Edit</th>
+      </tr>
+     
+      <tr>
+        <td>Tecnologia</td>
+        <td>Programador</td>
+        <td>480.000</td>
+        <td>Activo</td>
+        <td> <a  id="ai" href="#miModal" class="circle-right-btn" type="button" style="font-size: 15px;margin-left: 20px;"><i class="fas fa-edit fa-2x" style="color: green;"> </i></a></td>
+      </tr>
+  
 
-        <tr>
-          <td>Alfreds Futterkiste</td>
-          <td>Germany</td>
-          <td>Germany</td>
-          <td>Alfreds Futterkiste</td>
-          <td>
-            <button class="circle-right" type="submit"><i class="fas fa-edit"> </i></button>
-          </td>
-        </tr>
-        <tr>
-          <td>Berglunds snabbkop</td>
-          <td>Sweden</td>
-          <td>Sweden</td>
-          <td>Alfreds Futterkiste</td>
-          <td> <button class="circle-right" type="submit"><i class="fas fa-edit"> </i></button></td>
-        </tr>
-      </table>
+    </table>
 
       <div class="row center-xs">
         <div class="col-xs-2">
@@ -163,51 +143,95 @@
 
   </div>
 
+
   <div id="miModal" class="modal">
 
-    <div class="modal-contenido">
-      <div class="row" style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;
-margin-right: 0px !important;height:70px">
-        <div class="col-xs-6" style="color: white;">
-          <h2>Agregar Funcionario</h2>
-        </div>
-        <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
+  <div class="modal-contenido">
 
-          <a href="#" style="text-decoration: none;color: white;">X</a>
-        </div>
-
+    <div class="row" style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;margin-right: 0px !important;height:70px">
+      <div class="col-xs-6" style="color: white;">
+        <h2>Agregar Funcionario</h2>
       </div>
 
-
-      <p>
-
-
-      </p>
-
-
-
-
-      <div id="miModal2" class="modal">
-
-        <div class="modal-contenido">
-          <div class="row" style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;
-margin-right: 0px !important;height:70px">
-            <div class="col-xs-6" style="color: white;">
-              <h2>Agregar Funcionario</h2>
-            </div>
-            <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
-
-              <a href="#" style="text-decoration: none;color: white;">X</a>
-            </div>
-
-          </div>
-
-
-          <p>Este es mi primera ventana modal sin utilizar JavaScript.</p>
-        </div>
+      <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
+        <a href="#" style="text-decoration: none;color: white;">X</a>
       </div>
     </div>
+
+    <div class="row start-xs" style="margin-top: 40px;padding-left: 95px;padding-right: 95px;">
+
+      <div class="col-xs-4">
+        <input type="text" style="width: 100%;"  id="myInput" onkeyup="myFunction()" placeholder="Cedula Funcionario" title="Type in a name" >
+       </div> 
+
+       <div class="col-xs-4">
+        <input type="text" style="width: 100%;"  id="myInput" onkeyup="myFunction()" placeholder="Primer Nombre Funcionario" title="Type in a name">
+       </div> 
+
+       <div class="col-xs-4">
+        <input type="text" style="width: 100%;"  id="myInput" onkeyup="myFunction()" placeholder="Segundo Nombre Funcionario" title="Type in a name">
+       </div> 
+
+       <div class="col-xs-4" style="margin-top: 25px;">
+        <input type="text" style="width: 100%;"  id="myInput" onkeyup="myFunction()" placeholder="Primer Apellido Funcionario " title="Type in a name">
+       </div> 
+       <div class="col-xs-4" style="margin-top: 25px;">
+        <input type="text" style="width: 100%;"  id="myInput" onkeyup="myFunction()" placeholder="Segundo Apellido Funcionario " title="Type in a name">
+       </div> 
+       <div class="col-xs-4" style="margin-top: 25px;">
+        <input type="text" style="width: 100%;"  id="myInput" onkeyup="myFunction()" placeholder="Telefono Funcionario " title="Type in a name">
+       </div> 
+       <div class="col-xs-12" style="margin-top: 25px;">
+        <input type="text" style="width: 100%;"  id="myInput" onkeyup="myFunction()" placeholder="Direccion" title="Type in a name">
+       </div>  
+         
+      
+      <div class="col-xs-4" style="margin-top: 25px;">  
+        <div class="select" style='width: 100%;border: 1px solid #ddd;background: #fcfcfc url("flecha-abajo.gif") no-repeat 90% center;height: 44px;'>
+           <select style="margin-top: 4px;">
+           <option value="">Departamento</option>
+           <option value="opcion-1">Opción 1</option>
+           <option value="opcion-2">Opción 2</option>
+           <option value="opcion-x">Opción X</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-xs-4" style="margin-top: 25px;">  
+        <div class="select" style='width: 100%;border: 1px solid #ddd;background: #fcfcfc url("flecha-abajo.gif") no-repeat 90% center;height: 44px;'>
+           <select style="margin-top: 4px;">
+           <option value="">Cargo</option>
+           <option value="opcion-1">Opción 1</option>
+           <option value="opcion-2">Opción 2</option>
+           <option value="opcion-x">Opción X</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-xs-4" style="margin-top: 25px;">  
+        <div class="select" style='width: 100%;border: 1px solid #ddd;background: #fcfcfc url("flecha-abajo.gif") no-repeat 90% center;height: 44px;'>
+           <select style="margin-top: 4px;">
+           <option value="">Estado Funcionario</option>
+           <option value="opcion-1">Activo</option>
+           <option value="opcion-2">Inactivo</option>
+          </select>
+        </div>
+      </div>
+   
+          <div class="col-xs-12">
+            <div style=" margin-top: 25px; text-align: end;"> <a class="btn btn-primary">Guardar</a>
+           </div>
+        
+      </div>
   </div>
+  
+</div>
+
+
+
+</div>
+
+
+
 
 
   <script>

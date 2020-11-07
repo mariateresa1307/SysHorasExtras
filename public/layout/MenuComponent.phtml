@@ -1,5 +1,17 @@
 <div class="navbar">
   <a href="<?= $this->base_url ?>/home">Inicio</a>
+
+
+  <div class="dropdown">
+    <button class="dropbtn">Quienes somos 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="<?= $this->base_url ?>/misionVision">Mision & Vision </a>
+      <a href="<?= $this->base_url ?>/organigrama">Organigrama</a>
+    </div>
+  </div>
+
   <div class="dropdown">
     <button class="dropbtn">Horas Extras
       <i class="fa fa-caret-down"></i>
@@ -10,6 +22,7 @@
       <a href="#">Reportes</a>
     </div>
   </div>
+
   <div class="dropdown">
     <button class="dropbtn">Usuarios
       <i class="fa fa-caret-down"></i>
