@@ -1,11 +1,14 @@
 <?php include (getcwd()."/layout/TopComponent.phtml")?>
 <?php include (getcwd()."/layout/HeaderComponent.phtml")?>
 <?php include (getcwd()."/layout/MenuComponent.phtml")?>
-<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/main.css">
-<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/modal.css">
-<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/flexboxgrid.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/main.css"> -->
+<!-- <link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/modal.css"> -->
+<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/modalUser.css">
+<!-- <link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/flexboxgrid.min.css"> -->
 <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/user.css">
 <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/fontawesome/css/all.css">
+<script src='<?=$this->base_url ?>/assets/js/jquery-3.5.0.min.js' defer ></script>
+<script src='<?=$this->base_url ?>/assets/js/ModalFormUser.js' defer ></script>
 
 
 <div class="row">
@@ -92,8 +95,8 @@
       <div class="card-body">
         <div class="row start-xs">
           <div class="col-xs-6">
-            <input type="text" id="InputUser" onkeyup=" UserFunction()" placeholder="Buscar Usuarios"
-              title="Type in a name">
+            <input type="search" id="InputUser" onkeyup=" UserFunction()" placeholder="Buscar Usuarios"
+              title="Busca Usuarios">
           </div>
         </div>
       </div>      
@@ -106,7 +109,7 @@
           <th >Usuario</th>
           <th >Status</th>
           <th >Tipo</th>
-          <th >Edit</th>
+          <th >Acciones</th>
         </tr>
       <?php
     
@@ -121,79 +124,130 @@
             <td><?=($value['status'] == "t") ? 'Activo' : 'Desactivado';?></td>
             <td><?=$value['nombre_tipo_usuario']?></td>
             <td>
-              <button class='circle-right-btn' type='submit'><i class='fas fa-edit'> </i></button>
+              <button class='circle-right-btn' id="Editar" type='submit'><i class='fas fa-edit'> </i></button>
+            </td>
+            <td>
+              <button class='circle-right-btn' id="Delete" type='submit'><i class='fas fa-trash'> </i></button>
             </td>
           </tr>
         <?php
         }
       ?>
+
       </table>
+
       <div class="row center-xs">
-        <div class="col-xs-2">
-          <div style="text-align: center; margin-top: 25px;"> <a id="ai" href="#miModal"
-              class="btn btn-primary">Agregar</a>
+        <div class="col-xs
+          <div style="text-align: center; margin-top: 25px;"> <a id="ai" href="#miModal" class="btn btn-primary">Agregar</a>
           </div>
+          
         </div>
+
       </div>
-    </div>
 
-  </div>
 
-  <div id="miModal" class="modal">
+ <div id="miModal" class="modal">
 
-    <div class="modal-contenido">
-      <div class="row" style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important; margin-right: 0px !important;height:70px">
-        <div class="col-xs-6" style="color: white;">
+    <div class="modal-contenido" style="border-radius: 0.6rem;" >
+      <div class="row" style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important; margin-right: 0px !important;">
+        <div class="col-xs-8" style="color: white;">
           <h2>Agregar Usuario</h2>
         </div>
-        <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
+        <div class="col-xs-4" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
 
-          <a href="#" style="text-decoration: none;color: white;">X</a>
+          <a href="#"class="modal-close" style="text-decoration: none;color: white;">&times;</a>
         </div>
 
       </div>
 
 
       <div id="formUser">
-        <form action="#" method="POST">
+        <form>
+          <div class="row start-xs" >
 
-          <input type="text" id="InputUser" placeholder="Nombres" required>
+            <div class="col-xs-4">
+            <input type="text" style="width: 100%;" id="InputUser" placeholder="Nombres" >
+            </div> 
 
-          <input type="text" id="InputUser" placeholder="Apellido" required>
+            <div class="col-xs-4">
+              <input type="text" style="width: 100%;" id="InputUser" placeholder="Apellido" >
+            </div> 
 
+            <div class="col-xs-4">
+              <input type="text" style="width: 100%;"  id="InputUser" placeholder="Cedula"  >
+            </div> 
 
-          <input type="text" id="InputUser" placeholder="Cedula" required>
+            <div class="col-xs-4" >
+              <input type="text" style="width: 100%;"  id="InputUser" placeholder="Usuario" >
+            </div> 
 
-        
-          <input type="text" id="InputUser" placeholder="Usuario" required>
+            <div class="col-xs-4" >
+              <input type="password" style="width: 100%;" id="InputUser" placeholder="Contaseña" >
+            </div> 
 
+            <div class="col-xs-4" >
+              <input type="text" style="width: 100%;" id="InputUser" placeholder="Confirmar contraseña">
+            </div> 
 
-          <input type="password" id="InputUser" placeholder="Contraseña" required>
+                
+            <div class="col-xs-4" >  
+              <div class="select" >
 
+                <label for= "status" style="font-size: 20px;">Estado</label>
+                <select class="form-control" id="InputUser" required>
 
-          <input type="password" id="InputUser" placeholder="Confirmar Contraseña" required>
+                  <option selected> Seleccione </option> 
+                  <option value="1"> Admitivo </option> 
+                  <option value="2"> Bloqueado </option>            
 
+                </select>
 
-          <input type="text" id="InputUser" placeholder="Status" required>
-          
+              </div>
+            </div>
 
-          <input type="text" id="InputUser" placeholder="Rol" required>
+            <div class="col-xs-4" >  
+              <div class="select" >
 
-          
-          <input type="text" id="InputUser" placeholder="Tipo de Usuario" required>
+                <label for= "Rol" style="font-size: 20px;">Rol</label>
+                <select class="form-control" id="InputUser" required>
+                    
+                  <option selected> Seleccione </option> 
+                  <option value="1"> Administrador </option> 
+                  <option value="2"> Usuario </option>            
 
+                </select>
 
-          <div style="text-align: center; margin-top: 25px;"> <input type="submit" id="ai" class="btn btn-primary">Agregar</a>
+              </div>
+            </div>
+            
+            <div class="col-xs-4" >  
+              <div class="select" >
 
-        </form>
+                <label for= "Tipo usuario" style="font-size: 20px;">Tipo de Usuario</label>
+                <select class="form-control" id="InputUser" required>
+                    
+                  <option selected> Seleccione </option> 
+                  <option value="1"> Administrador </option> 
+                  <option value="2"> Usuario </option>            
 
+                </select>
+
+              </div>
+            </div>
+
+            <div class="col-xs-12" style="text-align: center; margin-top: 25px;" >
+              <button class="btn btn-primary" type="submit"  > <i class="fa fa-fw fa-lg fa-check-circle"></i>Registrar 
+              </button>
+            </div>
+
+          </div> 
+       </form>   
       </div>
 
-    </div>
   </div>
 
 </div>
-<!-- </div> -->
+</div>
 
 
 <script>
@@ -218,3 +272,61 @@ function UserFunction() {
 </script>
 
 <?php include (getcwd()."/layout/BottomComponent.phtml")?>
+
+
+
+
+
+
+<!-- 
+      <div id="formUser">
+        <form method="POST">
+
+          <input class="form-control" type="text" id="InputUser" placeholder="Nombres" required>
+
+          <input type="text" id="InputUser" placeholder="Apellido" required>
+
+
+          <input type="text" id="InputUser" placeholder="Cedula" required>
+
+        
+          <input type="text" id="InputUser" placeholder="Usuario" required>
+
+
+          <input type="password" id="InputUser" placeholder="Contraseña" required>
+
+
+          <input type="password" id="InputUser" placeholder="Confirmar Contraseña" required>
+
+          <div></div>
+          
+          <label for= "status">Estado</label>
+          <select class="form-control" id="InputUser" required>
+
+            <option selected> Seleccione </option> 
+            <option value="1"> Admitivo </option> 
+            <option value="2"> Bloqueado </option>            
+
+          </select>
+          
+                    
+          <label for= "Rol">Rol</label>
+          <select class="form-control" id="InputUser" required>
+            
+            <option selected> Seleccione </option> 
+            <option value="1"> Administrador </option> 
+            <option value="2"> Usuario </option>            
+
+          </select>
+          
+          <div></div>
+          
+          <label for= "Tipo usuario">Tipo de Usuario</label>
+          <select class="form-control" id="InputUser" required>
+            
+            <option selected> Seleccione </option> 
+            <option value="1"> Administrador </option> 
+            <option value="2"> Usuario </option>            
+
+          </select>
+           -->

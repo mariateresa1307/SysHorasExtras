@@ -4,13 +4,12 @@
 }
 
 #InputUser {
-  background-image: url("/css/searchicon.png");
   background-position: 10px 10px;
   background-repeat: no-repeat;
   font-size: 20px;
-  padding: 12px 20px 12px 40px;
+  padding: 15px 10px;
   border: 1px solid #ddd;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
   margin-top: 10px;
 }
 
@@ -39,26 +38,23 @@
 /*CARD*/
 
 #Card-User1 {
-  background-image: linear-gradient(
-    to right top,
-    #d5deea,
-    #a2b6d7,
-    #728fc3,
-    #4468af,
-    #024398
-  );
+  background-image: linear-gradient(to right top,
+      #d5deea,
+      #a2b6d7,
+      #728fc3,
+      #4468af,
+      #024398);
 
   margin-bottom: 10px;
 
   border: 0px;
 }
+
 /*CARD*/
 #Card-User2 {
-  background-image: linear-gradient(
-    to right,
-    rgba(255, 0, 0, 0.31),
-    rgba(249, 43, 43)
-  );
+  background-image: linear-gradient(to right,
+      rgba(255, 0, 0, 0.31),
+      rgba(249, 43, 43));
 
   border: 0px;
 }
@@ -68,15 +64,17 @@
   text-align: center;
   font-size: 40px;
 }
+
 #CardTitle1 {
   color: white;
   text-align: center;
   font-size: 30px;
 }
 
-#CarText1{
+#CarText1 {
   font-size: 16px;
 }
+
 /*CARD*/
 
 /*Button*/
@@ -84,7 +82,6 @@
   color: white;
   position: relative;
   text-decoration: none;
-
   border: 0px;
 }
 
@@ -93,10 +90,10 @@
   top: 5px;
 }
 
-#formUser{
+#formUser {
   background-color: lightgrey;
   font-size: 20px;
   padding: 12px 20px 12px 40px;
   border: 1px solid #ddd;
-  margin-bottom: 12px;
+  border-radius: 1rem;
 }

@@ -6,5 +6,8 @@
       "ControlHorasExtras\\PHP_MVC\\": "app/",
       "Klein\\": "app/Libs/klein/src/Klein/"
     }
+  },
+  "require": {
+    "twbs/bootstrap": "4.4.1"
   }
 }

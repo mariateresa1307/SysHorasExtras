@@ -1,0 +1,79 @@
+ /*TABLE*/
+ * {
+   box-sizing: border-box;
+ }
+
+
+ .modal {
+   position: fixed;
+   background-color: rgba(0, 0, 0, 0.8);
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 1000;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   opacity: 0;
+   pointer-events: none;
+   transition: all 1s;
+ }
+
+ #miModal:target {
+   opacity: 1;
+   pointer-events: auto;
+ }
+
+ #modal01:target {
+   opacity: 1;
+   pointer-events: auto;
+ }
+
+
+ .modal-contenido {
+   position: relative;
+   background-color: #fff;
+   width: 60%;
+   max-height: 75%;
+   border-radius: 2rem;
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+   overflow: none;
+ }
+
+
+ .modal-close {
+   position: absolute;
+   font-size: 30px;
+   font-weight: bold;
+   cursor: pointer;
+ }
+
+ .modal-close:hover,
+ .modal-close:focus {
+   color: rgba(0, 0, 0 0.5);
+ }
+
+ @media(max-width: 990px) {
+   html {
+     font-size: 14px;
+   }
+
+   .modal-contenido {
+     width: 80%;
+   }
+ }
+
+ @media(max-width: 765px) {
+   html {
+     font-size: 12px;
+   }
+
+   .modal-contenido {
+     padding: 2rem 1rem 1rem;
+   }
+
+   .modal-contenido-div-div-h2 {
+     margin-bottom: 1.5rem;
+   }
+ }
