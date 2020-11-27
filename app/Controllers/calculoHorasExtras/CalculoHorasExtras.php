@@ -5,7 +5,8 @@
  */
 
 namespace ControlHorasExtras\PHP_MVC\Controllers\calculoHorasExtras;
-
+use \DateTime;
+use \DateInterval;
 
 
 class CalculoHorasExtras{
@@ -46,13 +47,41 @@ class CalculoHorasExtras{
     
     // obtener horas extras por dias segun registros
     foreach($payload as $item) {
-      //echo $item['entrada'] . " | ";
-      //echo $item['salida'];
+      echo "entrada: ",  $item['entrada'] , " salida: ", $item['salida'] , "\n";
 
-      $diferenciaDeTiempoDiaria = strtotime($item['salida']) - strtotime($item['entrada']);
 
-      echo date( "H:i:s", ($diferenciaDeTiempoDiaria) )  , "</br>";
-      
+      $salida  = new DateTime($item['salida']);
+      $entrada = new DateTime($item['entrada']);
+
+
+      if($salida > $entrada){
+        $interval = $salida->diff($entrada);
+        if( $interval->h >= $horasLaborales){
+
+          if($interval->i >= 0){
+
+
+            if( $interval->h == $horasLaborales && $interval->i == 0 ) {
+              break;
+            }
+
+
+            // todo ok con las validaciones
+
+            $remanente = $interval->h - $horasLaborales;
+            echo "{$remanente}:{$interval->i}" , "\n";
+          }
+
+        }
+        else{
+          //continue;
+        }
+      }
+      else{
+        //continue;
+      }
+
+
       break;
     }
 

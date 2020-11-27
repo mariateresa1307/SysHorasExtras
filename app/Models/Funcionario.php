@@ -21,7 +21,7 @@ class Funcionario {
           on ca.funcionario_id = f.id
           inner join cargo c2 
           on c2.id  = f.cargo_id 
-          order by ca.id
+          order by ca.id asc
         ";
         $result = pg_exec($this->em->vinculo, $query);
         pg_close($this->em->vinculo);
