@@ -48,6 +48,7 @@ $router->respond("{$base_url}/assets/[*]", function($request, $response, $servic
 /**
  * Definicion de rutas
  */
+$router->respond('GET', "{$base_url}/test_____", [$hrasextrasCtrl, 'process']);
 $router->respond('GET', "{$base_url}/user", [$userCtrl, 'indexAction']);
 $router->respond('GET', "{$base_url}/login", [$loginCtrl, 'indexAction']);
 $router->respond('GET', "{$base_url}/funcionario", [$funcionarioCtrl,'indexAction']);

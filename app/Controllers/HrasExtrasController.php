@@ -2,6 +2,8 @@
 
 namespace ControlHorasExtras\PHP_MVC\Controllers;
 
+use \ControlHorasExtras\PHP_MVC\Controllers\calculoHorasExtras\CalculoHorasExtras;
+use ControlHorasExtras\PHP_MVC\Models\Funcionario;
 
 class HrasExtrasController{
 
@@ -14,6 +16,26 @@ class HrasExtrasController{
 
         
         return $service->render('HrasExtras/index.phtml', $data);
+    }
+
+
+
+
+    public function process($req, $res, $service, $app){
+
+        $funcionario = new Funcionario();
+        $calculoHorasExtras = new CalculoHorasExtras();
+
+
+        $result = $funcionario->obtnerFuncionarioParaCalculo();
+
+        $calculoHorasExtras->execute($result);
+
+
+        
+
+        
+        
     }
 }
 
