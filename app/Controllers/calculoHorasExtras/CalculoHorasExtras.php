@@ -46,10 +46,14 @@ class CalculoHorasExtras{
     
     // obtener horas extras por dias segun registros
     foreach($payload as $item) {
-      echo $item['entrada'] . " | ";
-      echo $item['salida'];
+      //echo $item['entrada'] . " | ";
+      //echo $item['salida'];
 
-      echo "</br>";
+      $diferenciaDeTiempoDiaria = strtotime($item['salida']) - strtotime($item['entrada']);
+
+      echo date( "H:i:s", ($diferenciaDeTiempoDiaria) )  , "</br>";
+      
+      break;
     }
 
   }
