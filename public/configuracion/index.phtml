@@ -1,0 +1,174 @@
+<?php include (getcwd()."/layout/TopComponent.phtml")?>
+<?php include (getcwd()."/layout/HeaderComponent.phtml")?>
+<?php include (getcwd()."/layout/MenuComponent.phtml")?>
+<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/modal.css">
+<link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/HrasExtras.css">
+<link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/fontawesome/css/all.css">
+<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/flexboxgrid.min.css">
+
+<h1 class="h1">Configuracion Horas extras</h1>
+
+
+<div class="card" style="border-bottom-color: white; margin-top:15px;">
+  <div class="card-body">
+    <div class="row start-xs">
+
+    <div class="col-xs-4" >  
+        <div class="select" style='width: 100%;border: 1px solid #ddd;background: #fcfcfc url("flecha-abajo.gif") no-repeat 90% center;height: 44px;'>
+           <select style="margin-top: 4px;">
+           <option value="">Buscar por</option>
+           <option value="opcion-1">Cedula</option>
+           <option value="opcion-2">Año</option>
+           <option value="opcion-x">Mes</option>
+          </select>
+        </div>
+      </div>
+
+
+          <div class="col-xs-4">
+        <input type="text"   id="myInput" onkeyup="myFunction()" placeholder="Buscar" title="Type in a name">
+       </div> 
+
+
+      <div class="col-xs-4">
+      <div class="boton" style="margin: 0px;margin-left: 88%;"><a href="#" style="font-size: 18px;">
+      <i class="fas fa-search" style="margin-top: 4px;margin-left: 4px;"></i></a></div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="card2" style=" background-color: white; margin-top: -2px;
+    border-top-color: white;">
+  <div class="card-body">
+
+    <table id="customers">
+      <tr class="header" style="background-color: black;color: #fbfbfb;">
+        <th style="width:50%;">Departamento</th>
+        <th style="width:50%;">Cargo</th>
+        <th style="width:80%;">Sueldo Establecido</th>
+        <th style="width:50%;">Estado</th>
+        <th style="width:50%;">Edit</th>
+      </tr>
+     
+      <tr>
+        <td>Tecnologia</td>
+        <td>Programador</td>
+        <td>480.000</td>
+        <td>Activo</td>
+        <td> <a  id="ai" href="#miModal" class="circle-right-btn" type="button" style="font-size: 15px;margin-left: 20px;"><i class="fas fa-edit fa-2x" style="color: green;"> </i></a></td>
+      </tr>
+  
+
+    </table>
+
+    <div class="row center-xs">
+      <div class="col-xs-2">
+        <div style="text-align: center; margin-top: 25px;"> <a id="ai" href="#miModal"
+            class="btn btn-primary">Agregar</a>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+
+</div>
+
+
+</div>
+
+<div id="miModal" class="modal">
+
+  <div class="modal-contenido">
+
+    <div class="row" style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;margin-right: 0px !important;height:70px">
+      <div class="col-xs-6" style="color: white;">
+        <h2>Configuracion Horas Extras</h2>
+      </div>
+
+      <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
+        <a href="#" style="text-decoration: none;color: white;">X</a>
+      </div>
+    </div>
+
+    <div class="row start-xs" style="margin-top: 20px;">
+      <div class="col-xs-4">  
+
+            <select id="select" style="width: 100%;">
+              <option value=" 0">Select Departamento:</option>
+              <option value="1">Audi</option>
+              <option value="2">BMW</option>
+              <option value="3">Citroen</option>
+              <option value="4">Ford</option>
+              <option value="5">Honda</option>
+
+            </select>
+          
+      </div>
+
+      <div class="col-xs-4">  
+        <select id="select" style="width: 100%;">
+          <option value=" 0">Select Cargo:</option>
+          <option value="1">Audi</option>
+          <option value="2">BMW</option>
+          <option value="3">Citroen</option>
+          <option value="4">Ford</option>
+          <option value="5">Honda</option>
+
+        </select>
+      </div>
+
+       <div class="col-xs-4">
+        <input type="text" style="width: 96%;"  id="myInput" onkeyup="myFunction()" placeholder="Sueldo Mensual" title="Type in a name">
+       </div>  
+         
+      <div class="col-xs-4" style="margin-top: 20px;">  
+      <label for="dateofbirth">Fecha oficial de entrada </label>
+<input type="date" name="dateofbirth" id="dateofbirth" style="width: 95%;height: 0px;margin-top: ;">
+
+
+      </div>
+
+      <div class="col-xs-4" style="margin-top: 20px;">  
+      <label for="dateofbirth">Fecha oficial de Salida  </label>
+<input type="date" name="dateofbirth" id="dateofbirth" style="width: 95%;height: 0px;margin-top: ;">
+
+ 
+      </div>
+
+      <div class="col-xs-4" style="margin-top: 25px;">  
+        <div class="select" style='width: 100%;border: 1px solid #ddd;background: #fcfcfc url("flecha-abajo.gif") no-repeat 90% center;height: 44px;'>
+           <select style="margin-top: 4px;">
+           <option value="">Estado Funcionario</option>
+           <option value="opcion-1">Activo</option>
+           <option value="opcion-2">Inactivo</option>
+          </select>
+        </div>
+      </div>
+      
+
+    </div>
+   <div class="row end-xs">
+          <div class="col-xs-2">
+            <div style="text-align: center; margin-top: 25px;"> <a class="btn btn-primary">Guardar</a>
+           </div>
+          </div>
+      </div>
+  </div>
+  
+</div>
+
+
+
+
+<?php include (getcwd()."/layout/BottomComponent.phtml")?>
