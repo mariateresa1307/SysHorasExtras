@@ -1,23 +1,36 @@
 <div class="navbar">
   <a href="<?= $this->base_url ?>/home">Inicio</a>
+
+
+  <div class="dropdown">
+    <button class="dropbtn">Quienes somos 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="<?= $this->base_url ?>/misionVision">Mision & Vision </a>
+      <a href="<?= $this->base_url ?>/organigrama">Organigrama</a>
+    </div>
+  </div>
+
   <div class="dropdown">
     <button class="dropbtn">Horas Extras
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="<?= $this->base_url ?>/HrasExtras">Menu</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
+      <a href="<?= $this->base_url ?>/HrasExtras">Inicio</a>
+      <a href="<?= $this->base_url ?>/configuracion">Configuracion</a>
+      <a href="#">Reportes</a>
     </div>
   </div>
+
   <div class="dropdown">
     <button class="dropbtn">Usuarios
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
       <a href="<?= $this->base_url ?>/user">Usuarios</a>
-      <a href="#">Admitidos</a>
-      <a href="#">Bloqueados</a>
+      <a href="#">Reportes</a>
+
     </div>
   </div>
   <div class="dropdown">
@@ -26,19 +39,9 @@
     </button>
     <div class="dropdown-content">
       <a href="<?= $this->base_url ?>/funcionario">Funcionario</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
+      <a href="#">Reportes</a>
     </div>
   </div>
-  <div class="dropdown">
-    <button class="dropbtn">Reportes
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Aceptados</a>
-      <a href="#">Rechazados</a>
-      <a href="#">link 3</a>
-    </div>
-  </div>
+
   <a href="#" style="float: right">Administrador</a>
 </div>
