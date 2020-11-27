@@ -1,10 +1,13 @@
 <?php include (getcwd()."/layout/TopComponent.phtml")?>
 <?php include (getcwd()."/layout/HeaderComponent.phtml")?>
 <?php include (getcwd()."/layout/MenuComponent.phtml")?>
+
 <link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/modal.css">
 <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/HrasExtras.css">
+<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/btnGroup.min.css">
 <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/fontawesome/css/all.css">
 <link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/flexboxgrid.min.css">
+
 <h1 class="h1">Gestionar Horas extras</h1>
 
 <div class="row ">
@@ -50,7 +53,7 @@
 
 
           <div class="col-xs-7">
-            <h1 class="card-title" style="text-align: center;">Horas Rechazadas</h1>
+            <h1 class="card-title" style="text-align: center;">Horas en Revisión</h1>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
               content.</p>
           </div>
@@ -67,41 +70,7 @@
 
 
 
-<div class="card" style="border-bottom-color: white; margin-top:15px;">
-  <div class="card-body">
-    <div class="row start-xs">
-    <div class="col-xs-4" >  
-        <div class="select" style='width: 100%;border: 1px solid #ddd;background: #fcfcfc url("flecha-abajo.gif") no-repeat 90% center;height: 44px;'>
-           <select style="margin-top: 4px;">
-           <option value=" 0">Filtrar mes:</option>
-              <option value="1">Enero</option>
-              <option value="2">Febrero</option>
-              <option value="3">Marzo</option>
-              <option value="4">Abril</option>
-              <option value="5">Mayo</option>
-              <option value="6">Junio</option>
-              <option value="7">Julio</option>
-              <option value="8">Agosto</option>
-              <option value="9">Septiembre</option>
-              <option value="10">Octubre</option>
-              <option value="11">Nobiembre</option>
-              <option value="12">Diciembre</option>
-          </select>
-        </div>
-      </div>
-  
 
-      <div class="col-xs-4">
-        <input type="text"   id="myInput" onkeyup="myFunction()" placeholder="Buscar" title="Type in a name">
-       </div> 
-
-      <div class="col-xs-4">
-      <div class="boton" style="margin: 0px;margin-left: 88%;"><a href="#" style="font-size: 18px;">
-      <i class="fas fa-search" style="margin-top: 4px;margin-left: 4px;"></i></a></div>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 <div class="card2" style=" background-color: white; margin-top: -2px;
@@ -110,19 +79,23 @@
 
     <table id="customers">
       <tr class="header" style="background-color: black;color: #fbfbfb;">
-        <th style="width:100%;">Name</th>
-        <th style="width:100%;">Country</th>
-        <th style="width:100%;">Country</th>
-        <th style="width:100%;">State</th>
-        <th style="width:100%;">Edit</th>
+        <th style="width:30%;">Departamento</th>
+        <th style="width: 20%;">Fecha</th>
+        <th style="width: 20%;">Total Horas a Pagar Diurnas</th>
+        <th style="width: 20%;">Total Horas a Pagar Nocturnas</th>
+        <th style="width:30%;">Accion</th>
       </tr>
      
       <tr>
-        <td>Berglunds snabbköp</td>
-        <td>Christina Berglund</td>
-        <td>Sweden</td>
-        <td>Germany</td>
-        <td> <a  id="ai" href="#miModal1" class="circle-right-btn" type="submit" style="font-size: 15px;margin-left: 20px;"><i class="fas fa-edit fa-2x"> </i></a></td>
+        <td>Sistemas </td>
+        <td>12/09/2020</td>
+        <td>15:03:0</td>
+        <td>08:05:10</td>
+        <td> <div class="btn-group">
+    <button type="button" class="btn btn-success">Aprobar</button>
+
+    <button type="button" class="btn btn-warning">Posponer</button>
+  </div></td>
       </tr>
   
 
