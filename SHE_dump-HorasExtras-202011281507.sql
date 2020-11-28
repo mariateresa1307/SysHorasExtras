@@ -5,7 +5,7 @@
 -- Dumped from database version 10.9
 -- Dumped by pg_dump version 10.9
 
--- Started on 2020-11-27 22:31:53 -04
+-- Started on 2020-11-28 15:07:26 -04
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -68,7 +68,8 @@ CREATE TABLE public.control_asistencia (
     entrada timestamp without time zone,
     salida timestamp without time zone,
     funcionario_id integer,
-    tiempo_extra character varying
+    tiempo_extra character varying,
+    tiempo_atraso character varying
 );
 
 
@@ -364,37 +365,6 @@ INSERT INTO public.cargo VALUES (1, 'programador', 1200000, 1);
 -- Data for Name: control_asistencia; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.control_asistencia VALUES (1, '2020-01-01 09:45:00', '2020-01-01 18:35:00', 1, '0:50');
-INSERT INTO public.control_asistencia VALUES (2, '2020-01-02 00:00:00', '2020-01-02 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (3, '2020-01-03 00:00:00', '2020-01-03 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (4, '2020-01-04 00:00:00', '2020-01-04 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (5, '2020-01-05 00:00:00', '2020-01-05 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (6, '2020-01-06 00:00:00', '2020-01-06 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (7, '2020-01-07 00:00:00', '2020-01-07 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (8, '2020-01-08 00:00:00', '2020-01-08 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (9, '2020-01-09 00:00:00', '2020-01-09 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (10, '2020-01-10 00:00:00', '2020-01-10 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (11, '2020-01-11 00:00:00', '2020-01-11 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (12, '2020-01-12 00:00:00', '2020-01-12 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (13, '2020-01-13 00:00:00', '2020-01-13 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (14, '2020-01-14 00:00:00', '2020-01-14 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (15, '2020-01-15 00:00:00', '2020-01-15 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (16, '2020-01-16 00:00:00', '2020-01-16 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (17, '2020-01-17 00:00:00', '2020-01-17 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (18, '2020-01-18 00:00:00', '2020-01-18 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (19, '2020-01-19 00:00:00', '2020-01-19 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (20, '2020-01-20 00:00:00', '2020-01-20 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (21, '2020-01-21 00:00:00', '2020-01-21 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (22, '2020-01-22 00:00:00', '2020-01-22 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (23, '2020-01-23 00:00:00', '2020-01-23 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (24, '2020-01-24 00:00:00', '2020-01-24 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (25, '2020-01-25 00:00:00', '2020-01-25 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (26, '2020-01-26 00:00:00', '2020-01-26 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (27, '2020-01-27 00:00:00', '2020-01-27 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (28, '2020-01-28 00:00:00', '2020-01-28 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (29, '2020-01-29 00:00:00', '2020-01-29 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (30, '2020-01-30 00:00:00', '2020-01-30 16:00:00', 1, '8:0');
-INSERT INTO public.control_asistencia VALUES (31, '2020-01-31 00:00:00', '2020-01-31 16:00:00', 1, '8:0');
 
 
 --
@@ -422,8 +392,8 @@ INSERT INTO public.funcionario VALUES (1, 2333, 'alei', 'df', 'hr', NULL, NULL, 
 --
 
 INSERT INTO public.miscelaneas VALUES (1, '{
-  "hora_oficial_entrada": "08:00",
-  "hora_oficial_salida": "16:00"
+  "hora_oficial_entrada": "14:30",
+  "hora_oficial_salida": "14:00"
 }');
 
 
@@ -485,7 +455,7 @@ SELECT pg_catalog.setval('public.miscelaneas_id_seq', 1, true);
 -- Name: recontrol_asistencia_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.recontrol_asistencia_id_seq', 31, true);
+SELECT pg_catalog.setval('public.recontrol_asistencia_id_seq', 42, true);
 
 
 --
@@ -614,7 +584,7 @@ ALTER TABLE ONLY public.usuario
     ADD CONSTRAINT usuario_fk FOREIGN KEY (usuario_tipo_id) REFERENCES public.usuario_tipo(id);
 
 
--- Completed on 2020-11-27 22:31:54 -04
+-- Completed on 2020-11-28 15:07:27 -04
 
 --
 -- PostgreSQL database dump complete
