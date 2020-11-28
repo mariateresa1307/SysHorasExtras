@@ -118,6 +118,7 @@ button.ghost {
 .si {
   background-color: #0f205c;
   margin-top: 25px;
+  cursor: pointer;
 }
 
 .su {
