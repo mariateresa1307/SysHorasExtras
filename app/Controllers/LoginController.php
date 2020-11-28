@@ -15,6 +15,14 @@ class LoginController{
         
         return $service->render('login/index.phtml', $data);
     }
+
+
+
+    public function registrarMoviemientoDiario($req, $res, $service, $app){
+        
+
+    }
+
 }
 
 ?>
