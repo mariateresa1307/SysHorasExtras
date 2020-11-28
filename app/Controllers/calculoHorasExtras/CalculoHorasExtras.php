@@ -10,82 +10,61 @@ use \DateInterval;
 
 
 class CalculoHorasExtras{
-  public function execute($payload){
+  private $cotizacionDeLaHoraExtra = 0;
+  private $horasLaborales = 0;
 
-    /**
-     * 
-          (
-            [id] =&gt; 1
-            [cedula] =&gt; 2333
-            [primer_nombre] =&gt; alei
-            [segundo_nombre] =&gt; df
-            [primer_apellido] =&gt; hr
-            [segundo_apellido] =&gt; 
-            [direccion] =&gt; 
-            [telefono] =&gt; 
-            [estado] =&gt; t
-            [cargo_id] =&gt; 1
-            [entrada] =&gt; 2020-01-01 00:00:00
-            [salida] =&gt; 2020-01-01 16:00:00
-            [funcionario_id] =&gt; 1
-            [nombre] =&gt; programador
-            [salario_base] =&gt; 4000000
-            [departamento_id] =&gt; 1
-          )
-    */
 
-    
+  public function __cosntruct(){
+    $this->horasLaborales = 8;
+  }
+
+
+  private function calcularCotizacionHoraExtra($salarioBase){
     $diasDelMes = 31; // enero
     $horasLaborales = 8;
-    $salarioBase = $payload[0]["salario_base"];
     $salarioDiario = $salarioBase / $diasDelMes;
-
     $salarioPorHoras = $salarioDiario / $horasLaborales;
-
-    $salarioPorHorasConPorcentaje = $salarioPorHoras * 1.5;
-    
-    
-    // obtener horas extras por dias segun registros
-    foreach($payload as $item) {
-      echo "entrada: ",  $item['entrada'] , " salida: ", $item['salida'] , "\n";
+    $this->cotizacionDeLaHoraExtra = $salarioPorHoras * 1.5;
+  }
 
 
-      $salida  = new DateTime($item['salida']);
-      $entrada = new DateTime($item['entrada']);
+  /**
+   * Determina el tiempo en horas y minutos de un dia trabajado. 
+   * Parametros $entrada = 2020-01-01 09:45:00 y $salida = 2020-01-01 18:35:00 
+   * La salida es del tipo Array( [fecha] => 2020-01-01, [tiempoExtra] => 0:50 )
+   * o un false si el rango de tiempo no cumple con las reglas (no se encontro tiempo extra trabajado).
+   */
+  public function determinarTiempoExtraDeUnDia($entrada, $salida){
+    $salida  = new DateTime($salida);
+    $entrada = new DateTime($entrada);
 
+    if($salida > $entrada){
+      $interval = $salida->diff($entrada);
+      if( $interval->h >= $this->horasLaborales){
+        if($interval->i >= 0){
+          if( $interval->h == $this->horasLaborales && $interval->i == 0 ) return false;
+          
+          // todo ok con las validaciones
+          $remanente = $interval->h - $this->horasLaborales;
+          $tiempoExtra = "{$remanente}:{$interval->i}";
 
-      if($salida > $entrada){
-        $interval = $salida->diff($entrada);
-        if( $interval->h >= $horasLaborales){
+          $temp = [
+            "fecha" => $entrada->format("Y-m-d"),
+            "tiempoExtra" => $tiempoExtra
+          ];
 
-          if($interval->i >= 0){
-
-
-            if( $interval->h == $horasLaborales && $interval->i == 0 ) {
-              break;
-            }
-
-
-            // todo ok con las validaciones
-
-            $remanente = $interval->h - $horasLaborales;
-            echo "{$remanente}:{$interval->i}" , "\n";
-          }
-
-        }
-        else{
-          //continue;
+          return $temp;
         }
       }
-      else{
-        //continue;
-      }
-
-
-      break;
     }
 
+    return false;
   }
+
+
+
+
+
 }
 
 ?>
