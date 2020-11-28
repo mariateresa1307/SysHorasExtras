@@ -45,18 +45,26 @@ $router->respond("{$base_url}/assets/[*]", function($request, $response, $servic
 });
 
 
+// pagina de inicio
+$router->respond('GET', "{$base_url}/", function($request, $response, $service, $app) use($base_url) {
+    return $response->redirect("{$base_url}/login");
+});
+
+
 /**
  * Definicion de rutas
  */
-$router->respond('GET', "{$base_url}/test_____", [$hrasextrasCtrl, 'process']);
 $router->respond('GET', "{$base_url}/user", [$userCtrl, 'indexAction']);
 $router->respond('GET', "{$base_url}/login", [$loginCtrl, 'indexAction']);
+$router->respond('POST',"{$base_url}/login/funcionario", [$loginCtrl, 'registrarMoviemientoDiario']);
 $router->respond('GET', "{$base_url}/funcionario", [$funcionarioCtrl,'indexAction']);
 $router->respond('GET', "{$base_url}/home", [$homeCtrl,'indexAction']);
 $router->respond('GET', "{$base_url}/HrasExtras", [$hrasextrasCtrl,'indexAction']);
 $router->respond('GET', "{$base_url}/configuracion", [$configuracionCtrl, 'indexAction']);
 $router->respond('GET', "{$base_url}/misionVision", [$estructuraCtrl, 'misionAction']);
 $router->respond('GET', "{$base_url}/organigrama", [$organigramaCtrl, 'organigramaAction']);
+
+
 # 404 Not Found
 // Using exact code behaviors via switch/case
 $router->onHttpError(function ($code, $router) {

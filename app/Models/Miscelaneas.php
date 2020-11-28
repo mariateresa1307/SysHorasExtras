@@ -4,7 +4,7 @@ namespace ControlHorasExtras\PHP_MVC\Models;
 use ControlHorasExtras\PHP_MVC\Service;
 
 
-class User {
+class Miscelaneas {
 
     private $em;
 
@@ -13,10 +13,11 @@ class User {
     }   
 
 
-    public function getAll(){
-        $query = "select * from users";
+    public function obtenerUno(){
+        $query = "select * from miscelaneas";
         $result = pg_exec($this->em->vinculo, $query);
         return pg_fetch_all($result);
     }
+
 	
 }

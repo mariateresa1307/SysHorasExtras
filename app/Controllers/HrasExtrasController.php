@@ -23,18 +23,18 @@ class HrasExtrasController{
 
     public function process($req, $res, $service, $app){
 
-        $funcionario = new Funcionario();
+        
         $calculoHorasExtras = new CalculoHorasExtras();
 
 
         $result = $funcionario->obtnerFuncionarioParaCalculo();
 
+
+        
+
+       
       
-
-
-        
-
-        
+        return $temp;
         
     }
 }

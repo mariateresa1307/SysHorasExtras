@@ -24,8 +24,16 @@ class Funcionario {
           order by ca.id asc
         ";
         $result = pg_exec($this->em->vinculo, $query);
-        pg_close($this->em->vinculo);
         return pg_fetch_all($result);
     }
+
+
+
+    public function obtenerUnoPorCedula($id){
+        $query = "select * from funcionario where cedula = '{$id}' ";
+        $result = pg_exec($this->em->vinculo, $query);
+        return pg_fetch_all($result);
+    }
+
 	
 }
