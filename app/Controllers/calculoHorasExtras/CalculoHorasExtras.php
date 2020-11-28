@@ -10,21 +10,22 @@ use \DateInterval;
 
 
 class CalculoHorasExtras{
-  private $cotizacionDeLaHoraExtra = 0;
   private $horasLaborales = 0;
 
 
   public function __cosntruct(){
+    // TODO: sacar este valor de la BD en miscRules
     $this->horasLaborales = 8;
   }
 
 
-  private function calcularCotizacionHoraExtra($salarioBase){
-    $diasDelMes = 31; // enero
-    $horasLaborales = 8;
+  /**
+   * Calcular la cotizacion de las horas extras segun el sueldo base mensual.
+   */
+  public function calcularCotizacionHoraExtra($salarioBase, $diasDelMes){
     $salarioDiario = $salarioBase / $diasDelMes;
-    $salarioPorHoras = $salarioDiario / $horasLaborales;
-    $this->cotizacionDeLaHoraExtra = $salarioPorHoras * 1.5;
+    $salarioPorHoras = $salarioDiario / $this->horasLaborales;
+    return $salarioPorHoras * 1.5;
   }
 
 

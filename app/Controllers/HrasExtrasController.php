@@ -29,7 +29,7 @@ class HrasExtrasController{
 
         $result = $funcionario->obtnerFuncionarioParaCalculo();
 
-        $calculoHorasExtras->execute($result);
+      
 
 
         
