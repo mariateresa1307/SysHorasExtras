@@ -1,0 +1,39 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  text-align: justify;
+  font-size: 20px;
+  /* justify-content: center; */
+}
+
+.card-title {
+  color: rgb(0, 0, 205);
+  text-align: right;
+}
+
+.card-body {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 5rem;
+  background-image: linear-gradient(40deg,
+      #ffffff,
+      #acacac);
+
+  /* linear-gradient(40deg, black, white); */
+
+}
+
+#card-text1 {
+
+  word-wrap: inherit;
+  text-indent: 17%;
+}
+
+#card-text2 {
+
+  word-wrap: inherit;
+  text-indent: 17%;
+}
