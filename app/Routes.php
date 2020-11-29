@@ -51,18 +51,27 @@ $router->respond('GET', "{$base_url}/", function($request, $response, $service, 
 });
 
 
+
+
 /**
  * Definicion de rutas
  */
-$router->respond('GET', "{$base_url}/user", [$userCtrl, 'indexAction']);
 $router->respond('GET', "{$base_url}/login", [$loginCtrl, 'indexAction']);
+$router->respond('POST', "{$base_url}/login", [$loginCtrl, 'validarLogin']);
 $router->respond('POST',"{$base_url}/login/funcionario", [$loginCtrl, 'registrarMoviemientoDiario']);
+
+$router->respond('GET', "{$base_url}/user", [$userCtrl, 'indexAction']);
+$router->respond('POST', "{$base_url}/user/guardar", [$userCtrl, 'guardar']);
+$router->respond('POST', "{$base_url}/user/obtnerUsuarioPorId", [$userCtrl, 'obtnerUsuarioPorId']);
+
 $router->respond('GET', "{$base_url}/funcionario", [$funcionarioCtrl,'indexAction']);
 $router->respond('GET', "{$base_url}/home", [$homeCtrl,'indexAction']);
 $router->respond('GET', "{$base_url}/HrasExtras", [$hrasextrasCtrl,'indexAction']);
 $router->respond('GET', "{$base_url}/configuracion", [$configuracionCtrl, 'indexAction']);
 $router->respond('GET', "{$base_url}/misionVision", [$estructuraCtrl, 'misionAction']);
 $router->respond('GET', "{$base_url}/organigrama", [$organigramaCtrl, 'organigramaAction']);
+
+
 
 
 # 404 Not Found

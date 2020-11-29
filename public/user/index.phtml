@@ -1,11 +1,12 @@
 <?php include (getcwd()."/layout/TopComponent.phtml")?>
 <?php include (getcwd()."/layout/HeaderComponent.phtml")?>
 <?php include (getcwd()."/layout/MenuComponent.phtml")?>
-<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/main.css">
 <link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/modal.css">
 <link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/flexboxgrid.min.css">
 <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/user.css">
 <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/fontawesome/css/all.css">
+<script src='<?=$this->base_url ?>/assets/js/jquery-3.5.1.min.js'></script>
+<script src='<?=$this->base_url ?>/assets/js/sweetalert2@10.js'></script>
 
 
 <div class="row">
@@ -16,99 +17,99 @@
 
 
 <div class="row" style="margin-bottom: 20px;">
-  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-    <div class="card" Id="Card-User1" style="">
-
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+    <div class="card" Id="Card-User1"
+      style="background-image: linear-gradient(to right, #005894, #0076ab, #0093b4, #00afaf, #00c89f);">
       <div class="card-body">
-
         <div class="row start-xs">
           <div class="col-xs-3">
-            <i class="fas fa-id-badge" style="font-size: 167px;color: white;"></i>
+            <i class="fas fa-id-badge" style="font-size: 100px;color: white;"></i>
           </div>
-          <div class="col-xs-3">
-            <h1 class="card-title" id="CardTitle" style="color:white">10 </h1>
+          <div class="col-xs-9">
+            <h1 class="card-title" id="CardTitle1" style="color:white">Usuarios Activos </h1>
+            <h1 class="card-title" id="CardTitle" style="color:white; margin: 10px">
+              <?= $this->usuarios_activos[0]["count"] ?></h1>
           </div>
-
-          <div class="col-xs-6">
-            <h1 class="card-title" id="CardTitle1" style="color:white">Usuarios Admitidos </h1>
-            <p class="card-text" id="CardText1">Aqui funcioanrios que pueden hacer uso del sistema</p>
-          </div>
-
         </div>
-
-        <div style="text-align: end;"> <a id="ai" href="#" class="btn btn-primary">Go somewhere</a></div>
       </div>
     </div>
   </div>
 
-
-  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-    <div class="card" Id="Card-User2" style="">
-
-      <div class="card-body">
-
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+    <div class="card" Id="Card-User2"
+      style="    background-image: linear-gradient( to right, rgb(158 137 208), rgb(43 249 192) );    margin-bottom: 10px;">
+      <div class=" card-body">
         <div class="row start-xs">
           <div class="col-xs-3">
-            <i class="fas fa-id-badge fa-10x" style="color: white;"></i>
+            <i class="fas fa-exclamation-triangle" style="font-size: 100px;color: white;"> </i>
           </div>
-          <div class="col-xs-3">
-
-            <h1 class="card-title" id="CardTitle" style="color:white">10 </h1>
+          <div class="col-xs-9">
+            <h1 class="card-title" id="CardTitle1">Usuarios inactivos </h1>
+            <h1 class="card-title" id="CardTitle" style="color:white; margin: 10px">
+              <?= $this->usuarios_inactivos[0]["count"] ?></h1>
+            </h1>
           </div>
-
-          <div class="col-xs-6">
-            <h1 class="card-title" id="CardTitle1">Usuarios Bloqueados </h1>
-            <p class="card-text" id="CardText1">Aqui funcionados con restriccion de acceso</p>
-          </div>
-
         </div>
-
-
-        <div style="text-align: end;"> <a id="ai" href="#" class="btn btn-primary">Go somewhere</a></div>
       </div>
     </div>
   </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <div class="card" Id="Card-User2" style="background-color: #DE9C9C">
+      <div class=" card-body">
+        <div class="row start-xs">
+          <div class="col-xs-3">
+            <i class="fas fa-exclamation-circle" style="font-size: 100px;color: white;"> </i>
+          </div>
+          <div class="col-xs-9">
+            <h1 class="card-title" id="CardTitle1">Usuarios bloqueados </h1>
+            <h1 class="card-title" id="CardTitle" style="color:white; margin: 10px">
+              <?= $this->usuarios_bloqueados[0]["count"] ?></h1>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 </div>
 
 
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
     <div class="card" style="padding: 2%;">
-      <div class="card-body">
 
-
-        <div class="row start-xs">
-
-          <div class="col-xs-6">
-            <input type="text" id="InputUser" onkeyup=" UserFunction()" placeholder="Buscar Funcionarios"
-              title="Type in a name">
-          </div>
-
-
-        </div>
-
-      </div>
-
+      <h2>Lista de usuarios </h2>
       <table id="Table-User">
         <tr class="header" style="background-color: black;color: #fbfbfb;">
-          <th style="width:20%;">Name</th>
-          <th style="width:20%;">Country</th>
-          <th style="width:20%;">Country</th>
-          <th style="width:20%;">State</th>
+          <th style="width:20%;">Nombre</th>
+          <th style="width:20%;">Apellido</th>
+          <th style="width:20%;">Cedula</th>
+          <th style="width:20%;">Tipo de usuario</th>
+          <th style="width:20%;">Departamento</th>
           <th style="width:10%;">Edit</th>
         </tr>
 
+
+        <?php foreach($this->usuarios as $valor) {?>
         <tr>
-          <td>Alfreds Futterkiste</td>
-          <td>Germany</td>
-          <td>Germany</td>
-          <td>Alfreds Futterkiste</td>
+          <td><?= $valor["primer_nombre"]?></td>
+          <td><?= $valor["primer_apellido"]?></td>
+          <td><?= $valor["cedula"]?></td>
+          <td><?= $valor["tipo_usuario"]?></td>
+          <td><?= $valor["nombre_departamento"]?></td>
           <td>
-            <button class="circle-right-btn" type="submit"><i class="fas fa-edit"> </i></button>
+            <button class="circle-right-btn" type="button" onClick="editarUsuarioRequest(<?= $valor["id"] ?>)"><i
+                class="fas fa-edit">
+              </i></button>
           </td>
         </tr>
+        <?php } ?>
+
+
+
+
       </table>
 
       <div class="row center-xs">
@@ -125,79 +126,201 @@
   <div id="miModal" class="modal">
 
     <div class="modal-contenido">
-      <div class="row" style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;
-margin-right: 0px !important;height:70px">
+
+      <div class="row"
+        style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important; margin-right: 0px !important;height:70px">
         <div class="col-xs-6" style="color: white;">
           <h2>Agregar Usuario</h2>
         </div>
         <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
-
-          <a href="#" style="text-decoration: none;color: white;">X</a>
+          <button type="button" onclick="cerrarModal()" style="
+          height: 30px;
+          width: 30px;
+          border-radius: 50px;
+          border: none;
+          background: #0000ff00;
+          color: white;
+          cursor: pointer;">X</button>
         </div>
 
       </div>
 
 
-      <div id="formUser">
-        <form action="#" method="POST">
+      <div class="row" style="margin-top: 40px" id="form">
+        <div>
+          <input type="hidden" name="id" />
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <input type="text" placeholder="Nombres" name="nombres" required>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <input type="text" placeholder="Apellido" name="apellidos" required>
+        </div>
 
-          <input type="text" id="InputUser" placeholder="Nombres" required>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <input type="text" placeholder="Cedula" name="cedula" required>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 
-          <input type="text" id="InputUser" placeholder="Apellido" required>
+          <select name="departamento">
+            <?php  foreach ($this->departamento as $valor) { ?>
+            <option selected disabled value="0">Departamento</option>
+            <option value="<?= $valor["id"] ?>"> <?= $valor["nombre"] ?></option>
+            <?php } ?>
+          </select>
 
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <input type="password" placeholder="Contraseña" id="clave" name="clave" required>
+          <button type="button" class="btn-mostrar-clave" onClick="mostrarClave()">
+            <i class="far fa-eye"></i>
+          </button>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <select name="tipo_usuario">
+            <?php  foreach ($this->usuarioTipo as $valor) { ?>
+            <option selected disabled value="0">Tipo de Usuario</option>
+            <option value="<?= $valor["id"] ?>"> <?= $valor["nombre"] ?></option>
+            <?php } ?>
+          </select>
+        </div>
 
-          <input type="text" id="InputUser" placeholder="Cedula" required>
-
-
-          <input type="text" id="InputUser" placeholder="Cargo" required>
-
-
-          <input type="text" id="InputUser" placeholder="Departamento" required>
-
-          <input type="text" id="InputUser" placeholder="Usuario" required>
-
-
-          <input type="password" id="InputUser" placeholder="Contraseña" required>
-
-
-          <input type="password" id="InputUser" placeholder="Confirmar Contraseña" required>
-
-
-          <input type="text" id="InputUser" placeholder="Tipo de Usuario" required>
-
-
-          <div style="text-align: center; margin-top: 25px;"> <a id="ai" href="#" class="btn btn-primary">Agregar</a>
-
-        </form>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <select name="bloqueado">
+            <option selected disabled value="0">bloqueado</option>
+            <option value="true">si</option>
+            <option value="false">no</option>
+          </select>
+        </div>
 
       </div>
+
+
+
+
+
+
+      <div style="text-align: center; margin-top: 25px;">
+        <button class="btn btn-primary" style="width:  130px" onclick="agregar()"> Guardar </button>
+      </div>
+
 
     </div>
   </div>
 
-</div>
-</div>
 
 
-<script>
-function UserFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("InputUser");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("TableUser");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
+  <script>
+  function UserFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("InputUser");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("TableUser");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
       }
     }
   }
-}
-</script>
 
-<?php include (getcwd()."/layout/BottomComponent.phtml")?>
+
+
+  function mostrarClave() {
+    var input = document.getElementById("clave")
+
+    if (input.type === "text") {
+      input.type = "password";
+    } else {
+      input.type = "text";
+    }
+
+  }
+
+
+  function cerrarModal() {
+    window.location.href = "#";
+    location.reload();
+  }
+
+
+  function agregar() {
+    var dataToSend = {};
+    var form = document.getElementById("form");
+
+    var children = form.children;
+    for (var i = 0; i < children.length; i++) {
+      var temp = children[i];
+      var elm = temp.children[0];
+      dataToSend[elm.name] = elm.value
+    }
+
+    $.ajax({
+        method: "POST",
+        url: "<?=$this->base_url ?>/user/guardar",
+        data: dataToSend
+      })
+      .done(function(msg) {
+
+        Swal.fire(
+          'Exito!',
+          'Registro guardado',
+          'success'
+        );
+
+        window.location.href = "#";
+        location.reload();
+
+
+      })
+      .fail(function(response) {
+        alert("error interno");
+      });
+  }
+
+
+  function editarUsuarioRequest(id) {
+
+
+    $.ajax({
+        method: "POST",
+        url: "<?=$this->base_url ?>/user/obtnerUsuarioPorId",
+        data: {
+          id
+        }
+      })
+      .done(function(msg) {
+
+        $("[name='id']").val(msg.id);
+        $("[name='nombres']").val(msg.primer_nombre);
+        $("[name='apellidos']").val(msg.primer_apellido);
+        $("[name='cedula']").val(msg.cedula);
+        $(`[name="departamento"] option[value='${msg.departamento_id}']`).prop('selected', true);
+        $(`[name="tipo_usuario"] option[value='${msg.usuario_tipo_id}']`).prop('selected', true);
+
+        var estado = "true";
+        if (msg.bloqueado === "f") estado = "false";
+
+        $(`[name="bloqueado"] option[value='${estado}']`).prop('selected', true);
+
+
+        console.log(msg);
+
+        window.location.href = "#miModal";
+
+      })
+      .fail(function(response) {
+        alert("error interno");
+      });
+
+
+  }
+  </script>
+
+  <?php include (getcwd()."/layout/BottomComponent.phtml")?>

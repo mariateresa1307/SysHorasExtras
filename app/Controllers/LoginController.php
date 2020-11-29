@@ -4,7 +4,8 @@ namespace ControlHorasExtras\PHP_MVC\Controllers;
 
 use \ControlHorasExtras\PHP_MVC\Controllers\calculoHorasExtras\CalculoHorasExtras;
 
-use ControlHorasExtras\PHP_MVC\Models\Login;
+//use ControlHorasExtras\PHP_MVC\Models\Login;
+use ControlHorasExtras\PHP_MVC\Models\User;
 use ControlHorasExtras\PHP_MVC\Models\Funcionario;
 use ControlHorasExtras\PHP_MVC\Models\ControlAsistencia;
 
@@ -70,6 +71,22 @@ class LoginController{
         return $res->code(200);
     }
 
+
+    public function validarLogin($req, $res, $service, $app){
+        $data = $req->params();
+
+        $user = new User();
+        $result = $user->validarCredenciales($data["clave"], $data["cedula"]);
+
+        if(empty($result)) return $res->code(401);
+
+
+        
+        $_SESSION["id"]= $result[0]["id"];
+
+        return $res->code(200); 
+
+    }
 }
 
 ?>

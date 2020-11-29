@@ -18,10 +18,10 @@
 
         <h1>Ingresar al Sistema</h1>
         <span>Debe Ingresar los Datos registrados</span>
-        <input type="text" placeholder="Usuario" />
-        <input type="password" placeholder="Password" />
+        <input type="text" placeholder="Cedula" id="cedula" />
+        <input type="password" placeholder="Clave" id="clave" />
 
-        <button class="su" onClick="<?= $this->base_url ?>/home">Ingresar</button>
+        <button class="su" onClick="login()">Ingresar</button>
 
       </form>
     </div>
@@ -88,11 +88,7 @@
         asistenciaInput.value = "";
       })
       .fail(function(response) {
-
-
         if (response.status === 404) {
-
-
           Swal.fire(
             'No encontrado',
             'Funcionario no encontrado',
@@ -113,5 +109,41 @@
       });
 
 
+  }
+
+
+
+  function login() {
+    var cedula = document.getElementById("cedula");
+    var clave = document.getElementById("clave");
+
+
+    $.ajax({
+        method: "POST",
+        url: "<?=$this->base_url ?>/login",
+        data: {
+          cedula: cedula.value,
+          clave: clave.value
+        }
+      })
+      .done(function(msg) {
+
+        window.location.href = "<?=$this->base_url ?>/home";
+
+
+      })
+      .fail(function(response) {
+        if (response.status === 401) {
+          Swal.fire(
+            'No encontrado',
+            'Funcionario no encontrado',
+            'error'
+          );
+
+        } else {
+          alert("error interno");
+        }
+
+      });
   }
   </script>
