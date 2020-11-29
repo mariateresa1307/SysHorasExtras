@@ -11,6 +11,8 @@
 .card-title {
   color: rgb(0, 0, 205);
   text-align: right;
+  border-right: 1px solid black;
+  padding: 20px;
 }
 
 .card-body {
