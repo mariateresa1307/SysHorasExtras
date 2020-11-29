@@ -5,7 +5,7 @@
 -- Dumped from database version 10.9
 -- Dumped by pg_dump version 10.9
 
--- Started on 2020-11-28 15:07:26 -04
+-- Started on 2020-11-28 22:56:05 -04
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -50,7 +50,7 @@ CREATE SEQUENCE public.cargo_id_seq
 
 
 --
--- TOC entry 2357 (class 0 OID 0)
+-- TOC entry 2358 (class 0 OID 0)
 -- Dependencies: 214
 -- Name: cargo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -99,7 +99,7 @@ CREATE SEQUENCE public.departamento_id_seq
 
 
 --
--- TOC entry 2358 (class 0 OID 0)
+-- TOC entry 2359 (class 0 OID 0)
 -- Dependencies: 212
 -- Name: departamento_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -141,7 +141,7 @@ CREATE SEQUENCE public.funcionario_id_seq
 
 
 --
--- TOC entry 2359 (class 0 OID 0)
+-- TOC entry 2360 (class 0 OID 0)
 -- Dependencies: 210
 -- Name: funcionario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -175,7 +175,7 @@ CREATE SEQUENCE public.miscelaneas_id_seq
 
 
 --
--- TOC entry 2360 (class 0 OID 0)
+-- TOC entry 2361 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: miscelaneas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -198,7 +198,7 @@ CREATE SEQUENCE public.recontrol_asistencia_id_seq
 
 
 --
--- TOC entry 2361 (class 0 OID 0)
+-- TOC entry 2362 (class 0 OID 0)
 -- Dependencies: 216
 -- Name: recontrol_asistencia_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -227,13 +227,13 @@ CREATE SEQUENCE public.users_id_seq
 CREATE TABLE public.usuario (
     id integer NOT NULL,
     primer_nombre character varying,
-    segundo_nombre character varying,
     primer_apellido character varying,
-    segundo_apellido character varying,
     cedula numeric,
     estado boolean,
     clave character varying NOT NULL,
-    usuario_tipo_id integer
+    usuario_tipo_id integer,
+    departamento_id integer,
+    bloqueado boolean
 );
 
 
@@ -252,7 +252,7 @@ CREATE SEQUENCE public.usuario_id_seq
 
 
 --
--- TOC entry 2362 (class 0 OID 0)
+-- TOC entry 2363 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: usuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -286,7 +286,7 @@ CREATE SEQUENCE public.usuario_tipo_id_seq
 
 
 --
--- TOC entry 2363 (class 0 OID 0)
+-- TOC entry 2364 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: usuario_tipo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -351,7 +351,7 @@ ALTER TABLE ONLY public.usuario_tipo ALTER COLUMN id SET DEFAULT nextval('public
 
 
 --
--- TOC entry 2342 (class 0 OID 32939)
+-- TOC entry 2343 (class 0 OID 32939)
 -- Dependencies: 215
 -- Data for Name: cargo; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -360,15 +360,16 @@ INSERT INTO public.cargo VALUES (1, 'programador', 1200000, 1);
 
 
 --
--- TOC entry 2344 (class 0 OID 32955)
+-- TOC entry 2345 (class 0 OID 32955)
 -- Dependencies: 217
 -- Data for Name: control_asistencia; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.control_asistencia VALUES (43, '2020-11-28 15:11:20', '2020-11-28 15:12:18', 1, '1:12', '0:41');
 
 
 --
--- TOC entry 2340 (class 0 OID 32914)
+-- TOC entry 2341 (class 0 OID 32914)
 -- Dependencies: 213
 -- Data for Name: departamento; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -377,7 +378,7 @@ INSERT INTO public.departamento VALUES (1, 'informatica');
 
 
 --
--- TOC entry 2338 (class 0 OID 32904)
+-- TOC entry 2339 (class 0 OID 32904)
 -- Dependencies: 211
 -- Data for Name: funcionario; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -386,7 +387,7 @@ INSERT INTO public.funcionario VALUES (1, 2333, 'alei', 'df', 'hr', NULL, NULL, 
 
 
 --
--- TOC entry 2346 (class 0 OID 32968)
+-- TOC entry 2347 (class 0 OID 32968)
 -- Dependencies: 219
 -- Data for Name: miscelaneas; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -398,23 +399,29 @@ INSERT INTO public.miscelaneas VALUES (1, '{
 
 
 --
--- TOC entry 2348 (class 0 OID 32979)
+-- TOC entry 2349 (class 0 OID 32979)
 -- Dependencies: 221
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.usuario VALUES (2, '1s', '2w', 3, false, '', 1, 1, true);
+INSERT INTO public.usuario VALUES (3, '1ss', '2', 358, false, '', 1, 1, false);
+INSERT INTO public.usuario VALUES (1, '1sss', '2', 3, false, '', 1, 1, true);
+INSERT INTO public.usuario VALUES (5, 'sw', 'ws', 12, false, '2', 1, 1, NULL);
+INSERT INTO public.usuario VALUES (6, 'ded', 'dede MOD', 323232323, false, '', 1, 1, true);
 
 
 --
--- TOC entry 2350 (class 0 OID 32990)
+-- TOC entry 2351 (class 0 OID 32990)
 -- Dependencies: 223
 -- Data for Name: usuario_tipo; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.usuario_tipo VALUES (1, 'admin');
 
 
 --
--- TOC entry 2364 (class 0 OID 0)
+-- TOC entry 2365 (class 0 OID 0)
 -- Dependencies: 214
 -- Name: cargo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -423,7 +430,7 @@ SELECT pg_catalog.setval('public.cargo_id_seq', 1, true);
 
 
 --
--- TOC entry 2365 (class 0 OID 0)
+-- TOC entry 2366 (class 0 OID 0)
 -- Dependencies: 212
 -- Name: departamento_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -432,7 +439,7 @@ SELECT pg_catalog.setval('public.departamento_id_seq', 1, true);
 
 
 --
--- TOC entry 2366 (class 0 OID 0)
+-- TOC entry 2367 (class 0 OID 0)
 -- Dependencies: 210
 -- Name: funcionario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -441,7 +448,7 @@ SELECT pg_catalog.setval('public.funcionario_id_seq', 1, true);
 
 
 --
--- TOC entry 2367 (class 0 OID 0)
+-- TOC entry 2368 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: miscelaneas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -450,16 +457,16 @@ SELECT pg_catalog.setval('public.miscelaneas_id_seq', 1, true);
 
 
 --
--- TOC entry 2368 (class 0 OID 0)
+-- TOC entry 2369 (class 0 OID 0)
 -- Dependencies: 216
 -- Name: recontrol_asistencia_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.recontrol_asistencia_id_seq', 42, true);
+SELECT pg_catalog.setval('public.recontrol_asistencia_id_seq', 43, true);
 
 
 --
--- TOC entry 2369 (class 0 OID 0)
+-- TOC entry 2370 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -468,21 +475,21 @@ SELECT pg_catalog.setval('public.users_id_seq', 1, false);
 
 
 --
--- TOC entry 2370 (class 0 OID 0)
+-- TOC entry 2371 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: usuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.usuario_id_seq', 1, false);
+SELECT pg_catalog.setval('public.usuario_id_seq', 6, true);
 
 
 --
--- TOC entry 2371 (class 0 OID 0)
+-- TOC entry 2372 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: usuario_tipo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.usuario_tipo_id_seq', 1, false);
+SELECT pg_catalog.setval('public.usuario_tipo_id_seq', 1, true);
 
 
 --
@@ -584,7 +591,16 @@ ALTER TABLE ONLY public.usuario
     ADD CONSTRAINT usuario_fk FOREIGN KEY (usuario_tipo_id) REFERENCES public.usuario_tipo(id);
 
 
--- Completed on 2020-11-28 15:07:27 -04
+--
+-- TOC entry 2215 (class 2606 OID 33012)
+-- Name: usuario usuario_fk_dp; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.usuario
+    ADD CONSTRAINT usuario_fk_dp FOREIGN KEY (departamento_id) REFERENCES public.departamento(id);
+
+
+-- Completed on 2020-11-28 22:56:06 -04
 
 --
 -- PostgreSQL database dump complete
