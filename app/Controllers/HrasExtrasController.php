@@ -2,6 +2,8 @@
 
 namespace ControlHorasExtras\PHP_MVC\Controllers;
 
+use \ControlHorasExtras\PHP_MVC\Controllers\calculoHorasExtras\CalculoHorasExtras;
+use ControlHorasExtras\PHP_MVC\Models\Funcionario;
 
 class HrasExtrasController{
 

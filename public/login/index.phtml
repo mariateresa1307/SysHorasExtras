@@ -1,13 +1,12 @@
 <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/login.css">
-<link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/vendor/flexboxgrid/dist/flexboxgrid.min.css">
+<link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/flexboxgrid.min.css">
 
 
 <script src='<?=$this->base_url ?>/assets/js/a076d05399.js'></script>
-
-
+<script src='<?=$this->base_url ?>/assets/js/jquery-3.5.1.min.js'></script>
+<script src='<?=$this->base_url ?>/assets/js/sweetalert2@10.js'></script>
 
 <body>
-
 
   <div class="container" id="container">
     <div class="form-container sign-up-container">
@@ -19,27 +18,27 @@
 
         <h1>Ingresar al Sistema</h1>
         <span>Debe Ingresar los Datos registrados</span>
-        <input type="text" placeholder="Usuario" />
-        <input type="password" placeholder="Password" />
+        <input type="text" placeholder="Cedula" id="cedula" />
+        <input type="password" placeholder="Clave" id="clave" />
 
-        <button class="su" onClick="<?= $this->base_url ?>/home">Ingresar</button>
+        <button class="su" onClick="login()">Ingresar</button>
 
       </form>
     </div>
 
     <div class="form-container sign-in-container">
-      <form action="#">
+      <form onsubmit="return false">
 
-        <div style="    margin-top: -114px">
+        <div style=" margin-top: -114px">
           <img src="<?=$this->base_url?>/assets/img/logo_saren.png" style="width: 50%" />
         </div>
 
         <h1>Registrar Asistencia</h1>
 
-        <span>Debe Registrar el Inicio de su jornada Laboral</span>
-        <input type="text" placeholder="Cedula" />
+        <span>Debe Registrar el jornada laboral</span>
+        <input type="text" placeholder="Cedula" class="customInput" id="asistencia-input" />
 
-        <button class="si" href="<?= $this->base_url ?>/home">Registrar</button>
+        <button class="si" type="button" onClick="registrarMovientoAsistencia()">Registrar</button>
       </form>
     </div>
 
@@ -65,4 +64,86 @@
 
   signUpButton.addEventListener('click', () => container.classList.add('right-panel-active'));
   signInButton.addEventListener('click', () => container.classList.remove('right-panel-active'));
+
+
+
+  function registrarMovientoAsistencia() {
+    var asistenciaInput = document.getElementById("asistencia-input");
+
+    $.ajax({
+        method: "POST",
+        url: "<?=$this->base_url ?>/login/funcionario",
+        data: {
+          cedula: asistenciaInput.value
+        }
+      })
+      .done(function(msg) {
+
+        Swal.fire(
+          'Exito!',
+          'Asistencia guardada',
+          'success'
+        );
+
+        asistenciaInput.value = "";
+      })
+      .fail(function(response) {
+        if (response.status === 404) {
+          Swal.fire(
+            'No encontrado',
+            'Funcionario no encontrado',
+            'error'
+          );
+
+        } else if (response.status === 409) {
+          Swal.fire(
+            'Atencion!',
+            'Ya posee un registro de salida pra el dia de hoy',
+            'info'
+          );
+
+        } else {
+          alert("error interno");
+        }
+
+      });
+
+
+  }
+
+
+
+  function login() {
+    var cedula = document.getElementById("cedula");
+    var clave = document.getElementById("clave");
+
+
+    $.ajax({
+        method: "POST",
+        url: "<?=$this->base_url ?>/login",
+        data: {
+          cedula: cedula.value,
+          clave: clave.value
+        }
+      })
+      .done(function(msg) {
+
+        window.location.href = "<?=$this->base_url ?>/home";
+
+
+      })
+      .fail(function(response) {
+        if (response.status === 401) {
+          Swal.fire(
+            'No encontrado',
+            'Funcionario no encontrado',
+            'error'
+          );
+
+        } else {
+          alert("error interno");
+        }
+
+      });
+  }
   </script>
