@@ -6,257 +6,129 @@
 <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/funcionario.css">
 <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/fontawesome/css/all.css">
 <link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/flexboxgrid.min.css">
-<div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-    <h1>GESTIONAR FUNCIONARIO </h1>
-  </div>
-</div>
+<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/tableBoss.css">
 
 
+<script src='<?=$this->base_url ?>/assets/js/dateTable.js'></script>
+<script src='<?=$this->base_url ?>/assets/js/dateTableBoss.js'></script>
 
-<div class="row" style="margin-bottom: 20px;">
-  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-    <div class="card" Id="mycard1" style="">
-
-      <div class="card-body">
-
-        <div class="row start-xs">
-          <div class="col-xs-2">
-            <i class="fas fa-id-badge" style="font-size: 167px;color: white;"></i>
-          </div>
-          <div class="col-xs-2">
-            <h1 class="card-title" id="CardTitle" style="color:white">100 </h1>
-          </div>
-
-          <div class="col-xs-8">
-            <h1 class="card-title" id="CardTitle1" style="color:white">Funcionarios Activos </h1>
-            <p class="card-text" id="CardText1">Some quick example text to build on the card title and make up the bulk
-              of the card's
-              content.</p>
-          </div>
-
-        </div>
-
-        <div style="text-align: end;"> <a href="#" class="btn btn-primary">Go somewhere</a></div>
-      </div>
-    </div>
-  </div>
+<script src='<?=$this->base_url ?>/assets/js/popper_core@2.js'></script>
+<script src='<?=$this->base_url ?>/assets/js/tippy@6.js'></script>
 
 
-  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-    <div class="card" Id="mycard2" style="">
-
-      <div class="card-body">
-
-        <div class="row start-xs">
-          <div class="col-xs-2">
-            <i class="fas fa-id-badge fa-10x" style="color: white;"></i>
-          </div>
-          <div class="col-xs-2">
-
-            <h1 class="card-title" id="CardTitle" style="color:white">100 </h1>
-          </div>
-
-          <div class="col-xs-8">
-            <h1 class="card-title" id="CardTitle1">Funcionarios Inactivos </h1>
-            <p class="card-text" id="CardText1">Some quick example text to build on the card title and make up the bulk
-              of the card's
-              content.</p>
-          </div>
-
-        </div>
+<h1 class="h1">Gestionar Funcionario</h1>
 
 
-        <div style="text-align: end;"> <a href="#" class="btn btn-primary">Go somewhere</a></div>
-      </div>
-    </div>
-  </div>
+<div class="card2" style=" background-color: white; margin-top: -2px;
+    border-top-color: white;">
+  <div class="card-body">
 
-</div>
-
-
-<div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-    <div class="card" style="padding: 2%;">
-      <div class="card-body">
-
-
-        <div class="row start-xs">
-          <div class="col-xs-4">
-          <div class="select" style='width: 100%;border: 1px solid #ddd;background: #fcfcfc url("flecha-abajo.gif") no-repeat 90% center;height: 49px;'>
-           <select style="margin-top: 4px;">
-           <option value="">Buscar por</option>
-           <option value="opcion-1">Cedula</option>
-           <option value="opcion-2">Año</option>
-           <option value="opcion-x">Mes</option>
-          </select>
-        </div>
-          </div>
-
-          <div class="col-xs-4">
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."
-              title="Type in a name">
-          </div>
-
-          <div class="col-xs-4">
-      <div class="boton" style="margin: 0px;margin-left: 88%;"><a href="#" style="font-size: 18px;">
-      <i class="fas fa-search" style="margin-top: 4px;margin-left: 4px;"></i></a>
-      </div>
-    </div>
-
-        </div>
-
-      </div>
+    <table id="example" class="stripe" style="width:100%" style="margin-top: 40px;">
+      <thead>
+        <tr>
+          <th>Departamento</th>
+          <th>Fecha</th>
+          <th>Total Horas a Pagar Diurnas</th>
+          <th>Total Horas a Pagar Nocturnas</th>
+          <th>Salary</th>
+          <th>Accion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tiger Nixon</td>
+          <td>System Architect</td>
+          <td>Edinburgh</td>
+          <td>61</td>
+          <td>$320,800</td>
+          <td style=" text-align: center;"><a id="ai" href="#miModal" class="circle-right-btn" type="button"
+              style="font-size: 15px;margin-left: 20px;color: coral;">
+              <i class="fas fa-user-edit" style="font-size: 32px;"></i></a>
+          </td>
+        </tr>
 
 
+        <tr>
+          <td>Finn Camacho</td>
+          <td>Support Engineer</td>
+          <td>San Francisco</td>
+          <td>47</td>
+          <td>$87,500</td>
+          <td style=" text-align: center;"><a id="ai" href="#miModal" class="circle-right-btn" type="button"
+              style="font-size: 15px;margin-left: 20px;color: coral;">
+              <i class="fas fa-user-edit" style="font-size: 32px;"></i></a>
+          </td>
+        </tr>
 
-
-       <table id="customers">
-      <tr class="header" style="background-color: black;color: #fbfbfb;">
-        <th style="width:50%;">Departamento</th>
-        <th style="width:50%;">Cargo</th>
-        <th style="width:80%;">Sueldo Establecido</th>
-        <th style="width:50%;">Estado</th>
-        <th style="width:50%;">Edit</th>
-      </tr>
-     
-      <tr>
-        <td>Tecnologia</td>
-        <td>Programador</td>
-        <td>480.000</td>
-        <td>Activo</td>
-        <td> <a  id="ai" href="#miModal" class="circle-right-btn" type="button" style="font-size: 15px;margin-left: 20px;"><i class="fas fa-edit fa-2x" style="color: green;"> </i></a></td>
-      </tr>
-  
+      </tbody>
 
     </table>
 
-      <div class="row center-xs">
-        <div class="col-xs-2">
-          <div style="text-align: center; margin-top: 25px;"> <a id="ai" href="#miModal"
-              class="btn btn-primary">Agregar</a>
-          </div>
-        </div>
-      </div>
-    </div>
+
 
   </div>
+  <div class="col-xs-12">
+    <div style="text-align:center">
+      <a href="#miModal" id="detalle" class="btn btn-primary"> Agregar</a>
+    </div>
+  </div>
+
+</div>
 
 
-  <div id="miModal" class="modal">
+</div>
+
+
+<!--Inicio Modal Funcionario-->
+<div id="miModal" class="modal">
 
   <div class="modal-contenido">
 
-    <div class="row" style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;margin-right: 0px !important;height:70px">
+    <div class="row"
+      style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;margin-right: 0px !important;height:70px">
       <div class="col-xs-6" style="color: white;">
-        <h2>Agregar Funcionario</h2>
+        <h2>Gestionar Funcionario</h2>
       </div>
 
+
       <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
+
         <a href="#" style="text-decoration: none;color: white;">X</a>
       </div>
     </div>
 
     <div class="row start-xs" style="margin-top: 40px;padding-left: 95px;padding-right: 95px;">
 
-      <div class="col-xs-4">
-        <input type="text" style="width: 100%;"  id="myInput" onkeyup="myFunction()" placeholder="Cedula Funcionario" title="Type in a name" >
-       </div> 
 
-       <div class="col-xs-4">
-        <input type="text" style="width: 100%;"  id="myInput" onkeyup="myFunction()" placeholder="Primer Nombre Funcionario" title="Type in a name">
-       </div> 
 
-       <div class="col-xs-4">
-        <input type="text" style="width: 100%;"  id="myInput" onkeyup="myFunction()" placeholder="Segundo Nombre Funcionario" title="Type in a name">
-       </div> 
 
-       <div class="col-xs-4" style="margin-top: 25px;">
-        <input type="text" style="width: 100%;"  id="myInput" onkeyup="myFunction()" placeholder="Primer Apellido Funcionario " title="Type in a name">
-       </div> 
-       <div class="col-xs-4" style="margin-top: 25px;">
-        <input type="text" style="width: 100%;"  id="myInput" onkeyup="myFunction()" placeholder="Segundo Apellido Funcionario " title="Type in a name">
-       </div> 
-       <div class="col-xs-4" style="margin-top: 25px;">
-        <input type="text" style="width: 100%;"  id="myInput" onkeyup="myFunction()" placeholder="Telefono Funcionario " title="Type in a name">
-       </div> 
-       <div class="col-xs-12" style="margin-top: 25px;">
-        <input type="text" style="width: 100%;"  id="myInput" onkeyup="myFunction()" placeholder="Direccion" title="Type in a name">
-       </div>  
-         
-      
-      <div class="col-xs-4" style="margin-top: 25px;">  
-        <div class="select" style='width: 100%;border: 1px solid #ddd;background: #fcfcfc url("flecha-abajo.gif") no-repeat 90% center;height: 44px;'>
-           <select style="margin-top: 4px;">
-           <option value="">Departamento</option>
-           <option value="opcion-1">Opción 1</option>
-           <option value="opcion-2">Opción 2</option>
-           <option value="opcion-x">Opción X</option>
-          </select>
+
+
+
+
+
+      <div class="col-xs-12">
+        <div class="btn-group">
+
+          <button Style="background-color: #0c4dc1" class="button">Aceptar</button>
+          <button Style="background-color: #ecb90fc2" class="button">Posponer</button>
         </div>
       </div>
 
-      <div class="col-xs-4" style="margin-top: 25px;">  
-        <div class="select" style='width: 100%;border: 1px solid #ddd;background: #fcfcfc url("flecha-abajo.gif") no-repeat 90% center;height: 44px;'>
-           <select style="margin-top: 4px;">
-           <option value="">Cargo</option>
-           <option value="opcion-1">Opción 1</option>
-           <option value="opcion-2">Opción 2</option>
-           <option value="opcion-x">Opción X</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-xs-4" style="margin-top: 25px;">  
-        <div class="select" style='width: 100%;border: 1px solid #ddd;background: #fcfcfc url("flecha-abajo.gif") no-repeat 90% center;height: 44px;'>
-           <select style="margin-top: 4px;">
-           <option value="">Estado Funcionario</option>
-           <option value="opcion-1">Activo</option>
-           <option value="opcion-2">Inactivo</option>
-          </select>
-        </div>
-      </div>
-   
-          <div class="col-xs-12">
-            <div style=" margin-top: 25px; text-align: end;"> <a class="btn btn-primary">Guardar</a>
-           </div>
-        
-      </div>
+    </div>
   </div>
-  
-</div>
-
-
-
-</div>
-
-
-
-
-
-  <script>
-  function myFunction() {
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }
-    }
-  }
-  </script>
-
-
-
 
 
   <?php include (getcwd()."/layout/BottomComponent.phtml")?>
+
+  <script>
+  $(document).ready(function() {
+    $('#example').DataTable();
+  });
+
+  $(document).ready(function() {
+    tippy('#ai', {
+      content: 'Modificar Funcionario',
+    });
+  });
+  </script>

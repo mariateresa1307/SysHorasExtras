@@ -43,7 +43,7 @@
 /*CARD*/
 
 #mycard1 {
-    background-image: linear-gradient(to right top, #50eec5, #3aecb6, #24eaa5, #10e891, #09e57c);
+    background-image: linear-gradient( to right top, #d5deea, #a2b6d7, #728fc3, #4468af, #024398);
     margin-bottom: 10px;
     border: 0px;
 }
@@ -52,7 +52,7 @@
 /*CARD*/
 
 #mycard2 {
-    background-image: linear-gradient(to right top, #ffed31, #f7c814, #eaa400, #da8000, #c65e00);
+    background-image: linear-gradient( to right, rgba(255, 0, 0, 0.31), rgba(249, 43, 43));
     border: 0px;
 }
 
@@ -163,7 +163,8 @@ div.omrs-input-group {
 }
 
 
-/*input*/
+/*= Reset CSS End
+================= */
 
 
 /** BEGIN: Non Openmrs CSS **/
@@ -206,7 +207,6 @@ h4.title {
 div.omrs-input-group {
     margin-bottom: 1.5rem;
     position: relative;
-    width: 20.4375rem;
 }
 
 
@@ -220,7 +220,7 @@ div.omrs-input-group {
     height: 2rem;
     font-size: 1.0625rem;
     padding-left: 0.875rem;
-    line-height: 147.6%;
+    line-height: 46.6%;
     padding-top: 0.825rem;
     padding-bottom: 0.5rem;
 }
@@ -235,7 +235,7 @@ div.omrs-input-group {
     position: absolute;
     top: 0.9375rem;
     left: 0.875rem;
-    line-height: 147.6%;
+    line-height: 46.6%;
     color: var(--omrs-color-ink-medium-contrast);
     transition: top .2s;
 }
@@ -328,4 +328,63 @@ div.omrs-input-group {
 
 .omrs-input-filled>input {
     background: var(--omrs-color-bg-low-contrast);
+}
+
+
+/*list*/
+
+
+/*HEADER*/
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+
+a {
+    color: rgb(60, 6, 255);
+}
+
+a:hover {
+    color: #78e7d1;
+}
+
+
+/*WRAPPER*/
+
+#wrapper {
+    width: 100%;
+}
+
+#wrapper>div {
+    margin-bottom: 10px;
+}
+
+
+/*CHECKBOX*/
+
+label div {
+    width: 23px;
+    height: 23px;
+    display: inline-block;
+    border: 2px solid #0057ad40;
+    text-align: center;
+    line-height: 20px;
+    margin-right: 6px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+label i {
+    font-size: 16px;
+    opacity: 0;
+}
+
+label:hover div {
+    background: #57d8ff8a;
+}
+
+input:checked+label i {
+    opacity: 1;
+    color: #00c9b7;
 }

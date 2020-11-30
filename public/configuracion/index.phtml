@@ -1,99 +1,160 @@
 <?php include (getcwd()."/layout/TopComponent.phtml")?>
 <?php include (getcwd()."/layout/HeaderComponent.phtml")?>
 <?php include (getcwd()."/layout/MenuComponent.phtml")?>
+
 <link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/modal.css">
-<link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/HrasExtras.css">
 <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/fontawesome/css/all.css">
 <link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/flexboxgrid.min.css">
+<link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/configuracion.css">
+<script src='<?=$this->base_url ?>/assets/js/dateTable.js'></script>
 
-<h1 class="h1">Configuracion Horas extras</h1>
+<script src='<?=$this->base_url ?>/assets/js/popper_core@2.js'></script>
+<script src='<?=$this->base_url ?>/assets/js/tippy@6.js'></script>
+<script>
+$(document).ready(function() {
+  tippy('#toolBuscar', {
+    content: 'Agregar nuevo ',
+  });
+});
+</script>
+
+<h1 class="h1">Configuracion </h1>
 
 
 <div class="card" style="border-bottom-color: white; margin-top:15px;">
   <div class="card-body">
+
+
     <div class="row start-xs">
 
-    <div class="col-xs-4" >  
-        <div class="select" style='width: 100%;border: 1px solid #ddd;background: #fcfcfc url("flecha-abajo.gif") no-repeat 90% center;height: 44px;'>
-           <select style="margin-top: 4px;">
-           <option value="">Buscar por</option>
-           <option value="opcion-1">Cedula</option>
-           <option value="opcion-2">Año</option>
-           <option value="opcion-x">Mes</option>
-          </select>
+      <!--Primera card Departamento-->
+      <div class="col-xs-6" style="    margin-top: 15px;">
+        <div class="box">
+          <div class="card" style="box-shadow: 0px 0px 24px 1px #8888884f;border: none;">
+            <div
+              style="background-color: #0e36a47a;margin-left: 20px;margin-right: 20px;margin-top: -21px; position: relative;height: 53px;border-radius: 5px;z-index: 0; ">
+
+              <h3 style="margin-left: 10px;margin-top: 16px; color: white;">Agregar departamento
+
+
+                <div id="toolBuscar" style="float: right;">
+                  <a href="#miModal" style="padding-right: 22px;color: white;">
+                    <i class="fas fa-plus-circle"></i></a>
+                </div>
+
+              </h3>
+
+            </div>
+
+            <div class="card-body">
+              <div class="omrs-input-group">
+                <label class="omrs-input-filled">
+                  <input type="text" onkeypress="return soloLetras(event)" required
+                    style="background-color: white;   height: 50px;">
+                  <span class="omrs-input-label">Nuevo departamento</span>
+                </label>
+              </div>
+
+              <div style="text-align:end">
+                <a id="detalle" class="btn btn-primary"> Guardar</a>
+
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
 
+      <!--Fin Primera card Departamento-->
 
-          <div class="col-xs-4">
-        <input type="text"   id="myInput" onkeyup="myFunction()" placeholder="Buscar" title="Type in a name">
-       </div> 
+      <!--segunda card Cargo-->
+      <div class="col-xs-6" style="    margin-top: 15px;">
+        <div class="box">
+          <div class="card" style="box-shadow: 0px 0px 24px 1px #8888884f;border: none;">
+            <div
+              style="background-color: #0e36a47a;margin-left: 20px;margin-right: 20px;margin-top: -21px; position: relative;height: 53px;border-radius: 5px;z-index: 10; ">
+              <h3 style="margin-left: 10px;margin-top: 16px; color: white;">Configurar cargo y sueldo
+
+                <div id="toolBuscar" style="float: right;">
+                  <a href="#miModal1" style="padding-right: 22px;color: white;">
+                    <i class="fas fa-plus-circle"></i></a>
+                </div>
+              </h3>
+
+            </div>
+            <div class="card-body">
 
 
-      <div class="col-xs-4">
-      <div class="boton" style="margin: 0px;margin-left: 88%;"><a href="#" style="font-size: 18px;">
-      <i class="fas fa-search" style="margin-top: 4px;margin-left: 4px;"></i></a></div>
+              <div id="wrapper">
+
+                <h3 style="text-align: center;">Para poder Editar el cargo debes Seleccionarlo <i
+                    class="fas fa-check-double" style="color: #1ee81e;"></i></h3>
+
+
+                <div>
+                  <input style=" display: none;" type="checkbox" id="check1" />
+                  <label for="check1">
+                    <div><i class="fa fa-check"></i></div>Bachiller
+                  </label>
+                </div>
+
+                <div>
+                  <input style=" display: none;" type="checkbox" id="check2" />
+                  <label for="check2">
+                    <div><i class="fa fa-check"></i></div> Tecnico
+                  </label>
+                </div>
+
+                <div>
+                  <input style=" display: none;" type="checkbox" id="check3" />
+                  <label for="check3">
+                    <div><i class="fa fa-check"></i></div> Ingeniero
+                  </label>
+                </div>
+
+                <div>
+                  <input style=" display: none;" type="checkbox" id="check4" />
+                  <label for="check4">
+                    <div><i class="fa fa-check"></i></div> Especialista
+                  </label>
+                </div>
+
+                <div>
+                  <input style=" display: none;" type="checkbox" id="check5" />
+                  <label for="check5">
+                    <div><i class="fa fa-check"></i></div> Supervisor
+                  </label>
+                </div>
+              </div>
+
+              <div class="btn-group">
+                <div style=" margin-top: 25px; text-align: end;"> <a class="btn btn-primary2">Eliminar</a>
+                  <a href="#miModal1" class="btn btn-primary1">Modificar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      <!--Fin segunda card Cargo-->
+
     </div>
-    </div>
+
   </div>
 </div>
 
 
 
+<!-- //Modal departamento-->
 
-
-
-
-
-
-
-<div class="card2" style=" background-color: white; margin-top: -2px;
-    border-top-color: white;">
-  <div class="card-body">
-
-    <table id="customers">
-      <tr class="header" style="background-color: black;color: #fbfbfb;">
-        <th style="width:50%;">Departamento</th>
-        <th style="width:50%;">Cargo</th>
-        <th style="width:80%;">Sueldo Establecido</th>
-        <th style="width:50%;">Estado</th>
-        <th style="width:50%;">Edit</th>
-      </tr>
-     
-      <tr>
-        <td>Tecnologia</td>
-        <td>Programador</td>
-        <td>480.000</td>
-        <td>Activo</td>
-        <td> <a  id="ai" href="#miModal" class="circle-right-btn" type="button" style="font-size: 15px;margin-left: 20px;"><i class="fas fa-edit fa-2x" style="color: green;"> </i></a></td>
-      </tr>
-  
-
-    </table>
-
-    <div class="row center-xs">
-      <div class="col-xs-2">
-        <div style="text-align: center; margin-top: 25px;"> <a id="ai" href="#miModal"
-            class="btn btn-primary">Agregar</a>
-        </div>
-      </div>
-     
-    </div>
-  </div>
-
-</div>
-
-
-</div>
-
-<div id="miModal" class="modal">
+<div id="miModal" class="modal" style=" z-index: 999;">
 
   <div class="modal-contenido">
 
-    <div class="row" style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;margin-right: 0px !important;height:70px">
+    <div class="row"
+      style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;margin-right: 0px !important;height:70px">
       <div class="col-xs-6" style="color: white;">
-        <h2>Configuracion Horas Extras</h2>
+        <h2>Gestion Departamento</h2>
       </div>
 
       <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
@@ -101,74 +162,166 @@
       </div>
     </div>
 
-    <div class="row start-xs" style="margin-top: 20px;">
-      <div class="col-xs-4">  
-
-            <select id="select" style="width: 100%;">
-              <option value=" 0">Select Departamento:</option>
-              <option value="1">Audi</option>
-              <option value="2">BMW</option>
-              <option value="3">Citroen</option>
-              <option value="4">Ford</option>
-              <option value="5">Honda</option>
-
-            </select>
-          
-      </div>
-
-      <div class="col-xs-4">  
-        <select id="select" style="width: 100%;">
-          <option value=" 0">Select Cargo:</option>
-          <option value="1">Audi</option>
-          <option value="2">BMW</option>
-          <option value="3">Citroen</option>
-          <option value="4">Ford</option>
-          <option value="5">Honda</option>
-
-        </select>
-      </div>
-
-       <div class="col-xs-4">
-        <input type="text" style="width: 96%;"  id="myInput" onkeyup="myFunction()" placeholder="Sueldo Mensual" title="Type in a name">
-       </div>  
-         
-      <div class="col-xs-4" style="margin-top: 20px;">  
-      <label for="dateofbirth">Fecha oficial de entrada </label>
-<input type="date" name="dateofbirth" id="dateofbirth" style="width: 95%;height: 0px;margin-top: ;">
+    <div class="row start-xs" style="margin-top: 40px;padding-left: 95px;padding-right: 95px;">
 
 
-      </div>
-
-      <div class="col-xs-4" style="margin-top: 20px;">  
-      <label for="dateofbirth">Fecha oficial de Salida  </label>
-<input type="date" name="dateofbirth" id="dateofbirth" style="width: 95%;height: 0px;margin-top: ;">
-
- 
-      </div>
-
-      <div class="col-xs-4" style="margin-top: 25px;">  
-        <div class="select" style='width: 100%;border: 1px solid #ddd;background: #fcfcfc url("flecha-abajo.gif") no-repeat 90% center;height: 44px;'>
-           <select style="margin-top: 4px;">
-           <option value="">Estado Funcionario</option>
-           <option value="opcion-1">Activo</option>
-           <option value="opcion-2">Inactivo</option>
+      <div class="col-xs-4" style="margin-top: 25px;">
+        <!--Select with pure css-->
+        <div class="select">
+          <select class="select-text" required>
+            <option value="" disabled selected></option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
           </select>
+          <label class="select-label">Departamento</label>
+        </div>
+        <!--Select with pure css-->
+      </div>
+
+
+      <div class="col-xs-4" style="margin-top: 25px;">
+        <div class="omrs-input-group">
+          <label class="omrs-input-filled">
+            <input type="text" onkeypress="return soloLetras(event)" required
+              style="background-color: white;   height: 50px;margin-top: -8px;">
+            <span class="omrs-input-label">Cargo</span>
+          </label>
         </div>
       </div>
-      
 
-    </div>
-   <div class="row end-xs">
-          <div class="col-xs-2">
-            <div style="text-align: center; margin-top: 25px;"> <a class="btn btn-primary">Guardar</a>
-           </div>
-          </div>
+
+
+      <div class="col-xs-12">
+
+        <div style=" margin-top: 25px; text-align: end;"> <a class="btn btn-primary2">Eliminar</a>
+          <a class="btn btn-primary1">Modificar</a>
+        </div>
+
       </div>
+    </div>
+
   </div>
-  
+
+
+
 </div>
 
 
 
+<?php //fin  Modal departamento*/?>
 
+<?php //Modal Configuracion */?>
+
+<div id="miModal1" class="modal" style=" z-index: 999;">
+
+  <div class="modal-contenido">
+
+    <div class="row"
+      style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;margin-right: 0px !important;height:70px">
+      <div class="col-xs-6" style="color: white;">
+        <h2>Configuracion</h2>
+      </div>
+
+      <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
+        <a href="#" style="text-decoration: none;color: white;">X</a>
+      </div>
+    </div>
+
+    <div class="row start-xs" style="margin-top: 40px;padding-left: 95px;padding-right: 95px;">
+
+
+      <div class="col-xs-4" style="margin-top: 25px;">
+        <!--Select with pure css-->
+        <div class="select">
+          <select class="select-text" required>
+            <option value="" disabled selected></option>
+            <option value="opcion-1">Adiministracion</option>
+            <option value="opcion-2">Informatica</option>
+
+          </select>
+          <label class="select-label">Departamento</label>
+        </div>
+        <!--Select with pure css-->
+      </div>
+
+      <div class="col-xs-4" style="margin-top: 25px;">
+        <div class="omrs-input-group">
+          <label class="omrs-input-filled">
+            <input type="text" onkeypress="return soloLetras(event)" required
+              style="background-color: white;   height: 50px;margin-top: -8px;">
+            <span class="omrs-input-label">Cargo</span>
+          </label>
+        </div>
+      </div>
+
+
+      <div class="col-xs-4" style="margin-top: 25px;">
+        <div class="omrs-input-group">
+          <label class="omrs-input-filled">
+            <input type="text" onkeypress="return numeros(event)" required
+              style="background-color: white;   height: 50px;margin-top: -8px;">
+            <span class="omrs-input-label">Salario</span>
+          </label>
+        </div>
+      </div>
+
+
+      <div class="col-xs-12">
+        <div class="btn-group">
+          <div style=" margin-top: 25px; text-align: end;"> <a class="btn btn-primary2">Eliminar</a>
+            <a class="btn btn-primary1">Guardar</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+</div>
+
+<?php //Modal Configuracion*/?>
 <?php include (getcwd()."/layout/BottomComponent.phtml")?>
+
+<script>
+function soloLetras(e) {
+  var key = e.keyCode || e.which,
+    tecla = String.fromCharCode(key).toLowerCase(),
+    letras = " áéíóúabcdefghijklmnñopqrstuvwxyz",
+    especiales = [8, 37, 39, 46],
+    tecla_especial = false;
+
+  for (var i in especiales) {
+    if (key == especiales[i]) {
+      tecla_especial = true;
+      break;
+    }
+  }
+
+  if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+    return false;
+  }
+}
+
+function numeros(e) {
+  key = e.keyCode || e.which;
+  tecla = String.fromCharCode(key).toLowerCase();
+  letras = " 0123456789";
+  especiales = [8, 37, 39, 46];
+
+  tecla_especial = false
+  for (var i in especiales) {
+    if (key == especiales[i]) {
+      tecla_especial = true;
+      break;
+    }
+  }
+
+  if (letras.indexOf(tecla) == -1 && !tecla_especial)
+    return false;
+}
+</script>

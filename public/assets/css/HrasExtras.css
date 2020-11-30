@@ -1,12 +1,12 @@
 /*cards*/
 
 #card1 {
-    background-image: linear-gradient( to right top, #f9fbff, #b9c7eb, #7f93d5, #4a5fbb, #002d9e);
+    background-image: linear-gradient( to right top, #5c93ff, #7893d8, #5a78de, #3f55b9, #002d9e);
     border: 0px;
 }
 
 #card2 {
-    background-image: linear-gradient( to right top, #c1babc, #cb97a1, #d0727e, #cf4a55, #c51125);
+    background-image: linear-gradient(to right top, #79d7b185, #79d7b1, #00c9b7, #00c9b7, #00c9b7);
     border: 0px;
 }
 
@@ -15,6 +15,10 @@
 
 
 /*Table*/
+
+.p {
+    font-size: 21px;
+}
 
 #customers {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -71,7 +75,7 @@
 .boton {
     width: 30px;
     height: 30px;
-    background-color: #705bff;
+    background-color: #3f55b9;
     margin: 5px;
     padding: 10px;
     -webkit-border-radius: 50px;
@@ -84,8 +88,8 @@
 }
 
 .boton:hover {
-    opacity: 0.5;
-    -moz-opacity: 0.5;
+    opacity: 0.50;
+    -moz-opacity: .50;
     filter: alpha (opacity=50);
 }
 
@@ -93,4 +97,34 @@
     color: #fff;
     text-decoration: none;
     padding: 5px 5px 5px 0;
+}
+
+
+/*fin boton redondo*/
+
+
+/*gupos de botones */
+
+.btn-group .button {
+    border: none;
+    color: white;
+    padding: 20px 55px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    float: right;
+    border-radius: 3px;
+}
+
+.btn-group .button:hover {
+    background-color: #3e8e41;
+}
+
+#detalle:link,
+#detalle:visited {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
 }

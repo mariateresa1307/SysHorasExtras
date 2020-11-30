@@ -56,6 +56,9 @@ $router->respond('GET', "{$base_url}/HrasExtras", [$hrasextrasCtrl,'indexAction'
 $router->respond('GET', "{$base_url}/configuracion", [$configuracionCtrl, 'indexAction']);
 $router->respond('GET', "{$base_url}/misionVision", [$estructuraCtrl, 'misionAction']);
 $router->respond('GET', "{$base_url}/organigrama", [$organigramaCtrl, 'organigramaAction']);
+$router->respond('GET', "{$base_url}/aprobadas", [$hrasextrasCtrl, 'aprobadasAction']);
+$router->respond('GET', "{$base_url}/revision", [$hrasextrasCtrl, 'revisionAction']);
+
 # 404 Not Found
 // Using exact code behaviors via switch/case
 $router->onHttpError(function ($code, $router) {

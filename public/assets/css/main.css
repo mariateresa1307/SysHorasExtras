@@ -109,6 +109,76 @@ body {
 }
 
 
+/*configuracion group*/
+
+.btn-primary1 {
+    color: #fff;
+    background-color: #007bff;
+    /*border-color: #007bff;*/
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.btn-primary1:hover {
+    background-color: #002347;
+}
+
+.btn-primary1:active {
+    background-color: #0057ad;
+}
+
+.btn-primary2 {
+    color: #fff;
+    background-color: #bb2e1b;
+    /* border-color: #bb2e1b;*/
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin-right: -4px;
+}
+
+.btn-primary2:hover {
+    background-color: #002347;
+}
+
+.btn-primary2:active {
+    background-color: #bb2e1b;
+}
+
+.btn-primary3 {
+    color: #fff;
+    background-color: #0fa742;
+    /* border-color: #bb2e1b;*/
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin-right: -3px;
+}
+
+.btn-primary3:hover {
+    background-color: #0f4105;
+}
+
+.btn-primary3:active {
+    background-color: #0fa742;
+}
+
+.btn-primary4 {
+    color: #fff;
+    background-color: #ebd512;
+    /* border-color: #bb2e1b;*/
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin-right: -3px;
+}
+
+.btn-primary4:hover {
+    background-color: #c9b506;
+}
+
+.btn-primary4:active {
+    background-color: #ebd512;
+}
+
+
 /* CARD  */
 
 .card {
@@ -142,7 +212,7 @@ body {
 }
 
 
-/*SELECT*/
+/*
 
 .select {
     border: 1px solid #ccc;
@@ -153,13 +223,101 @@ body {
 
 .select select {
     padding: 5px 8px;
-    width: 130%;
+    width: 100%;
     border: none;
     box-shadow: none;
     background-color: transparent;
     background-image: none;
-    appearance: none;
+    margin-top: 4px;
+    font-size: 20px;
 }
 
 
 /*SELECT*/
+
+
+/* select starting stylings ------------------------------*/
+
+.select {
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    position: relative;
+}
+
+.select-text {
+    position: relative;
+    font-family: inherit;
+    background-color: transparent;
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+    font-size: 18px;
+    border-radius: 4px;
+    border: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+
+/* Remove focus */
+
+.select-text:focus {
+    outline: none;
+    border: 2px solid #1e4bd1;
+}
+
+
+/* Use custom arrow */
+
+.select .select-text {
+    appearance: none;
+    -webkit-appearance: none;
+    color: gray;
+}
+
+.select:after {
+    position: absolute;
+    top: 18px;
+    right: 10px;
+    /* Styling the down arrow */
+    width: 0;
+    height: 0;
+    padding: 0;
+    content: '';
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid rgba(0, 0, 0, 0.12);
+    pointer-events: none;
+}
+
+
+/* LABEL ======================================= */
+
+.select-label {
+    color: rgba(0, 0, 0, 0.26);
+    background: white;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    padding: 0 5px;
+    left: 10px;
+    top: 12px;
+    transition: 0.2s ease all;
+}
+
+
+/* active state */
+
+.select-text:focus~.select-label,
+.select-text:valid~.select-label {
+    color: gray;
+    top: -8px;
+    transition: 0.2s ease all;
+    font-size: 14px;
+}
+
+.select-text:valid:not(focus)~.select-label {
+    color: rgba(71, 30, 30, 0.26);
+}
+
+.select-text:valid:focus~.select-label {
+    color: #1e4bd1;
+    ;
+}
