@@ -15,6 +15,21 @@ class FuncionarioController{
         
         return $service->render('funcionario/index.phtml', $data);
     }
+
+
+    public function guardar($req, $res, $service, $app) {
+        $funcionario = new Funcionario();
+        $data = $cedula = $req->params();
+
+        if(empty($data["id"])){
+            $funcionario->guardar($data);
+        }
+        else{
+            $funcionario->actualizar($data);
+        }
+
+        return $funcionario->code(200);
+    }
 }
 
 ?>

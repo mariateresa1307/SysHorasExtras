@@ -1,45 +1,3 @@
-/*TABLE*/
-
-* {
-    box-sizing: border-box;
-}
-
-#myInput {
-    background-image: url("/css/searchicon.png");
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    font-size: 20px;
-    padding: 12px 20px 12px 40px;
-    border: 1px solid #ddd;
-    margin-bottom: 12px;
-}
-
-#myTable {
-    border-collapse: collapse;
-    width: 100%;
-    border: 1px solid #ddd;
-    font-size: 18px;
-}
-
-#myTable th,
-#myTable td {
-    text-align: left;
-    padding: 12px;
-}
-
-#myTable tr {
-    border-bottom: 1px solid #ddd;
-}
-
-#myTable tr.header,
-#myTable tr:hover {
-    background-color: #f1f1f1;
-}
-
-
-/*TABLE*/
-
-
 /*CARD*/
 
 #mycard1 {
@@ -288,44 +246,138 @@ div.omrs-input-group {
 }
 
 
-/** DISABLED **/
+/*IMPUT fORM*/
 
-.omrs-input-underlined>input:disabled {
-    background: var(--omrs-color-bg-low-contrast);
-    cursor: not-allowed;
+.input {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin: 1em;
+    width: 100%;
+    vertical-align: top;
 }
 
-.omrs-input-underlined>input:disabled+.omrs-input-label,
-.omrs-input-underlined>input:disabled~.omrs-input-helper {
-    color: var(--omrs-color-ink-low-contrast);
+.input__field {
+    position: relative;
+    display: block;
+    float: right;
+    padding: 0.8em;
+    background: #f0f0f0;
+    color: #2b2b2b;
+    font-weight: 400;
+    /* for box shadows to show on iOS */
 }
 
-.omrs-input-underlined>input:disabled~svg {
-    fill: var(--omrs-color-ink-low-contrast);
+.input__field:focus {
+    outline: none;
+}
+
+.input__label {
+    display: inline-block;
+    float: right;
+    padding: 0 1em;
+    width: 40%;
+    color: #f0f0f0;
+    font-size: 16px;
+    user-select: none;
+}
+
+.input__label-content {
+    position: relative;
+    display: block;
+    padding: 1.6em 0;
+    width: 100%;
+}
+
+.graphic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: none;
+}
+
+.icon {
+    color: #ddd;
+    font-size: 150%;
 }
 
 
-/** DANGER **/
+/* Individual styles */
 
-.omrs-input-underlined.omrs-input-danger>.omrs-input-label,
-.omrs-input-underlined.omrs-input-danger>.omrs-input-helper,
-.omrs-input-filled.omrs-input-danger>.omrs-input-label,
-.omrs-input-filled.omrs-input-danger>.omrs-input-helper {
-    color: var(--omrs-color-danger);
+
+/* Yoshiko */
+
+.input__field--yoshiko {
+    width: 100%;
+    background-color: #f7f8f7;
+    border: 2px solid transparent;
+    transition: background-color 0.25s, border-color 0.25s;
+    border-radius: 3px;
+    height: 50px;
+    font-size: 20px;
 }
 
-.omrs-input-danger>svg {
-    fill: var(--omrs-color-danger);
+.input__label--yoshiko {
+    width: 100%;
+    text-align: left;
+    position: absolute;
+    bottom: 85%;
+    pointer-events: none;
+    overflow: hidden;
+    transform: translate3d(0, 3em, 0);
+    transition: transform 0.25s;
+    transition-timing-function: ease-in-out;
 }
 
-.omrs-input-danger>input {
-    border-color: var(--omrs-color-danger);
+.input__label-content--yoshiko {
+    color: #8B8C8B;
+    padding: 0.25em 0;
+    transition: transform 0.25s;
+    transition-timing-function: ease-in-out;
 }
 
-.omrs-input-underlined>input {
-    background: var(--omrs-color-bg-high-contrast);
+.input__label-content--yoshiko::after {
+    content: attr(data-content);
+    position: absolute;
+    font-weight: 800;
+    bottom: 100%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: #0a6ae9;
+    padding: 0.25em 0;
+    letter-spacing: 1px;
+    font-size: 0.85em;
 }
 
-.omrs-input-filled>input {
-    background: var(--omrs-color-bg-low-contrast);
+.input__field--yoshiko:focus+.input__label--yoshiko,
+.input--filled .input__label--yoshiko {
+    transform: translate3d(0, 0, 0);
+}
+
+.input__field--yoshiko:focus+.input__label--yoshiko .input__label-content--yoshiko,
+.input--filled .input__label-content--yoshiko {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+}
+
+.input__field--yoshiko:focus+.input__field--yoshiko,
+.input--filled .input__field--yoshiko {
+    background-color: transparent;
+    border-color: #a3d39c;
+}
+
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: '';
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
 }
