@@ -2,16 +2,24 @@
 
 namespace ControlHorasExtras\PHP_MVC\Controllers;
 
+use ControlHorasExtras\PHP_MVC\Models\Funcionario;
+
 
 class FuncionarioController{
 
     public function indexAction($req, $res, $service, $app){
 
+        $funcionario = new Funcionario();
+      
+
+
         $data = [
             "title" => "Funcionario",
-            "base_url" => $app->base_url
+            "funcionario" => $funcionario->getAll(),
+            "base_url" => $app->base_url,
+            
+            
         ];
-
         
         return $service->render('funcionario/index.phtml', $data);
     }
@@ -19,16 +27,20 @@ class FuncionarioController{
 
     public function guardar($req, $res, $service, $app) {
         $funcionario = new Funcionario();
-        $data = $cedula = $req->params();
-
+        $data = $req->params();
+     
+        print_r($data);
+   
         if(empty($data["id"])){
+
+
             $funcionario->guardar($data);
         }
         else{
-            $funcionario->actualizar($data);
+            //$funcionario->actualizar($data);
         }
 
-        return $funcionario->code(200);
+        return $res->code(200);
     }
 }
 

@@ -12,15 +12,34 @@ class Funcionario {
         $this->em = new Service();
     }   
 
+    public function getAll(){
+        $query = "SELECT  f.id ,f.cedula ,f.primer_nombre ,f.segundo_nombre ,f.primer_apellido ,f.segundo_apellido ,f.direccion ,f.telefono,d2.nombre, c2.nombre 	
+        FROM funcionario f 
+        INNER JOIN departamento d2 ON f.departamento_id = d2 .id
+        INNER JOIN cargo c2 ON f.cargo_id = c2 .id ;
+        
+         ";
+        $result = pg_exec($this->em->vinculo, $query);
+        return pg_fetch_all($result);
+    }
+
     public function guardar($datos){
+       
+      //  print_r($data);
+      //  print("estos son los datos del modelo");
         $query = "INSERT INTO funcionario
-        (cedula, primer_nombre, segundo_nombre, primer_apellido, segundo apellido, 
-        direccion,telefono,cargo_id, departamento_id)
-        VALUES( '{$datos["cedula"]}', '{$datos["primer_nombre"]}','{$datos["segundo_nombre"]}', 
-                '{$datos["primer,apellidos"]}','{$datos["segundo_apellidos"]}',
-                ,'{$datos["direccion"]}', '{$datos["telefono"]}', '{$datos["departamento"]}'),'{$datos["cargo"]}');        
+        (cedula, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, telefono, 
+        direccion)
+        VALUES( '{$datos["cedula"]}', '{$datos["nombrep"]}','{$datos["nombres"]}', 
+                '{$datos["apellidop"]}','{$datos["apellidos"]}', '{$datos["telefono"]}'  ,
+                '{$datos["direccion"]}'); 
+                     
         ";
-        pg_query($this->em->vinculo, $query);
+
+print_r($query);
+       $aaaa=  pg_query($this->em->vinculo, $query);
+
+       print_r($aaaa);
     } 
 
     public function obtnerFuncionarioParaCalculo(){

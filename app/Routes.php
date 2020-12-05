@@ -66,7 +66,7 @@ $router->respond('POST', "{$base_url}/user/obtnerUsuarioPorId", [$userCtrl, 'obt
 
 $router->respond('GET', "{$base_url}/funcionario", [$funcionarioCtrl,'indexAction']);
 $router->respond('POST', "{$base_url}/funcionario/guardar", [$funcionarioCtrl, 'guardar']);
-$router->respond('POST', "{$base_url}/funcionario/obtnerUsuarioPorId", [$funcionarioCtrl, 'obtnerFuncionarioPorId']);
+//$router->respond('POST', "{$base_url}/funcionario/obtnerUsuarioPorId", [$funcionarioCtrl, 'obtnerFuncionarioPorId']);
 
 
 $router->respond('GET', "{$base_url}/home", [$homeCtrl,'indexAction']);
