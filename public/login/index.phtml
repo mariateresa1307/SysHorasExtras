@@ -10,7 +10,7 @@
 
   <div class="container" id="container">
     <div class="form-container sign-up-container">
-      <form action="#">
+      <form onsubmit="return false">
 
         <div style="    margin-top: -52px">
           <img src="<?=$this->base_url?>/assets/img/logo_saren.png" style="width: 50%" />
@@ -21,7 +21,7 @@
         <input type="text" placeholder="Cedula" id="cedula" />
         <input type="password" placeholder="Clave" id="clave" />
 
-        <button class="su" onClick="login()">Ingresar</button>
+        <button class="su" type="button" onClick="login()">Ingresar</button>
 
       </form>
     </div>

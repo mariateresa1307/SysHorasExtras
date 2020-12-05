@@ -163,8 +163,8 @@
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 
           <select name="departamento">
-            <?php  foreach ($this->departamento as $valor) { ?>
             <option selected disabled value="0">Departamento</option>
+            <?php  foreach ($this->departamento as $valor) { ?>
             <option value="<?= $valor["id"] ?>"> <?= $valor["nombre"] ?></option>
             <?php } ?>
           </select>
@@ -178,8 +178,8 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
           <select name="tipo_usuario">
-            <?php  foreach ($this->usuarioTipo as $valor) { ?>
             <option selected disabled value="0">Tipo de Usuario</option>
+            <?php  foreach ($this->usuarioTipo as $valor) { ?>
             <option value="<?= $valor["id"] ?>"> <?= $valor["nombre"] ?></option>
             <?php } ?>
           </select>
