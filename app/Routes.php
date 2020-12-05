@@ -65,6 +65,10 @@ $router->respond('POST', "{$base_url}/user/guardar", [$userCtrl, 'guardar']);
 $router->respond('POST', "{$base_url}/user/obtnerUsuarioPorId", [$userCtrl, 'obtnerUsuarioPorId']);
 
 $router->respond('GET', "{$base_url}/funcionario", [$funcionarioCtrl,'indexAction']);
+$router->respond('POST', "{$base_url}/funcionario/guardar", [$funcionarioCtrl, 'guardar']);
+//$router->respond('POST', "{$base_url}/funcionario/obtnerUsuarioPorId", [$funcionarioCtrl, 'obtnerFuncionarioPorId']);
+
+
 $router->respond('GET', "{$base_url}/home", [$homeCtrl,'indexAction']);
 $router->respond('GET', "{$base_url}/HrasExtras", [$hrasextrasCtrl,'indexAction']);
 $router->respond('GET', "{$base_url}/configuracion", [$configuracionCtrl, 'indexAction']);

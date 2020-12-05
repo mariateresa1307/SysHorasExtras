@@ -9,13 +9,15 @@
 <link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/tableBoss.css">
 
 
-<script src='<?=$this->base_url ?>/assets/js/dateTable.js'></script>
-<script src='<?=$this->base_url ?>/assets/js/dateTableBoss.js'></script>
 
 <script src='<?=$this->base_url ?>/assets/js/popper_core@2.js'></script>
 <script src='<?=$this->base_url ?>/assets/js/tippy@6.js'></script>
+<script src='<?=$this->base_url ?>/assets/js/jquery-3.5.1.min.js'></script>
+<script src='<?=$this->base_url ?>/assets/js/sweetalert2@10.js'></script>
 
 
+<script src='<?=$this->base_url ?>/assets/js/dateTable.js'></script>
+<script src='<?=$this->base_url ?>/assets/js/dateTableBoss.js'></script>
 <h1 class="h1">Gestionar Funcionario</h1>
 
 
@@ -25,40 +27,38 @@
 
     <table id="example" class="stripe" style="width:100%" style="margin-top: 40px;">
       <thead>
+
         <tr>
+          <th>Cedula</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Direccion</th>
+          <th>Telefono</th>
           <th>Departamento</th>
-          <th>Fecha</th>
-          <th>Total Horas a Pagar Diurnas</th>
-          <th>Total Horas a Pagar Nocturnas</th>
-          <th>Salary</th>
+          <th>Cargo</th>
           <th>Accion</th>
         </tr>
       </thead>
       <tbody>
+
+        <?php foreach($this->funcionario as $valor) {?>
         <tr>
-          <td>Tiger Nixon</td>
-          <td>System Architect</td>
-          <td>Edinburgh</td>
-          <td>61</td>
-          <td>$320,800</td>
+          <td><?= $valor["cedula"]?></td>
+          <td><?= $valor["primer_nombre"]?><?= $valor["segundo_nombre"]?></td>
+          <td><?= $valor["primer_apellido"]?><?= $valor["Segundo_apellido"]?></td>
+          <td><?= $valor["direccion"]?></td>
+          <td><?= $valor["telefono"]?></td>
+          <td><?= $valor["departamento"]?></td>
+          <td><?= $valor["cargo"]?></td>
+
           <td style=" text-align: center;"><a id="ai" href="#miModal" class="circle-right-btn" type="button"
               style="font-size: 15px;margin-left: 20px;color: coral;">
               <i class="fas fa-user-edit" style="font-size: 32px;"></i></a>
           </td>
         </tr>
+        <?php } ?>
 
 
-        <tr>
-          <td>Finn Camacho</td>
-          <td>Support Engineer</td>
-          <td>San Francisco</td>
-          <td>47</td>
-          <td>$87,500</td>
-          <td style=" text-align: center;"><a id="ai" href="#miModal" class="circle-right-btn" type="button"
-              style="font-size: 15px;margin-left: 20px;color: coral;">
-              <i class="fas fa-user-edit" style="font-size: 32px;"></i></a>
-          </td>
-        </tr>
 
       </tbody>
 
@@ -90,45 +90,202 @@
         <h2>Gestionar Funcionario</h2>
       </div>
 
-
       <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
-
         <a href="#" style="text-decoration: none;color: white;">X</a>
       </div>
     </div>
 
-    <div class="row start-xs" style="margin-top: 40px;padding-left: 95px;padding-right: 95px;">
 
 
+    <div class="row start-xs" id="form" style="margin-top: 40px;padding-left: 95px;padding-right: 95px;">
 
+      <div class="col-xs-4">
+        <!--Input css-->
+        <span class="input input--yoshiko">
+          <input class="input__field input__field--yoshiko" type="text" name="cedula" id="cedula" />
+          <label class="input__label input__label--yoshiko" for="input-10">
+            <span class="input__label-content input__label-content--yoshiko" data-content="Cedula">Cedula</span>
+          </label>
+        </span>
+        <!--Input css-->
+      </div>
+      <div class="col-xs-4">
+        <!--Input css-->
+        <span class="input input--yoshiko">
+          <input class="input__field input__field--yoshiko" type="text" id="nombrep" />
+          <label class="input__label input__label--yoshiko" for="input-10">
+            <span class="input__label-content input__label-content--yoshiko" data-content="Primer Nombre">Primer
+              Nombre</span>
+          </label>
+        </span>
+        <!--Input css-->
+      </div>
 
+      <div class="col-xs-4">
+        <!--Input css-->
+        <span class="input input--yoshiko">
+          <input class="input__field input__field--yoshiko" type="text" id="nombres" />
+          <label class="input__label input__label--yoshiko" for="input-10">
+            <span class="input__label-content input__label-content--yoshiko" data-content="Segundo Nombre">Primer
+              Nombre</span>
+          </label>
+        </span>
+        <!--Input css-->
+      </div>
 
+      <div class="col-xs-4">
+        <!--Input css-->
+        <span class="input input--yoshiko">
+          <input class="input__field input__field--yoshiko" type="text" id="apellidop" />
+          <label class="input__label input__label--yoshiko" for="input-10">
+            <span class="input__label-content input__label-content--yoshiko" data-content="Primer Apellido">Primer
+              Apellido</span>
+          </label>
+        </span>
+        <!--Input css-->
+      </div>
 
+      <div class="col-xs-4">
+        <!--Input css-->
+        <span class="input input--yoshiko">
+          <input class="input__field input__field--yoshiko" type="text" id="apellidos" />
+          <label class="input__label input__label--yoshiko" for="input-10">
+            <span class="input__label-content input__label-content--yoshiko" data-content="Segundo Apellido">Segundos
+              Apellido</span>
+          </label>
+        </span>
+        <!--Input css-->
+      </div>
+      <div class="col-xs-4">
+        <!--Input css-->
+        <span class="input input--yoshiko">
+          <input class="input__field input__field--yoshiko" type="text" id="telefono" />
+          <label class="input__label input__label--yoshiko" for="input-10">
+            <span class="input__label-content input__label-content--yoshiko" data-content="Telefono">Telefono</span>
+          </label>
+        </span>
+        <!--Input css-->
+      </div>
+      <div class="col-xs-4">
+        <!--Input css-->
+        <span class="input input--yoshiko">
+          <input class="input__field input__field--yoshiko" type="text" id="direccion" />
+          <label class="input__label input__label--yoshiko" for="input-10">
+            <span class="input__label-content input__label-content--yoshiko" data-content="Direccion">Direccion</span>
+          </label>
+        </span>
+        <!--Input css-->
+      </div>
+      <div class="col-xs-4">
+        <!--Select with pure css-->
+        <div class="select">
+          <select class="select-text" id="departamento" required>
+            <option value="" disabled selected></option>
+            <option value="opcion-1">Enero</option>
+            <option value="opcion-2">Febrero</option>
+            <option value="opcion-x">Marzo</option>
+            <option value="opcion-x">Abril</option>
+            <option value="opcion-x">Mayo</option>
+            <option value="opcion-x">Junio</option>
+            <option value="opcion-x">Junio</option>
+            <option value="opcion-x">Agosto</option>
+            <option value="opcion-x">Septiembre</option>
+            <option value="opcion-x">Octubre</option>
+            <option value="opcion-x">Noviembre</option>
+            <option value="opcion-x">Diciembre</option>
+          </select>
+          <label class="select-label">Departamento</label>
+        </div>
+        <!--Select with pure css-->
 
+      </div>
+      <div class="col-xs-4">
+        <!--Select with pure css-->
+        <div class="select" id="cargo">
+          <select class="select-text" required>
+            <option value="" disabled selected></option>
+            <option value="opcion-1">Enero</option>
+            <option value="opcion-2">Febrero</option>
+            <option value="opcion-x">Marzo</option>
+            <option value="opcion-x">Abril</option>
+            <option value="opcion-x">Mayo</option>
+            <option value="opcion-x">Junio</option>
+
+          </select>
+          <label class="select-label">Cargo</label>
+        </div>
+        <!--Select with pure css-->
+
+      </div>
 
 
       <div class="col-xs-12">
         <div class="btn-group">
 
-          <button Style="background-color: #0c4dc1" class="button">Aceptar</button>
-          <button Style="background-color: #ecb90fc2" class="button">Posponer</button>
+          <button type="button" onclick="agregar()" class="btn btn-primary1">Guardar</button>
         </div>
       </div>
-
     </div>
+
   </div>
+</div>
 
 
-  <?php include (getcwd()."/layout/BottomComponent.phtml")?>
+<?php include (getcwd()."/layout/BottomComponent.phtml")?>
 
-  <script>
-  $(document).ready(function() {
-    $('#example').DataTable();
-  });
+<script>
+//aquiquede 
+function agregar() {
+  var input_cedula = document.getElementById("cedula");
+  var input_nombrep = document.getElementById("nombrep");
+  var input_nombres = document.getElementById("nombres");
+  var input_apellidop = document.getElementById("apellidop");
+  var input_apellidos = document.getElementById("apellidos");
+  var input_telefono = document.getElementById("telefono");
+  var input_direccion = document.getElementById("direccion");
+  var input_departamento = document.getElementById("departamento");
+  var input_cargo = document.getElementById("cargo");
 
-  $(document).ready(function() {
-    tippy('#ai', {
-      content: 'Modificar Funcionario',
+  var dataToSend = {
+    cedula: input_cedula.value,
+    nombrep: input_nombrep.value,
+    apellidop: input_apellidop.value,
+    apellidos: input_apellidos.value,
+    telefono: input_telefono.value,
+    direccion: input_departamento.value,
+    departamento: input_departamento.value,
+    cergo: input_cargo.value,
+  };
+
+  //console.log(dataToSend)
+
+
+  $.ajax({
+      method: "POST",
+      url: "<?=$this->base_url ?>/funcionario/guardar",
+      data: dataToSend
+    })
+    .done(function(msg) {
+
+      Swal.fire(
+        'Exito!',
+        'Registro guardado',
+        'success'
+      );
+
+    })
+    .fail(function(response) {
+      alert("error interno");
     });
+}
+
+$(document).ready(function() {
+  $('#example').DataTable();
+});
+
+$(document).ready(function() {
+  tippy('#ai', {
+    content: 'Modificar Funcionario',
   });
-  </script>
+});
+</script>

@@ -5,16 +5,24 @@
 <link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/flexboxgrid.min.css">
 <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/user.css">
 <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/fontawesome/css/all.css">
+<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/tableBoss.css">
+
+
+
+<script src='<?=$this->base_url ?>/assets/js/popper_core@2.js'></script>
+<script src='<?=$this->base_url ?>/assets/js/tippy@6.js'></script>
 <script src='<?=$this->base_url ?>/assets/js/jquery-3.5.1.min.js'></script>
 <script src='<?=$this->base_url ?>/assets/js/sweetalert2@10.js'></script>
 
 
+<script src='<?=$this->base_url ?>/assets/js/dateTable.js'></script>
+<script src='<?=$this->base_url ?>/assets/js/dateTableBoss.js'></script>
+
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-    <h1>GESTIONAR USUARIOS </h1>
+    <h1>Gestionar Usuario </h1>
   </div>
 </div>
-
 
 <div class="row" style="margin-bottom: 20px;">
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
@@ -81,33 +89,36 @@
     <div class="card" style="padding: 2%;">
 
       <h2>Lista de usuarios </h2>
-      <table id="Table-User">
-        <tr class="header" style="background-color: black;color: #fbfbfb;">
-          <th style="width:20%;">Nombre</th>
-          <th style="width:20%;">Apellido</th>
-          <th style="width:20%;">Cedula</th>
-          <th style="width:20%;">Tipo de usuario</th>
-          <th style="width:20%;">Departamento</th>
-          <th style="width:10%;">Edit</th>
-        </tr>
 
+      <table id="example" class="stripe" style="width:100%" style="margin-top: 40px;">
+        <thead>
+          <tr class="header" style="background-color: black;color: #fbfbfb;">
+            <th style="width:20%;">Nombre</th>
+            <th style="width:20%;">Apellido</th>
+            <th style="width:20%;">Cedula</th>
+            <th style="width:20%;">Tipo de usuario</th>
+            <th style="width:20%;">Departamento</th>
+            <th style="width:10%;">Edit</th>
+          </tr>
+        </thead>
+        <tbody>
 
-        <?php foreach($this->usuarios as $valor) {?>
-        <tr>
-          <td><?= $valor["primer_nombre"]?></td>
-          <td><?= $valor["primer_apellido"]?></td>
-          <td><?= $valor["cedula"]?></td>
-          <td><?= $valor["tipo_usuario"]?></td>
-          <td><?= $valor["nombre_departamento"]?></td>
-          <td>
-            <button class="circle-right-btn" type="button" onClick="editarUsuarioRequest(<?= $valor["id"] ?>)"><i
-                class="fas fa-edit">
-              </i></button>
-          </td>
-        </tr>
-        <?php } ?>
+          <?php foreach($this->usuarios as $valor) {?>
+          <tr>
+            <td><?= $valor["primer_nombre"]?></td>
+            <td><?= $valor["primer_apellido"]?></td>
+            <td><?= $valor["cedula"]?></td>
+            <td><?= $valor["tipo_usuario"]?></td>
+            <td><?= $valor["nombre_departamento"]?></td>
+            <td>
+              <button class="circle-right-btn" type="button" onClick="editarUsuarioRequest(<?= $valor["id"] ?>)"><i
+                  class="fas fa-edit">
+                </i></button>
+            </td>
+          </tr>
+          <?php } ?>
 
-
+        </tbody>
 
 
       </table>
@@ -211,26 +222,9 @@
 
 
   <script>
-  function UserFunction() {
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("InputUser");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("TableUser");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }
-    }
-  }
-
-
+  $(document).ready(function() {
+    $('#example').DataTable();
+  });
 
   function mostrarClave() {
     var input = document.getElementById("clave")
@@ -274,8 +268,6 @@
           'success'
         );
 
-        window.location.href = "#";
-        location.reload();
 
 
       })
