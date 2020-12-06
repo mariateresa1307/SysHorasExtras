@@ -7,6 +7,7 @@ use \ControlHorasExtras\PHP_MVC\Controllers\LoginController;
 use \ControlHorasExtras\PHP_MVC\Controllers\FuncionarioController;
 use \ControlHorasExtras\PHP_MVC\Controllers\HomeController;
 use \ControlHorasExtras\PHP_MVC\Controllers\HrasExtrasController;
+use \ControlHorasExtras\PHP_MVC\Controllers\HrasExtrasControllerRRHH;
 use \ControlHorasExtras\PHP_MVC\Controllers\ConfiguracionController;
 use \ControlHorasExtras\PHP_MVC\Controllers\EstructuraController;
 
@@ -30,6 +31,7 @@ $hrasextrasCtrl = new HrasExtrasController();
 $configuracionCtrl = new ConfiguracionController();
 $estructuraCtrl = new EstructuraController();
 $organigramaCtrl = new EstructuraController();
+$hrasExtrasControllerRRHH = new HrasExtrasControllerRRHH();
 
 
 
@@ -76,12 +78,17 @@ $router->respond('POST', "{$base_url}/funcionario/obtnerUnoPorId", [$funcionario
 
 
 $router->respond('GET', "{$base_url}/home", [$homeCtrl,'indexAction']);
-$router->respond('GET', "{$base_url}/HrasExtras", [$hrasextrasCtrl,'indexAction']);
+$router->respond('GET', "{$base_url}/HrasExtras/rrhh", [$hrasExtrasControllerRRHH,'rrhh']);
+
+$router->respond('GET', "{$base_url}/HrasExtras/coordinador", [$hrasextrasCtrl,'coordinador']);
+$router->respond('GET', "{$base_url}/HrasExtras/coordinador/aprobados", [$hrasextrasCtrl, 'aprobadasAction']);
+$router->respond('GET', "{$base_url}/HrasExtras/coordinador/revision", [$hrasextrasCtrl, 'revisionAction']);
+
 $router->respond('GET', "{$base_url}/configuracion", [$configuracionCtrl, 'indexAction']);
 $router->respond('GET', "{$base_url}/misionVision", [$estructuraCtrl, 'misionAction']);
 $router->respond('GET', "{$base_url}/organigrama", [$organigramaCtrl, 'organigramaAction']);
-$router->respond('GET', "{$base_url}/aprobadas", [$hrasextrasCtrl, 'aprobadasAction']);
-$router->respond('GET', "{$base_url}/revision", [$hrasextrasCtrl, 'revisionAction']);
+
+
 
 # 404 Not Found
 // Using exact code behaviors via switch/case

@@ -36,7 +36,7 @@ $(document).ready(function() {
 <h1 class="h1">Gestionar Horas extras</h1>
 
 <div class="row ">
-  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
     <div class="card" id="card1">
       <div class="card-body">
         <div class="row start-xs">
@@ -48,8 +48,9 @@ $(document).ready(function() {
             <h1 class="card-title" style="color: white;font-size: 55px;">100</h1>
           </div>
           <div class="col-xs-8" style="color:white">
-            <h1 class="card-title" style="text-align: center;">Horas Aprobadas</h1>
-            <p id="p" class="card-text">Muestra un registro de las horas aprobadas por mes</p>
+            <h1 class="card-title" style="text-align: center;">Registros aprobados durante el mes de <{$mes}>
+            </h1>
+            <p id="p" class="card-text">Muestra un conteno de la cantidad de registros aprobados en el mes</p>
           </div>
         </div>
         <div style="text-align:end">
@@ -60,7 +61,7 @@ $(document).ready(function() {
     </div>
   </div>
 
-  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
     <div class="card" id="card2">
       <div class="card-body">
 
@@ -78,9 +79,9 @@ $(document).ready(function() {
 
 
           <div class="col-xs-8" style="color:white">
-            <h1 class="card-title" style="text-align: center;">Horas en Revisión</h1>
-            <p id="p" class="card-text">Muestra un registro de las horas que estan en proceso de revision y esperan por
-              ajustes para su aprobacion</p>
+            <h1 class="card-title" style="text-align: center;">Registros mandado a revisión</h1>
+            <p id="p" class="card-text">Muestra un conteno de los registros que fueron mandados a revison y quedan
+              pendiente por aprobacion</p>
           </div>
 
         </div>
@@ -92,6 +93,41 @@ $(document).ready(function() {
       </div>
     </div>
   </div>
+
+
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <div class="card" id="card2"
+      style="background-image: linear-gradient(to right top, #00b347, #44c663, #68d97e, #87ec9a, #a6ffb6);">
+      <div class="card-body">
+
+        <div class="row start-xs">
+          <div class="col-xs-2">
+            <i class="fas fa-clipboard-list fa-7x " style="color:white"></i>
+
+          </div>
+
+
+          <div class="col-xs-2">
+            <h1 class="card-title" style="color: white;font-size: 55px;">100</h1>
+          </div>
+
+
+
+          <div class="col-xs-8" style="color:white">
+            <h1 class="card-title" style="text-align: center;">Registros por aprobar</h1>
+            <p id="p" class="card-text">Muestra un conteno de los registros que faltan por aprobacion durante el mes</p>
+          </div>
+
+        </div>
+
+        <div style="text-align: end;">
+          <a href="<?= $this->base_url ?>/revision" id="detalle" class="btn btn-primary">Mas Detalle</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 </div>
 
 
@@ -109,20 +145,11 @@ $(document).ready(function() {
         <div class="select">
           <select class="select-text" required>
             <option value="" disabled selected></option>
-            <option value="opcion-1">Enero</option>
-            <option value="opcion-2">Febrero</option>
-            <option value="opcion-x">Marzo</option>
-            <option value="opcion-x">Abril</option>
-            <option value="opcion-x">Mayo</option>
-            <option value="opcion-x">Junio</option>
-            <option value="opcion-x">Junio</option>
-            <option value="opcion-x">Agosto</option>
-            <option value="opcion-x">Septiembre</option>
-            <option value="opcion-x">Octubre</option>
-            <option value="opcion-x">Noviembre</option>
-            <option value="opcion-x">Diciembre</option>
+            <?php foreach($this->departamento as $valor) {?>
+            <option value="<?= $valor["id"] ?>"> <?= $valor["nombre"] ?></option>
+            <?php } ?>
           </select>
-          <label class="select-label">Mes</label>
+          <label class="select-label">Departamento</label>
         </div>
         <!--Select with pure css-->
 
@@ -159,39 +186,29 @@ $(document).ready(function() {
     <table id="example" class="stripe" style="width:100%" style="margin-top: 40px;">
       <thead>
         <tr>
-          <th>Departamento</th>
-          <th>Fecha</th>
-          <th>Total Horas a Pagar Diurnas</th>
-          <th>Total Horas a Pagar Nocturnas</th>
-          <th>Salary</th>
-          <th>Accion</th>
+          <th>Mes</th>
+          <th>año</th>
+          <th width="20%">Acciones</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Tiger Nixon</td>
-          <td>System Architect</td>
-          <td>Edinburgh</td>
-          <td>61</td>
-          <td>$320,800</td>
-          <td><a id="ai" href="#miModal" class="circle-right-btn" type="button"
+          <td>Enero</td>
+          <td>2020</td>
+          <td>
+            <a id="ai" href="#miModal" class="circle-right-btn" type="button"
               style="font-size: 15px;margin-left: 20px;color: coral;">
               <i class="fas fa-clipboard" style="font-size: 40px;"></i></a>
+
+            <a id="btn-aprobar" href="#miModal" class="circle-right-btn" type="button"
+              style="font-size: 15px;margin-left: 20px;color: coral;">
+              <i class="fas fa-check" style="font-size: 40px;"></i>
+            </a>
           </td>
         </tr>
 
 
-        <tr>
-          <td>Finn Camacho</td>
-          <td>Support Engineer</td>
-          <td>San Francisco</td>
-          <td>47</td>
-          <td>$87,500</td>
-          <td><a id="ai" href="#miModal" class="circle-right-btn" type="button"
-              style="font-size: 15px;margin-left: 20px;color: coral;">
-              <i class="fas fa-clipboard" style="font-size: 40px;"></i></a>
-          </td>
-        </tr>
+
 
       </tbody>
 
@@ -249,16 +266,21 @@ $(document).ready(function() {
   <script>
   $(document).ready(function() {
     $('#example').DataTable();
-  });
 
-  $(document).ready(function() {
+
+
     tippy('#toolBuscar', {
       content: 'Buscar',
     });
-  });
-  $(document).ready(function() {
+
+
     tippy('#ai', {
       content: 'Ver detalle',
     });
+
+
+    tippy("#btn-aprobar", {
+      content: "Aprobar"
+    })
   });
   </script>

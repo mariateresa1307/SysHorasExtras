@@ -1,0 +1,261 @@
+<?php include (getcwd()."/layout/TopComponent.phtml")?>
+<?php include (getcwd()."/layout/HeaderComponent.phtml")?>
+<?php include (getcwd()."/layout/MenuComponent.phtml")?>
+
+<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/modal.css">
+<link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/HrasExtras.css">
+<link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/fontawesome/css/all.css">
+<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/flexboxgrid.min.css">
+<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/tableBoss.css">
+
+
+<script src='<?=$this->base_url ?>/assets/js/dateTable.js'></script>
+<script src='<?=$this->base_url ?>/assets/js/dateTableBoss.js'></script>
+
+<script src='<?=$this->base_url ?>/assets/js/popper_core@2.js'></script>
+<script src='<?=$this->base_url ?>/assets/js/tippy@6.js'></script>
+
+
+<script>
+$(document).ready(function() {
+  $('#example').DataTable();
+});
+
+$(document).ready(function() {
+  tippy('#toolBuscar', {
+    content: 'Buscar',
+  });
+});
+$(document).ready(function() {
+  tippy('#ai', {
+    content: 'Ver detalle',
+  });
+});
+</script>
+
+<h1 class="h1">Gestionar Horas extras</h1>
+
+<div class="row ">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="card" id="card1">
+      <div class="card-body">
+        <div class="row start-xs">
+          <div class="col-xs-2">
+            <i class="far fa-check-double"></i>
+            <i class="fas fa-check-double fa-7x" style="color:white"></i>
+          </div>
+          <div class="col-xs-2">
+            <h1 class="card-title" style="color: white;font-size: 55px;">100</h1>
+          </div>
+          <div class="col-xs-8" style="color:white">
+            <h1 class="card-title" style="text-align: center;">Tiempo restante</h1>
+            <p id="p" class="card-text">Tiempo restante para finalizar el proceso de gestion de las horas extras para el
+              mes de <{$mes}>
+            </p>
+          </div>
+        </div>
+        <div style="text-align:end">
+          <a id="detalle" href="<?= $this->base_url ?>/aprobadas" class="btn btn-primary"> Mas Detalle</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="card" id="card2">
+      <div class="card-body">
+
+        <div class="row start-xs">
+          <div class="col-xs-2">
+            <i class="fas fa-clipboard-list fa-7x " style="color:white"></i>
+
+          </div>
+
+
+          <div class="col-xs-2">
+            <h1 class="card-title" style="color: white;font-size: 55px;">100</h1>
+          </div>
+
+
+
+          <div class="col-xs-8" style="color:white">
+            <h1 class="card-title" style="text-align: center;">Periodo rechazado</h1>
+            <p id="p" class="card-text">Muestra un registro de las horas que estan en proceso de revision y esperan por
+              ajustes para su aprobacion</p>
+          </div>
+
+        </div>
+
+        <div style="text-align: end;">
+          <a href="<?= $this->base_url ?>/revision" id="detalle" class="btn btn-primary">Mas Detalle</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="card2" style=" background-color: white; margin-top: -2px;
+    border-top-color: white;">
+  <div class="card-body">
+
+    <div class="row start-xs">
+      <div class="col-xs-4">
+        <!--Select with pure css-->
+        <div class="select">
+          <select class="select-text" required>
+            <option value="" disabled selected></option>
+            <option value="opcion-1">Enero</option>
+            <option value="opcion-2">Febrero</option>
+            <option value="opcion-x">Marzo</option>
+            <option value="opcion-x">Abril</option>
+            <option value="opcion-x">Mayo</option>
+            <option value="opcion-x">Junio</option>
+            <option value="opcion-x">Junio</option>
+            <option value="opcion-x">Agosto</option>
+            <option value="opcion-x">Septiembre</option>
+            <option value="opcion-x">Octubre</option>
+            <option value="opcion-x">Noviembre</option>
+            <option value="opcion-x">Diciembre</option>
+          </select>
+          <label class="select-label">Mes</label>
+        </div>
+        <!--Select with pure css-->
+
+      </div>
+
+      <div class="col-xs-4">
+
+        <!--Select with pure css-->
+        <div class="select">
+          <select class="select-text" required>
+            <option value="" disabled selected></option>
+            <option value="opcion-1">2020</option>
+            <option value="opcion-2">2021</option>
+            <option value="opcion-x">2022</option>
+          </select>
+          <label class="select-label">Año</label>
+        </div>
+        <!--Select with pure css-->
+      </div>
+      <div class="col-xs-4" style="margin-top: -16PX;margin-bottom: 4px;">
+        <div id="toolBuscar" class="boton" style="float: right;">
+          <a href="#"><i style="font-size: 26px;" class="fas fa-search"></i></a>
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <hr class="rounded">
+
+
+    <table id="example" class="stripe" style="width:100%" style="margin-top: 40px;">
+      <thead>
+        <tr>
+          <th>Mes</th>
+          <th>año</th>
+          <th width="20%">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Enero</td>
+          <td>2020</td>
+          <td>
+            <a id="ai" href="#miModal" class="circle-right-btn" type="button"
+              style="font-size: 15px;margin-left: 20px;color: coral;">
+              <i class="fas fa-clipboard" style="font-size: 40px;"></i></a>
+
+            <a id="btn-aprobar" href="#miModal" class="circle-right-btn" type="button"
+              style="font-size: 15px;margin-left: 20px;color: coral;">
+              <i class="fas fa-check" style="font-size: 40px;"></i>
+            </a>
+          </td>
+        </tr>
+
+
+
+
+      </tbody>
+
+    </table>
+
+
+
+  </div>
+</div>
+</div>
+
+
+
+<div id="miModal" class="modal">
+
+  <div class="modal-contenido">
+
+    <div class="row"
+      style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;margin-right: 0px !important;height:70px">
+      <div class="col-xs-6" style="color: white;">
+        <h2>Detalle de Horas Extras</h2>
+      </div>
+
+
+      <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
+
+        <a href="#" style="text-decoration: none;color: white;">X</a>
+      </div>
+    </div>
+
+    <div class="row start-xs" style="margin-top: 40px;padding-left: 95px;padding-right: 95px;">
+
+
+
+
+
+
+
+
+
+      <div class="col-xs-12">
+        <div class="btn-group">
+
+          <button Style="background-color: #0c4dc1" class="button">Aceptar</button>
+          <button Style="background-color: #ecb90fc2" class="button">Posponer</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <?php include (getcwd()."/layout/BottomComponent.phtml")?>
+
+  <script>
+  $(document).ready(function() {
+    $('#example').DataTable();
+
+
+
+    tippy('#toolBuscar', {
+      content: 'Buscar',
+    });
+
+
+    tippy('#ai', {
+      content: 'Ver detalle',
+    });
+
+
+    tippy("#btn-aprobar", {
+      content: "Aprobar"
+    })
+  });
+  </script>
