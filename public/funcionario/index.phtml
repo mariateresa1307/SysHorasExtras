@@ -44,16 +44,23 @@
         <?php foreach($this->funcionario as $valor) {?>
         <tr>
           <td><?= $valor["cedula"]?></td>
-          <td><?= $valor["primer_nombre"]?><?= $valor["segundo_nombre"]?></td>
-          <td><?= $valor["primer_apellido"]?><?= $valor["Segundo_apellido"]?></td>
+          <td><?= "{$valor["primer_nombre"]} {$valor["segundo_nombre"]}"?></td>
+          <td><?= $valor["primer_apellido"]?><?= $valor["segundo_apellido"]?></td>
           <td><?= $valor["direccion"]?></td>
           <td><?= $valor["telefono"]?></td>
-          <td><?= $valor["departamento"]?></td>
-          <td><?= $valor["cargo"]?></td>
+          <td><?= $valor["departamento_nombre"]?></td>
+          <td><?= $valor["cargo_nombre"]?></td>
 
-          <td style=" text-align: center;"><a id="ai" href="#miModal" class="circle-right-btn" type="button"
-              style="font-size: 15px;margin-left: 20px;color: coral;">
+          <td style=" text-align: center;">
+
+
+
+            <button class="circle-right-btn" type="button" onclick="editarFuncionarioRequest(<?= $valor["id"] ?>)">
               <i class="fas fa-user-edit" style="font-size: 32px;"></i></a>
+            </button>
+
+
+
           </td>
         </tr>
         <?php } ?>
@@ -91,12 +98,19 @@
       </div>
 
       <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
-        <a href="#" style="text-decoration: none;color: white;">X</a>
+        <button type="button" onclick="cerrarModal()" style="
+          height: 30px;
+          width: 30px;
+          border-radius: 50px;
+          border: none;
+          background: #0000ff00;
+          color: white;
+          cursor: pointer;">X</button>
       </div>
     </div>
 
 
-
+    <input type="hidden" id="id" />
     <div class="row start-xs" id="form" style="margin-top: 40px;padding-left: 95px;padding-right: 95px;">
 
       <div class="col-xs-4">
@@ -126,7 +140,7 @@
         <span class="input input--yoshiko">
           <input class="input__field input__field--yoshiko" type="text" id="nombres" />
           <label class="input__label input__label--yoshiko" for="input-10">
-            <span class="input__label-content input__label-content--yoshiko" data-content="Segundo Nombre">Primer
+            <span class="input__label-content input__label-content--yoshiko" data-content="Segundo Nombre">Segundo
               Nombre</span>
           </label>
         </span>
@@ -179,20 +193,11 @@
       <div class="col-xs-4">
         <!--Select with pure css-->
         <div class="select">
-          <select class="select-text" id="departamento" required>
-            <option value="" disabled selected></option>
-            <option value="opcion-1">Enero</option>
-            <option value="opcion-2">Febrero</option>
-            <option value="opcion-x">Marzo</option>
-            <option value="opcion-x">Abril</option>
-            <option value="opcion-x">Mayo</option>
-            <option value="opcion-x">Junio</option>
-            <option value="opcion-x">Junio</option>
-            <option value="opcion-x">Agosto</option>
-            <option value="opcion-x">Septiembre</option>
-            <option value="opcion-x">Octubre</option>
-            <option value="opcion-x">Noviembre</option>
-            <option value="opcion-x">Diciembre</option>
+          <select class="select-text" id="departamento" required onchange="obtenerlistaDeCargosPorDepartamento(this)">
+            <option value="" disabled selected> Departamento </option>
+            <?php foreach ($this->departamento as $value) { ?>
+            <option value="<?= $value["id"] ?>"><?= $value["nombre"] ?></option>
+            <?php } ?>
           </select>
           <label class="select-label">Departamento</label>
         </div>
@@ -201,16 +206,9 @@
       </div>
       <div class="col-xs-4">
         <!--Select with pure css-->
-        <div class="select" id="cargo">
-          <select class="select-text" required>
-            <option value="" disabled selected></option>
-            <option value="opcion-1">Enero</option>
-            <option value="opcion-2">Febrero</option>
-            <option value="opcion-x">Marzo</option>
-            <option value="opcion-x">Abril</option>
-            <option value="opcion-x">Mayo</option>
-            <option value="opcion-x">Junio</option>
-
+        <div class="select">
+          <select class="select-text" required id="cargo">
+            <option value="" disabled selected> Cargo </option>
           </select>
           <label class="select-label">Cargo</label>
         </div>
@@ -243,21 +241,22 @@ function agregar() {
   var input_apellidos = document.getElementById("apellidos");
   var input_telefono = document.getElementById("telefono");
   var input_direccion = document.getElementById("direccion");
-  var input_departamento = document.getElementById("departamento");
   var input_cargo = document.getElementById("cargo");
+  var input_id = document.getElementById("id");
 
   var dataToSend = {
+    id: input_id.value || undefined,
     cedula: input_cedula.value,
     nombrep: input_nombrep.value,
+    nombres: input_nombres.value,
     apellidop: input_apellidop.value,
     apellidos: input_apellidos.value,
     telefono: input_telefono.value,
-    direccion: input_departamento.value,
-    departamento: input_departamento.value,
-    cergo: input_cargo.value,
+    direccion: input_direccion.value,
+    cargo: input_cargo.value,
   };
 
-  //console.log(dataToSend)
+  console.log(dataToSend)
 
 
   $.ajax({
@@ -271,7 +270,9 @@ function agregar() {
         'Exito!',
         'Registro guardado',
         'success'
-      );
+      ).then((result) => {
+        cerrarModal()
+      });
 
     })
     .fail(function(response) {
@@ -281,11 +282,111 @@ function agregar() {
 
 $(document).ready(function() {
   $('#example').DataTable();
-});
-
-$(document).ready(function() {
   tippy('#ai', {
     content: 'Modificar Funcionario',
   });
 });
+
+
+function cerrarModal() {
+  window.location.href = "#";
+  location.reload();
+}
+
+
+function obtenerlistaDeCargosPorDepartamento(elemnt) {
+
+  request_obtenerlistaDeCargosPorDepartamento(elemnt.value);
+}
+
+
+function request_obtenerlistaDeCargosPorDepartamento(departamento) {
+  var dataToSend = {
+    departamento: departamento
+  }
+
+  $.ajax({
+      method: "POST",
+      url: "<?=$this->base_url ?>/funcionario/obtnerCargoPorDepartamento",
+      data: dataToSend
+    })
+    .done(function(msg) {
+      var cargo = document.getElementById("cargo")
+      cargo.innerHTML = "";
+
+      var opt = document.createElement('option');
+      opt.value = "";
+      opt.innerHTML = "seleccione un cargo";
+      var att = document.createAttribute("disabled");
+      opt.setAttributeNode(att);
+      cargo.appendChild(opt);
+
+
+      if (msg) {
+        msg.forEach(function(v) {
+          var opt = document.createElement('option');
+          opt.value = v.id;
+          opt.innerHTML = v.nombre;
+          cargo.appendChild(opt);
+        })
+      }
+
+      console.log(msg)
+
+    })
+    .fail(function(response) {
+      alert("error interno");
+    });
+}
+
+
+
+function editarFuncionarioRequest(id) {
+
+  $.ajax({
+      method: "POST",
+      url: "<?=$this->base_url ?>/funcionario/obtnerUnoPorId",
+      data: {
+        id
+      }
+    })
+    .done(function(msg) {
+
+      request_obtenerlistaDeCargosPorDepartamento(msg.departamento_id)
+
+      var input_id = document.getElementById("id");
+      var input_cedula = document.getElementById("cedula");
+      var input_nombrep = document.getElementById("nombrep");
+      var input_nombres = document.getElementById("nombres");
+      var input_apellidop = document.getElementById("apellidop");
+      var input_apellidos = document.getElementById("apellidos");
+      var input_telefono = document.getElementById("telefono");
+      var input_direccion = document.getElementById("direccion");
+
+
+
+      input_id.value = msg.id;
+      input_cedula.value = msg.cedula;
+      input_nombrep.value = msg.primer_nombre;
+      input_nombres.value = msg.segundo_nombre;
+      input_apellidop.value = msg.primer_apellido;
+      input_apellidos.value = msg.segundo_apellido;
+      input_telefono.value = msg.telefono;
+      input_direccion.value = msg.direccion;
+
+
+      $(`#departamento option[value='${msg.departamento_id}']`).prop('selected', true);
+      $(`#cargo option[value='${msg.cargo_id}']`).prop('selected', true);
+
+
+      console.log(msg)
+
+      window.location.href = "#miModal";
+
+    })
+    .fail(function(response) {
+      alert("error interno");
+    });
+
+}
 </script>

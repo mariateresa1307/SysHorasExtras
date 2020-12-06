@@ -40,6 +40,10 @@ $router->respond(function ($request, $response, $service, $app) use($config) {
 });
 
 $router->respond("{$base_url}/assets/[*]", function($request, $response, $service, $app) {
+    ini_set('display_errors', 0);
+    ini_set('display_startup_errors', 0);
+    error_reporting(0);
+
     $dir = preg_replace("/^\/.*assets/", "", $request->pathname());
     return $response->file("../public/assets/{$dir}");
 });
@@ -66,6 +70,8 @@ $router->respond('POST', "{$base_url}/user/obtnerUsuarioPorId", [$userCtrl, 'obt
 
 $router->respond('GET', "{$base_url}/funcionario", [$funcionarioCtrl,'indexAction']);
 $router->respond('POST', "{$base_url}/funcionario/guardar", [$funcionarioCtrl, 'guardar']);
+$router->respond('POST', "{$base_url}/funcionario/obtnerCargoPorDepartamento", [$funcionarioCtrl, 'obtnerCargoPorDepartamento']);
+$router->respond('POST', "{$base_url}/funcionario/obtnerUnoPorId", [$funcionarioCtrl, 'obtnerUnoPorId']);
 //$router->respond('POST', "{$base_url}/funcionario/obtnerUsuarioPorId", [$funcionarioCtrl, 'obtnerFuncionarioPorId']);
 
 

@@ -19,5 +19,11 @@ class Cargo {
         return pg_fetch_all($result);
     }
 
+    public function obtnerPorDepartamento($departamento_id){
+        $query = "SELECT * FROM cargo where departamento_id = {$departamento_id}";
+        $result = pg_exec($this->em->vinculo, $query);
+        return pg_fetch_all($result);
+    }
+
 	
 }
