@@ -34,7 +34,7 @@ $(document).ready(function() {
             <div
               style="background-color: #0e36a47a;margin-left: 20px;margin-right: 20px;margin-top: -21px; position: relative;height: 53px;border-radius: 5px;z-index: 0; ">
 
-              <h3 style="margin-left: 10px;margin-top: 16px; color: white;">Agregar departamento
+              <h3 style="margin-left: 10px;margin-top: 16px; color: white;">Gestionar departamento
 
 
                 <div id="toolBuscar" style="float: right;">
@@ -47,18 +47,15 @@ $(document).ready(function() {
             </div>
 
             <div class="card-body">
-              <div class="omrs-input-group">
-                <label class="omrs-input-filled">
-                  <input type="text" onkeypress="return soloLetras(event)" required
-                    style="background-color: white;   height: 50px;">
-                  <span class="omrs-input-label">Nuevo departamento</span>
-                </label>
-              </div>
 
-              <div style="text-align:end">
-                <a id="detalle" class="btn btn-primary"> Guardar</a>
-
-              </div>
+              <ul>
+                <?php foreach ($this->departamento as $value) { ?>
+                <li> <?= $value["nombre"] ?>
+                  <button type="button"
+                    onclick="editardepartamento( '<?= $value["id"] ?>', '<?= $value["nombre"] ?>')">Editar</button>
+                </li>
+                <?php } ?>
+              </ul>
 
             </div>
           </div>
@@ -73,7 +70,7 @@ $(document).ready(function() {
           <div class="card" style="box-shadow: 0px 0px 24px 1px #8888884f;border: none;">
             <div
               style="background-color: #0e36a47a;margin-left: 20px;margin-right: 20px;margin-top: -21px; position: relative;height: 53px;border-radius: 5px;z-index: 10; ">
-              <h3 style="margin-left: 10px;margin-top: 16px; color: white;">Configurar cargo y sueldo
+              <h3 style="margin-left: 10px;margin-top: 16px; color: white;">Gestionar cargo y sueldo
 
                 <div id="toolBuscar" style="float: right;">
                   <a href="#miModal1" style="padding-right: 22px;color: white;">
@@ -91,47 +88,19 @@ $(document).ready(function() {
                     class="fas fa-check-double" style="color: #1ee81e;"></i></h3>
 
 
-                <div>
-                  <input style=" display: none;" type="checkbox" id="check1" />
-                  <label for="check1">
-                    <div><i class="fa fa-check"></i></div>Bachiller
-                  </label>
-                </div>
+                <ul>
+                  <?php foreach ($this->cargo as $value) { ?>
+                  <li> <?= "{$value["nombre"]} -  {$value["salario_base"]} Bs." ?> <button type="button"
+                      onclick="editarCargo('<?= $value["id"] ?>')">Editar</button>
+                  </li>
+                  <?php } ?>
+                </ul>
 
-                <div>
-                  <input style=" display: none;" type="checkbox" id="check2" />
-                  <label for="check2">
-                    <div><i class="fa fa-check"></i></div> Tecnico
-                  </label>
-                </div>
 
-                <div>
-                  <input style=" display: none;" type="checkbox" id="check3" />
-                  <label for="check3">
-                    <div><i class="fa fa-check"></i></div> Ingeniero
-                  </label>
-                </div>
 
-                <div>
-                  <input style=" display: none;" type="checkbox" id="check4" />
-                  <label for="check4">
-                    <div><i class="fa fa-check"></i></div> Especialista
-                  </label>
-                </div>
-
-                <div>
-                  <input style=" display: none;" type="checkbox" id="check5" />
-                  <label for="check5">
-                    <div><i class="fa fa-check"></i></div> Supervisor
-                  </label>
-                </div>
               </div>
 
-              <div class="btn-group">
-                <div style=" margin-top: 25px; text-align: end;"> <a class="btn btn-primary2">Eliminar</a>
-                  <a href="#miModal1" class="btn btn-primary1">Modificar</a>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
@@ -164,28 +133,14 @@ $(document).ready(function() {
 
     <div class="row start-xs" style="margin-top: 40px;padding-left: 95px;padding-right: 95px;">
 
+      <input type="hidden" id="input-departamento-id" />
 
-      <div class="col-xs-4" style="margin-top: 25px;">
-        <!--Select with pure css-->
-        <div class="select">
-          <select class="select-text" required>
-            <option value="" disabled selected></option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-          </select>
-          <label class="select-label">Departamento</label>
-        </div>
-        <!--Select with pure css-->
-      </div>
-
-
-      <div class="col-xs-4" style="margin-top: 25px;">
+      <div class="col-xs-12" style="margin-top: 25px;">
         <div class="omrs-input-group">
           <label class="omrs-input-filled">
-            <input type="text" onkeypress="return soloLetras(event)" required
+            <input type="text" onkeypress="return soloLetras(event)" id="input-departamento-nombre" required
               style="background-color: white;   height: 50px;margin-top: -8px;">
-            <span class="omrs-input-label">Cargo</span>
+            <span class="omrs-input-label">Departamento</span>
           </label>
         </div>
       </div>
@@ -193,9 +148,9 @@ $(document).ready(function() {
 
 
       <div class="col-xs-12">
-
-        <div style=" margin-top: 25px; text-align: end;"> <a class="btn btn-primary2">Eliminar</a>
-          <a class="btn btn-primary1">Modificar</a>
+        <div style=" margin-top: 25px; text-align: end;">
+          <a class="btn btn-primary2" id="btn-departamento-eliminar">Eliminar</a>
+          <a class="btn btn-primary1" id="btn-departamento-guardar" onclick="guardar()">Guardar</a>
         </div>
 
       </div>
@@ -220,7 +175,7 @@ $(document).ready(function() {
     <div class="row"
       style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;margin-right: 0px !important;height:70px">
       <div class="col-xs-6" style="color: white;">
-        <h2>Configuracion</h2>
+        <h2>Gestionar cargo</h2>
       </div>
 
       <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
@@ -234,11 +189,11 @@ $(document).ready(function() {
       <div class="col-xs-4" style="margin-top: 25px;">
         <!--Select with pure css-->
         <div class="select">
-          <select class="select-text" required>
+          <select class="select-text" required id="select-cargo-departamento">
             <option value="" disabled selected></option>
-            <option value="opcion-1">Adiministracion</option>
-            <option value="opcion-2">Informatica</option>
-
+            <?php foreach ($this->departamento as $value) { ?>
+            <option value="<?= $value["id"] ?>"><?= $value["nombre"] ?></option>
+            <?php } ?>
           </select>
           <label class="select-label">Departamento</label>
         </div>
@@ -248,7 +203,7 @@ $(document).ready(function() {
       <div class="col-xs-4" style="margin-top: 25px;">
         <div class="omrs-input-group">
           <label class="omrs-input-filled">
-            <input type="text" onkeypress="return soloLetras(event)" required
+            <input type="text" onkeypress="return soloLetras(event)" required id="input-cargo-nombre"
               style="background-color: white;   height: 50px;margin-top: -8px;">
             <span class="omrs-input-label">Cargo</span>
           </label>
@@ -259,7 +214,7 @@ $(document).ready(function() {
       <div class="col-xs-4" style="margin-top: 25px;">
         <div class="omrs-input-group">
           <label class="omrs-input-filled">
-            <input type="text" onkeypress="return numeros(event)" required
+            <input type="text" onkeypress="return numeros(event)" required id="input-cargo-salario"
               style="background-color: white;   height: 50px;margin-top: -8px;">
             <span class="omrs-input-label">Salario</span>
           </label>
@@ -270,7 +225,7 @@ $(document).ready(function() {
       <div class="col-xs-12">
         <div class="btn-group">
           <div style=" margin-top: 25px; text-align: end;"> <a class="btn btn-primary2">Eliminar</a>
-            <a class="btn btn-primary1">Guardar</a>
+            <a class="btn btn-primary1" onclick="guardarCargo()">Guardar</a>
           </div>
         </div>
       </div>
@@ -282,10 +237,97 @@ $(document).ready(function() {
 
 
 
+
+<div id="miModal2" class="modal" style=" z-index: 999;">
+
+  <div class="modal-contenido">
+
+    <div class="row"
+      style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;margin-right: 0px !important;height:70px">
+      <div class="col-xs-6" style="color: white;">
+        <h2>Editar cargo</h2>
+      </div>
+
+      <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
+        <a href="#" style="text-decoration: none;color: white;">X</a>
+      </div>
+    </div>
+
+    <div class="row start-xs" style="margin-top: 40px;padding-left: 95px;padding-right: 95px;">
+
+
+      <div class="col-xs-12 col-sm-6" style="margin-top: 25px;">
+        <!--Select with pure css-->
+        <div class="select">
+          <select class="select-text" required id="select-cargo-departasmento">
+            <option value="" disabled selected></option>
+            <?php foreach ($this->departamento as $value) { ?>
+            <option value="<?= $value["id"] ?>"><?= $value["nombre"] ?></option>
+            <?php } ?>
+          </select>
+          <label class="select-label">Departamento</label>
+        </div>
+        <!--Select with pure css-->
+      </div>
+
+      <div class="col-xs-12 col-sm-6" style="margin-top: 25px;">
+        <!--Select with pure css-->
+        <div class="select">
+          <select class="select-text" required id="select-cargo-deparstamento">
+            <option value="" disabled selected></option>
+            <?php foreach ($this->departamento as $value) { ?>
+            <option value="<?= $value["id"] ?>"><?= $value["nombre"] ?></option>
+            <?php } ?>
+          </select>
+          <label class="select-label">Departamento</label>
+        </div>
+        <!--Select with pure css-->
+      </div>
+
+
+      <div class="col-xs-12 col-sm-6" style="margin-top: 25px;">
+        <div class="omrs-input-group">
+          <label class="omrs-input-filled">
+            <input type="text" onkeypress="return soloLetras(event)" required id="input-casrgo-nombre"
+              style="background-color: white;   height: 50px;margin-top: -8px;">
+            <span class="omrs-input-label">Cargo</span>
+          </label>
+        </div>
+      </div>
+
+
+      <div class="col-xs-4  col-sm-6" style="margin-top: 25px;">
+        <div class="omrs-input-group">
+          <label class="omrs-input-filled">
+            <input type="text" onkeypress="return numeros(event)" required id="input-cargso-salario"
+              style="background-color: white;   height: 50px;margin-top: -8px;">
+            <span class="omrs-input-label">Salario</span>
+          </label>
+        </div>
+      </div>
+
+
+      <div class="col-xs-12">
+        <div class="btn-group">
+          <div style=" margin-top: 25px; text-align: end;"> <a class="btn btn-primary2">Eliminar</a>
+            <a class="btn btn-primary1" onclick="guardarCargo()">Guardar</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div>
+
+
+
 
 <?php //Modal Configuracion*/?>
 <?php include (getcwd()."/layout/BottomComponent.phtml")?>
+
+<script src='<?=$this->base_url ?>/assets/js/sweetalert2@10.js'></script>
+
 
 <script>
 function soloLetras(e) {
@@ -323,5 +365,103 @@ function numeros(e) {
 
   if (letras.indexOf(tecla) == -1 && !tecla_especial)
     return false;
+}
+
+
+function editardepartamento(id, nombre) {
+  var dept = document.getElementById("input-departamento-nombre");
+  var deptId = document.getElementById("input-departamento-id");
+  deptId.value = id
+  dept.value = nombre;
+
+
+
+  window.location.href = "#miModal";
+}
+
+
+
+function guardar() {
+  var dept = document.getElementById("input-departamento-nombre");
+  var deptId = document.getElementById("input-departamento-id");
+
+  var formData = {
+    id: deptId.value || undefined,
+    nombre: dept.value
+  }
+
+
+  $.ajax({
+      method: "POST",
+      url: "<?=$this->base_url ?>/configuracion/guardarDepartamento",
+      data: formData
+    })
+    .done(function(msg) {
+
+      Swal.fire(
+        'Exito!',
+        'Registro guardado',
+        'success'
+      ).then((result) => {
+        cerrarModal()
+      });
+
+
+    })
+    .fail(function(response) {
+      alert("error interno");
+    });
+
+}
+
+function cerrarModal() {
+  window.location.href = "#";
+  location.reload();
+}
+
+
+
+function guardarCargo() {
+  var dept = document.getElementById("select-cargo-departamento");
+  var salario = document.getElementById("input-cargo-salario");
+  var nombre = document.getElementById("input-cargo-nombre");
+
+  var formData = {
+    id: undefined,
+    nombre: nombre.value,
+    salario_base: salario.value,
+    departamento_id: dept.value
+  }
+
+
+  $.ajax({
+      method: "POST",
+      url: "<?=$this->base_url ?>/configuracion/guardarCargo",
+      data: formData
+    })
+    .done(function(msg) {
+
+      Swal.fire(
+        'Exito!',
+        'Registro guardado',
+        'success'
+      ).then((result) => {
+        cerrarModal()
+      });
+
+
+    })
+    .fail(function(response) {
+      alert("error interno");
+    });
+}
+
+function cerrarModal3() {
+  window.location.href = "#";
+  location.reload();
+}
+
+function editarCargo(id) {
+  window.location.href = "#miModal2";
 }
 </script>

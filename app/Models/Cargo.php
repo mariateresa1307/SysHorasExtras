@@ -25,5 +25,22 @@ class Cargo {
         return pg_fetch_all($result);
     }
 
+
+    public function guardar($data){
+        $query="INSERT INTO cargo
+        (nombre, salario_base, departamento_id)
+        VALUES('{$data["nombre"]}', {$data["salario_base"]}, {$data["departamento_id"]});
+        ";
+        pg_query($this->em->vinculo, $query);
+    }
+
+    public function editar($data){
+        $query="UPDATE cargo
+        SET nombre='{$data["nombre"]}', salario_base={$data["dalario_base"]}, departamento_id={$data["departamento_id"]}
+        WHERE id={$data["id"]}
+        ";
+        pg_query($this->em->vinculo, $query);
+    }
+
 	
 }
