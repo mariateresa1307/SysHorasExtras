@@ -163,13 +163,19 @@ $(document).ready(function() {
         <tr>
           <th>Mes</th>
           <th>año</th>
+          <th>Estado por parte de RRHH </th>
           <th width="20%">Acciones</th>
         </tr>
       </thead>
       <tbody>
+
+        <?php foreach ($this->registro_mensual as $value) { ?>
+
+
         <tr>
-          <td>Enero</td>
+          <td><?= $value["tiempo_"] ?></td>
           <td>2020</td>
+          <td>{$aprobado} </td>
           <td>
             <a id="ai" href="#miModal" class="circle-right-btn" type="button"
               style="font-size: 15px;margin-left: 20px;color: coral;">
@@ -181,6 +187,8 @@ $(document).ready(function() {
             </a>
           </td>
         </tr>
+
+        <?php } ?>
 
 
 
