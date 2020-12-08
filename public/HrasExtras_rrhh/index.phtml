@@ -28,7 +28,7 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
   tippy('#ai', {
-    content: 'Ver detalle',
+    content:' Detalles',
   });
 });
 </script>
@@ -54,7 +54,7 @@ $(document).ready(function() {
           </div>
         </div>
         <div style="text-align:end">
-          <a id="detalle" href="<?= $this->base_url ?>/aprobadas" class="btn btn-primary"> Mas Detalle</a>
+
         </div>
 
       </div>
@@ -87,7 +87,7 @@ $(document).ready(function() {
         </div>
 
         <div style="text-align: end;">
-          <a href="<?= $this->base_url ?>/revision" id="detalle" class="btn btn-primary">Mas Detalle</a>
+
         </div>
 
       </div>
@@ -121,7 +121,7 @@ $(document).ready(function() {
         </div>
 
         <div style="text-align: end;">
-          <a href="<?= $this->base_url ?>/revision" id="detalle" class="btn btn-primary">Mas Detalle</a>
+
         </div>
 
       </div>
@@ -137,7 +137,7 @@ $(document).ready(function() {
 
 <div class="card2" style=" background-color: white; margin-top: -2px;
     border-top-color: white;">
-  <div class="card-body">
+  <div class="card-body" style="margin-top: 25px;">
 
     <div class="row start-xs">
       <div class="col-xs-4">
@@ -233,7 +233,7 @@ $(document).ready(function() {
     <div class="row"
       style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important;margin-right: 0px !important;height:70px">
       <div class="col-xs-6" style="color: white;">
-        <h2>Detalle de Horas Extras</h2>
+        <h2>Detalles de Horas Extras</h2>
       </div>
 
 
@@ -256,8 +256,8 @@ $(document).ready(function() {
       <div class="col-xs-12">
         <div class="btn-group">
 
-          <button Style="background-color: #0c4dc1" class="button">Aceptar</button>
-          <button Style="background-color: #ecb90fc2" class="button">Posponer</button>
+          <button Style="background-color: #0c4dc1;font-size: 13px;"id="ai" class="button">Aceptar</button>
+          <button Style="background-color: coral;font-size: 13px;"id="ai" class="button">Revision</button>
         </div>
       </div>
 
@@ -279,7 +279,7 @@ $(document).ready(function() {
 
 
     tippy('#ai', {
-      content: 'Ver detalle',
+      content:' Detalles',
     });
 
 

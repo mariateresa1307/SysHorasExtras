@@ -103,24 +103,38 @@
 /*fin boton redondo*/
 
 
-/*gupos de botones */
+/*gupos de botones*/
 
 .btn-group .button {
-    border: none;
+    border: 0px;
     color: white;
-    padding: 20px 55px;
+    padding: 15px 55px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
     float: right;
-    border-radius: 3px;
+    border-radius: 4px;
 }
 
 .btn-group .button:hover {
     background-color: #3e8e41;
 }
+
+
+#ai {
+  color: white;
+  position: relative;
+  text-decoration: none;
+  border: 0px;
+}
+
+#ai:active {
+  box-shadow: none;
+  top: 5px;
+}
+
 
 #detalle:link,
 #detalle:visited {

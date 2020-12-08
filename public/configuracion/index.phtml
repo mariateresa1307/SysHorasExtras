@@ -16,6 +16,12 @@ $(document).ready(function() {
     content: 'Agregar nuevo ',
   });
 });
+
+$(document).ready(function() {
+  tippy('#toolEditar', {
+    content: 'Editar ',
+  });
+});
 </script>
 
 <h1 class="h1">Configuracion </h1>
@@ -51,8 +57,8 @@ $(document).ready(function() {
               <ul>
                 <?php foreach ($this->departamento as $value) { ?>
                 <li> <?= $value["nombre"] ?>
-                  <button type="button"
-                    onclick="editardepartamento( '<?= $value["id"] ?>', '<?= $value["nombre"] ?>')">Editar</button>
+                  <a type="button" id="toolEditar"
+                    onclick="editardepartamento( '<?= $value["id"] ?>', '<?= $value["nombre"] ?>')"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"style="color: coral;"></i></a>
                 </li>
                 <?php } ?>
               </ul>
@@ -90,8 +96,9 @@ $(document).ready(function() {
 
                 <ul>
                   <?php foreach ($this->cargo as $value) { ?>
-                  <li> <?= "{$value["nombre"]} -  {$value["salario_base"]} Bs." ?> <button type="button"
-                      onclick="editarCargo('<?= $value["id"] ?>')">Editar</button>
+                  <li> <?= "{$value["nombre"]} -  {$value["salario_base"]} Bs." ?> <a type="button" id="toolEditar"
+                      onclick="editarCargo('<?= $value["id"] ?>')"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"style="color: coral;"></i></a>
+</a>
                   </li>
                   <?php } ?>
                 </ul>
@@ -149,7 +156,7 @@ $(document).ready(function() {
 
       <div class="col-xs-12">
         <div style=" margin-top: 25px; text-align: end;">
-          <a class="btn btn-primary2" id="btn-departamento-eliminar">Eliminar</a>
+
           <a class="btn btn-primary1" id="btn-departamento-guardar" onclick="guardar()">Guardar</a>
         </div>
 
@@ -224,7 +231,7 @@ $(document).ready(function() {
 
       <div class="col-xs-12">
         <div class="btn-group">
-          <div style=" margin-top: 25px; text-align: end;"> <a class="btn btn-primary2">Eliminar</a>
+          <div style=" margin-top: 25px; text-align: end;">
             <a class="btn btn-primary1" onclick="guardarCargo()">Guardar</a>
           </div>
         </div>
@@ -309,7 +316,8 @@ $(document).ready(function() {
 
       <div class="col-xs-12">
         <div class="btn-group">
-          <div style=" margin-top: 25px; text-align: end;"> <a class="btn btn-primary2">Eliminar</a>
+          <div style=" margin-top: 25px; text-align: end;">
+
             <a class="btn btn-primary1" onclick="guardarCargo()">Guardar</a>
           </div>
         </div>
