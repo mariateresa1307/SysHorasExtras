@@ -253,7 +253,7 @@ div.omrs-input-group {
     z-index: 1;
     display: inline-block;
     margin: 1em;
-    width: 100%;
+  /*  width: 100%;*/
     vertical-align: top;
 }
 
@@ -317,7 +317,7 @@ div.omrs-input-group {
 }
 
 .input__label--yoshiko {
-    width: 100%;
+    /*width: 100%;*/
     text-align: left;
     position: absolute;
     bottom: 85%;

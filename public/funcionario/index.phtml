@@ -180,9 +180,9 @@
         </span>
         <!--Input css-->
       </div>
-      <div class="col-xs-4">
+      <div class="col-xs-12">
         <!--Input css-->
-        <span class="input input--yoshiko">
+        <span class="input input--yoshiko" style="width: 98%;">
           <input class="input__field input__field--yoshiko" type="text" id="direccion" />
           <label class="input__label input__label--yoshiko" for="input-10">
             <span class="input__label-content input__label-content--yoshiko" data-content="Direccion">Direccion</span>
@@ -190,7 +190,7 @@
         </span>
         <!--Input css-->
       </div>
-      <div class="col-xs-4">
+      <div class="col-xs-4" style="margin-left: -16px; margin-top:10px">
         <!--Select with pure css-->
         <div class="select">
           <select class="select-text" id="departamento" required onchange="obtenerlistaDeCargosPorDepartamento(this)">
@@ -204,7 +204,7 @@
         <!--Select with pure css-->
 
       </div>
-      <div class="col-xs-4">
+      <div class="col-xs-4" style=" margin-top:10px">
         <!--Select with pure css-->
         <div class="select">
           <select class="select-text" required id="cargo">
@@ -218,7 +218,7 @@
 
 
       <div class="col-xs-12">
-        <div class="btn-group">
+        <div class="btn-group" style="margin-top: 50px;text-align: end;">
 
           <button type="button" onclick="agregar()" class="btn btn-primary1">Guardar</button>
         </div>
@@ -232,7 +232,7 @@
 <?php include (getcwd()."/layout/BottomComponent.phtml")?>
 
 <script>
-//aquiquede 
+//aquiquede
 function agregar() {
   var input_cedula = document.getElementById("cedula");
   var input_nombrep = document.getElementById("nombrep");
