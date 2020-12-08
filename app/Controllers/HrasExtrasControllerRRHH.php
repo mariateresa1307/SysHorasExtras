@@ -3,19 +3,21 @@
 namespace ControlHorasExtras\PHP_MVC\Controllers;
 
 use ControlHorasExtras\PHP_MVC\Models\Departamento;
-
+use ControlHorasExtras\PHP_MVC\Models\RegistroAsistenciaMensual;
 
 
 class HrasExtrasControllerRRHH{
 
     public function rrhh($req, $res, $service, $app){
+        $registroAsistenciaMensual = new RegistroAsistenciaMensual();
 
         $departamento = new Departamento();
 
         $data = [
             "title" => "Horas Extras",
             "base_url" => $app->base_url,
-            "departamento" => $departamento->obtenerTodo()
+            "departamento" => $departamento->obtenerTodo(),
+            "registro_mensual" => $registroAsistenciaMensual->obtenerTodo()
         ];
 
         

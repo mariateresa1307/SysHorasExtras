@@ -4,26 +4,20 @@ namespace ControlHorasExtras\PHP_MVC\Controllers;
 
 use \ControlHorasExtras\PHP_MVC\Controllers\calculoHorasExtras\CalculoHorasExtras;
 use ControlHorasExtras\PHP_MVC\Models\Funcionario;
+use ControlHorasExtras\PHP_MVC\Models\RegistroAsistenciaMensual;
 
 class HrasExtrasController{
 
-    public function rrhh($req, $res, $service, $app){
-
-        $data = [
-            "title" => "Horas Extras",
-            "base_url" => $app->base_url
-        ];
-
-        
-        return $service->render('HrasExtras_coordinador/index.phtml', $data);
-    }
 
 
     public function coordinador($req, $res, $service, $app){
+        $registroAsistenciaMensual = new RegistroAsistenciaMensual();
+
 
         $data = [
             "title" => "Horas Extras",
-            "base_url" => $app->base_url
+            "base_url" => $app->base_url,
+            "registro_mensual" => $registroAsistenciaMensual->obtenerTodo()
         ];
 
         
