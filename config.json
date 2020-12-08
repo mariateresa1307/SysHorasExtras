@@ -4,9 +4,9 @@
       "driver": "pdo_pgsql",
       "user": "postgres",
       "password": "12345678",
-      "dbname": "HorasExtras",
+      "dbname": "HrasExtras",
       "host": "localhost",
-      "port": "5433"
+      "port": "5432"
     }
   ],
   "base_url": "http://localhost:8080/SysHorasExtras"
