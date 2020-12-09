@@ -98,3 +98,232 @@ input {
 .btn-mostrar-clave:active {
   background: #888888;
 }
+
+/*input*/
+
+
+/** BEGIN: Non Openmrs CSS **/
+
+
+/** END: Non Openmrs CSS **/
+
+div.omrs-input-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+    width: 20.4375rem;
+}
+
+
+/* Input*/
+
+.omrs-input-underlined>input,
+.omrs-input-filled>input {
+    border: none;
+    border-bottom: 0.125rem solid var(--omrs-color-ink-medium-contrast);
+    width: 100%;
+    height: 2rem;
+    font-size: 1.0625rem;
+    padding-left: 0.875rem;
+    line-height: 147.6%;
+    padding-top: 0.825rem;
+    padding-bottom: 0.5rem;
+}
+
+.omrs-input-underlined>input:focus,
+.omrs-input-filled>input:focus {
+    outline: none;
+}
+
+.omrs-input-underlined>.omrs-input-label,
+.omrs-input-filled>.omrs-input-label {
+    position: absolute;
+    top: 0.9375rem;
+    left: 0.875rem;
+    line-height: 147.6%;
+    color: var(--omrs-color-ink-medium-contrast);
+    transition: top .2s;
+}
+
+.omrs-input-underlined>svg,
+.omrs-input-filled>svg {
+    position: absolute;
+    top: 0.9375rem;
+    right: 0.875rem;
+    fill: var(--omrs-color-ink-medium-contrast);
+}
+
+.omrs-input-underlined>.omrs-input-helper,
+.omrs-input-filled>.omrs-input-helper {
+    font-size: 0.9375rem;
+    color: var(--omrs-color-ink-medium-contrast);
+    letter-spacing: 0.0275rem;
+    margin: 0.125rem 0.875rem;
+}
+
+.omrs-input-underlined>input:hover,
+.omrs-input-filled>input:hover {
+    background: var(--omrs-color-interaction-minus-two);
+    border-color: var(--omrs-color-ink-high-contrast);
+}
+
+.omrs-input-underlined>input:focus+.omrs-input-label,
+.omrs-input-underlined>input:valid+.omrs-input-label,
+.omrs-input-filled>input:focus+.omrs-input-label,
+.omrs-input-filled>input:valid+.omrs-input-label {
+    top: 0;
+    font-size: 0.9375rem;
+    margin-bottom: 32px;
+    ;
+}
+
+.omrs-input-underlined:not(.omrs-input-danger)>input:focus+.omrs-input-label,
+.omrs-input-filled:not(.omrs-input-danger)>input:focus+.omrs-input-label {
+    color: var(--omrs-color-interaction);
+}
+
+.omrs-input-underlined:not(.omrs-input-danger)>input:focus,
+.omrs-input-filled:not(.omrs-input-danger)>input:focus {
+    border-color: var(--omrs-color-interaction);
+}
+
+.omrs-input-underlined:not(.omrs-input-danger)>input:focus~svg,
+.omrs-input-filled:not(.omrs-input-danger)>input:focus~svg {
+    fill: var(--omrs-color-ink-high-contrast);
+}
+
+
+/*IMPUT fORM*/
+
+.input {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin: 1em;
+    width: 100%;
+    vertical-align: top;
+}
+
+.input__field {
+    position: relative;
+    display: block;
+    float: right;
+    padding: 0.8em;
+    background: #f0f0f0;
+    color: #2b2b2b;
+    font-weight: 400;
+    /* for box shadows to show on iOS */
+}
+
+.input__field:focus {
+    outline: none;
+}
+
+.input__label {
+    display: inline-block;
+    float: right;
+    padding: 0 1em;
+    width: 40%;
+    color: #f0f0f0;
+    font-size: 16px;
+    user-select: none;
+}
+
+.input__label-content {
+    position: relative;
+    display: block;
+    padding: 1.6em 0;
+    width: 100%;
+}
+
+.graphic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: none;
+}
+
+.icon {
+    color: #ddd;
+    font-size: 150%;
+}
+
+
+/* Individual styles */
+
+
+/* Yoshiko */
+
+.input__field--yoshiko {
+    width: 95%;
+    background-color: #f7f8f7;
+    border: 2px solid transparent;
+    transition: background-color 0.25s, border-color 0.25s;
+    border-radius: 3px;
+    font-size: 20px;
+}
+
+.input__label--yoshiko {
+    /*width: 100%;*/
+    text-align: left;
+    position: absolute;
+    bottom: 85%;
+    pointer-events: none;
+    overflow: hidden;
+    transform: translate3d(0, 3em, 0);
+    transition: transform 0.25s;
+    transition-timing-function: ease-in-out;
+
+}
+
+.input__label-content--yoshiko {
+    color: #8B8C8B;
+    padding: 0.25em 0;
+    transition: transform 0.25s;
+    transition-timing-function: ease-in-out;
+}
+
+.input__label-content--yoshiko::after {
+    content: attr(data-content);
+    position: absolute;
+    font-weight: 800;
+    bottom: 100%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: #0a6ae9;
+    padding: 0.25em 0;
+    letter-spacing: 1px;
+    font-size: 0.85em;
+}
+
+.input__field--yoshiko:focus+.input__label--yoshiko,
+.input--filled .input__label--yoshiko {
+    transform: translate3d(0, 0, 0);
+}
+
+.input__field--yoshiko:focus+.input__label--yoshiko .input__label-content--yoshiko,
+.input--filled .input__label-content--yoshiko {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+}
+
+.input__field--yoshiko:focus+.input__field--yoshiko,
+.input--filled .input__field--yoshiko {
+    background-color: transparent;
+    border-color: #a3d39c;
+}
+
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: '';
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}

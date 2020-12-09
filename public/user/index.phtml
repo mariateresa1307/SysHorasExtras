@@ -111,8 +111,8 @@
             <td><?= $valor["tipo_usuario"]?></td>
             <td><?= $valor["nombre_departamento"]?></td>
             <td>
-              <a class="circle-right-btn" type="button" onClick="editarUsuarioRequest(<?= $valor["id"] ?>)"><i
-                  class="fas fa-edit fa-1x"style="color: coral;">
+              <a class="circle-right-btn" id="ToolModi" type="button" onClick="editarUsuarioRequest(<?= $valor["id"] ?>)"><i
+                  class="fas fa-edit" style="font-size: 32px;color: coral;"">
                 </i></a>
             </td>
           </tr>
@@ -157,52 +157,108 @@
       </div>
 
 
-      <div class="row" style="margin-top: 40px" id="form">
+      <div class="row" style="margin-top: 40px;padding-left=40px;" id="form">
         <div>
           <input type="hidden" name="id" />
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <input type="text" placeholder="Nombres" name="nombres" required>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <input type="text" placeholder="Apellido" name="apellidos" required>
-        </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <input type="text" placeholder="Cedula" name="cedula" required>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-
-          <select name="departamento">
-            <option selected disabled value="0">Departamento</option>
-            <?php  foreach ($this->departamento as $valor) { ?>
-            <option value="<?= $valor["id"] ?>"> <?= $valor["nombre"] ?></option>
-            <?php } ?>
-          </select>
-
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <input type="password" placeholder="Contraseña" id="clave" name="clave" required>
-          <button type="button" class="btn-mostrar-clave" onClick="mostrarClave()">
-            <i class="far fa-eye"></i>
-          </button>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <select name="tipo_usuario">
-            <option selected disabled value="0">Tipo de Usuario</option>
-            <?php  foreach ($this->usuarioTipo as $valor) { ?>
-            <option value="<?= $valor["id"] ?>"> <?= $valor["nombre"] ?></option>
-            <?php } ?>
-          </select>
+        <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6">
+          <!--Input css-->
+          <span class="input input--yoshiko">
+            <input class="input__field input__field--yoshiko" id="nombres" onkeypress="return soloLetras(event)"  maxlength="15" type="text" />
+            <label class="input__label input__label--yoshiko" for="input-10">
+              <span class="input__label-content input__label-content--yoshiko" data-content="Nombres"> Nombres</span>
+            </label>
+          </span>
+          <!--Input css-->
         </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <select name="bloqueado">
-            <option selected disabled value="0">bloqueado</option>
-            <option value="true">si</option>
-            <option value="false">no</option>
-          </select>
+        <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6">
+          <!--Input css-->
+          <span class="input input--yoshiko">
+            <input class="input__field input__field--yoshiko" id="apellidos" onkeypress="return soloLetras(event)"  maxlength="15" type="text" />
+            <label class="input__label input__label--yoshiko" for="input-10">
+              <span class="input__label-content input__label-content--yoshiko" data-content="Apellidos"> Apellidos</span>
+            </label>
+          </span>
+          <!--Input css-->
         </div>
+
+        <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6">
+          <!--Input css-->
+          <span class="input input--yoshiko">
+            <input class="input__field input__field--yoshiko" id="cedula" onkeypress="return soloNumeros(event)"  maxlength="8" type="text" />
+            <label class="input__label input__label--yoshiko" for="input-10">
+              <span class="input__label-content input__label-content--yoshiko" data-content="Cedula"> Cedula</span>
+            </label>
+          </span>
+          <!--Input css-->
+        </div>
+
+        <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6">
+          <!--Input css-->
+          <span class="input input--yoshiko">
+            <input class="input__field input__field--yoshiko" type="password" id="clave" name="clave"  maxlength="8" />
+
+            <label class="input__label input__label--yoshiko" for="input-10">
+
+              <span class="input__label-content input__label-content--yoshiko" data-content="contraseña"> contraseña</span>
+            </label>
+            <a type="button" class="btn-mostrar-clave" onClick="mostrarClave()" style="margin-left: 92%;margin-top: 23px;background-color: #fff;width: 34px;">
+              <i class="far fa-eye" style="text-align: center;position: relative;display: block;margin-top: 4px;"></i>
+            </a>
+          </span>
+          <!--Input css-->
+        </div>
+
+        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
+          <!--Select with pure css-->
+          <div class="select" >
+            <select class="select-text" id="departamento" required onchange="obtenerlistaDeCargosPorDepartamento(this)"
+            style="height: 50px;margin-top: 21px;">
+              <option value="" disabled selected> Departamento </option>
+              <?php foreach ($this->departamento as $value) { ?>
+              <option value="<?= $value["id"] ?>"><?= $value["nombre"] ?></option>
+              <?php } ?>
+            </select>
+            <label class="select-label">Departamento</label>
+          </div>
+          <!--Select with pure css-->
+
+        </div>
+
+
+
+        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
+          <!--Select with pure css-->
+          <div class="select" >
+            <select class="select-text" name="tipo_usuario" required style="height: 50px;margin-top: 21px;">
+              <option value="" disabled selected> Tipo de usuario </option>
+                <?php  foreach ($this->usuarioTipo as $valor) { ?>
+              <option value="<?= $value["id"] ?>"><?= $value["nombre"] ?></option>
+                <?php } ?>
+            </select>
+            <label class="select-label">Tipo de usuario </label>
+          </div>
+          <!--Select with pure css-->
+
+        </div>
+
+
+<div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
+                  <!--Select with pure css-->
+                  <div class="select" >
+                    <select class="select-text" name="Bloqueado" required style="height: 50px;margin-top: 21px;">
+                      <option selected disabled value="0">Bloqueado</option>
+                      <option value="true">si</option>
+                      <option value="false">no</option>
+                    </select>
+                    <label class="select-label">Bloqueado </label>
+                  </div>
+                  <!--Select with pure css-->
+
+                </div>
+
+
 
       </div>
 
@@ -315,6 +371,80 @@
 
 
   }
+
+
+  function obtenerlistaDeCargosPorDepartamento(elemnt) {
+
+    request_obtenerlistaDeCargosPorDepartamento(elemnt.value);
+  }
+
+
+  function request_obtenerlistaDeCargosPorDepartamento(departamento) {
+    var dataToSend = {
+      departamento: departamento
+    }
+
+    $.ajax({
+        method: "POST",
+        url: "<?=$this->base_url ?>/usuario/obtnerCargoPorDepartamento",
+        data: dataToSend
+      })
+      .done(function(msg) {
+        var cargo = document.getElementById("cargo")
+        cargo.innerHTML = "";
+
+        var opt = document.createElement('option');
+        opt.value = "";
+        opt.innerHTML = "seleccione un cargo";
+        var att = document.createAttribute("disabled");
+        opt.setAttributeNode(att);
+        cargo.appendChild(opt);
+
+
+        if (msg) {
+          msg.forEach(function(v) {
+            var opt = document.createElement('option');
+            opt.value = v.id;
+            opt.innerHTML = v.nombre;
+            cargo.appendChild(opt);
+          })
+        }
+
+        console.log(msg)
+
+      })
+      .fail(function(response) {
+        alert("error interno");
+      });
+  }
+
+
+  $(document).ready(function() {
+    tippy('#ToolModi', {
+      content:' Modificar',
+    });
+  });
+
+  function soloNumeros(e){
+
+	var key = window.Event ? e.which : e.keyCode
+
+	return (key >= 48 && key <= 57)
+
+}
+function soloLetras(e) { // 1
+
+tecla = (document.all) ? e.keyCode : e.which; // 2
+
+if (tecla==8) return true; // 3
+
+patron =/[A-Za-z\s]/; // 4
+
+te = String.fromCharCode(tecla); // 5
+
+return patron.test(te); // 6
+
+}
   </script>
 
   <?php include (getcwd()."/layout/BottomComponent.phtml")?>

@@ -3,7 +3,7 @@
     {
       "driver": "pdo_pgsql",
       "user": "postgres",
-      "password": "12345678",
+      "password": "1412",
       "dbname": "HrasExtras",
       "host": "localhost",
       "port": "5432"

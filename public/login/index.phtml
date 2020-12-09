@@ -18,8 +18,8 @@
 
         <h1>Ingresar al Sistema</h1>
         <span>Debe Ingresar los Datos registrados</span>
-        <input type="text" placeholder="Cedula" id="cedula" />
-        <input type="password" placeholder="Clave" id="clave" />
+        <input type="text" onKeyPress="return soloNumeros(event)"  maxlength="8" placeholder="Cedula" id="cedula" />
+        <input type="password" placeholder="Clave" maxlength="10" id="clave" />
 
         <button class="su" type="button" onClick="login()">Ingresar</button>
 
@@ -36,7 +36,7 @@
         <h1>Registrar Asistencia</h1>
 
         <span>Debe Registrar el jornada laboral</span>
-        <input type="text" placeholder="Cedula" class="customInput" id="asistencia-input" />
+        <input type="text" onKeyPress="return soloNumeros(event)"  maxlength="8" placeholder="Cedula" class="customInput" id="asistencia-input" />
 
         <button class="si" type="button" onClick="registrarMovientoAsistencia()">Registrar</button>
       </form>
@@ -146,4 +146,13 @@
 
       });
   }
+
+  // Initialize our function when the document is ready for events.
+  function soloNumeros(e){
+
+var key = window.Event ? e.which : e.keyCode
+
+return (key >= 48 && key <= 57)
+
+}
   </script>
