@@ -111,8 +111,9 @@
             <td><?= $valor["tipo_usuario"]?></td>
             <td><?= $valor["nombre_departamento"]?></td>
             <td>
-              <a class="circle-right-btn" id="ToolModi" type="button" onClick="editarUsuarioRequest(<?= $valor["id"] ?>)"><i
-                  class="fas fa-edit" style="font-size: 32px;color: coral;"">
+              <a class="circle-right-btn" id="ToolModi" type="button"
+                onClick="editarUsuarioRequest(<?= $valor["id"] ?>)"><i class="fas fa-edit"
+                  style="font-size: 32px;color: coral;"">
                 </i></a>
             </td>
           </tr>
@@ -123,28 +124,28 @@
 
       </table>
 
-      <div class="row center-xs">
-        <div class="col-xs-2">
-          <div style="text-align: center; margin-top: 25px;"> <a id="ai" href="#miModal"
-              class="btn btn-primary">Agregar</a>
-          </div>
-        </div>
-      </div>
+      <div class=" row center-xs">
+                  <div class="col-xs-2">
+                    <div style="text-align: center; margin-top: 25px;"> <a id="ai" href="#miModal"
+                        class="btn btn-primary">Agregar</a>
+                    </div>
+                  </div>
     </div>
-
   </div>
 
-  <div id="miModal" class="modal">
+</div>
 
-    <div class="modal-contenido">
+<div id="miModal" class="modal">
 
-      <div class="row"
-        style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important; margin-right: 0px !important;height:70px">
-        <div class="col-xs-6" style="color: white;">
-          <h2>Agregar Usuario</h2>
-        </div>
-        <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
-          <button type="button" onclick="cerrarModal()" style="
+  <div class="modal-contenido">
+
+    <div class="row"
+      style="background-color: #0c4dc1;width: 100%;margin-left: 0px !important; margin-right: 0px !important;height:70px">
+      <div class="col-xs-6" style="color: white;">
+        <h2>Getionar Usuario</h2>
+      </div>
+      <div class="col-xs-6" style="text-align: end;top: 10px;margin-top: 17px;padding-right: 29px;">
+        <button type="button" onclick="cerrarModal()" style="
           height: 30px;
           width: 30px;
           border-radius: 50px;
@@ -152,299 +153,286 @@
           background: #0000ff00;
           color: white;
           cursor: pointer;">X</button>
+      </div>
+
+    </div>
+
+
+    <div class="row" style="margin-top: 40px;padding-left=40px;" id="form">
+      <div>
+        <input type="hidden" id="id" />
+      </div>
+      <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6">
+        <!--Input css-->
+        <span class="input input--yoshiko">
+          <input class="input__field input__field--yoshiko" id="nombres" onkeypress="return soloLetras(event)"
+            maxlength="15" type="text" />
+          <label class="input__label input__label--yoshiko" for="input-10">
+            <span class="input__label-content input__label-content--yoshiko" data-content="Nombres"> Nombres</span>
+          </label>
+        </span>
+        <!--Input css-->
+      </div>
+
+      <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6">
+        <!--Input css-->
+        <span class="input input--yoshiko">
+          <input class="input__field input__field--yoshiko" id="apellidos" onkeypress="return soloLetras(event)"
+            maxlength="15" type="text" />
+          <label class="input__label input__label--yoshiko" for="input-10">
+            <span class="input__label-content input__label-content--yoshiko" data-content="Apellidos"> Apellidos</span>
+          </label>
+        </span>
+        <!--Input css-->
+      </div>
+
+      <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6">
+        <!--Input css-->
+        <span class="input input--yoshiko">
+          <input class="input__field input__field--yoshiko" id="cedula" onkeypress="return soloNumeros(event)"
+            maxlength="8" type="text" />
+          <label class="input__label input__label--yoshiko" for="input-10">
+            <span class="input__label-content input__label-content--yoshiko" data-content="Cedula"> Cedula</span>
+          </label>
+        </span>
+        <!--Input css-->
+      </div>
+
+      <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6">
+        <!--Input css-->
+        <span class="input input--yoshiko">
+          <input class="input__field input__field--yoshiko" type="password" id="clave" name="clave" maxlength="8" />
+
+          <label class="input__label input__label--yoshiko" for="input-10">
+
+            <span class="input__label-content input__label-content--yoshiko" data-content="contraseña">
+              contraseña</span>
+          </label>
+          <a type="button" class="btn-mostrar-clave" onClick="mostrarClave()"
+            style="margin-left: 92%;margin-top: 23px;background-color: #fff;width: 34px;">
+            <i class="far fa-eye" style="text-align: center;position: relative;display: block;margin-top: 4px;"></i>
+          </a>
+        </span>
+        <!--Input css-->
+      </div>
+
+      <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
+        <!--Select with pure css-->
+        <div class="select">
+          <select class="select-text" id="departamento" required style="height: 50px;margin-top: 21px;">
+            <option value="" disabled selected> Departamento </option>
+            <?php foreach ($this->departamento as $value) { ?>
+            <option value="<?= $value["id"] ?>"><?= $value["nombre"] ?></option>
+            <?php } ?>
+          </select>
+          <label class="select-label">Departamento</label>
         </div>
+        <!--Select with pure css-->
 
       </div>
 
 
-      <div class="row" style="margin-top: 40px;padding-left=40px;" id="form">
-        <div>
-          <input type="hidden" name="id" />
-        </div>
-        <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6">
-          <!--Input css-->
-          <span class="input input--yoshiko">
-            <input class="input__field input__field--yoshiko" id="nombres" onkeypress="return soloLetras(event)"  maxlength="15" type="text" />
-            <label class="input__label input__label--yoshiko" for="input-10">
-              <span class="input__label-content input__label-content--yoshiko" data-content="Nombres"> Nombres</span>
-            </label>
-          </span>
-          <!--Input css-->
-        </div>
 
-        <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6">
-          <!--Input css-->
-          <span class="input input--yoshiko">
-            <input class="input__field input__field--yoshiko" id="apellidos" onkeypress="return soloLetras(event)"  maxlength="15" type="text" />
-            <label class="input__label input__label--yoshiko" for="input-10">
-              <span class="input__label-content input__label-content--yoshiko" data-content="Apellidos"> Apellidos</span>
-            </label>
-          </span>
-          <!--Input css-->
-        </div>
-
-        <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6">
-          <!--Input css-->
-          <span class="input input--yoshiko">
-            <input class="input__field input__field--yoshiko" id="cedula" onkeypress="return soloNumeros(event)"  maxlength="8" type="text" />
-            <label class="input__label input__label--yoshiko" for="input-10">
-              <span class="input__label-content input__label-content--yoshiko" data-content="Cedula"> Cedula</span>
-            </label>
-          </span>
-          <!--Input css-->
-        </div>
-
-        <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6">
-          <!--Input css-->
-          <span class="input input--yoshiko">
-            <input class="input__field input__field--yoshiko" type="password" id="clave" name="clave"  maxlength="8" />
-
-            <label class="input__label input__label--yoshiko" for="input-10">
-
-              <span class="input__label-content input__label-content--yoshiko" data-content="contraseña"> contraseña</span>
-            </label>
-            <a type="button" class="btn-mostrar-clave" onClick="mostrarClave()" style="margin-left: 92%;margin-top: 23px;background-color: #fff;width: 34px;">
-              <i class="far fa-eye" style="text-align: center;position: relative;display: block;margin-top: 4px;"></i>
-            </a>
-          </span>
-          <!--Input css-->
-        </div>
-
-        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
-          <!--Select with pure css-->
-          <div class="select" >
-            <select class="select-text" id="departamento" required onchange="obtenerlistaDeCargosPorDepartamento(this)"
+      <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
+        <!--Select with pure css-->
+        <div class="select">
+          <select class="select-text" id="tipo_usuario" name="tipo_usuario" required
             style="height: 50px;margin-top: 21px;">
-              <option value="" disabled selected> Departamento </option>
-              <?php foreach ($this->departamento as $value) { ?>
-              <option value="<?= $value["id"] ?>"><?= $value["nombre"] ?></option>
-              <?php } ?>
-            </select>
-            <label class="select-label">Departamento</label>
-          </div>
-          <!--Select with pure css-->
-
+            <option value="" disabled selected> Tipo de usuario </option>
+            <?php  foreach ($this->usuarioTipo as $valor) { ?>
+            <option value="<?= $valor["id"] ?>"><?= $valor["nombre"] ?></option>
+            <?php } ?>
+          </select>
+          <label class="select-label">Tipo de usuario </label>
         </div>
-
-
-
-        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
-          <!--Select with pure css-->
-          <div class="select" >
-            <select class="select-text" name="tipo_usuario" required style="height: 50px;margin-top: 21px;">
-              <option value="" disabled selected> Tipo de usuario </option>
-                <?php  foreach ($this->usuarioTipo as $valor) { ?>
-              <option value="<?= $value["id"] ?>"><?= $value["nombre"] ?></option>
-                <?php } ?>
-            </select>
-            <label class="select-label">Tipo de usuario </label>
-          </div>
-          <!--Select with pure css-->
-
-        </div>
-
-
-<div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
-                  <!--Select with pure css-->
-                  <div class="select" >
-                    <select class="select-text" name="Bloqueado" required style="height: 50px;margin-top: 21px;">
-                      <option selected disabled value="0">Bloqueado</option>
-                      <option value="true">si</option>
-                      <option value="false">no</option>
-                    </select>
-                    <label class="select-label">Bloqueado </label>
-                  </div>
-                  <!--Select with pure css-->
-
-                </div>
-
-
+        <!--Select with pure css-->
 
       </div>
 
 
+      <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
+        <!--Select with pure css-->
+        <div class="select">
+          <select class="select-text" id="Bloqueado" required style="height: 50px;margin-top: 21px;">
+            <option selected disabled value="0">Bloqueado</option>
+            <option value="true">si</option>
+            <option value="false">no</option>
+          </select>
+          <label class="select-label">Bloqueado </label>
+        </div>
+        <!--Select with pure css-->
 
-
-
-
-      <div style="text-align: center; margin-top: 25px;">
-        <button class="btn btn-primary" style="width:  130px" onclick="agregar()"> Guardar </button>
       </div>
+
 
 
     </div>
+
+
+
+
+
+
+    <div style="text-align: center; margin-top: 25px;">
+      <button class="btn btn-primary" style="width:  130px" onclick="guardar()"> Guardar </button>
+    </div>
+
+
   </div>
+</div>
 
 
 
-  <script>
-  $(document).ready(function() {
-    $('#example').DataTable();
-  });
+<script>
+$(document).ready(function() {
+  $('#example').DataTable();
+});
 
-  function mostrarClave() {
-    var input = document.getElementById("clave")
+function mostrarClave() {
+  var input = document.getElementById("clave")
 
-    if (input.type === "text") {
-      input.type = "password";
-    } else {
-      input.type = "text";
-    }
-
+  if (input.type === "text") {
+    input.type = "password";
+  } else {
+    input.type = "text";
   }
-
-
-  function cerrarModal() {
-    window.location.href = "#";
-    location.reload();
-  }
-
-
-  function agregar() {
-    var dataToSend = {};
-    var form = document.getElementById("form");
-
-    var children = form.children;
-    for (var i = 0; i < children.length; i++) {
-      var temp = children[i];
-      var elm = temp.children[0];
-      dataToSend[elm.name] = elm.value
-    }
-
-    $.ajax({
-        method: "POST",
-        url: "<?=$this->base_url ?>/user/guardar",
-        data: dataToSend
-      })
-      .done(function(msg) {
-
-        Swal.fire(
-          'Exito!',
-          'Registro guardado',
-          'success'
-        ).then((result) => {
-          cerrarModal()
-        });
-
-
-
-      })
-      .fail(function(response) {
-        alert("error interno");
-      });
-  }
-
-
-  function editarUsuarioRequest(id) {
-
-
-    $.ajax({
-        method: "POST",
-        url: "<?=$this->base_url ?>/user/obtnerUsuarioPorId",
-        data: {
-          id
-        }
-      })
-      .done(function(msg) {
-
-        $("[name='id']").val(msg.id);
-        $("[name='nombres']").val(msg.primer_nombre);
-        $("[name='apellidos']").val(msg.primer_apellido);
-        $("[name='cedula']").val(msg.cedula);
-        $(`[name="departamento"] option[value='${msg.departamento_id}']`).prop('selected', true);
-        $(`[name="tipo_usuario"] option[value='${msg.usuario_tipo_id}']`).prop('selected', true);
-
-        var estado = "true";
-        if (msg.bloqueado === "f") estado = "false";
-
-        $(`[name="bloqueado"] option[value='${estado}']`).prop('selected', true);
-
-
-        console.log(msg);
-
-        window.location.href = "#miModal";
-
-      })
-      .fail(function(response) {
-        alert("error interno");
-      });
-
-
-  }
-
-
-  function obtenerlistaDeCargosPorDepartamento(elemnt) {
-
-    request_obtenerlistaDeCargosPorDepartamento(elemnt.value);
-  }
-
-
-  function request_obtenerlistaDeCargosPorDepartamento(departamento) {
-    var dataToSend = {
-      departamento: departamento
-    }
-
-    $.ajax({
-        method: "POST",
-        url: "<?=$this->base_url ?>/usuario/obtnerCargoPorDepartamento",
-        data: dataToSend
-      })
-      .done(function(msg) {
-        var cargo = document.getElementById("cargo")
-        cargo.innerHTML = "";
-
-        var opt = document.createElement('option');
-        opt.value = "";
-        opt.innerHTML = "seleccione un cargo";
-        var att = document.createAttribute("disabled");
-        opt.setAttributeNode(att);
-        cargo.appendChild(opt);
-
-
-        if (msg) {
-          msg.forEach(function(v) {
-            var opt = document.createElement('option');
-            opt.value = v.id;
-            opt.innerHTML = v.nombre;
-            cargo.appendChild(opt);
-          })
-        }
-
-        console.log(msg)
-
-      })
-      .fail(function(response) {
-        alert("error interno");
-      });
-  }
-
-
-  $(document).ready(function() {
-    tippy('#ToolModi', {
-      content:' Modificar',
-    });
-  });
-
-  function soloNumeros(e){
-
-	var key = window.Event ? e.which : e.keyCode
-
-	return (key >= 48 && key <= 57)
 
 }
+
+
+function cerrarModal() {
+  window.location.href = "#";
+  location.reload();
+}
+
+
+function guardar() {
+  var input_id = document.getElementById("id");
+  var input_nombre = document.getElementById("nombres");
+  var input_apellidos = document.getElementById("apellidos");
+  var input_cedula = document.getElementById("cedula");
+  var input_clave = document.getElementById("clave");
+  var input_tipoUsuario = document.getElementById("tipo_usuario");
+  var input_departamento = document.getElementById("departamento");
+  var input_bloqueado = document.getElementById("Bloqueado");
+
+  var dataToSend = {
+    id: input_id.value || undefined,
+    nombres: input_nombre.value,
+    apellidos: input_apellidos.value,
+    cedula: input_cedula.value,
+    clave: input_clave.value,
+    tipo_usuario: input_tipoUsuario.value,
+    departamento: input_departamento.value,
+    bloqueado: input_bloqueado.value
+  };
+
+  console.log(dataToSend);
+
+
+
+  $.ajax({
+      method: "POST",
+      url: "<?=$this->base_url ?>/user/guardar",
+      data: dataToSend
+    })
+    .done(function(msg) {
+
+      Swal.fire(
+        'Exito!',
+        'Registro guardado',
+        'success'
+      ).then((result) => {
+        cerrarModal()
+      });
+
+
+
+    })
+    .fail(function(response) {
+      alert("error interno");
+    });
+}
+
+
+function editarUsuarioRequest(id) {
+
+
+  $.ajax({
+      method: "POST",
+      url: "<?=$this->base_url ?>/user/obtnerUsuarioPorId",
+      data: {
+        id
+      }
+    })
+    .done(function(msg) {
+
+      var input_id = document.getElementById("id");
+      var input_nombre = document.getElementById("nombres");
+      var input_apellidos = document.getElementById("apellidos");
+      var input_cedula = document.getElementById("cedula");
+      //var input_clave = document.getElementById("clave");
+      //var input_tipoUsuario = document.getElementById("tipo_usuario");
+      //var input_departamento = document.getElementById("departamento");
+      //var input_bloqueado = document.getElementById("Bloqueado");
+
+      input_id.value = msg.id;
+      input_nombre.value = msg.primer_nombre;
+      input_apellidos.value = msg.primer_apellido
+      input_cedula.value = msg.cedula
+
+
+      $(`[id="tipo_usuario"] option[value='${msg.usuario_tipo_id}']`).prop('selected', true);
+      $(`[id="departamento"] option[value='${msg.departamento_id}']`).prop('selected', true);
+
+      var estado = "true";
+      if (msg.bloqueado === "f") estado = "false";
+
+      $(`[id="Bloqueado"] option[value='${estado}']`).prop('selected', true);
+
+
+      console.log(msg);
+
+      window.location.href = "#miModal";
+
+    })
+    .fail(function(response) {
+      alert("error interno");
+    });
+
+
+}
+
+
+
+
+$(document).ready(function() {
+  tippy('#ToolModi', {
+    content: ' Modificar',
+  });
+});
+
+function soloNumeros(e) {
+
+  var key = window.Event ? e.which : e.keyCode
+
+  return (key >= 48 && key <= 57)
+
+}
+
 function soloLetras(e) { // 1
 
-tecla = (document.all) ? e.keyCode : e.which; // 2
+  tecla = (document.all) ? e.keyCode : e.which; // 2
 
-if (tecla==8) return true; // 3
+  if (tecla == 8) return true; // 3
 
-patron =/[A-Za-z\s]/; // 4
+  patron = /[A-Za-z\s]/; // 4
 
-te = String.fromCharCode(tecla); // 5
+  te = String.fromCharCode(tecla); // 5
 
-return patron.test(te); // 6
+  return patron.test(te); // 6
 
 }
-  </script>
+</script>
 
-  <?php include (getcwd()."/layout/BottomComponent.phtml")?>
+<?php include (getcwd()."/layout/BottomComponent.phtml")?>

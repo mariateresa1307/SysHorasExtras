@@ -43,8 +43,8 @@ class User {
 
     public function guardar($datos){
         $query = "INSERT INTO usuario
-        (primer_nombre, primer_apellido, cedula, estado, clave, usuario_tipo_id, departamento_id)
-        VALUES('{$datos["nombres"]}', '{$datos["apellidos"]}', '{$datos["cedula"]}', false, '{$datos["clave"]}', '{$datos["tipo_usuario"]}', '{$datos["departamento"]}');        
+        (primer_nombre, primer_apellido, cedula, estado, clave, usuario_tipo_id, departamento_id, bloqueado)
+        VALUES('{$datos["nombres"]}', '{$datos["apellidos"]}', '{$datos["cedula"]}', false, '{$datos["clave"]}', '{$datos["tipo_usuario"]}', '{$datos["departamento"]}', '{$datos["bloqueado"]}');        
         ";
         pg_query($this->em->vinculo, $query);
     }
