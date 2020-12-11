@@ -11,7 +11,7 @@ use ControlHorasExtras\PHP_MVC\Models\Miscelaneas;
 
 
 class CalculoHorasExtras{
-  private $horasLaborales = 0;
+  private $horasLaborales = 8;
   private $miscRules = null;
 
 
@@ -33,40 +33,7 @@ class CalculoHorasExtras{
   }
 
 
-  /**
-   * Determina el tiempo en horas y minutos de un dia trabajado. 
-   * Parametros $entrada = 2020-01-01 09:45:00 y $salida = 2020-01-01 18:35:00 
-   * La salida es del tipo Array( [fecha] => 2020-01-01, [tiempoExtra] => 0:50 )
-   * o un false si el rango de tiempo no cumple con las reglas (no se encontro tiempo extra trabajado).
-   */
-  /*public function determinarTiempoExtraDeUnDia($entrada, $salida){
-    $salida  = new DateTime($salida);
-    $entrada = new DateTime($entrada);
-
-    if($salida > $entrada){
-      $interval = $salida->diff($entrada);
-      if( $interval->h >= $this->horasLaborales){
-        if($interval->i >= 0){
-          if( $interval->h == $this->horasLaborales && $interval->i == 0 ) return false;
-          
-          // todo ok con las validaciones
-          $remanente = $interval->h - $this->horasLaborales;
-          $tiempoExtra = "{$remanente}:{$interval->i}";
-
-          $temp = [
-            "fecha" => $entrada->format("Y-m-d"),
-            "tiempoExtra" => $tiempoExtra
-          ];
-
-          return $temp;
-        }
-      }
-    }
-
-    return false;
-  }*/
-
-
+ 
   /**
    * Determinar el tiempo de retraso segun una hora dada
    * Devuelve un string "<horas>:<minutos>" o si no hay retraso devuelve null
@@ -104,6 +71,65 @@ class CalculoHorasExtras{
     }
 
     return $resultado;
+  }
+
+
+
+
+  // transformar horas como "1:15" a el total de numeros en minutos "105"
+  public function horasAMinutos($hours) { 
+    $minutes = 0; 
+    if (strpos($hours, ':') !== false){ 
+        // Split hours and minutes. 
+        list($hours, $minutes) = explode(':', $hours); 
+    } 
+    return $hours * 60 + $minutes; 
+  } 
+
+  // Transforma minutos como "105" a la version de horas enteras "2". 
+  public function minutosAHoras($minutes) { 
+    $hours = (int)($minutes / 60); 
+    $minutes -= $hours * 60; 
+    //return sprintf("%d:%02.0f", $hours, $minutes); 
+    $r = "{$hours}.{$minutes}";
+    return ceil($r);
+  } 
+
+
+
+  public function determinarDiaSemana($fecha){
+    $resultado = date("N", strtotime($fecha));
+
+    if($resultado >= 1 || 5 <= $resultado){
+      return "semana";
+    }
+    else{
+      return "finDeSemana";
+    }
+  }
+
+
+  public function determinarHorasExtrasFinesDeSemana($entrada, $salida){
+    $minutosEntrada = $this->calculoHorasExtras->horasAMinutos($entrada);
+    $minutosSalida = $this->calculoHorasExtras->horasAMinutos($salida);
+    $minutosTrabajados = $minutosSalida - $minutosEntrada;
+    return $this->calculoHorasExtras->minutosAHoras($minutosTrabajados);
+  }
+
+  public function determinarHorasExtrasTranscurridas($value){
+    $temp_minutos = 0;
+
+    if(!empty($value["tiempo_extra"])){
+      $temp_minutos += $this->calculoHorasExtras->horasAMinutos($value["tiempo_extra"]);
+    }
+
+    if(!empty($value["tiempo_atraso"])){
+      $temp_minutos -= $this->calculoHorasExtras->horasAMinutos($value["tiempo_atraso"]);
+    }
+
+    if($temp_minutosTranscurridos <= 0) echo "calcula no toma en cuenta los negativos";
+
+    return $this->calculoHorasExtras->minutosAHoras($temp_minutos);
   }
 
 }
