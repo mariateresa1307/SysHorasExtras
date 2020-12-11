@@ -13,6 +13,12 @@ class RegistroAsistenciaMensual {
     }   
 
 
+    public function obtenerUnoPorId($id){
+        $query = "select * from registro_asistencia_mensual where id ='{$id}'";
+        $result = pg_exec($this->em->vinculo, $query);
+        return pg_fetch_all($result);
+    }
+
     public function obtenerTodo(){
         $query = "select * from registro_asistencia_mensual";
         $result = pg_exec($this->em->vinculo, $query);
@@ -27,5 +33,6 @@ class RegistroAsistenciaMensual {
         $result = pg_exec($this->em->vinculo, $query);
         return pg_fetch_all($result);
     }
+
 	
 }

@@ -14,6 +14,7 @@
 
 <script src='<?=$this->base_url ?>/assets/js/popper_core@2.js'></script>
 <script src='<?=$this->base_url ?>/assets/js/tippy@6.js'></script>
+<script src='<?=$this->base_url ?>/assets/js/sweetalert2@10.js'></script>
 
 
 <script>
@@ -155,7 +156,7 @@ $(document).ready(function() {
           <td>2020</td>
           <td>{$aprobado} </td>
           <td style="text-align:center">
-            <a id="ai" href="#miModal" class="circle-right-btn" type="button"
+            <a href="#miModal" class="circle-right-btn" type="button" onclick="verDetalle('<?= $value["id"] ?>')"
               style="font-size: 15px;margin-left: 20px;color: coral;">
               <i class="fas fa-clipboard" style="font-size: 40px;"></i></a>
 
@@ -244,4 +245,30 @@ $(document).ready(function() {
       content: "Aprobar"
     })
   });
+
+
+  function verDetalle(id) {
+    $.ajax({
+        method: "post",
+        url: "<?=$this->base_url ?>/HrasExtras/coordinador/generarDataMensual",
+        data: {
+          id
+        }
+      })
+      .done(function(msg) {
+
+        //window.location.href = "<?=$this->base_url ?>/home";
+
+        console.log(msg)
+
+
+      })
+      .fail(function(response) {
+        Swal.fire(
+          'Error',
+          'Algo ha fallado',
+          'error'
+        );
+      });
+  }
   </script>

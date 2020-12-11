@@ -110,26 +110,31 @@ class CalculoHorasExtras{
 
 
   public function determinarHorasExtrasFinesDeSemana($entrada, $salida){
-    $minutosEntrada = $this->calculoHorasExtras->horasAMinutos($entrada);
-    $minutosSalida = $this->calculoHorasExtras->horasAMinutos($salida);
+    $minutosEntrada = $this->horasAMinutos($entrada);
+    $minutosSalida = $this->horasAMinutos($salida);
     $minutosTrabajados = $minutosSalida - $minutosEntrada;
-    return $this->calculoHorasExtras->minutosAHoras($minutosTrabajados);
+    return $this->minutosAHoras($minutosTrabajados);
   }
 
   public function determinarHorasExtrasTranscurridas($value){
     $temp_minutos = 0;
-
+    echo "\n";
     if(!empty($value["tiempo_extra"])){
-      $temp_minutos += $this->calculoHorasExtras->horasAMinutos($value["tiempo_extra"]);
+
+      echo  "extra: ". $this->horasAMinutos($value["tiempo_extra"]);
+
+      $temp_minutos += $this->horasAMinutos($value["tiempo_extra"]);
     }
 
     if(!empty($value["tiempo_atraso"])){
-      $temp_minutos -= $this->calculoHorasExtras->horasAMinutos($value["tiempo_atraso"]);
+      $temp_minutos -= $this->horasAMinutos($value["tiempo_atraso"]);
+
+      echo "atraso: ". $this->horasAMinutos($value["tiempo_atraso"]);
     }
 
-    if($temp_minutosTranscurridos <= 0) echo "calcula no toma en cuenta los negativos";
+    //if($temp_minutos <= 0) echo "calcula no toma en cuenta los negativos";
 
-    return $this->calculoHorasExtras->minutosAHoras($temp_minutos);
+    return $this->minutosAHoras($temp_minutos);
   }
 
 }

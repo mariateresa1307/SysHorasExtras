@@ -4,13 +4,13 @@ namespace ControlHorasExtras\PHP_MVC\Controllers\calculoHorasExtras;
 use \ControlHorasExtras\PHP_MVC\Controllers\calculoHorasExtras\CalculoHorasExtras;
 use ControlHorasExtras\PHP_MVC\Models\ControlAsistencia;
 use ControlHorasExtras\PHP_MVC\Models\RegistroAsistenciaMensual;
-
+use DateTime;
 
 class Proceso{
   private $calculoHorasExtras;
 
 
-  private function __construct(){
+  public function __construct(){
     $this->calculoHorasExtras = new CalculoHorasExtras();
   }
 
@@ -41,7 +41,7 @@ class Proceso{
 
 
       $salarioBase = $asistenciaDeUnFuncionario[0]["salario_base"];
-      $salarioPorHora = $this->calculoHorasExtras->calcularCotizacionHoraExtra($salarioBase, $this->ultimoDiaDelMes);
+    $salarioPorHora = $this->calculoHorasExtras->calcularCotizacionHoraExtra($salarioBase, $ultimoDiaDelMes);
 
       $result = $this->sumarTodasLasHorasDelMesYCalcularMonto($asistenciaDeUnFuncionario, $salarioPorHora);
 
@@ -69,12 +69,16 @@ class Proceso{
       }
 
       $balanceHoras += $tempHoras;
-      $balanceCotizacion += $tempHoras * $salarioPorHora;
+
+      if($tempHoras > 0){
+        $balanceCotizacion += $tempHoras * $salarioPorHora;
+      }
+
 
     }
 
     return [
-      "funcionario_id" => $asistenciaDeUnFuncionario[0]["id"], 
+      "funcionario_id" => $asistenciaDeUnFuncionario[0]["funcionario_id"], 
       "horas_trabajo" => $balanceHoras,
       "balance_cotizacion" => $balanceCotizacion
     ];
