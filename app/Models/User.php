@@ -30,7 +30,7 @@ class User {
             $where = "where u.bloqueado = 'true'";
         }
         else{
-           $where =  "where u.estado = '{$parametro}'";
+           $where =  "where u.estado = '{$parametro}' and u.bloqueado = 'false'";
         }
 
         $query = "SELECT count(*)
@@ -43,8 +43,8 @@ class User {
 
     public function guardar($datos){
         $query = "INSERT INTO usuario
-        (primer_nombre, primer_apellido, cedula, estado, clave, usuario_tipo_id, departamento_id)
-        VALUES('{$datos["nombres"]}', '{$datos["apellidos"]}', '{$datos["cedula"]}', false, '{$datos["clave"]}', '{$datos["tipo_usuario"]}', '{$datos["departamento"]}');        
+        (primer_nombre, primer_apellido, cedula, estado, clave, usuario_tipo_id, departamento_id, bloqueado)
+        VALUES('{$datos["nombres"]}', '{$datos["apellidos"]}', '{$datos["cedula"]}', false, '{$datos["clave"]}', '{$datos["tipo_usuario"]}', '{$datos["departamento"]}', '{$datos["bloqueado"]}');        
         ";
         pg_query($this->em->vinculo, $query);
     }
@@ -64,6 +64,16 @@ class User {
         pg_query($this->em->vinculo, $query);
     }
 
+    public function cambiarEstadoActivoinicioSesion($userID){
+        $query = "UPDATE usuario
+        SET 
+            estado=true
+        WHERE id='{$userID}';
+        ";
+        pg_query($this->em->vinculo, $query);
+    }
+
+
 
     public function obtnerUnoPorId($id){
         $query = "SELECT id, primer_nombre, primer_apellido, cedula, estado, usuario_tipo_id, departamento_id, bloqueado  from usuario where id = '{$id}'";
@@ -74,6 +84,26 @@ class User {
 
     public function validarCredenciales($clave, $cedula){
         $query = "SELECT id from usuario where clave= '{$clave}' and  cedula='{$cedula}' ";
+        $result = pg_exec($this->em->vinculo, $query);
+        return pg_fetch_all($result);
+    }
+
+
+
+    public function obtenerPorCargoId($cargoId){
+        $query = "SELECT
+            usuario.*   
+        from
+            usuario
+        inner join departamento on
+            departamento.id = usuario.departamento_id
+        inner join cargo on
+            cargo.departamento_id = departamento.id
+        inner join usuario_tipo 
+        on usuario_tipo.id = usuario.usuario_tipo_id
+        where cargo.id = {$cargoId}
+        and usuario_tipo.nombre =  'admin' 
+        ";
         $result = pg_exec($this->em->vinculo, $query);
         return pg_fetch_all($result);
     }

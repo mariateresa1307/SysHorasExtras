@@ -35,4 +35,9 @@ class Departamento {
         ";
         pg_query($this->em->vinculo, $query);
     }
+
+
+
+
+
 }

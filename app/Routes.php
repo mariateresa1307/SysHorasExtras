@@ -56,6 +56,42 @@ $router->respond('GET', "{$base_url}/", function($request, $response, $service, 
     return $response->redirect("{$base_url}/login");
 });
 
+//
+$router->respond(function($request, $response, $service, $app) use($base_url) {
+    $rutasNoBloqueadas = ["login.*", "assets"];
+
+    $bloqueado = true;
+    foreach($rutasNoBloqueadas as $rb) {
+        $temp = [];
+        preg_match("/${rb}/", $request->uri(), $temp);
+
+       if(count($temp) > 0){
+           $bloqueado = false;
+           break;
+       }
+    }
+
+
+    if($bloqueado){
+        // echo "ruta debe ser bloqueada";
+        if(empty($_SESSION["id"])){
+        //    echo "no ha iniciado sesion";
+
+        header("Location: {$base_url}/login");
+        //return $response->redirect("{$base_url}/login");
+        die();
+        }
+    }
+
+
+
+
+
+
+    //return $response->redirect("{$base_url}/login");
+});
+
+
 
 
 
@@ -79,10 +115,17 @@ $router->respond('POST', "{$base_url}/funcionario/obtnerUnoPorId", [$funcionario
 
 $router->respond('GET', "{$base_url}/home", [$homeCtrl,'indexAction']);
 $router->respond('GET', "{$base_url}/HrasExtras/rrhh", [$hrasExtrasControllerRRHH,'rrhh']);
+$router->respond('POST', "{$base_url}/HrasExtras/rrhh/aprobarRegistro", [$hrasExtrasControllerRRHH,'aprobarRegistro']);
+
+
 $router->respond('GET', "{$base_url}/HrasExtras/rrhh/reportes", [$hrasExtrasControllerRRHH, 'reportesAction']);
 
 $router->respond('GET', "{$base_url}/HrasExtras/coordinador", [$hrasextrasCtrl,'coordinador']);
 $router->respond('GET', "{$base_url}/HrasExtras/coordinador/reportes", [$hrasextrasCtrl, 'reportesAction']);
+
+
+$router->respond('POST', "{$base_url}/HrasExtras/coordinador/generarDataMensual", [$hrasextrasCtrl,'generarDataMensual']);
+$router->respond('POST', "{$base_url}/HrasExtras/coordinador/aprobarRegistro", [$hrasextrasCtrl,'aprobarRegistro']);
 
 
 $router->respond('GET', "{$base_url}/configuracion", [$configuracionCtrl, 'indexAction']);

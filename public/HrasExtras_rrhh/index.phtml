@@ -14,6 +14,7 @@
 
 <script src='<?=$this->base_url ?>/assets/js/popper_core@2.js'></script>
 <script src='<?=$this->base_url ?>/assets/js/tippy@6.js'></script>
+<script src='<?=$this->base_url ?>/assets/js/sweetalert2@10.js'></script>
 
 
 <script>
@@ -27,8 +28,11 @@ $(document).ready(function() {
   });
 });
 $(document).ready(function() {
-  tippy('#ai', {
-    content:' Detalles',
+  tippy('#ai1', {
+    content: ' Detalles',
+  });
+  tippy('#ai2', {
+    content: ' Detalles',
   });
 });
 </script>
@@ -138,45 +142,58 @@ $(document).ready(function() {
 <div class="card2" style=" background-color: white; margin-top: -2px;
     border-top-color: white;">
   <div class="card-body" style="margin-top: 25px;">
+    <form action="<?=$this->base_url ?>/HrasExtras/rrhh" method="get">
+      <div class="row start-xs">
+        <div class="col-xs-4">
+          <!--Select with pure css-->
+          <div class="select">
+            <select class="select-text" required name="departamento">
+              <option value="" disabled selected></option>
+              <?php foreach($this->departamento as $valor) {?>
+              <option value="<?= $valor["id"] ?>"
+                <?= $this->selectValues["dpto"] == $valor["id"] ? "selected" : null ?>> <?= $valor["nombre"] ?></option>
+              <?php } ?>
+            </select>
+            <label class="select-label">Departamento</label>
+          </div>
+          <!--Select with pure css-->
 
-    <div class="row start-xs">
-      <div class="col-xs-4">
-        <!--Select with pure css-->
-        <div class="select">
-          <select class="select-text" required>
-            <option value="" disabled selected></option>
-            <?php foreach($this->departamento as $valor) {?>
-            <option value="<?= $valor["id"] ?>"> <?= $valor["nombre"] ?></option>
-            <?php } ?>
-          </select>
-          <label class="select-label">Departamento</label>
         </div>
-        <!--Select with pure css-->
+
+        <div class="col-xs-4">
+
+          <!--Select with pure css-->
+          <div class="select">
+            <select class="select-text" required name="anno">
+              <option value="" disabled selected></option>
+              <?php foreach ($this->annos_existentes as $value) { ?>
+              <option value="<?= $value["date_part"] ?>"
+                <?= $this->selectValues["anno"] == $value["date_part"] ? "selected" : null ?>><?= $value["date_part"] ?>
+              </option>
+              <?php } ?>
+            </select>
+            <label class="select-label">Año</label>
+          </div>
+          <!--Select with pure css-->
+        </div>
+        <div class="col-xs-4" style="margin-top: -16PX;margin-bottom: 4px;">
+
+
+          <button type="submit" id="toolBuscar" class="boton" style="float: right;     float: right;
+            border: none;
+            height: 50px;
+            width: 50px;
+            color: white; 
+          "><i style="font-size: 26px;" class="fas fa-search"></i></button>
+
+
+
+
+        </div>
 
       </div>
 
-      <div class="col-xs-4">
-
-        <!--Select with pure css-->
-        <div class="select">
-          <select class="select-text" required>
-            <option value="" disabled selected></option>
-            <option value="opcion-1">2020</option>
-            <option value="opcion-2">2021</option>
-            <option value="opcion-x">2022</option>
-          </select>
-          <label class="select-label">Año</label>
-        </div>
-        <!--Select with pure css-->
-      </div>
-      <div class="col-xs-4" style="margin-top: -16PX;margin-bottom: 4px;">
-        <div id="toolBuscar" class="boton" style="float: right;">
-          <a href="#"><i style="font-size: 26px;" class="fas fa-search"></i></a>
-        </div>
-
-      </div>
-
-    </div>
+    </form>
 
 
 
@@ -188,25 +205,24 @@ $(document).ready(function() {
         <tr>
           <th>Mes</th>
           <th>año</th>
+          <th>coordinador</th>
           <th width="20%">Acciones</th>
         </tr>
       </thead>
       <tbody>
+
+
         <?php foreach ($this->registro_mensual as $value) { ?>
-
-
         <tr>
-          <td><?= $value["tiempo_"] ?></td>
-          <td>2020</td>
+          <td><?= $value["mes"] ?></td>
+          <td><?= $value["anno"] ?></td>
+          <td><?= $value["coordinador_nombre"] ?> <?= $value["coordinador_apellido"] ?> </td>
           <td style="text-align:center">
-            <a id="ai" href="#miModal" class="circle-right-btn" type="button"
+            <a href="#" class="circle-right-btn" type="button" onclick="verDetalle(<?= $value["id"] ?>, event, '<?= $value["aprobado_rrhh"]?>' )"
               style="font-size: 15px;margin-left: 20px;color: coral;">
               <i class="fas fa-clipboard" style="font-size: 40px;"></i></a>
 
-            <a id="btn-aprobar" href="#miModal" class="circle-right-btn" type="button"
-              style="font-size: 15px;margin-left: 20px;color: coral;">
-              <i class="fas fa-check" style="font-size: 40px;"></i>
-            </a>
+            
           </td>
         </tr>
 
@@ -246,7 +262,9 @@ $(document).ready(function() {
     <div class="row start-xs" style="margin-top: 40px;padding-left: 95px;padding-right: 95px;">
 
 
-
+    <pre id="json">
+          </pre>
+ 
 
 
 
@@ -254,10 +272,10 @@ $(document).ready(function() {
 
 
       <div class="col-xs-12">
-        <div class="btn-group">
+        <div class="btn-group" >
 
-          <button Style="background-color: #0c4dc1;font-size: 13px;"id="ai" class="button">Aceptar</button>
-          <button Style="background-color: coral;font-size: 13px;"id="ai" class="button">Revision</button>
+          <button Style="background-color: #0c4dc1;font-size: 13px;" id="ai1" type="button" class="button" onclick="aprobar(<?= $value['id'] ?>,event, true)"  >Aceptar</button>
+          <button Style="background-color: coral;font-size: 13px;" id="ai2"   type="button" class="button" onclick="aprobar(<?= $value['id'] ?>,event, false)"  class="button">Revision</button>
         </div>
       </div>
 
@@ -279,7 +297,7 @@ $(document).ready(function() {
 
 
     tippy('#ai', {
-      content:' Detalles',
+      content: ' Detalles',
     });
 
 
@@ -287,4 +305,78 @@ $(document).ready(function() {
       content: "Aprobar"
     })
   });
+
+
+
+  function verDetalle(id, e, estado){
+
+   
+
+    e.preventDefault();
+    $.ajax({
+        method: "post",
+        url: "<?=$this->base_url ?>/HrasExtras/coordinador/generarDataMensual",
+        data: {
+          id
+        }
+      })
+      .done(function(msg) {
+
+        //window.location.href = "<?=$this->base_url ?>/home";
+
+
+        $("#json").text(JSON.stringify(msg, null, 2))
+
+      
+        if(estado === "t"){
+          $("#ai1").hide();
+          $("#ai2").hide();
+        }
+
+
+        window.location = "#miModal"
+
+      })
+      .fail(function(response) {
+        Swal.fire(
+          'Error',
+          'Algo ha fallado',
+          'error'
+        );
+      });
+  }
+
+
+  function aprobar(id, e, estado){
+    e.preventDefault();
+    
+
+    $.ajax({
+        method: "post",
+        url: "<?=$this->base_url ?>/HrasExtras/rrhh/aprobarRegistro",
+        data: {
+          id, estado
+        }
+      })
+      .done(function(msg) {
+
+
+        console.log(msg);
+        window.location.href = "#";
+        location.reload();
+
+
+
+
+      })
+      .fail(function(response) {
+        Swal.fire(
+          'Error',
+          'Algo ha fallado',
+          'error'
+        );
+      });
+
+
+  }
   </script>

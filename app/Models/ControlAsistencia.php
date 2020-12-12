@@ -49,6 +49,9 @@ class ControlAsistencia {
     }
 
 
+    /**
+     * Esto va en el otro modelo
+     */
 
     public function obtner_registro_padre_del_mes($mes, $anno){
         $query = "SELECT *
@@ -60,16 +63,67 @@ class ControlAsistencia {
         return pg_fetch_all($result);
     }
 
+    /**
+     * Esto va en el otro modelo
+     */
 
-    public function crear_registro_padre_del_mes($date) {
+    public function crear_registro_padre_del_mes($date, $coordinadorId) {
         $query = "INSERT INTO registro_asistencia_mensual
-        (aprobado_coordinador, aprobado_rrhh, tiempo_)
-        VALUES(false, false, '{$date}');
+        (aprobado_coordinador, aprobado_rrhh, tiempo_, usuario_id)
+        VALUES(null, null, '{$date}', {$coordinadorId});
         ";
         pg_query($this->em->vinculo, $query);
 
 
-        $query= "SELECT * from registro_asistencia_mensual where tiempo_ = '$date'";
+        return $this->obtnerAsistenciaPorperiodoyCoordinador($date, $coordinadorId);
+    }
+
+
+
+    /**
+     * Esto va en el otro modelo
+     */
+    
+    public function obtnerAsistenciaPorperiodoyCoordinador($date, $coordinadorId){
+        $query= "SELECT * from registro_asistencia_mensual where tiempo_ = '$date' and usuario_id = {$coordinadorId} ";
+        $result = pg_exec($this->em->vinculo, $query);
+        return pg_fetch_all($result);
+    }
+
+
+
+    public function obtenerFuncionarioIdPorRegistroMEnsual($id, $coordinadorId){
+        $query = "SELECT
+        distinct (ca.funcionario_id) as funcionario_id
+        from
+            control_asistencia ca
+        inner join registro_asistencia_mensual ram on
+            ram.id = ca.registro_asistencia_mensual_id
+        where
+            ca.registro_asistencia_mensual_id = {$id}
+            and ram.usuario_id = {$coordinadorId}";
+        $result = pg_exec($this->em->vinculo, $query);
+        return pg_fetch_all($result);
+    }
+
+    public function obtnerTodosLosRegistrosPorFuncionarioyPeriodo($funcionarioId, $periodoId){
+        $query = "SELECT
+            ca.id as control_asistencia_id,
+            ca.entrada,
+            ca.salida ,
+            ca.tiempo_extra ,
+            ca.tiempo_atraso ,
+            ca.funcionario_id ,
+            c.salario_base
+        from
+            control_asistencia ca
+        inner join funcionario f on
+            f.id = ca.funcionario_id
+        inner join cargo c on
+            c.id = f.cargo_id
+        where ca.funcionario_id = {$funcionarioId} 
+        and ca.registro_asistencia_mensual_id = {$periodoId}
+        ";
         $result = pg_exec($this->em->vinculo, $query);
         return pg_fetch_all($result);
     }

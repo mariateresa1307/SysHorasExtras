@@ -3,6 +3,7 @@
 namespace ControlHorasExtras\PHP_MVC\Controllers;
 
 use \ControlHorasExtras\PHP_MVC\Controllers\calculoHorasExtras\CalculoHorasExtras;
+use \ControlHorasExtras\PHP_MVC\Controllers\calculoHorasExtras\Proceso;
 use ControlHorasExtras\PHP_MVC\Models\Funcionario;
 use ControlHorasExtras\PHP_MVC\Models\RegistroAsistenciaMensual;
 use ControlHorasExtras\PHP_MVC\Models\Departamento;
@@ -42,6 +43,17 @@ class HrasExtrasController{
           "12"=> "Diciembre",
         ];
 
+        $data = $req->params();
+
+        $annoActual = date("Y");
+
+        if(!empty($data["anno"])){
+            $annoActual = $data["anno"];
+        }
+
+        $selectValues = [
+            "anno" =>  $annoActual,
+        ];
 
 
         // metodos para gestionar estado del periodo de la card 2
@@ -74,11 +86,13 @@ class HrasExtrasController{
         $data = [
             "title" => "Horas Extras",
             "base_url" => $app->base_url,
-            "registro_mensual" => $registroAsistenciaMensual->obtenerTodo(),
             "DiasRestantes"=> $DiasRestantes,
             "MesActual"=> $MapFechas[$Mes],
             "EstadoPeriodo"=>$EstadoPeriodo,
-                "departamento" => $departamento->obtenerTodo(),
+            "departamento" => $departamento->obtenerTodo(),
+            "registro_mensual" => $registroAsistenciaMensual->obtenerTodo($annoActual),
+            "annos_existentes" => $registroAsistenciaMensual->obtenerSoloLosAnnosExistentes(),
+            "selectValues" => $selectValues
         ];
 
 
@@ -100,6 +114,46 @@ class HrasExtrasController{
 
 
 
+    
+
+    public function generarDataMensual ($req, $res, $service, $app){
+        $data = $req->params();
+
+        $registroAsistenciaMensual = new RegistroAsistenciaMensual();
+        $coordinadorId = $_SESSION["id"];
+        $temp = $registroAsistenciaMensual->obtenerUnoPorId($data["id"]);
+
+
+        if(empty($temp)) return $res->code(404);
+
+
+        $proceso = new Proceso();
+
+
+
+        $d = new DateTime($temp[0]["tiempo_"]);
+        $mes = $d->format('m');
+        $anno = $d->format('Y');
+
+        $result = $proceso->ejecutar($mes, $anno, $coordinadorId);
+
+        if(empty($result)) return $res->code(404);
+
+
+        return $res->json($result);
+
+
+    }
+
+
+    function aprobarRegistro($req, $res, $service, $app){
+        $data = $req->params();
+
+
+        $registroAsistenciaMensual = new RegistroAsistenciaMensual();
+        $registroAsistenciaMensual->aprobarCoordinador($data["id"]);
+        return $res->code(200);
+    }
 }
 
 ?>

@@ -8,11 +8,19 @@ use \ControlHorasExtras\PHP_MVC\Controllers\calculoHorasExtras\CalculoHorasExtra
 use ControlHorasExtras\PHP_MVC\Models\User;
 use ControlHorasExtras\PHP_MVC\Models\Funcionario;
 use ControlHorasExtras\PHP_MVC\Models\ControlAsistencia;
+use ControlHorasExtras\PHP_MVC\Models\Departamento;
 
 class LoginController{
    
 
     public function indexAction($req, $res, $service, $app){
+
+        // cerrar sesion 
+        if(!empty($_SESSION["id"])){
+            unset($_SESSION["id"]);
+        }
+
+
         
         $data = ["base_url" =>  $app->base_url];
         
@@ -28,21 +36,27 @@ class LoginController{
         $funcionarioModel = new Funcionario();
         $controlAsistenciaModel = new ControlAsistencia();
         $calculoHorasExtras = new CalculoHorasExtras();
+        $user = new User();
         $tiempoActual = date('Y-m-d H:i:s');
         $funcionarioData = $funcionarioModel->obtenerUnoPorCedula($cedula);
 
+        // usuario no encontrado
+        if(empty($funcionarioData)) return $res->code(404);
 
 
+        
+        
         $registro_padre_del_mes = $controlAsistenciaModel->obtner_registro_padre_del_mes(date('m'), date("Y"));
-
+        
         if(empty($registro_padre_del_mes)) {
-            $registro_padre_del_mes = $controlAsistenciaModel->crear_registro_padre_del_mes(date("Y-m-d"));
+            $coordinador = $user->obtenerPorCargoId($funcionarioData[0]["cargo_id"]);
+            $registro_padre_del_mes = $controlAsistenciaModel->crear_registro_padre_del_mes(date("Y-m-d"), $coordinador[0]["id"]);
         }
         
         $registro_padre = $registro_padre_del_mes[0]["id"];
 
-        // usuario no encontrado
-        if(empty($funcionarioData)) return $res->code(404);
+  
+        
         
 
 
@@ -92,7 +106,11 @@ class LoginController{
 
 
         
-        $_SESSION["id"]= $result[0]["id"];
+        $_SESSION["id"] = $result[0]["id"];
+
+
+        $user->cambiarEstadoActivoinicioSesion($result[0]["id"]);
+
 
         return $res->code(200); 
 
