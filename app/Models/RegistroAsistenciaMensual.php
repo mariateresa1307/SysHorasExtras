@@ -21,6 +21,7 @@ class RegistroAsistenciaMensual {
 
     public function obtenerTodo($anno){
         $query = "SELECT 
+            id,
             aprobado_coordinador, 
             aprobado_rrhh, 
             date_part('year', tiempo_) as anno,
@@ -71,6 +72,16 @@ class RegistroAsistenciaMensual {
         $query= "SELECT * from registro_asistencia_mensual where tiempo_ = '$date' and usuario_id = {$coordinadorId} ";
         $result = pg_exec($this->em->vinculo, $query);
         return pg_fetch_all($result);
+    }
+
+
+
+    public function aprobarCoordinador($id){
+        $query = "UPDATE registro_asistencia_mensual
+        SET aprobado_coordinador=true
+        WHERE id= {$id}
+        ";
+        pg_query($this->em->vinculo, $query);
     }
 
 	

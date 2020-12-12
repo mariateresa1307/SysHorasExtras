@@ -173,10 +173,16 @@ $(document).ready(function() {
               style="font-size: 15px;margin-left: 20px;color: coral;">
               <i class="fas fa-clipboard" style="font-size: 40px;"></i></a>
 
-            <a id="btn-aprobar" href="#miModal" class="circle-right-btn" type="button"
+
+            <?php  if($value["aprobado_coordinador"] == "t" ) {   ?>
+            <a id="btn-aprobar" href="#" onclick='aprobar(<?= $value["id"] ?>)' class="circle-right-btn" type="button"
               style="font-size: 15px;margin-left: 20px;color: coral;">
               <i class="fas fa-check" style="font-size: 40px;"></i>
             </a>
+
+            <?php } ?>
+
+
           </td>
         </tr>
 
@@ -286,5 +292,33 @@ $(document).ready(function() {
           'error'
         );
       });
+  }
+
+
+  function aprobar(id) {
+
+    $.ajax({
+        method: "post",
+        url: "<?=$this->base_url ?>/HrasExtras/coordinador/aprobarRegistro",
+        data: {
+          id
+        }
+      })
+      .done(function(msg) {
+
+
+        console.log(msg);
+
+
+
+      })
+      .fail(function(response) {
+        Swal.fire(
+          'Error',
+          'Algo ha fallado',
+          'error'
+        );
+      });
+
   }
   </script>

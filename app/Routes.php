@@ -120,6 +120,8 @@ $router->respond('GET', "{$base_url}/HrasExtras/coordinador", [$hrasextrasCtrl,'
 $router->respond('GET', "{$base_url}/HrasExtras/coordinador/aprobados", [$hrasextrasCtrl, 'aprobadasAction']);
 $router->respond('GET', "{$base_url}/HrasExtras/coordinador/revision", [$hrasextrasCtrl, 'revisionAction']);
 $router->respond('POST', "{$base_url}/HrasExtras/coordinador/generarDataMensual", [$hrasextrasCtrl,'generarDataMensual']);
+$router->respond('POST', "{$base_url}/HrasExtras/coordinador/aprobarRegistro", [$hrasextrasCtrl,'aprobarRegistro']);
+
 
 $router->respond('GET', "{$base_url}/configuracion", [$configuracionCtrl, 'indexAction']);
 //$router->respond('POST', "{$base_url}/configuracion/obtenerDatosDepartamento", [$configuracionCtrl, 'obtenerDatosDepartamento']);

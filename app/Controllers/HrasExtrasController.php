@@ -57,22 +57,15 @@ class HrasExtrasController{
             "base_url" => $app->base_url
         ];
 
-
-
-        return $service->render('HrasExtras_coordinador/revision.phtml', $data);
-
-
-        
+        return $service->render('HrasExtras_coordinador/revision.phtml', $data);       
     }
-
-
 
 
     public function generarDataMensual ($req, $res, $service, $app){
         $data = $req->params();
 
         $registroAsistenciaMensual = new RegistroAsistenciaMensual();
-        $coordinadorId = 8;
+        $coordinadorId = $_SESSION["id"];
         $temp = $registroAsistenciaMensual->obtenerUnoPorId($data["id"]);
 
 
@@ -96,7 +89,16 @@ class HrasExtrasController{
 
         
     }
+
     
+    function aprobarRegistro($req, $res, $service, $app){
+        $data = $req->params();
+
+
+        $registroAsistenciaMensual = new RegistroAsistenciaMensual();
+        $registroAsistenciaMensual->aprobarCoordinador($data["id"]);
+        return $res->code(200);
+    }
 }
 
 ?>
