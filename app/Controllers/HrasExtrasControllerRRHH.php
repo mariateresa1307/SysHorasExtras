@@ -73,6 +73,14 @@ class HrasExtrasControllerRRHH{
         
         return $service->render('HrasExtras_rrhh/revision.phtml', $data);
     }
+
+
+    public function aprobarRegistro($req, $res, $service, $app){
+        $data = $req->params();
+        $registroAsistenciaMensual = new RegistroAsistenciaMensual();
+        $registroAsistenciaMensual->aprobarRRHH($data["id"], $data["estado"]);
+        return $res->code(200);
+    }
     
 }
 

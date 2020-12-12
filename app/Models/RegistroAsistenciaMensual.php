@@ -38,6 +38,7 @@ class RegistroAsistenciaMensual {
         }
 
         $query = "SELECT
+            ram.id,
             aprobado_coordinador,
             aprobado_rrhh,
             date_part('year', tiempo_) as anno,
@@ -78,11 +79,20 @@ class RegistroAsistenciaMensual {
 
     public function aprobarCoordinador($id){
         $query = "UPDATE registro_asistencia_mensual
-        SET aprobado_coordinador=true
+        SET aprobado_coordinador=true,
+        aprobado_rrhh=null
         WHERE id= {$id}
         ";
         pg_query($this->em->vinculo, $query);
     }
 
+
+    public function aprobarRRHH($id, $estado){
+        $query = "UPDATE registro_asistencia_mensual
+            SET aprobado_rrhh={$estado}
+            WHERE id= {$id}
+        ";
+        pg_query($this->em->vinculo, $query);
+    }
 	
 }

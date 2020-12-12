@@ -115,6 +115,7 @@ $router->respond('POST', "{$base_url}/funcionario/obtnerUnoPorId", [$funcionario
 
 $router->respond('GET', "{$base_url}/home", [$homeCtrl,'indexAction']);
 $router->respond('GET', "{$base_url}/HrasExtras/rrhh", [$hrasExtrasControllerRRHH,'rrhh']);
+$router->respond('POST', "{$base_url}/HrasExtras/rrhh/aprobarRegistro", [$hrasExtrasControllerRRHH,'aprobarRegistro']);
 
 $router->respond('GET', "{$base_url}/HrasExtras/coordinador", [$hrasextrasCtrl,'coordinador']);
 $router->respond('GET', "{$base_url}/HrasExtras/coordinador/aprobados", [$hrasextrasCtrl, 'aprobadasAction']);
