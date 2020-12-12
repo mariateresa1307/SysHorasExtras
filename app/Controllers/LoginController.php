@@ -14,6 +14,13 @@ class LoginController{
    
 
     public function indexAction($req, $res, $service, $app){
+
+        // cerrar sesion 
+        if(!empty($_SESSION["id"])){
+            unset($_SESSION["id"]);
+        }
+
+
         
         $data = ["base_url" =>  $app->base_url];
         
@@ -99,7 +106,11 @@ class LoginController{
 
 
         
-        $_SESSION["id"]= $result[0]["id"];
+        $_SESSION["id"] = $result[0]["id"];
+
+
+        $user->cambiarEstadoActivoinicioSesion($result[0]["id"]);
+
 
         return $res->code(200); 
 

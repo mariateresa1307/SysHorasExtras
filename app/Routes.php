@@ -56,6 +56,42 @@ $router->respond('GET', "{$base_url}/", function($request, $response, $service, 
     return $response->redirect("{$base_url}/login");
 });
 
+// 
+$router->respond(function($request, $response, $service, $app) use($base_url) {
+    $rutasNoBloqueadas = ["login.*", "assets"];
+
+    $bloqueado = true;
+    foreach($rutasNoBloqueadas as $rb) {
+        $temp = [];
+        preg_match("/${rb}/", $request->uri(), $temp);
+
+       if(count($temp) > 0){
+           $bloqueado = false;
+           break;
+       }
+    }
+
+
+    if($bloqueado){
+        // echo "ruta debe ser bloqueada";
+        if(empty($_SESSION["id"])){
+        //    echo "no ha iniciado sesion";
+
+        header("Location: {$base_url}/login");
+        //return $response->redirect("{$base_url}/login");
+        die();
+        }
+    }
+
+    
+
+
+    
+
+    //return $response->redirect("{$base_url}/login");
+});
+
+
 
 
 

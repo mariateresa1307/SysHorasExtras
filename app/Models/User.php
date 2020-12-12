@@ -64,6 +64,16 @@ class User {
         pg_query($this->em->vinculo, $query);
     }
 
+    public function cambiarEstadoActivoinicioSesion($userID){
+        $query = "UPDATE usuario
+        SET 
+            estado=true
+        WHERE id='{$userID}';
+        ";
+        pg_query($this->em->vinculo, $query);
+    }
+
+
 
     public function obtnerUnoPorId($id){
         $query = "SELECT id, primer_nombre, primer_apellido, cedula, estado, usuario_tipo_id, departamento_id, bloqueado  from usuario where id = '{$id}'";

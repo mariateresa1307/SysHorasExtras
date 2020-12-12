@@ -10,6 +10,9 @@ use ControlHorasExtras\PHP_MVC\Models\UsuarioTipo;
 
 class UserController{
 
+
+
+
     public function indexAction($req, $res, $service, $app){
         $user = new User();
         $departamento = new Departamento();
