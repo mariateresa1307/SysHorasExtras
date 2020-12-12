@@ -25,7 +25,7 @@ class Proceso{
     $resultadoFuncionarioSueldo = [];
 
     $d = new DateTime($date); 
-    $ultimoDiaDelMes = $d->format('t');
+    $ultimoDiaDelMes =  3; //$d->format('t');
 
 
     $asistencia = $registroAsistenciaMensual->obtnerAsistenciaPorperiodoyCoordinador($date,  $coordinador);
@@ -41,7 +41,7 @@ class Proceso{
 
 
       $salarioBase = $asistenciaDeUnFuncionario[0]["salario_base"];
-    $salarioPorHora = $this->calculoHorasExtras->calcularCotizacionHoraExtra($salarioBase, $ultimoDiaDelMes);
+      $salarioPorHora = $this->calculoHorasExtras->calcularCotizacionHoraExtra($salarioBase, $ultimoDiaDelMes);
 
       $result = $this->sumarTodasLasHorasDelMesYCalcularMonto($asistenciaDeUnFuncionario, $salarioPorHora);
 
@@ -69,18 +69,17 @@ class Proceso{
       }
 
       $balanceHoras += $tempHoras;
+    }
 
-      if($tempHoras > 0){
-        $balanceCotizacion += $tempHoras * $salarioPorHora;
-      }
-
-
+    if($balanceHoras > 0){
+      $balanceCotizacion += $balanceHoras * $salarioPorHora;
     }
 
     return [
       "funcionario_id" => $asistenciaDeUnFuncionario[0]["funcionario_id"], 
       "horas_trabajo" => $balanceHoras,
-      "balance_cotizacion" => $balanceCotizacion
+      "balance_cotizacion_a_pagar" => $balanceCotizacion,
+      "salario_por_hora" => $salarioPorHora
     ];
   }
 

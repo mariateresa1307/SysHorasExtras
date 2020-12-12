@@ -205,7 +205,8 @@ $(document).ready(function() {
 
 
 
-
+      <pre id="json">
+          </pre>
 
 
 
@@ -259,7 +260,9 @@ $(document).ready(function() {
 
         //window.location.href = "<?=$this->base_url ?>/home";
 
-        console.log(msg)
+
+        $("#json").text(JSON.stringify(msg, null, 2))
+
 
 
       })

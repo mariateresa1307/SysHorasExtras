@@ -118,10 +118,10 @@ class CalculoHorasExtras{
 
   public function determinarHorasExtrasTranscurridas($value){
     $temp_minutos = 0;
-    echo "\n";
+    //echo "\n";
     if(!empty($value["tiempo_extra"])){
 
-      echo  "extra: ". $this->horasAMinutos($value["tiempo_extra"]);
+      //echo  "extra: ". $this->horasAMinutos($value["tiempo_extra"]);
 
       $temp_minutos += $this->horasAMinutos($value["tiempo_extra"]);
     }
@@ -129,7 +129,7 @@ class CalculoHorasExtras{
     if(!empty($value["tiempo_atraso"])){
       $temp_minutos -= $this->horasAMinutos($value["tiempo_atraso"]);
 
-      echo "atraso: ". $this->horasAMinutos($value["tiempo_atraso"]);
+      //echo "atraso: ". $this->horasAMinutos($value["tiempo_atraso"]);
     }
 
     //if($temp_minutos <= 0) echo "calcula no toma en cuenta los negativos";
