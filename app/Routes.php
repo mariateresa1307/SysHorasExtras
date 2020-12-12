@@ -11,7 +11,7 @@ use \ControlHorasExtras\PHP_MVC\Controllers\HrasExtrasControllerRRHH;
 use \ControlHorasExtras\PHP_MVC\Controllers\ConfiguracionController;
 use \ControlHorasExtras\PHP_MVC\Controllers\EstructuraController;
 
-/** 
+/**
  *  Preparar la URL base del proyecto para el sistema de rutas.
  *  Solo elimina el protocolo, dominio y puerto del string.
  */
@@ -20,7 +20,7 @@ $base_url = preg_replace("/^http.*(\d\d\d)/", "", $config["base_url"]);
 
 
 /**
- * Instanaciar las clases usadas 
+ * Instanaciar las clases usadas
  */
 $router = new Klein();
 $userCtrl = new UserController();
@@ -79,10 +79,11 @@ $router->respond('POST', "{$base_url}/funcionario/obtnerUnoPorId", [$funcionario
 
 $router->respond('GET', "{$base_url}/home", [$homeCtrl,'indexAction']);
 $router->respond('GET', "{$base_url}/HrasExtras/rrhh", [$hrasExtrasControllerRRHH,'rrhh']);
+$router->respond('GET', "{$base_url}/HrasExtras/rrhh/reportes", [$hrasExtrasControllerRRHH, 'reportesAction']);
 
 $router->respond('GET', "{$base_url}/HrasExtras/coordinador", [$hrasextrasCtrl,'coordinador']);
-$router->respond('GET', "{$base_url}/HrasExtras/coordinador/aprobados", [$hrasextrasCtrl, 'aprobadasAction']);
-$router->respond('GET', "{$base_url}/HrasExtras/coordinador/revision", [$hrasextrasCtrl, 'revisionAction']);
+$router->respond('GET', "{$base_url}/HrasExtras/coordinador/reportes", [$hrasextrasCtrl, 'reportesAction']);
+
 
 $router->respond('GET', "{$base_url}/configuracion", [$configuracionCtrl, 'indexAction']);
 //$router->respond('POST', "{$base_url}/configuracion/obtenerDatosDepartamento", [$configuracionCtrl, 'obtenerDatosDepartamento']);

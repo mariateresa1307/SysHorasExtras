@@ -20,33 +20,24 @@ class HrasExtrasControllerRRHH{
             "registro_mensual" => $registroAsistenciaMensual->obtenerTodo()
         ];
 
-        
+
         return $service->render('HrasExtras_rrhh/index.phtml', $data);
     }
 
 
-    public function aprobadasAction($req, $res, $service, $app){
+    public function reportesAction($req, $res, $service, $app){
 
         $data = [
-            "title" => "Horas Extras Aprobadas",
+            "title" => "Horas Extras Reportes",
             "base_url" => $app->base_url
         ];
 
-        
-        return $service->render('HrasExtras_rrhh/aprobadas.phtml', $data);
+
+        return $service->render('HrasExtras_rrhh/reportes.phtml', $data);
     }
 
-    public function revisionAction($req, $res, $service, $app){
 
-        $data = [
-            "title" => "Horas Extras en Revision",
-            "base_url" => $app->base_url
-        ];
 
-        
-        return $service->render('HrasExtras_rrhh/revision.phtml', $data);
-    }
-    
 }
 
 ?>

@@ -41,16 +41,14 @@ $(document).ready(function() {
       <div class="card-body">
         <div class="row start-xs">
           <div class="col-xs-2">
-            <i class="far fa-check-double"></i>
+
             <i class="fas fa-check-double fa-7x" style="color:white"></i>
           </div>
-          <div class="col-xs-2">
-            <h1 class="card-title" style="color: white;font-size: 55px;">100</h1>
-          </div>
-          <div class="col-xs-8" style="color:white">
-            <h1 class="card-title" style="text-align: center;">Tiempo restante</h1>
+
+          <div class="col-xs-10" style="color:white">
+            <h1 class="card-title" style="text-align: center;">Tiempo restante <?=$this->DiasRestantes?>  dias </h1>
             <p id="p" class="card-text">Tiempo restante para finalizar el proceso de gestion de las horas extras para el
-              mes de <{$mes}>
+              mes de <?=$this->MesActual?>;
             </p>
           </div>
         </div>
@@ -72,17 +70,9 @@ $(document).ready(function() {
 
           </div>
 
-
-          <div class="col-xs-2">
-            <h1 class="card-title" style="color: white;font-size: 55px;">100</h1>
-          </div>
-
-
-
-          <div class="col-xs-8" style="color:white">
-            <h1 class="card-title" style="text-align: center;">Periodo rechazado</h1>
-            <p id="p" class="card-text">Muestra un registro de las horas que estan en proceso de revision y esperan por
-              ajustes para su aprobacion</p>
+          <div class="col-xs-10" style="color:white">
+            <h1 class="card-title" style="text-align: center;">Mes  <?=$this->MesActual?> <?=$this->EstadoPeriodo?></h1>
+            <p id="p" class="card-text">Muestra Estado Actual por mes del proceso de revision de las horas hasta su aprobacion </p>
           </div>
 
         </div>
@@ -153,16 +143,13 @@ $(document).ready(function() {
         <tr>
           <td><?= $value["tiempo_"] ?></td>
           <td>2020</td>
-          <td>{$aprobado} </td>
+          <td><$aprobado> </td>
           <td style="text-align:center">
             <a id="ai" href="#miModal" class="circle-right-btn" type="button"
               style="font-size: 15px;margin-left: 20px;color: coral;">
               <i class="fas fa-clipboard" style="font-size: 40px;"></i></a>
 
-            <a id="btn-aprobar" href="#miModal" class="circle-right-btn" type="button"
-              style="font-size: 15px;margin-left: 20px;color: coral;">
-              <i class="fas fa-check" style="font-size: 40px;"></i>
-            </a>
+
           </td>
         </tr>
 
@@ -214,7 +201,7 @@ $(document).ready(function() {
         <div class="btn-group">
 
           <button Style="background-color: #0c4dc1" class="button">Aceptar</button>
-          <button Style="background-color: #ecb90fc2" class="button">Posponer</button>
+
         </div>
       </div>
 

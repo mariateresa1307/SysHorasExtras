@@ -18,8 +18,8 @@
     </button>
     <div class="dropdown-content">
       <a href="<?= $this->base_url ?>/HrasExtras/coordinador">Inicio</a>
-      <a href="<?= $this->base_url ?>/HrasExtras/coordinador/aprobados">Aprobados</a>
-      <a href="<?= $this->base_url ?>/HrasExtras/coordinador/revision">Revision</a>
+      <a href="<?= $this->base_url ?>/HrasExtras/coordinador/reportes">Reportes</a>
+
     </div>
   </div>
 
@@ -29,6 +29,7 @@
     </button>
     <div class="dropdown-content">
       <a href="<?= $this->base_url ?>/HrasExtras/rrhh">inicio</a>
+          <a href="<?= $this->base_url ?>/HrasExtras/rrhh/reportes">Reportes</a>
     </div>
   </div>
 
@@ -44,14 +45,21 @@
   </div>
   <div class="dropdown">
     <button class="dropbtn">Funcionarios
-      <i class="fa fa-caret-down"></i>
+
     </button>
     <div class="dropdown-content">
       <a href="<?= $this->base_url ?>/funcionario">Funcionario</a>
       <a href="<?= $this->base_url ?>/configuracion">Configuracion</a>
-      
+
     </div>
   </div>
 
-  <a href="#" style="float: right">Administrador</a>
+  <!--<a href="#" style="float: right">Administrador</a>-->
+
+  <div class="dropdown" style="float:right">
+    <button class="dropbtn">Administrador</button>
+    <div class="dropdown-content">
+      <a href="<?= $this->base_url ?>/login">Cerrar sesion</a>
+    </div>
+  </div>
 </div>

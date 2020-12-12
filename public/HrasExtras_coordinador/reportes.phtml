@@ -1,0 +1,125 @@
+<?php include (getcwd()."/layout/TopComponent.phtml")?>
+<?php include (getcwd()."/layout/HeaderComponent.phtml")?>
+<?php include (getcwd()."/layout/MenuComponent.phtml")?>
+
+<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/modal.css">
+<link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/HrasExtras.css">
+<link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/css/reportes.css">
+<link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/fontawesome/css/all.css">
+<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/flexboxgrid.min.css">
+<link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/tableBoss.css">
+
+<script src='<?=$this->base_url ?>/assets/js/dateTable.js'></script>
+<script src='<?=$this->base_url ?>/assets/js/dateTableBoss.js'></script>
+
+<script src='<?=$this->base_url ?>/assets/js/popper_core@2.js'></script>
+<script src='<?=$this->base_url ?>/assets/js/tippy@6.js'></script>
+
+<script>
+$(document).ready(function() {
+  $('#example').DataTable();
+});
+
+$(document).ready(function() {
+  tippy('#toolDetalles', {
+    content: 'Detalles',
+  });
+});
+</script>
+
+<div class="row" style="
+    margin-top: -25px;
+">
+  <div class="col-xs-6">
+    <h1 class="h1"> Registro de Horas Aprobadas</h1>
+  </div>
+
+  <div class="col-xs-6" style="
+    text-align: end;
+    font-size: 30px;
+    margin-top: 23px;
+">
+    <a href="/SysHorasExtras/HrasExtras" id="salirBtn"> <i class="fas fa-sign-out-alt"></i></a>
+
+  </div>
+
+</div>
+</div>
+
+
+<div class="card2" style=" background-color: white; margin-top: -2px;
+    border-top-color: white;">
+  <div class="card-body">
+
+    <div class="row start-xs">
+
+
+      <div class="col-xs-3" style="margin-right: 18px;">
+
+        <!--Select with pure css-->
+        <div class="select">
+          <select class="select-text" required>
+            <option value="" disabled selected></option>
+            <?php foreach($this->departamento as $valor) {?>
+            <option value="<?= $valor["id"] ?>"> <?= $valor["nombre"] ?></option>
+            <?php } ?>
+          </select>
+          <label class="select-label">Departamento</label>
+        </div>
+        <!--Select with pure css-->
+      </div>
+
+
+      <div class="col-xs-3" style="margin-right: 18px;">
+
+        <!--Select with pure css-->
+        <div class="select">
+          <select class="select-text" required>
+            <option value="" disabled selected></option>
+            <option value="opcion-1">Funcionario</option>
+            <option value="opcion-2">Mes</option>
+            <option value="opcion-x">Año</option>
+          </select>
+          <label class="select-label">Buscar por</label>
+        </div>
+        <!--Select with pure css-->
+      </div>
+
+      <div class="col-xs-2">
+        <!--Input css-->
+        <label class="field field_v3">
+   <input class="field__input" placeholder="name">
+   <span class="field__label-wrap">
+     <span class="field__label">Buscar</span>
+   </span>
+ </label>
+        <!--Input css-->
+      </div>
+
+      <div class="col-xs-3" style="margin-top: -16PX;margin-bottom: 4px;margin-left: 6%;">
+        <div id="toolBuscar" class="boton" style="float: right;width: 38px;height: 38px;margin-top: 17px; display: block;text-align: center; float: right;">
+          <a href="#"><i style="font-size: 26px;margin-top: 5px;margin-left: 2px;" class="fas fa-search"></i></a>
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
+</div>
+
+
+<div class="linea">
+
+    <h1 class="title">Seccion de Reportes </h1>
+    </div>
+<script>
+$(document).ready(function() {
+  tippy('#salirBtn', {
+    content: 'Salir!',
+  });
+
+});
+</script>
