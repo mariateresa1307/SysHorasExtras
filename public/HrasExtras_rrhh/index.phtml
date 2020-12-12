@@ -28,7 +28,10 @@ $(document).ready(function() {
   });
 });
 $(document).ready(function() {
-  tippy('#ai', {
+  tippy('#ai1', {
+    content: ' Detalles',
+  });
+  tippy('#ai2', {
     content: ' Detalles',
   });
 });
@@ -215,7 +218,7 @@ $(document).ready(function() {
           <td><?= $value["anno"] ?></td>
           <td><?= $value["coordinador_nombre"] ?> <?= $value["coordinador_apellido"] ?> </td>
           <td style="text-align:center">
-            <a href="#miModal" class="circle-right-btn" type="button" onclick="verDetalle('<?= $value["id"] ?>')"
+            <a href="#" class="circle-right-btn" type="button" onclick="verDetalle(<?= $value["id"] ?>, event, '<?= $value["aprobado_rrhh"]?>' )"
               style="font-size: 15px;margin-left: 20px;color: coral;">
               <i class="fas fa-clipboard" style="font-size: 40px;"></i></a>
 
@@ -259,7 +262,9 @@ $(document).ready(function() {
     <div class="row start-xs" style="margin-top: 40px;padding-left: 95px;padding-right: 95px;">
 
 
-
+    <pre id="json">
+          </pre>
+ 
 
 
 
@@ -267,10 +272,10 @@ $(document).ready(function() {
 
 
       <div class="col-xs-12">
-        <div class="btn-group">
+        <div class="btn-group" >
 
-          <button Style="background-color: #0c4dc1;font-size: 13px;" id="ai" type="button" class="button" onclick="aprobar(<?= $value['id'] ?>,event, true)"  >Aceptar</button>
-          <button Style="background-color: coral;font-size: 13px;" id="ai"   type="button" class="button" onclick="aprobar(<?= $value['id'] ?>,event, false)"  class="button">Revision</button>
+          <button Style="background-color: #0c4dc1;font-size: 13px;" id="ai1" type="button" class="button" onclick="aprobar(<?= $value['id'] ?>,event, true)"  >Aceptar</button>
+          <button Style="background-color: coral;font-size: 13px;" id="ai2"   type="button" class="button" onclick="aprobar(<?= $value['id'] ?>,event, false)"  class="button">Revision</button>
         </div>
       </div>
 
@@ -302,6 +307,46 @@ $(document).ready(function() {
   });
 
 
+
+  function verDetalle(id, e, estado){
+
+   
+
+    e.preventDefault();
+    $.ajax({
+        method: "post",
+        url: "<?=$this->base_url ?>/HrasExtras/coordinador/generarDataMensual",
+        data: {
+          id
+        }
+      })
+      .done(function(msg) {
+
+        //window.location.href = "<?=$this->base_url ?>/home";
+
+
+        $("#json").text(JSON.stringify(msg, null, 2))
+
+      
+        if(estado === "t"){
+          $("#ai1").hide();
+          $("#ai2").hide();
+        }
+
+
+        window.location = "#miModal"
+
+      })
+      .fail(function(response) {
+        Swal.fire(
+          'Error',
+          'Algo ha fallado',
+          'error'
+        );
+      });
+  }
+
+
   function aprobar(id, e, estado){
     e.preventDefault();
     
@@ -317,7 +362,8 @@ $(document).ready(function() {
 
 
         console.log(msg);
-        //location.reload();
+        window.location.href = "#";
+        location.reload();
 
 
 
