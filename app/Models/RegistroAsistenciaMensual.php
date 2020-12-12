@@ -10,7 +10,7 @@ class RegistroAsistenciaMensual {
 
     public function __construct(){
         $this->em = new Service();
-    }   
+    }
 
 
     public function obtenerUnoPorId($id){
@@ -19,11 +19,20 @@ class RegistroAsistenciaMensual {
         return pg_fetch_all($result);
     }
 
+    public function obtenerPeriodo($fecha, $coordinadorId){
+
+      $query = "SELECT * from registro_asistencia_mensual WHERE tiempo_='{$fecha}' AND usuario_id='{$coordinadorId}'";
+      $result = pg_exec($this->em->vinculo, $query);
+      return pg_fetch_all($result);
+    }
+
+
+
     public function obtenerTodo($anno){
-        $query = "SELECT 
+        $query = "SELECT
             id,
-            aprobado_coordinador, 
-            aprobado_rrhh, 
+            aprobado_coordinador,
+            aprobado_rrhh,
             date_part('year', tiempo_) as anno,
             date_part('month', tiempo_) as mes
         from registro_asistencia_mensual where date_part('year', tiempo_) =  '{$anno}' ";
@@ -47,11 +56,11 @@ class RegistroAsistenciaMensual {
             u.primer_apellido as coordinador_apellido
         from
             registro_asistencia_mensual ram
-        inner join usuario u on 
-            ram.usuario_id = u.id 
+        inner join usuario u on
+            ram.usuario_id = u.id
         where
             date_part('year', ram.tiempo_) = {$anno}
-            {$temp}            
+            {$temp}
         ";
 
 
@@ -94,5 +103,5 @@ class RegistroAsistenciaMensual {
         ";
         pg_query($this->em->vinculo, $query);
     }
-	
+
 }
