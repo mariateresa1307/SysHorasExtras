@@ -14,12 +14,25 @@ class HrasExtrasController{
 
     public function coordinador($req, $res, $service, $app){
         $registroAsistenciaMensual = new RegistroAsistenciaMensual();
+        $data = $req->params();
+
+        $annoActual = date("Y");
+        
+        if(!empty($data["anno"])){
+            $annoActual = $data["anno"];
+        }
+
+        $selectValues = [
+            "anno" =>  $annoActual,
+        ];
 
 
         $data = [
             "title" => "Horas Extras",
             "base_url" => $app->base_url,
-            "registro_mensual" => $registroAsistenciaMensual->obtenerTodo()
+            "registro_mensual" => $registroAsistenciaMensual->obtenerTodo($annoActual),
+            "annos_existentes" => $registroAsistenciaMensual->obtenerSoloLosAnnosExistentes(),
+            "selectValues" => $selectValues
         ];
 
         

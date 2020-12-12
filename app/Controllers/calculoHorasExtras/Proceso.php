@@ -25,7 +25,7 @@ class Proceso{
     $resultadoFuncionarioSueldo = [];
 
     $d = new DateTime($date); 
-    $ultimoDiaDelMes =  3; //$d->format('t');
+    $ultimoDiaDelMes =  $d->format('t');
 
 
     $asistencia = $registroAsistenciaMensual->obtnerAsistenciaPorperiodoyCoordinador($date,  $coordinador);

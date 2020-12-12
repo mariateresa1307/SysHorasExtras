@@ -13,14 +13,41 @@ class HrasExtrasControllerRRHH{
 
         $departamento = new Departamento();
 
+        $data = $req->params();
+        $registros = [];
+        $annoActual = date("Y");
+        $departamentoID= null;
+        
+        if(!empty($data["anno"])){
+            $annoActual = $data["anno"];
+        }
+
+        if(!empty($data["departamento"])){
+            $departamentoID = $data["departamento"];
+        }
+        
+
+        $temp = $registroAsistenciaMensual->obtenerTodoPorAnnoYDEpartamento($annoActual, $departamentoID);
+        if(!empty($temp)){
+            $registros = $temp;
+        }
+
+        $selectValues = [
+            "anno" =>  $annoActual,
+            "dpto" => $departamentoID
+        ];
+
+
+
         $data = [
             "title" => "Horas Extras",
             "base_url" => $app->base_url,
             "departamento" => $departamento->obtenerTodo(),
-            "registro_mensual" => $registroAsistenciaMensual->obtenerTodo()
+            "registro_mensual" => $registros ,
+            "annos_existentes" => $registroAsistenciaMensual->obtenerSoloLosAnnosExistentes(),
+            "selectValues" => $selectValues
         ];
 
-        
         return $service->render('HrasExtras_rrhh/index.phtml', $data);
     }
 

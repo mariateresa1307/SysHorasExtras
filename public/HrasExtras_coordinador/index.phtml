@@ -106,31 +106,35 @@ $(document).ready(function() {
     border-top-color: white;">
   <div class="card-body">
 
-    <div class="row start-xs">
+    <form action="<?=$this->base_url ?>/HrasExtras/coordinador" method="get">
 
-
-      <div class="col-xs-4">
-
-        <!--Select with pure css-->
-        <div class="select">
-          <select class="select-text" required>
-            <option value="" disabled selected></option>
-            <option value="opcion-1">2020</option>
-            <option value="opcion-2">2021</option>
-            <option value="opcion-x">2022</option>
-          </select>
-          <label class="select-label">Año</label>
+      <div class="row start-xs">
+        <div class="col-xs-4">
+          <!--Select with pure css-->
+          <div class="select">
+            <select class="select-text" required name="anno">
+              <option value="" disabled selected></option>
+              <?php foreach ($this->annos_existentes as $value) { ?>
+              <option value="<?= $value["date_part"] ?>"
+                <?= $this->selectValues["anno"] == $value["date_part"] ? "selected" : null ?>><?= $value["date_part"] ?>
+              </option>
+              <?php } ?>
+            </select>
+            <label class="select-label">Año</label>
+          </div>
+          <!--Select with pure css-->
         </div>
-        <!--Select with pure css-->
-      </div>
-      <div class="col-xs-8" style="margin-top: -16PX;margin-bottom: 4px;">
-        <div id="toolBuscar" class="boton" style="float: right;">
-          <a href="#"><i style="font-size: 26px;" class="fas fa-search"></i></a>
+        <div class="col-xs-8" style="margin-top: -16PX;margin-bottom: 4px;">
+          <button type="submit" id="toolBuscar" class="boton" style="float: right;     float: right;
+            border: none;
+            height: 50px;
+            width: 50px;
+            color: white; 
+          "><i style="font-size: 26px;" class="fas fa-search"></i></button>
         </div>
 
       </div>
-
-    </div>
+    </form>
 
 
 
@@ -149,12 +153,21 @@ $(document).ready(function() {
       <tbody>
 
         <?php foreach ($this->registro_mensual as $value) { ?>
-
-
         <tr>
-          <td><?= $value["tiempo_"] ?></td>
-          <td>2020</td>
-          <td>{$aprobado} </td>
+          <td><?= $value["mes"] ?></td>
+          <td><?= $value["anno"] ?></td>
+          <td><?php 
+            if(is_null($value["aprobado_rrhh"]) ) {
+              echo "por revision";
+            }
+            elseif($value["aprobado_rrhh"] == "t" ){
+              echo "aprobadoo";
+            }
+            elseif($value["aprobado_rrhh"] == "f" ){
+              echo "rechazado"; 
+            }
+
+          ?></td>
           <td style="text-align:center">
             <a href="#miModal" class="circle-right-btn" type="button" onclick="verDetalle('<?= $value["id"] ?>')"
               style="font-size: 15px;margin-left: 20px;color: coral;">
