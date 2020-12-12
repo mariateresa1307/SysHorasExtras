@@ -58,7 +58,8 @@ $(document).ready(function() {
                 <?php foreach ($this->departamento as $value) { ?>
                 <li> <?= $value["nombre"] ?>
                   <a type="button" id="toolEditar"
-                    onclick="editardepartamento( '<?= $value["id"] ?>', '<?= $value["nombre"] ?>')"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"style="color: coral;"></i></a>
+                    onclick="editardepartamento( '<?= $value["id"] ?>', '<?= $value["nombre"] ?>')"><i
+                      class="fa fa-pencil-square-o fa-2x" aria-hidden="true" style="color: coral;"></i></a>
                 </li>
                 <?php } ?>
               </ul>
@@ -97,8 +98,9 @@ $(document).ready(function() {
                 <ul>
                   <?php foreach ($this->cargo as $value) { ?>
                   <li> <?= "{$value["nombre"]} -  {$value["salario_base"]} Bs." ?> <a type="button" id="toolEditar"
-                      onclick="editarCargo('<?= $value["id"] ?>')"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"style="color: coral;"></i></a>
-</a>
+                      href="#" onclick="editarCargo('<?= $value["id"] ?>', event)"><i
+                        class="fa fa-pencil-square-o fa-2x" aria-hidden="true" style="color: coral;"></i></a>
+                    </a>
                   </li>
                   <?php } ?>
                 </ul>
@@ -123,7 +125,7 @@ $(document).ready(function() {
 
 <!-- //Modal departamento-->
 
-<div id="miModal" class="modal" style=" z-index: 999;">
+<div id="miModal" class="modal" style=" z-index: 100;">
 
   <div class="modal-contenido">
 
@@ -175,8 +177,7 @@ $(document).ready(function() {
 
 <?php //Modal Configuracion */?>
 
-<div id="miModal1" class="modal" style=" z-index: 999;">
-
+<div id="miModal1" class="modal" style=" z-index: 101;">
   <div class="modal-contenido">
 
     <div class="row"
@@ -239,14 +240,12 @@ $(document).ready(function() {
 
     </div>
   </div>
-
 </div>
 
 
 
 
-<div id="miModal2" class="modal" style=" z-index: 999;">
-
+<div id="miModal2w2" class="modal" style=" z-index: 102;">
   <div class="modal-contenido">
 
     <div class="row"
@@ -325,7 +324,6 @@ $(document).ready(function() {
 
     </div>
   </div>
-
 </div>
 
 
@@ -469,7 +467,12 @@ function cerrarModal3() {
   location.reload();
 }
 
-function editarCargo(id) {
-  window.location.href = "#miModal2";
+function editarCargo(id, e) {
+  e.preventDefault();
+  console.log("ok")
+
+  //$("#miModal2w2").css("opacity", 1)
+
+  window.location.href = "#miModal2w2";
 }
 </script>
