@@ -261,11 +261,12 @@ $(document).ready(function() {
 
     <div class="row start-xs" style="margin-top: 40px;padding-left: 95px;padding-right: 95px;">
 
+      <input type="hidden" id="cargo-id" />
 
       <div class="col-xs-12 col-sm-6" style="margin-top: 25px;">
         <!--Select with pure css-->
         <div class="select">
-          <select class="select-text" required id="select-cargo-departasmento">
+          <select class="select-text" required id="select-cargo-departasmento1">
             <option value="" disabled selected></option>
             <?php foreach ($this->departamento as $value) { ?>
             <option value="<?= $value["id"] ?>"><?= $value["nombre"] ?></option>
@@ -276,25 +277,12 @@ $(document).ready(function() {
         <!--Select with pure css-->
       </div>
 
-      <div class="col-xs-12 col-sm-6" style="margin-top: 25px;">
-        <!--Select with pure css-->
-        <div class="select">
-          <select class="select-text" required id="select-cargo-deparstamento">
-            <option value="" disabled selected></option>
-            <?php foreach ($this->departamento as $value) { ?>
-            <option value="<?= $value["id"] ?>"><?= $value["nombre"] ?></option>
-            <?php } ?>
-          </select>
-          <label class="select-label">Departamento</label>
-        </div>
-        <!--Select with pure css-->
-      </div>
 
 
       <div class="col-xs-12 col-sm-6" style="margin-top: 25px;">
         <div class="omrs-input-group">
           <label class="omrs-input-filled">
-            <input type="text" onkeypress="return soloLetras(event)" required id="input-casrgo-nombre"
+            <input type="text" onkeypress="return soloLetras(event)" required id="input-casrgo-nombre2"
               style="background-color: white;   height: 50px;margin-top: -8px;">
             <span class="omrs-input-label">Cargo</span>
           </label>
@@ -305,7 +293,7 @@ $(document).ready(function() {
       <div class="col-xs-4  col-sm-6" style="margin-top: 25px;">
         <div class="omrs-input-group">
           <label class="omrs-input-filled">
-            <input type="text" onkeypress="return numeros(event)" required id="input-cargso-salario"
+            <input type="text" onkeypress="return numeros(event)" required id="input-cargso-salario2"
               style="background-color: white;   height: 50px;margin-top: -8px;">
             <span class="omrs-input-label">Salario</span>
           </label>
@@ -317,7 +305,7 @@ $(document).ready(function() {
         <div class="btn-group">
           <div style=" margin-top: 25px; text-align: end;">
 
-            <a class="btn btn-primary1" onclick="guardarCargo()">Guardar</a>
+            <a class="btn btn-primary1" onclick="editarCargoGuaradr()">Guardar</a>
           </div>
         </div>
       </div>
@@ -469,10 +457,61 @@ function cerrarModal3() {
 
 function editarCargo(id, e) {
   e.preventDefault();
-  console.log("ok")
 
-  //$("#miModal2w2").css("opacity", 1)
 
-  window.location.href = "#miModal2w2";
+  $.ajax({
+      method: "POST",
+      url: "<?=$this->base_url ?>/configuracion/obtnerDataDelCargo",
+      data: {
+        id
+      }
+    })
+    .done(function(msg) {
+
+      $("#cargo-id").val(id);
+      $(`[id="select-cargo-departasmento1"] option[value='${msg.departamento_id}']`).prop('selected', true);
+      $("#input-casrgo-nombre2").val(msg.nombre);
+      $("#input-cargso-salario2").val(msg.salario_base);
+
+      window.location.href = "#miModal2w2";
+
+    })
+    .fail(function(response) {
+      alert("error interno");
+    });
+
+
+}
+
+
+function editarCargoGuaradr() {
+  var departamento = $(`#select-cargo-departasmento1`).val();
+  var cargo = $("#input-casrgo-nombre2").val();
+  var salario = $("#input-cargso-salario2").val();
+  var cargoId = $("#cargo-id").val();
+
+
+  $.ajax({
+      method: "POST",
+      url: "<?=$this->base_url ?>/configuracion/guardarCargo",
+      data: {
+
+        id: cargoId,
+        nombre: cargo,
+        salario_base: salario,
+        departamento_id: departamento
+
+      }
+    })
+    .done(function(msg) {
+
+
+      cerrarModal3();
+
+
+    })
+    .fail(function(response) {
+      alert("error interno");
+    });
 }
 </script>

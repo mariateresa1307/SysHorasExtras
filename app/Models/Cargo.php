@@ -36,11 +36,21 @@ class Cargo {
 
     public function editar($data){
         $query="UPDATE cargo
-        SET nombre='{$data["nombre"]}', salario_base={$data["dalario_base"]}, departamento_id={$data["departamento_id"]}
+        SET nombre='{$data["nombre"]}', salario_base={$data["salario_base"]}, departamento_id={$data["departamento_id"]}
         WHERE id={$data["id"]}
         ";
         pg_query($this->em->vinculo, $query);
     }
+
+
+    public function obtnerDataDelCargo($id){
+        $query = "SELECT * from cargo c where c.id = {$id}";
+        $result = pg_exec($this->em->vinculo, $query);
+        return pg_fetch_all($result);
+    }
+
+
+    
 
 	
 }

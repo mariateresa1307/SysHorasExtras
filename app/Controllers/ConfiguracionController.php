@@ -44,14 +44,9 @@ class ConfiguracionController{
 
 
     public function guardarCargo($req, $res, $service, $app){
-        echo "work??";
         $cargo = new Cargo();
-
-
         $data = $req->params();
-
-        print_r($data);
-
+        
         if(empty($data["id"])){
             // es nuevo registro
             $cargo->guardar($data);
@@ -62,25 +57,21 @@ class ConfiguracionController{
         }
 
 
-        return $res->code(204);
+       // return $res->code(204);
     }
 
 
-    /*public function obtenerDatosDepartamento($req, $res, $service, $app){
-        $departamento = new Departamento();
+    public function obtnerDataDelCargo($req, $res, $service, $app){
         $cargo = new Cargo();
         $data = $req->params();
 
-        
+        $payload = $cargo->obtnerDataDelCargo($data["id"]);
 
-        $payload = [
-            "cargoPorDepartamento" => $cargo->obtnerPorDepartamento($data["departamento_id"])
-        ];
+        return $res->json($payload[0]);
+    }
 
 
-        return $res->json($payload);
-
-    }*/
+  
 }
 
 ?>
