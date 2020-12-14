@@ -109,12 +109,15 @@ class ControlAsistencia {
     public function obtnerTodosLosRegistrosPorFuncionarioyPeriodo($funcionarioId, $periodoId){
         $query = "SELECT
             ca.id as control_asistencia_id,
+            f.primer_nombre,
+            f.primer_apellido,
             ca.entrada,
             ca.salida ,
             ca.tiempo_extra ,
             ca.tiempo_atraso ,
             ca.funcionario_id ,
-            c.salario_base
+            c.salario_base,
+            c.nombre as nombre_cargo
         from
             control_asistencia ca
         inner join funcionario f on
