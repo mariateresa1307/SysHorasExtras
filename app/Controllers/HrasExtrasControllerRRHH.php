@@ -4,7 +4,7 @@ namespace ControlHorasExtras\PHP_MVC\Controllers;
 
 use ControlHorasExtras\PHP_MVC\Models\Departamento;
 use ControlHorasExtras\PHP_MVC\Models\RegistroAsistenciaMensual;
-
+use DateTime;
 
 class HrasExtrasControllerRRHH{
 
@@ -12,8 +12,28 @@ class HrasExtrasControllerRRHH{
         $registroAsistenciaMensual = new RegistroAsistenciaMensual();
 
         $departamento = new Departamento();
+        $m = new DateTime('NOW');
+        $Mes = $m->format('m');
+
+
+        $MapFechas =[
+          "1" => "Enero",
+          "2" => "Febrero",
+          "3" => "Marzo",
+          "4" => "Abril",
+          "5" => "Marzo",
+          "6" => "Mayo",
+          "7" => "Junio",
+          "8" => "Julio",
+          "9" => "Agosto",
+          "10" => "Septiembre",
+          "11" => "Octubre",
+          "12"=> "Diciembre",
+        ];
 
         $data = $req->params();
+
+
         $registros = [];
         $annoActual = date("Y");
         $departamentoID= null;
@@ -45,7 +65,11 @@ class HrasExtrasControllerRRHH{
             "departamento" => $departamento->obtenerTodo(),
             "registro_mensual" => $registros ,
             "annos_existentes" => $registroAsistenciaMensual->obtenerSoloLosAnnosExistentes(),
-            "selectValues" => $selectValues
+            "selectValues" => $selectValues,
+              "MesActual"=> $MapFechas[$Mes],
+                "RegistroAprobado" => $registroAsistenciaMensual->contarPorEstado("aprobado",date("m"),date("Y")),
+                    "RegistroRevision" => $registroAsistenciaMensual->contarPorEstado('revision',date("m"),date("Y")),
+                    "RegistroPorAprobar"=>$registroAsistenciaMensual->contarPorEstado('porAprobar',date("m"),date("Y"))
         ];
 
         return $service->render('HrasExtras_rrhh/index.phtml', $data);
@@ -65,7 +89,7 @@ class HrasExtrasControllerRRHH{
 
 
 
-      
+
 
 
     public function aprobarRegistro($req, $res, $service, $app){

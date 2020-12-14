@@ -10,7 +10,7 @@ use \ControlHorasExtras\PHP_MVC\Controllers\HrasExtrasController;
 use \ControlHorasExtras\PHP_MVC\Controllers\HrasExtrasControllerRRHH;
 use \ControlHorasExtras\PHP_MVC\Controllers\ConfiguracionController;
 use \ControlHorasExtras\PHP_MVC\Controllers\EstructuraController;
-
+use \ControlHorasExtras\PHP_MVC\Controllers\PdfController;
 /**
  *  Preparar la URL base del proyecto para el sistema de rutas.
  *  Solo elimina el protocolo, dominio y puerto del string.
@@ -32,7 +32,7 @@ $configuracionCtrl = new ConfiguracionController();
 $estructuraCtrl = new EstructuraController();
 $organigramaCtrl = new EstructuraController();
 $hrasExtrasControllerRRHH = new HrasExtrasControllerRRHH();
-
+$pdf = new PdfController();
 
 
 $router->respond(function ($request, $response, $service, $app) use($config) {
@@ -136,6 +136,8 @@ $router->respond('POST', "{$base_url}/configuracion/guardarCargo", [$configuraci
 $router->respond('GET', "{$base_url}/misionVision", [$estructuraCtrl, 'misionAction']);
 $router->respond('GET', "{$base_url}/organigrama", [$organigramaCtrl, 'organigramaAction']);
 
+
+$router->respond('GET', "{$base_url}/pdf", [$pdf, 'indexAction']);
 
 
 # 404 Not Found

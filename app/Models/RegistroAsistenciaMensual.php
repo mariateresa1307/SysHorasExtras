@@ -104,4 +104,36 @@ class RegistroAsistenciaMensual {
         pg_query($this->em->vinculo, $query);
     }
 
+    /*
+    *   $condicion = "aprobado"
+            $condicion = "revision"
+    *  $condicion= "porAprobar"
+    */
+
+
+    public function contarPorEstado($condicion,$mes,$ann){
+        $where = "";
+        if($condicion == "aprobado"  ){
+            $where = "where u.aprobado_coordinador = true and u.aprobado_rrhh= true  ";
+        } elseif ($condicion == "revision") {
+
+              $where ="where u.aprobado_coordinador= true and u.aprobado_rrhh= false ";
+
+        }
+        elseif ($condicion == "porAprobar")  {
+           $where =  "where u.aprobado_coordinador = true  and u.aprobado_rrhh is null ";
+        }
+
+        $query = "SELECT count(*)
+        from  registro_asistencia_mensual u
+        {$where}
+        and date_part('month', u.tiempo_) = {$mes}
+        and date_part('year', u.tiempo_) = {$ann}
+        ";
+
+
+        $result = pg_exec($this->em->vinculo, $query);
+        return pg_fetch_all($result);
+    }
+
 }
