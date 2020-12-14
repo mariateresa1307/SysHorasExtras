@@ -8,6 +8,6 @@
     }
   },
   "require": {
-    "dompdf/dompdf": "^0.8.6"
+    "dompdf/dompdf": "0.8.3"
   }
 }
