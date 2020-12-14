@@ -129,7 +129,7 @@ $router->respond('POST', "{$base_url}/HrasExtras/coordinador/aprobarRegistro", [
 
 
 $router->respond('GET', "{$base_url}/configuracion", [$configuracionCtrl, 'indexAction']);
-//$router->respond('POST', "{$base_url}/configuracion/obtenerDatosDepartamento", [$configuracionCtrl, 'obtenerDatosDepartamento']);
+$router->respond('POST', "{$base_url}/configuracion/obtnerDataDelCargo", [$configuracionCtrl, 'obtnerDataDelCargo']);
 $router->respond('POST', "{$base_url}/configuracion/guardarDepartamento", [$configuracionCtrl, 'guardarDepartamento']);
 $router->respond('POST', "{$base_url}/configuracion/guardarCargo", [$configuracionCtrl, 'guardarCargo']);
 

@@ -1,390 +1,387 @@
 /*TABLE*/
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 #myInput {
-    background-image: url("/css/searchicon.png");
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    font-size: 20px;
-    padding: 12px 20px 12px 40px;
-    border: 1px solid #ddd;
-    margin-bottom: 12px;
+  background-image: url("/css/searchicon.png");
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  font-size: 20px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
 }
 
 #myTable {
-    border-collapse: collapse;
-    width: 100%;
-    border: 1px solid #ddd;
-    font-size: 18px;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
 }
 
 #myTable th,
 #myTable td {
-    text-align: left;
-    padding: 12px;
+  text-align: left;
+  padding: 12px;
 }
 
 #myTable tr {
-    border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
 #myTable tr.header,
 #myTable tr:hover {
-    background-color: #f1f1f1;
+  background-color: #f1f1f1;
 }
 
-
 /*TABLE*/
-
 
 /*CARD*/
 
 #mycard1 {
-    background-image: linear-gradient( to right top, #d5deea, #a2b6d7, #728fc3, #4468af, #024398);
-    margin-bottom: 10px;
-    border: 0px;
+  background-image: linear-gradient(
+    to right top,
+    #d5deea,
+    #a2b6d7,
+    #728fc3,
+    #4468af,
+    #024398
+  );
+  margin-bottom: 10px;
+  border: 0px;
 }
-
 
 /*CARD*/
 
 #mycard2 {
-    background-image: linear-gradient( to right, rgba(255, 0, 0, 0.31), rgba(249, 43, 43));
-    border: 0px;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 0.31),
+    rgba(249, 43, 43)
+  );
+  border: 0px;
 }
 
 #CardTitle {
-    color: white;
-    text-align: center;
-    font-size: 58px;
+  color: white;
+  text-align: center;
+  font-size: 58px;
 }
 
 #CardTitle1 {
-    color: white;
-    text-align: center;
+  color: white;
+  text-align: center;
 }
 
-
 /*CARD*/
-
 
 /*Button*/
 
 #ai {
-    color: white;
-    position: relative;
-    text-decoration: none;
-    border: 0px;
+  color: white;
+  position: relative;
+  text-decoration: none;
+  border: 0px;
 }
 
 .h1 {
-    text-align: initial;
+  text-align: initial;
 }
 
-
 /*button*/
-
 
 /** BEGIN: Non Openmrs CSS **/
 
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 * {
-    font-family: "Roboto";
+  font-family: "Roboto";
 }
 
 div.container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-around;
-    margin-top: 30px;
-    border: 1px solid whitesmoke;
-    padding: 21px;
-    border-radius: 4px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin-top: 30px;
+  border: 1px solid whitesmoke;
+  padding: 21px;
+  border-radius: 4px;
 }
 
 h4.title {
-    text-align: center;
-    margin-bottom: 45px;
+  text-align: center;
+  margin-bottom: 45px;
 }
 
 :root {
-    --omrs-color-ink-lowest-contrast: rgba(47, 60, 85, 0.18);
-    --omrs-color-ink-low-contrast: rgba(60, 60, 67, 0.3);
-    --omrs-color-ink-medium-contrast: rgba(19, 19, 21, 0.6);
-    --omrs-color-interaction: #1e4bd1 (text-align right);
-    --omrs-color-interaction-minus-two: rgba(73, 133, 224, 0.12);
-    --omrs-color-danger: #b50706;
-    --omrs-color-bg-low-contrast: #eff1f2;
-    --omrs-color-ink-high-contrast: #121212;
-    --omrs-color-bg-high-contrast: #ffffff;
+  --omrs-color-ink-lowest-contrast: rgba(47, 60, 85, 0.18);
+  --omrs-color-ink-low-contrast: rgba(60, 60, 67, 0.3);
+  --omrs-color-ink-medium-contrast: rgba(19, 19, 21, 0.6);
+  --omrs-color-interaction: #1e4bd1 (text-align right);
+  --omrs-color-interaction-minus-two: rgba(73, 133, 224, 0.12);
+  --omrs-color-danger: #b50706;
+  --omrs-color-bg-low-contrast: #eff1f2;
+  --omrs-color-ink-high-contrast: #121212;
+  --omrs-color-bg-high-contrast: #ffffff;
 }
-
 
 /** END: Non Openmrs CSS **/
 
 div.omrs-input-group {
-    position: relative;
+  position: relative;
 }
 
-
 /*Button*/
-
 
 /*Boton redondo*/
 
 .boton {
-    width: 50px;
-    height: 50px;
-    background-color: #705bff;
-    margin: 5px;
-    padding: 10px;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
-    font-size: 11px;
-    line-height: 32px;
-    text-transform: uppercase;
-    float: left;
+  width: 50px;
+  height: 50px;
+  background-color: #705bff;
+  margin: 5px;
+  padding: 10px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  font-size: 11px;
+  line-height: 32px;
+  text-transform: uppercase;
+  float: left;
 }
 
 .boton:hover {
-    opacity: 0.5;
-    -moz-opacity: 0.5;
-    filter: alpha (opacity=50);
+  opacity: 0.5;
+  -moz-opacity: 0.5;
+  filter: alpha (opacity=50);
 }
 
 .boton a {
-    color: #fff;
-    text-decoration: none;
-    padding: 5px 5px 5px 0;
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 5px 5px 0;
 }
-
 
 /*= Reset CSS End
 ================= */
-
 
 /** BEGIN: Non Openmrs CSS **/
 
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 * {
-    font-family: "Roboto";
+  font-family: "Roboto";
 }
 
 div.container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-around;
-    margin-top: 30px;
-    border: 1px solid whitesmoke;
-    padding: 21px;
-    border-radius: 4px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin-top: 30px;
+  border: 1px solid whitesmoke;
+  padding: 21px;
+  border-radius: 4px;
 }
 
 h4.title {
-    text-align: center;
-    margin-bottom: 45px;
+  text-align: center;
+  margin-bottom: 45px;
 }
 
 :root {
-    --omrs-color-ink-lowest-contrast: rgba(47, 60, 85, 0.18);
-    --omrs-color-ink-low-contrast: rgba(60, 60, 67, 0.3);
-    --omrs-color-ink-medium-contrast: rgba(19, 19, 21, 0.6);
-    --omrs-color-interaction: #1e4bd1;
-    --omrs-color-interaction-minus-two: rgba(73, 133, 224, 0.12);
-    --omrs-color-danger: #b50706;
-    --omrs-color-bg-low-contrast: #eff1f2;
-    --omrs-color-ink-high-contrast: #121212;
-    --omrs-color-bg-high-contrast: #ffffff;
+  --omrs-color-ink-lowest-contrast: rgba(47, 60, 85, 0.18);
+  --omrs-color-ink-low-contrast: rgba(60, 60, 67, 0.3);
+  --omrs-color-ink-medium-contrast: rgba(19, 19, 21, 0.6);
+  --omrs-color-interaction: #1e4bd1;
+  --omrs-color-interaction-minus-two: rgba(73, 133, 224, 0.12);
+  --omrs-color-danger: #b50706;
+  --omrs-color-bg-low-contrast: #eff1f2;
+  --omrs-color-ink-high-contrast: #121212;
+  --omrs-color-bg-high-contrast: #ffffff;
 }
-
 
 /** END: Non Openmrs CSS **/
 
 div.omrs-input-group {
-    margin-bottom: 1.5rem;
-    position: relative;
+  margin-bottom: 1.5rem;
+  position: relative;
 }
-
 
 /* Input*/
 
-.omrs-input-underlined>input,
-.omrs-input-filled>input {
-    border: none;
-    border-bottom: 0.125rem solid var(--omrs-color-ink-medium-contrast);
-    width: 100%;
-    height: 2rem;
-    font-size: 1.0625rem;
-    padding-left: 0.875rem;
-    line-height: 46.6%;
-    padding-top: 0.825rem;
-    padding-bottom: 0.5rem;
+.omrs-input-underlined > input,
+.omrs-input-filled > input {
+  border: none;
+  border-bottom: 0.125rem solid var(--omrs-color-ink-medium-contrast);
+  width: 100%;
+  height: 2rem;
+  font-size: 1.0625rem;
+  padding-left: 0.875rem;
+  line-height: 46.6%;
+  padding-top: 0.825rem;
+  padding-bottom: 0.5rem;
 }
 
-.omrs-input-underlined>input:focus,
-.omrs-input-filled>input:focus {
-    outline: none;
+.omrs-input-underlined > input:focus,
+.omrs-input-filled > input:focus {
+  outline: none;
 }
 
-.omrs-input-underlined>.omrs-input-label,
-.omrs-input-filled>.omrs-input-label {
-    position: absolute;
-    top: 0.9375rem;
-    left: 0.875rem;
-    line-height: 46.6%;
-    color: var(--omrs-color-ink-medium-contrast);
-    transition: top .2s;
+.omrs-input-underlined > .omrs-input-label,
+.omrs-input-filled > .omrs-input-label {
+  position: absolute;
+  top: 0.9375rem;
+  left: 0.875rem;
+  line-height: 46.6%;
+  color: var(--omrs-color-ink-medium-contrast);
+  transition: top 0.2s;
 }
 
-.omrs-input-underlined>svg,
-.omrs-input-filled>svg {
-    position: absolute;
-    top: 0.9375rem;
-    right: 0.875rem;
-    fill: var(--omrs-color-ink-medium-contrast);
+.omrs-input-underlined > svg,
+.omrs-input-filled > svg {
+  position: absolute;
+  top: 0.9375rem;
+  right: 0.875rem;
+  fill: var(--omrs-color-ink-medium-contrast);
 }
 
-.omrs-input-underlined>.omrs-input-helper,
-.omrs-input-filled>.omrs-input-helper {
-    font-size: 0.9375rem;
-    color: var(--omrs-color-ink-medium-contrast);
-    letter-spacing: 0.0275rem;
-    margin: 0.125rem 0.875rem;
+.omrs-input-underlined > .omrs-input-helper,
+.omrs-input-filled > .omrs-input-helper {
+  font-size: 0.9375rem;
+  color: var(--omrs-color-ink-medium-contrast);
+  letter-spacing: 0.0275rem;
+  margin: 0.125rem 0.875rem;
 }
 
-.omrs-input-underlined>input:hover,
-.omrs-input-filled>input:hover {
-    background: var(--omrs-color-interaction-minus-two);
-    border-color: var(--omrs-color-ink-high-contrast);
+.omrs-input-underlined > input:hover,
+.omrs-input-filled > input:hover {
+  background: var(--omrs-color-interaction-minus-two);
+  border-color: var(--omrs-color-ink-high-contrast);
 }
 
-.omrs-input-underlined>input:focus+.omrs-input-label,
-.omrs-input-underlined>input:valid+.omrs-input-label,
-.omrs-input-filled>input:focus+.omrs-input-label,
-.omrs-input-filled>input:valid+.omrs-input-label {
-    top: 0;
-    font-size: 0.9375rem;
-    margin-bottom: 32px;
-    ;
+.omrs-input-underlined > input:focus + .omrs-input-label,
+.omrs-input-underlined > input:valid + .omrs-input-label,
+.omrs-input-filled > input:focus + .omrs-input-label,
+.omrs-input-filled > input:valid + .omrs-input-label {
+  top: 0;
+  font-size: 0.9375rem;
+  margin-bottom: 32px;
 }
 
-.omrs-input-underlined:not(.omrs-input-danger)>input:focus+.omrs-input-label,
-.omrs-input-filled:not(.omrs-input-danger)>input:focus+.omrs-input-label {
-    color: var(--omrs-color-interaction);
+.omrs-input-underlined:not(.omrs-input-danger)
+  > input:focus
+  + .omrs-input-label,
+.omrs-input-filled:not(.omrs-input-danger) > input:focus + .omrs-input-label {
+  color: var(--omrs-color-interaction);
 }
 
-.omrs-input-underlined:not(.omrs-input-danger)>input:focus,
-.omrs-input-filled:not(.omrs-input-danger)>input:focus {
-    border-color: var(--omrs-color-interaction);
+.omrs-input-underlined:not(.omrs-input-danger) > input:focus,
+.omrs-input-filled:not(.omrs-input-danger) > input:focus {
+  border-color: var(--omrs-color-interaction);
 }
 
-.omrs-input-underlined:not(.omrs-input-danger)>input:focus~svg,
-.omrs-input-filled:not(.omrs-input-danger)>input:focus~svg {
-    fill: var(--omrs-color-ink-high-contrast);
+.omrs-input-underlined:not(.omrs-input-danger) > input:focus ~ svg,
+.omrs-input-filled:not(.omrs-input-danger) > input:focus ~ svg {
+  fill: var(--omrs-color-ink-high-contrast);
 }
-
 
 /** DISABLED **/
 
-.omrs-input-underlined>input:disabled {
-    background: var(--omrs-color-bg-low-contrast);
-    cursor: not-allowed;
+.omrs-input-underlined > input:disabled {
+  background: var(--omrs-color-bg-low-contrast);
+  cursor: not-allowed;
 }
 
-.omrs-input-underlined>input:disabled+.omrs-input-label,
-.omrs-input-underlined>input:disabled~.omrs-input-helper {
-    color: var(--omrs-color-ink-low-contrast);
+.omrs-input-underlined > input:disabled + .omrs-input-label,
+.omrs-input-underlined > input:disabled ~ .omrs-input-helper {
+  color: var(--omrs-color-ink-low-contrast);
 }
 
-.omrs-input-underlined>input:disabled~svg {
-    fill: var(--omrs-color-ink-low-contrast);
+.omrs-input-underlined > input:disabled ~ svg {
+  fill: var(--omrs-color-ink-low-contrast);
 }
-
 
 /** DANGER **/
 
-.omrs-input-underlined.omrs-input-danger>.omrs-input-label,
-.omrs-input-underlined.omrs-input-danger>.omrs-input-helper,
-.omrs-input-filled.omrs-input-danger>.omrs-input-label,
-.omrs-input-filled.omrs-input-danger>.omrs-input-helper {
-    color: var(--omrs-color-danger);
+.omrs-input-underlined.omrs-input-danger > .omrs-input-label,
+.omrs-input-underlined.omrs-input-danger > .omrs-input-helper,
+.omrs-input-filled.omrs-input-danger > .omrs-input-label,
+.omrs-input-filled.omrs-input-danger > .omrs-input-helper {
+  color: var(--omrs-color-danger);
 }
 
-.omrs-input-danger>svg {
-    fill: var(--omrs-color-danger);
+.omrs-input-danger > svg {
+  fill: var(--omrs-color-danger);
 }
 
-.omrs-input-danger>input {
-    border-color: var(--omrs-color-danger);
+.omrs-input-danger > input {
+  border-color: var(--omrs-color-danger);
 }
 
-.omrs-input-underlined>input {
-    background: var(--omrs-color-bg-high-contrast);
+.omrs-input-underlined > input {
+  background: var(--omrs-color-bg-high-contrast);
 }
 
-.omrs-input-filled>input {
-    background: var(--omrs-color-bg-low-contrast);
+.omrs-input-filled > input {
+  background: var(--omrs-color-bg-low-contrast);
 }
-
 
 /*list*/
-
 
 /*HEADER*/
 
 h2 {
-    font-size: 20px;
-    margin-bottom: 50px;
+  font-size: 20px;
+  margin-bottom: 50px;
 }
 
 a {
-    color: rgb(60, 6, 255);
+  color: rgb(60, 6, 255);
 }
 
 a:hover {
-    color: #78e7d1;
+  color: #78e7d1;
 }
-
 
 /*WRAPPER*/
 
 #wrapper {
-    width: 100%;
+  width: 100%;
 }
 
-#wrapper>div {
-    margin-bottom: 10px;
+#wrapper > div {
+  margin-bottom: 10px;
 }
-
 
 /*CHECKBOX*/
 
 label div {
-    width: 23px;
-    height: 23px;
-    display: inline-block;
-    border: 2px solid #0057ad40;
-    text-align: center;
-    line-height: 20px;
-    margin-right: 6px;
-    border-radius: 3px;
-    cursor: pointer;
+  width: 23px;
+  height: 23px;
+  display: inline-block;
+  border: 2px solid #0057ad40;
+  text-align: center;
+  line-height: 20px;
+  margin-right: 6px;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 label i {
-    font-size: 16px;
-    opacity: 0;
+  font-size: 16px;
+  opacity: 0;
 }
 
 label:hover div {
-    background: #57d8ff8a;
+  background: #57d8ff8a;
 }
 
-input:checked+label i {
-    opacity: 1;
-    color: #00c9b7;
+input:checked + label i {
+  opacity: 1;
+  color: #00c9b7;
+}
+
+#miModal2w2:target {
+  opacity: 1;
+  pointer-events: auto;
 }
