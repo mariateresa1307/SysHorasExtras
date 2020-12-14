@@ -4,8 +4,10 @@
   "autoload": {
     "psr-4": {
       "ControlHorasExtras\\PHP_MVC\\": "app/",
-      "Klein\\": "app/Libs/klein/src/Klein/",
-      "Dompdf\\":"app/Libs/dompdf/autoloader.inc.php"
+      "Klein\\": "app/Libs/klein/src/Klein/"
     }
+  },
+  "require": {
+    "dompdf/dompdf": "^0.8.6"
   }
 }

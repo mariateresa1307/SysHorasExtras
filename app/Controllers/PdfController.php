@@ -2,7 +2,7 @@
 
 namespace ControlHorasExtras\PHP_MVC\Controllers;
 
-include("../Libs/dompdf/autoload.inc.php");
+use Dompdf\Dompdf;
 
 class PdfController{
 
