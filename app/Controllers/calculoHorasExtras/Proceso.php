@@ -77,9 +77,12 @@ class Proceso{
 
     return [
       "funcionario_id" => $asistenciaDeUnFuncionario[0]["funcionario_id"], 
+      "funcionario_nombre" => $asistenciaDeUnFuncionario[0]["primer_nombre"], 
+      "funcionario_apellido" => $asistenciaDeUnFuncionario[0]["primer_apellido"], 
       "horas_trabajo" => $balanceHoras,
       "balance_cotizacion_a_pagar" => $balanceCotizacion,
-      "salario_por_hora" => $salarioPorHora
+      "salario_por_hora" => $salarioPorHora,
+      "cargo" => $asistenciaDeUnFuncionario[0]["nombre_cargo"]
     ];
   }
 
