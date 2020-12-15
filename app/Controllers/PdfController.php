@@ -144,10 +144,11 @@ class PdfController{
     public function PDF_RRHH($req, $res, $service, $app) {
       $registroAsistenciaMensual = new RegistroAsistenciaMensual();
       $departamento = new Departamento();
+      $funcionario = new Funcionario();
       $proceso = new Proceso();
       $data = $req->paramsGet();
 
-     
+      $funcionarioId = null;
 
       
      
@@ -179,11 +180,17 @@ class PdfController{
           $data["value_string"]
         );
 
+        
+        $tempFunc = $funcionario->obtenerUnoPorCedula($data["value_string"]);
+        if(empty($tempFunc)) {
+          echo "funcionario no encontrado";
+          return;
+        }
+
+
+        $funcionarioId = $tempFunc[0]["id"];
       }
       
-      
-
-
       if(empty($temp)) {
         echo "no hay registros para este tiempo seleccionado";
         return;
@@ -192,7 +199,7 @@ class PdfController{
 
       $result = [];
       foreach($temp as $value){
-        $temp = $proceso->ejecutar($mes, $anno, $coordinadorId, $value["id"]);
+        $temp = $proceso->ejecutar($mes, $anno, $coordinadorId, $value["id"], $funcionarioId);
         array_push($result, $temp);
       }
 
@@ -255,7 +262,6 @@ class PdfController{
 
     
 
-
         // instantiate and use the dompdf class
         $dompdf = new Dompdf();
         $dompdf->loadHtml($html);
@@ -291,8 +297,8 @@ class PdfController{
 
 
           $temp = $departamento->obtnerCoordinadorDeUnDepartamentoPorCedulaFuncionario( $data["value"]);
-          $coordinadorId = $temp[0]["id"];
-
+          $coordinadorId = $temp[0]["coordinadorid"];
+          $funcionarioId = $temp[0]["funcionarioid"];
 
           $temp = $registroAsistenciaMensual->obtnerPorDepartamentosFuncionarioCedula(
             null,
@@ -305,7 +311,7 @@ class PdfController{
 
           $preResult = [];
           foreach($temp as $value){
-            $temp = $proceso->ejecutar($mes, $anno, $coordinadorId, $value["id"]);
+            $temp = $proceso->ejecutar($mes, $anno, $coordinadorId, $value["id"], $funcionarioId);
             array_push($preResult, $temp);
           }
 
@@ -369,6 +375,8 @@ class PdfController{
       </html>
 
       ";
+
+
 
 
       

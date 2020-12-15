@@ -92,7 +92,15 @@ class ControlAsistencia {
 
 
 
-    public function obtenerFuncionarioIdPorRegistroMEnsual($id, $coordinadorId){
+    public function obtenerFuncionarioIdPorRegistroMEnsual($id, $coordinadorId, $funcionarioId = null ){
+        $where = "";
+        if(!empty($funcionarioId)){
+        $where = "
+          and ca.funcionario_id = {$funcionarioId}
+        ";
+        }
+
+
         $query = "SELECT
         distinct (ca.funcionario_id) as funcionario_id
         from
@@ -101,7 +109,9 @@ class ControlAsistencia {
             ram.id = ca.registro_asistencia_mensual_id
         where
             ca.registro_asistencia_mensual_id = {$id}
-            and ram.usuario_id = {$coordinadorId}";
+            and ram.usuario_id = {$coordinadorId}  
+            {$where}
+            ";
         $result = pg_exec($this->em->vinculo, $query);
         return pg_fetch_all($result);
     }

@@ -16,7 +16,7 @@ class Proceso{
 
 
 
-  public function ejecutar($mes, $anno,  $coordinador, $periodo){
+  public function ejecutar($mes, $anno,  $coordinador, $periodo, $funcionarioId = null){
     $controlAsistencia = new ControlAsistencia();
     $registroAsistenciaMensual = new RegistroAsistenciaMensual();
     $date = "{$anno}-{$mes}-01";
@@ -38,8 +38,7 @@ class Proceso{
 
     if(empty($asistencia)) return [];
 
-    
-    $funcionariosIds = $controlAsistencia->obtenerFuncionarioIdPorRegistroMEnsual($asistencia, $coordinador);
+    $funcionariosIds = $controlAsistencia->obtenerFuncionarioIdPorRegistroMEnsual($asistencia, $coordinador, $funcionarioId);
 
     
 

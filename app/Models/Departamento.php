@@ -53,7 +53,8 @@ class Departamento {
 
     public function obtnerCoordinadorDeUnDepartamentoPorCedulaFuncionario($cedulaFuncionario){
         $query = "SELECT
-            distinct (u.id)
+            distinct (u.id) as coordinadorId,
+            f.id as funcionarioId
         from
             departamento d
         inner join usuario u on

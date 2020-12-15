@@ -49,10 +49,12 @@ $(document).ready(function() {
             <i class="fas fa-check-double fa-7x" style="color:white"></i>
           </div>
           <div class="col-xs-2">
-            <h1 class="card-title" style="color: white;font-size: 55px;">    <?= $this->RegistroAprobado[0]["count"] ?></h1>
+            <h1 class="card-title" style="color: white;font-size: 55px;"> <?= $this->RegistroAprobado[0]["count"] ?>
+            </h1>
           </div>
           <div class="col-xs-8" style="color:white">
-            <h1 class="card-title" style="text-align: center;">Registros aprobados durante el mes de <?=$this->MesActual?>
+            <h1 class="card-title" style="text-align: center;">Registros aprobados durante el mes de
+              <?=$this->MesActual?>
             </h1>
             <p id="p" class="card-text">Muestra un conteno de la cantidad de registros aprobados en el mes</p>
           </div>
@@ -113,7 +115,8 @@ $(document).ready(function() {
 
           <div class="col-xs-2">
 
-            <h1 class="card-title" style="color: white;font-size: 55px;"><?= $this->RegistroPorAprobar[0]["count"] ?></h1>
+            <h1 class="card-title" style="color: white;font-size: 55px;"><?= $this->RegistroPorAprobar[0]["count"] ?>
+            </h1>
           </div>
 
 
@@ -219,7 +222,8 @@ $(document).ready(function() {
           <td><?= $value["anno"] ?></td>
           <td><?= $value["coordinador_nombre"] ?> <?= $value["coordinador_apellido"] ?> </td>
           <td style="text-align:center">
-            <a href="#" class="circle-right-btn" type="button" onclick="verDetalle(<?= $value["id"] ?>, event, '<?= $value["aprobado_rrhh"]?>' )"
+            <a href="#" class="circle-right-btn" type="button"
+              onclick="verDetalle(<?= $value["id"] ?>, event, '<?= $value["aprobado_rrhh"]?>' )"
               style="font-size: 15px;margin-left: 20px;color: coral;">
               <i class="fas fa-clipboard" style="font-size: 40px;"></i></a>
 
@@ -263,7 +267,7 @@ $(document).ready(function() {
     <div class="row start-xs" style="margin-top: 40px;padding-left: 95px;padding-right: 95px;">
 
 
-    <pre id="json">
+      <pre id="json">
           </pre>
 
 
@@ -273,10 +277,12 @@ $(document).ready(function() {
 
 
       <div class="col-xs-12">
-        <div class="btn-group" >
+        <div class="btn-group">
 
-          <button Style="background-color: #0c4dc1;font-size: 13px;" id="ai1" type="button" class="button" onclick="aprobar(<?= $value['id'] ?>,event, true)"  >Aceptar</button>
-          <button Style="background-color: coral;font-size: 13px;" id="ai2"   type="button" class="button" onclick="aprobar(<?= $value['id'] ?>,event, false)"  class="button">Revision</button>
+          <button Style="background-color: #0c4dc1;font-size: 13px;" id="ai1" type="button" class="button"
+            onclick="aprobar(<?= $value['id'] ?>,event, true)">Aceptar</button>
+          <button Style="background-color: coral;font-size: 13px;" id="ai2" type="button" class="button"
+            onclick="aprobar(<?= $value['id'] ?>,event, false)" class="button">Revision</button>
         </div>
       </div>
 
@@ -309,16 +315,17 @@ $(document).ready(function() {
 
 
 
-  function verDetalle(id, e, estado){
+  function verDetalle(id, e, estado) {
 
 
 
     e.preventDefault();
     $.ajax({
-        method: "post",
-        url: "<?=$this->base_url ?>/HrasExtras/coordinador/generarDataMensual",
+        method: "get",
+        url: "<?=$this->base_url ?>/pdf",
         data: {
-          id
+          id,
+          html: true
         }
       })
       .done(function(msg) {
@@ -326,10 +333,10 @@ $(document).ready(function() {
         //window.location.href = "<?=$this->base_url ?>/home";
 
 
-        $("#json").text(JSON.stringify(msg, null, 2))
+        $("#json").html(msg)
 
 
-        if(estado === "t"){
+        if (estado === "t") {
           $("#ai1").hide();
           $("#ai2").hide();
         }
@@ -348,7 +355,7 @@ $(document).ready(function() {
   }
 
 
-  function aprobar(id, e, estado){
+  function aprobar(id, e, estado) {
     e.preventDefault();
 
 
@@ -356,7 +363,8 @@ $(document).ready(function() {
         method: "post",
         url: "<?=$this->base_url ?>/HrasExtras/rrhh/aprobarRegistro",
         data: {
-          id, estado
+          id,
+          estado
         }
       })
       .done(function(msg) {
