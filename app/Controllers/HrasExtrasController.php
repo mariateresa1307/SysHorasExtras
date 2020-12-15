@@ -15,7 +15,7 @@ class HrasExtrasController{
 
     public function coordinador($req, $res, $service, $app){
         $registroAsistenciaMensual = new RegistroAsistenciaMensual();
-  $departamento = new Departamento();
+        $departamento = new Departamento();
         // metodos para calcula de la card 1 de fechas
         $d = new DateTime('NOW');
         $ultimoDiaDelMes = $d->format('t');
@@ -135,7 +135,7 @@ class HrasExtrasController{
         $mes = $d->format('m');
         $anno = $d->format('Y');
 
-        $result = $proceso->ejecutar($mes, $anno, $coordinadorId);
+        $result = $proceso->ejecutar($mes, $anno, $coordinadorId, null);
 
         if(empty($result)) return $res->code(404);
 

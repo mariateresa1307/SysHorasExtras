@@ -26,6 +26,35 @@ class RegistroAsistenciaMensual {
       return pg_fetch_all($result);
     }
 
+    public function obtnerPorDepartamentosYRangoDeFechas($coordinadorId, $anno, $mes){
+        $query = "SELECT * 
+        from registro_asistencia_mensual ram 
+        where ram.usuario_id = {$coordinadorId}
+        and date_part('year', tiempo_) = {$anno}
+        and date_part('month', tiempo_) = {$mes}
+        ";
+        $result = pg_exec($this->em->vinculo, $query);
+        return pg_fetch_all($result);
+    }
+
+    public function obtnerPorDepartamentosFuncionarioCedula($coordinadorId, $anno, $mes, $cedula) {
+        $query = "SELECT
+                ram.*
+            from
+                registro_asistencia_mensual ram
+            inner join control_asistencia ca on 
+            ca.registro_asistencia_mensual_id = ram.id
+            inner join funcionario f2 on 
+            ca.funcionario_id = f2.id
+            where  date_part('year', ram.tiempo_) = {$anno} 
+                and date_part('month', ram.tiempo_) = {$mes} 
+                and f2.cedula = {$cedula}
+            limit 1
+        ";
+
+        $result = pg_exec($this->em->vinculo, $query);
+        return pg_fetch_all($result);
+    }
 
 
     public function obtenerTodo($anno){

@@ -8,12 +8,18 @@
 <link rel="stylesheet" type="text/css" href="<?=$this->base_url ?>/assets/fontawesome/css/all.css">
 <link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/flexboxgrid.min.css">
 <link rel="stylesheet" type="text/css" href="<?= $this->base_url ?>/assets/css/tableBoss.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+
+<script src='<?=$this->base_url ?>/assets/js/jquery-3.5.1.min.js'></script>
+
 
 <script src='<?=$this->base_url ?>/assets/js/dateTable.js'></script>
 <script src='<?=$this->base_url ?>/assets/js/dateTableBoss.js'></script>
 
 <script src='<?=$this->base_url ?>/assets/js/popper_core@2.js'></script>
 <script src='<?=$this->base_url ?>/assets/js/tippy@6.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <script>
 $(document).ready(function() {
@@ -51,60 +57,66 @@ $(document).ready(function() {
     border-top-color: white;">
   <div class="card-body">
 
-    <div class="row start-xs">
+    <form action="<?=$this->base_url ?>/pdf_rrhh" method="get" target="_blank">
+
+      <div class="row">
 
 
-      <div class="col-xs-3" style="margin-right: 18px;">
+        <div class="col-xs-13 col-sm-4 col-md-3">
 
-        <!--Select with pure css-->
-        <div class="select">
-          <select class="select-text" required>
-            <option value="" disabled selected></option>
-            <?php foreach($this->departamento as $valor) {?>
-            <option value="<?= $valor["id"] ?>"> <?= $valor["nombre"] ?></option>
-            <?php } ?>
-          </select>
-          <label class="select-label">Departamento</label>
-        </div>
-        <!--Select with pure css-->
-      </div>
-
-
-      <div class="col-xs-3" style="margin-right: 18px;">
-
-        <!--Select with pure css-->
-        <div class="select">
-          <select class="select-text" required>
-            <option value="" disabled selected></option>
-            <option value="opcion-1">Funcionario</option>
-            <option value="opcion-2">Mes</option>
-            <option value="opcion-x">Año</option>
-          </select>
-          <label class="select-label">Buscar por</label>
-        </div>
-        <!--Select with pure css-->
-      </div>
-
-      <div class="col-xs-2">
-        <!--Input css-->
-        <label class="field field_v3">
-   <input class="field__input" placeholder="name">
-   <span class="field__label-wrap">
-     <span class="field__label">Buscar</span>
-   </span>
- </label>
-        <!--Input css-->
-      </div>
-
-      <div class="col-xs-3" style="margin-top: -16PX;margin-bottom: 4px;margin-left: 6%;">
-        <div id="toolBuscar" class="boton" style="float: right;width: 38px;height: 38px;margin-top: 17px; display: block;text-align: center; float: right;">
-          <a href="#"><i style="font-size: 26px;margin-top: 5px;margin-left: 2px;" class="fas fa-search"></i></a>
+          <!--Select with pure css-->
+          <div class="select">
+            <select class="select-text" required name="departamento">
+              <option value="" disabled selected></option>
+              <?php foreach($this->departamento as $valor) {?>
+              <option value="<?= $valor["id"] ?>"> <?= $valor["nombre"] ?></option>
+              <?php } ?>
+            </select>
+            <label class="select-label">Departamento</label>
+          </div>
+          <!--Select with pure css-->
         </div>
 
+
+        <div class="col-xs-12 col-sm-4 col-md-3">
+          <!--Input css-->
+          <label class="field field_v3" id="inputField">
+            <input class="field__input" placeholder="name" name="value_string">
+            <span class="field__label-wrap">
+              <span class="field__label">Funcionario cedula</span>
+            </span>
+          </label>
+
+
+
+          <!--Input css-->
+        </div>
+
+        <div class="col-xs-12 col-sm-4 col-md-3">
+          <label class="field field_v3" id="inputField_fecha">
+            <input class="field__input" placeholder="name" id="inputField_fechaInput" name="value_date">
+            <span class="field__label-wrap">
+              <span class="field__label">Fecha</span>
+            </span>
+          </label>
+        </div>
+
+        <div class="col-xs-12 col-sm-4 col-md-3">
+          <div id="toolBuscar" class="boton"
+            style="float: right;width: 38px;height: 38px;margin-top: 17px; display: block;text-align: center; float: right;">
+            <button type="submit" style="
+                border: none;
+              background: none;
+              color: white;
+              cursor: pointer;
+            "><i style="font-size: 26px;margin-top: 5px;margin-left: 2px;" class="fas fa-search"></i></button>
+          </div>
+
+        </div>
+
       </div>
 
-    </div>
-
+    </form>
 
   </div>
 </div>
@@ -113,13 +125,19 @@ $(document).ready(function() {
 
 <div class="linea">
 
-    <h1 class="title">Seccion de Reportes </h1>
-    </div>
+  <h1 class="title">Seccion de Reportes </h1>
+</div>
 <script>
 $(document).ready(function() {
   tippy('#salirBtn', {
     content: 'Salir!',
   });
 
+
+
+
+  $("#inputField_fechaInput").flatpickr({
+    dateFormat: "m-Y",
+  });
 });
 </script>

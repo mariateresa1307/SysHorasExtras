@@ -16,7 +16,7 @@ class Proceso{
 
 
 
-  public function ejecutar($mes, $anno,  $coordinador){
+  public function ejecutar($mes, $anno,  $coordinador, $periodo){
     $controlAsistencia = new ControlAsistencia();
     $registroAsistenciaMensual = new RegistroAsistenciaMensual();
     $date = "{$anno}-{$mes}-01";
@@ -28,16 +28,23 @@ class Proceso{
     $ultimoDiaDelMes =  $d->format('t');
 
 
-    $asistencia = $registroAsistenciaMensual->obtnerAsistenciaPorperiodoyCoordinador($date,  $coordinador);
+    if(empty($periodo)){
+      $temp = $registroAsistenciaMensual->obtnerAsistenciaPorperiodoyCoordinador($date,  $coordinador);
+      $asistencia = $temp[0]["id"];
+    }
+    else{
+      $asistencia = $periodo;
+    }
 
     if(empty($asistencia)) return [];
 
     
-    $funcionariosIds = $controlAsistencia->obtenerFuncionarioIdPorRegistroMEnsual($asistencia[0]["id"], $coordinador);
+    $funcionariosIds = $controlAsistencia->obtenerFuncionarioIdPorRegistroMEnsual($asistencia, $coordinador);
 
+    
 
     foreach($funcionariosIds as $funcionarioId){
-      $asistenciaDeUnFuncionario = $controlAsistencia->obtnerTodosLosRegistrosPorFuncionarioyPeriodo($funcionarioId["funcionario_id"], $asistencia[0]["id"]);
+      $asistenciaDeUnFuncionario = $controlAsistencia->obtnerTodosLosRegistrosPorFuncionarioyPeriodo($funcionarioId["funcionario_id"], $asistencia);
 
 
       $salarioBase = $asistenciaDeUnFuncionario[0]["salario_base"];
@@ -79,7 +86,7 @@ class Proceso{
       "funcionario_id" => $asistenciaDeUnFuncionario[0]["funcionario_id"], 
       "funcionario_nombre" => $asistenciaDeUnFuncionario[0]["primer_nombre"], 
       "funcionario_apellido" => $asistenciaDeUnFuncionario[0]["primer_apellido"], 
-      "horas_trabajo" => $balanceHoras,
+      "horas_trabajo" => $balanceHoras > 0 ? $balanceHoras : 0,
       "balance_cotizacion_a_pagar" => $balanceCotizacion,
       "salario_por_hora" => $salarioPorHora,
       "cargo" => $asistenciaDeUnFuncionario[0]["nombre_cargo"]

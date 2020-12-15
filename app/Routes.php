@@ -138,6 +138,7 @@ $router->respond('GET', "{$base_url}/organigrama", [$organigramaCtrl, 'organigra
 
 
 $router->respond('GET', "{$base_url}/pdf", [$pdf, 'indexAction']);
+$router->respond('GET', "{$base_url}/pdf_rrhh", [$pdf, 'PDF_RRHH']);
 
 
 # 404 Not Found

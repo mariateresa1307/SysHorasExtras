@@ -77,10 +77,11 @@ class HrasExtrasControllerRRHH{
 
 
     public function reportesAction($req, $res, $service, $app){
-
+        $departamento = new Departamento();
         $data = [
             "title" => "Horas Extras Reportes",
-            "base_url" => $app->base_url
+            "base_url" => $app->base_url,
+            "departamento" => $departamento->obtenerTodo(),
         ];
 
 

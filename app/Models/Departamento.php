@@ -37,6 +37,18 @@ class Departamento {
     }
 
 
+    public function obtnerCoordinadorDeUnDepartamento($departamentoId) {
+        $query = "SELECT u.id
+            from 
+            departamento d 
+            inner join usuario u on 
+            u.departamento_id = d.id 
+            where d.id = {$departamentoId}
+            and u.usuario_tipo_id = 3
+        ";
+        $result = pg_exec($this->em->vinculo, $query);
+        return pg_fetch_all($result);
+    }
 
 
 
