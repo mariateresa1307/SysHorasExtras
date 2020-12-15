@@ -104,6 +104,7 @@ $(document).ready(function() {
           <div class="select">
             <select class="select-text" required name="anno">
               <option value="" disabled selected></option>
+          
               <?php foreach ($this->annos_existentes as $value) { ?>
               <option value="<?= $value["date_part"] ?>"
                 <?= $this->selectValues["anno"] == $value["date_part"] ? "selected" : null ?>><?= $value["date_part"] ?>

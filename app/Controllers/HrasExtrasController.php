@@ -15,7 +15,7 @@ class HrasExtrasController{
 
     public function coordinador($req, $res, $service, $app){
         $registroAsistenciaMensual = new RegistroAsistenciaMensual();
-  $departamento = new Departamento();
+        $departamento = new Departamento();
         // metodos para calcula de la card 1 de fechas
         $d = new DateTime('NOW');
         $ultimoDiaDelMes = $d->format('t');
@@ -92,6 +92,7 @@ class HrasExtrasController{
             "departamento" => $departamento->obtenerTodo(),
             "registro_mensual" => $registroAsistenciaMensual->obtenerTodo($annoActual),
             "annos_existentes" => $registroAsistenciaMensual->obtenerSoloLosAnnosExistentes(),
+            "mes_existentes" => $registroAsistenciaMensual ->obtenerSoloMesExistentes(),
             "selectValues" => $selectValues
         ];
 
@@ -114,7 +115,7 @@ class HrasExtrasController{
 
 
 
-    
+
 
     public function generarDataMensual ($req, $res, $service, $app){
         $data = $req->params();

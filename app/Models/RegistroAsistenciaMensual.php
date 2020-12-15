@@ -76,6 +76,12 @@ class RegistroAsistenciaMensual {
         return pg_fetch_all($result);
     }
 
+    public function obtenerSoloMesExistentes(){
+        $query = "SELECT distinct(date_part('month', tiempo_)) from registro_asistencia_mensual order by date_part";
+        $result = pg_exec($this->em->vinculo, $query);
+        return pg_fetch_all($result);
+    }
+
 
 
     public function obtnerAsistenciaPorperiodoyCoordinador($date, $coordinadorId){

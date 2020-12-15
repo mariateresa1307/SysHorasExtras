@@ -54,19 +54,20 @@ $(document).ready(function() {
     <div class="row start-xs">
 
 
-      <div class="col-xs-3" style="margin-right: 18px;">
-
+      <div class="col-xs-3">
         <!--Select with pure css-->
         <div class="select">
-          <select class="select-text" required>
+          <select class="select-text" required name="departamento">
             <option value="" disabled selected></option>
             <?php foreach($this->departamento as $valor) {?>
-            <option value="<?= $valor["id"] ?>"> <?= $valor["nombre"] ?></option>
+            <option value="<?= $valor["id"] ?>"
+              <?= $this->selectValues["dpto"] == $valor["id"] ? "selected" : null ?>> <?= $valor["nombre"] ?></option>
             <?php } ?>
           </select>
           <label class="select-label">Departamento</label>
         </div>
         <!--Select with pure css-->
+
       </div>
 
 

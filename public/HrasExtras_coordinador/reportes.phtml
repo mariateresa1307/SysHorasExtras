@@ -31,7 +31,7 @@ $(document).ready(function() {
     margin-top: -25px;
 ">
   <div class="col-xs-6">
-    <h1 class="h1"> Registro de Horas Aprobadas</h1>
+    <h1 class="h1"> Reportes Coodinador</h1>
   </div>
 
   <div class="col-xs-6" style="
@@ -54,38 +54,28 @@ $(document).ready(function() {
     <div class="row start-xs">
 
 
-      <div class="col-xs-3" style="margin-right: 18px;">
-
-        <!--Select with pure css-->
-        <div class="select">
-          <select class="select-text" required>
-            <option value="" disabled selected></option>
-            <?php foreach($this->departamento as $valor) {?>
-            <option value="<?= $valor["id"] ?>"> <?= $valor["nombre"] ?></option>
-            <?php } ?>
-          </select>
-          <label class="select-label">Departamento</label>
-        </div>
-        <!--Select with pure css-->
-      </div>
 
 
-      <div class="col-xs-3" style="margin-right: 18px;">
+            <div class="col-xs-3" style="margin-right: 18px;">
 
-        <!--Select with pure css-->
-        <div class="select">
-          <select class="select-text" required>
-            <option value="" disabled selected></option>
-            <option value="opcion-1">Funcionario</option>
-            <option value="opcion-2">Mes</option>
-            <option value="opcion-x">Año</option>
-          </select>
-          <label class="select-label">Buscar por</label>
-        </div>
-        <!--Select with pure css-->
-      </div>
+              <!--Select with pure css-->
+              <div class="select">
+                <select class="select-text" required name="mes">
+                  <option value="" disabled selected></option>
 
-      <div class="col-xs-2">
+                  <?php foreach ($this->mes_existentes as $value) { ?>
+                  <option value="<?= $value["date_part"] ?>"
+                    <?= $this->selectValues["mes"] == $value["date_part"] ? "selected" : null ?>><?= $value["date_part"] ?>
+                  </option>
+                  <?php } ?>
+                </select>
+                <label class="select-label">Mes</label>
+              </div>
+              <!--Select with pure css-->
+            </div>
+
+
+      <div class="col-xs-4">
         <!--Input css-->
         <label class="field field_v3">
    <input class="field__input" placeholder="name">
