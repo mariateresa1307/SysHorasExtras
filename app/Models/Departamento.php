@@ -51,5 +51,24 @@ class Departamento {
     }
 
 
+    public function obtnerCoordinadorDeUnDepartamentoPorCedulaFuncionario($cedulaFuncionario){
+        $query = "SELECT
+            distinct (u.id)
+        from
+            departamento d
+        inner join usuario u on
+            u.departamento_id = d.id
+        inner join registro_asistencia_mensual ram on
+            ram.usuario_id = u.id
+        inner join control_asistencia ca on
+            ca.registro_asistencia_mensual_id = ram.id
+        inner join funcionario f on
+            ca.funcionario_id = f.id
+        where
+            f.cedula = {$cedulaFuncionario}
+        ";
+         $result = pg_exec($this->em->vinculo, $query);
+         return pg_fetch_all($result);
+    }
 
 }

@@ -219,10 +219,6 @@ class PdfController{
             <td>{$b['cargo']}</td>
           </tr>";
         }
-
-
-
-
       }
 
 
@@ -276,38 +272,120 @@ class PdfController{
 
 
 
-  public function pdfFuncionarioAction($req, $res, $service, $app){
+  public function pdf_rango_tiempo_coordinador($req, $res, $service, $app){
+      $registroAsistenciaMensual = new RegistroAsistenciaMensual();
+      $departamento = new Departamento();
+      $proceso = new Proceso();
+      $data = $req->paramsGet();
 
-  /*  $html = '
-    <html lang='en' dir='ltr'>
-      <head>
-      <img src='./assets/img/cabecera.png'  style='width: 100%'/>
-        <meta charset='utf-8'>
-        <title> Registro de Horas Extras por funcionario</title>
-      </head>
-      <body>
-      <div style='background-color:#f8f8f8'>
 
-        <h4 style='text-align: center;'>Registro de Horas Extras</h4>
-      </div>
+      $dInicio = DateTime::createFromFormat( "m-Y", $data["value_date_inicio"]);
+      $dFinal = DateTime::createFromFormat( "m-Y", $data["value_date_final"]);
 
-      </body>
-    </html>
 
-    ';
+      $tablaCuerpo = "";
+      if($dInicio->format("Y") == $dFinal->format("Y") ){
+        for($i = $dInicio->format("m"); $i <= $dFinal->format("m"); $i++ ){
+          $mes = $i;
+          $anno = $dInicio->format("Y");
 
-    // instantiate and use the dompdf class
-    $dompdf = new Dompdf();
-    $dompdf->loadHtml($html);
 
-    // (Optional) Setup the paper size and orientation
-    $dompdf->setPaper('A4', 'portrait');
+          $temp = $departamento->obtnerCoordinadorDeUnDepartamentoPorCedulaFuncionario( $data["value"]);
+          $coordinadorId = $temp[0]["id"];
 
-    // Render the HTML as PDF
-    $dompdf->render();
 
-    // Output the generated PDF to Browser
-    $dompdf->stream();*/
+          $temp = $registroAsistenciaMensual->obtnerPorDepartamentosFuncionarioCedula(
+            null,
+            $anno,
+            $i,
+            $data["value"]
+          );
+
+          if(empty($temp)) continue;
+
+          $preResult = [];
+          foreach($temp as $value){
+            $temp = $proceso->ejecutar($mes, $anno, $coordinadorId, $value["id"]);
+            array_push($preResult, $temp);
+          }
+
+
+          foreach ($preResult as $value) {
+            foreach($value as $b){
+              
+              $tablaCuerpo = $tablaCuerpo .  "<tr>
+                <td>{$b['funcionario_nombre']}</td>
+                <td>{$b['funcionario_apellido']}</td>
+                <td>{$b['horas_trabajo']}</td>
+                <td>{$b['balance_cotizacion_a_pagar']}</td>
+                <td>{$b['salario_por_hora']}</td>
+                <td>{$b['cargo']}</td>
+              </tr>";
+            }
+          }
+
+
+        }
+      }
+      else{
+        echo "Solo es permitido un rango de meses dentro del mismo Anno";
+        return;
+      }
+      
+
+
+      if(empty($tablaCuerpo)) {
+        echo "sin resultado";
+        return;
+      }
+
+      
+      $html = "
+      <html lang='en' dir='ltr'>
+        <head>
+        <img src='./assets/img/cabecera.png'  style='width: 100%'/>
+          <meta charset='utf-8'>
+          <title> Registro de Horas Extras</title>
+        </head>
+        <body>
+        <div style='background-color:#f8f8f8'>
+
+          <h4 style='text-align: center;'>Registro de Horas Extras</h4>
+
+          <table style='width:100%'>
+            <tr>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Horas de trabajos</th>
+              <th>balance de cotizacion a pagar</th>
+              <th>Salario por hora</th>
+              <th>Cargo</th>
+            </tr>
+          {$tablaCuerpo}
+          </table>
+        </div>
+
+        </body>
+      </html>
+
+      ";
+
+
+      
+
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+      
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'portrait');
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream();
+
+
 
 
 

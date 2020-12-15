@@ -33,8 +33,7 @@ $estructuraCtrl = new EstructuraController();
 $organigramaCtrl = new EstructuraController();
 $hrasExtrasControllerRRHH = new HrasExtrasControllerRRHH();
 $pdf = new PdfController();
-$pdfAno = new PdfController();
-$pdfFuncionario = new PdfController();
+
 
 
 $router->respond(function ($request, $response, $service, $app) use($config) {
@@ -141,8 +140,8 @@ $router->respond('GET', "{$base_url}/organigrama", [$organigramaCtrl, 'organigra
 
 $router->respond('GET', "{$base_url}/pdf", [$pdf, 'indexAction']);
 $router->respond('GET', "{$base_url}/pdf_rrhh", [$pdf, 'PDF_RRHH']);
-$router->respond('GET', "{$base_url}/pdfAno", [$pdfAno, 'pdfAnoAction']);
-$router->respond('GET', "{$base_url}/pdfFuncionario", [$pdfFuncionario, 'pdfFuncionarioAction']);
+$router->respond('GET', "{$base_url}/pdf_rango_tiempo_coordinador", [$pdf, 'pdf_rango_tiempo_coordinador']);
+
 
 
 
