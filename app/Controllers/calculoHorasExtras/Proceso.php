@@ -87,8 +87,8 @@ class Proceso{
       "funcionario_nombre" => $asistenciaDeUnFuncionario[0]["primer_nombre"], 
       "funcionario_apellido" => $asistenciaDeUnFuncionario[0]["primer_apellido"], 
       "horas_trabajo" => $balanceHoras > 0 ? $balanceHoras : 0,
-      "balance_cotizacion_a_pagar" => $balanceCotizacion,
-      "salario_por_hora" => $salarioPorHora,
+      "balance_cotizacion_a_pagar" => round($balanceCotizacion, 2),
+      "salario_por_hora" => round($salarioPorHora, 2),
       "cargo" => $asistenciaDeUnFuncionario[0]["nombre_cargo"]
     ];
   }
