@@ -16,7 +16,6 @@
 <script src='<?=$this->base_url ?>/assets/js/tippy@6.js'></script>
 <script src='<?=$this->base_url ?>/assets/js/sweetalert2@10.js'></script>
 
-
 <script>
 $(document).ready(function() {
   $('#example').DataTable();
@@ -29,7 +28,7 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
   tippy('#ai', {
-    content: ' Detalles',
+    content: ' pdf',
   });
 });
 </script>
@@ -92,8 +91,7 @@ $(document).ready(function() {
 
 
 
-<div class="card2" style=" background-color: white; margin-top: -2px;
-    border-top-color: white;">
+<div class="card2" style=" background-color: white; margin-top: -2px; border-top-color: white;">
   <div class="card-body">
 
     <form action="<?=$this->base_url ?>/HrasExtras/coordinador" method="get">
@@ -104,7 +102,7 @@ $(document).ready(function() {
           <div class="select">
             <select class="select-text" required name="anno">
               <option value="" disabled selected></option>
-          
+
               <?php foreach ($this->annos_existentes as $value) { ?>
               <option value="<?= $value["date_part"] ?>"
                 <?= $this->selectValues["anno"] == $value["date_part"] ? "selected" : null ?>><?= $value["date_part"] ?>
@@ -116,12 +114,10 @@ $(document).ready(function() {
           <!--Select with pure css-->
         </div>
         <div class="col-xs-8" style="margin-top: -16PX;margin-bottom: 4px;">
-          <button type="submit" id="toolBuscar" class="boton" style="float: right;     float: right;
-            border: none;
+          <button type="submit" id="toolBuscar" class="boton" style="float: right;     float: right;  border: none;
             height: 50px;
             width: 50px;
-            color: white;
-          "><i style="font-size: 26px;" class="fas fa-search"></i></button>
+            color: white;  "><i style="font-size: 26px;" class="fas fa-search"></i></button>
         </div>
 
       </div>
@@ -213,24 +209,21 @@ $(document).ready(function() {
       </div>
     </div>
 
-    <div class="row start-xs" style="margin-top: 40px;padding-left: 95px;padding-right: 95px;">
+    <div class="row start-xs" style="padding-left: 95px;padding-right: 95px;">
 
 
 
-      <pre id="json">
-          </pre>
+            <div class="col-xs-12" style="text-align: end;margin-top: 15px;">
+      <a class="circle-right-btn" id="#ai" type="button" href="<?=$this->base_url ?>/pdf"
+        style="font-size: 15px;margin-left: 20px;color: #d20d0d;">
+        <i class="fa fa-file-pdf-o" style="font-size: 40px;"></i></a>
+</div>
+<embed  src="<?= $this->base_url ?>/pdf" type="application/pdf"
+ style="width:2000px; height:500px;" frameborder="0"></embed>
 
 
 
 
-
-      <div class="col-xs-12">
-        <div class="btn-group">
-
-          <button Style="background-color: #0c4dc1" class="button">Aceptar</button>
-
-        </div>
-      </div>
 
     </div>
   </div>
@@ -262,18 +255,16 @@ $(document).ready(function() {
 
   function verDetalle(id) {
     $.ajax({
-        method: "post",
-        url: "<?=$this->base_url ?>/HrasExtras/coordinador/generarDataMensual",
+        method: "get",
+        url: "<?=$this->base_url ?>/pdf",
         data: {
           id
         }
       })
       .done(function(msg) {
 
-        //window.location.href = "<?=$this->base_url ?>/home";
 
-
-        $("#json").text(JSON.stringify(msg, null, 2))
+        $("#json").innerHTML(msg)
 
 
 
